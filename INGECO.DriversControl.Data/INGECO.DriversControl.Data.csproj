@@ -47,13 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Driver.cs" />
-    <Compile Include="DriverLicense.cs" />
-    <Compile Include="MedicalExam.cs" />
-    <Compile Include="MedicalExamResult.cs" />
-    <Compile Include="MedicalExamType.cs" />
+    <Compile Include="Models\Driver.cs" />
+    <Compile Include="Models\DriverLicense.cs" />
+    <Compile Include="Models\MedicalExam.cs" />
+    <Compile Include="Models\MedicalExamResult.cs" />
+    <Compile Include="Models\MedicalExamType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Requalificaiton.cs" />
+    <Compile Include="Models\Requalificaiton.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

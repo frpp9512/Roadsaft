@@ -18,6 +18,7 @@ namespace INGECO.DriversControl.Data
                   new string[] 
                   {
                       "requalification_id",
+                      "req_createddate",
                       "req_dateofmaking",
                       "req_expires",
                       "volume",
@@ -37,6 +38,11 @@ namespace INGECO.DriversControl.Data
         /// The driver that the re-qualification belongs to.
         /// </summary>
         public Driver Driver { get; set; }
+
+        /// <summary>
+        /// The date when the requalification was registered in the system.
+        /// </summary>
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// The date of making of the re-qualification.
@@ -72,10 +78,11 @@ namespace INGECO.DriversControl.Data
 
         #region DBObject Implementation
 
-        protected override object[] Values => new object[] { DateOfMaking, Expires, Volume, Page, IsActive, Driver.PrimaryKeyValue };
+        protected override object[] Values => new object[] { Created, DateOfMaking, Expires, Volume, Page, IsActive, Driver.PrimaryKeyValue };
 
         protected override void SetValues(DataResult dr)
         {
+            Created = dr.GetValue<DateTime>("req_createddate");
             DateOfMaking = dr.GetValue<DateTime>("req_dateofmaking");
             Expires = dr.GetValue<DateTime>("req_expires");
             Volume = dr.GetValue<string>("volume");

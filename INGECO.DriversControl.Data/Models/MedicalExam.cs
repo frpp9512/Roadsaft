@@ -19,6 +19,7 @@ namespace INGECO.DriversControl.Data
                   {
                       "med_exam_id",
                       "med_exam_type",
+                      "med_exam_createddate",
                       "med_exam_dateofmaking",
                       "med_exam_expires",
                       "med_exam_result",
@@ -40,6 +41,11 @@ namespace INGECO.DriversControl.Data
         /// The medical exam's type.
         /// </summary>
         public MedicalExamType Type { get; set; }
+
+        /// <summary>
+        /// The date when the medical exam was registered in the system.
+        /// </summary>
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// The medical exam's date of making.
@@ -70,11 +76,12 @@ namespace INGECO.DriversControl.Data
 
         #region DBObject Implementation
 
-        protected override object[] Values => new object[] { Type, Expires, Result, IsActive, Driver?.PrimaryKeyValue };
+        protected override object[] Values => new object[] { Type, Created, Expires, Result, IsActive, Driver?.PrimaryKeyValue };
 
         protected override void SetValues(DataResult dr)
         {
             Type = dr.GetValue<MedicalExamType>("med_exam_type");
+            Created = dr.GetValue<DateTime>("med_exam_createddate");
             DateOfMaking = dr.GetValue<DateTime>("med_exam_dateofmaking");
             Expires = dr.GetValue<DateTime>("med_exam_expires");
             Result = dr.GetValue<MedicalExamResult>("med_exam_result");

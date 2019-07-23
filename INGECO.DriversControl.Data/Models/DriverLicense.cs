@@ -15,7 +15,9 @@ namespace INGECO.DriversControl.Data
                   new string[] 
                   {
                       "driver_license_id",
+                      "dl_number",
                       "dl_category",
+                      "dl_createddate",
                       "dl_expires",
                       "dl_isactive",
                       "driver_id"
@@ -42,6 +44,11 @@ namespace INGECO.DriversControl.Data
         public string Category { get; set; }
 
         /// <summary>
+        /// The date when the driver's license was registered in the system.
+        /// </summary>
+        public DateTime Created { get; set; }
+
+        /// <summary>
         /// The driver's license expiration date.
         /// </summary>
         public DateTime Expires { get; set; }
@@ -60,11 +67,13 @@ namespace INGECO.DriversControl.Data
 
         #region DBObject Implementation
 
-        protected override object[] Values => new object[] { Category, Expires, IsActive, Driver.PrimaryKeyValue };
+        protected override object[] Values => new object[] { Number, Category, Created, Expires, IsActive, Driver.PrimaryKeyValue };
 
         protected override void SetValues(DataResult dr)
         {
+            Number = dr.GetValue<string>("dl_number");
             Category = dr.GetValue<string>("dl_category");
+            Created = dr.GetValue<DateTime>("dl_createddate");
             Expires = dr.GetValue<DateTime>("dl_expires");
             IsActive = dr.GetValue<bool>("dl_isactive");
             Driver = new Driver { PrimaryKeyValue = dr.GetValue<string>("driver_id") };

@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace INGECO.DriversControl
 {
-    public partial class Form1 : Form
+    public partial class FrmMain : Form
     {
-        public Form1()
+        public FrmMain()
         {
             InitializeComponent();
+        }
+
+        private void Label11_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -53,6 +53,33 @@
             label8.TabIndex = 21;
             label8.Text = "Nueva licencia de conducción";
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(15, 101);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(103, 13);
+            label7.TabIndex = 18;
+            label7.Text = "Fecha de expiración:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(15, 73);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(65, 13);
+            label6.TabIndex = 16;
+            label6.Text = "Categoría(s):";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(15, 45);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(100, 13);
+            label5.TabIndex = 14;
+            label5.Text = "Número de licencia:";
+            // 
             // btnLicenseRenewal
             // 
             this.btnLicenseRenewal.Location = new System.Drawing.Point(190, 126);
@@ -69,15 +96,6 @@
             this.dtLicenseExpires.Size = new System.Drawing.Size(240, 22);
             this.dtLicenseExpires.TabIndex = 19;
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(15, 101);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(103, 13);
-            label7.TabIndex = 18;
-            label7.Text = "Fecha de expiración:";
-            // 
             // txtLicenseCategory
             // 
             this.txtLicenseCategory.Location = new System.Drawing.Point(124, 70);
@@ -85,30 +103,12 @@
             this.txtLicenseCategory.Size = new System.Drawing.Size(240, 22);
             this.txtLicenseCategory.TabIndex = 17;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(15, 73);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(65, 13);
-            label6.TabIndex = 16;
-            label6.Text = "Categoría(s):";
-            // 
             // txtLicenseNumber
             // 
             this.txtLicenseNumber.Location = new System.Drawing.Point(124, 42);
             this.txtLicenseNumber.Name = "txtLicenseNumber";
             this.txtLicenseNumber.Size = new System.Drawing.Size(240, 22);
             this.txtLicenseNumber.TabIndex = 15;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(15, 45);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(100, 13);
-            label5.TabIndex = 14;
-            label5.Text = "Número de licencia:";
             // 
             // btnCancel
             // 
@@ -139,6 +139,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmNewLicense";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nueva licencia";
             this.ResumeLayout(false);
             this.PerformLayout();

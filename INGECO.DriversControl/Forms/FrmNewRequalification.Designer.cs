@@ -57,13 +57,6 @@
             label16.TabIndex = 38;
             label16.Text = "Registro:";
             // 
-            // txtRequalificationPage
-            // 
-            this.txtRequalificationPage.Location = new System.Drawing.Point(272, 103);
-            this.txtRequalificationPage.Name = "txtRequalificationPage";
-            this.txtRequalificationPage.Size = new System.Drawing.Size(62, 22);
-            this.txtRequalificationPage.TabIndex = 37;
-            // 
             // label15
             // 
             label15.AutoSize = true;
@@ -72,13 +65,6 @@
             label15.Size = new System.Drawing.Size(30, 13);
             label15.TabIndex = 36;
             label15.Text = "Folio:";
-            // 
-            // txtRequalificationVolume
-            // 
-            this.txtRequalificationVolume.Location = new System.Drawing.Point(163, 103);
-            this.txtRequalificationVolume.Name = "txtRequalificationVolume";
-            this.txtRequalificationVolume.Size = new System.Drawing.Size(62, 22);
-            this.txtRequalificationVolume.TabIndex = 35;
             // 
             // label14
             // 
@@ -89,13 +75,6 @@
             label14.TabIndex = 34;
             label14.Text = "Tomo:";
             // 
-            // dtRequalificationExpires
-            // 
-            this.dtRequalificationExpires.Location = new System.Drawing.Point(123, 75);
-            this.dtRequalificationExpires.Name = "dtRequalificationExpires";
-            this.dtRequalificationExpires.Size = new System.Drawing.Size(240, 22);
-            this.dtRequalificationExpires.TabIndex = 33;
-            // 
             // label13
             // 
             label13.AutoSize = true;
@@ -104,13 +83,6 @@
             label13.Size = new System.Drawing.Size(103, 13);
             label13.TabIndex = 32;
             label13.Text = "Fecha de expiración:";
-            // 
-            // dtRequalificationDateOfMaking
-            // 
-            this.dtRequalificationDateOfMaking.Location = new System.Drawing.Point(123, 47);
-            this.dtRequalificationDateOfMaking.Name = "dtRequalificationDateOfMaking";
-            this.dtRequalificationDateOfMaking.Size = new System.Drawing.Size(240, 22);
-            this.dtRequalificationDateOfMaking.TabIndex = 31;
             // 
             // label11
             // 
@@ -130,6 +102,34 @@
             label12.Size = new System.Drawing.Size(186, 25);
             label12.TabIndex = 28;
             label12.Text = "Nueva recalificación";
+            // 
+            // txtRequalificationPage
+            // 
+            this.txtRequalificationPage.Location = new System.Drawing.Point(272, 103);
+            this.txtRequalificationPage.Name = "txtRequalificationPage";
+            this.txtRequalificationPage.Size = new System.Drawing.Size(62, 22);
+            this.txtRequalificationPage.TabIndex = 37;
+            // 
+            // txtRequalificationVolume
+            // 
+            this.txtRequalificationVolume.Location = new System.Drawing.Point(163, 103);
+            this.txtRequalificationVolume.Name = "txtRequalificationVolume";
+            this.txtRequalificationVolume.Size = new System.Drawing.Size(62, 22);
+            this.txtRequalificationVolume.TabIndex = 35;
+            // 
+            // dtRequalificationExpires
+            // 
+            this.dtRequalificationExpires.Location = new System.Drawing.Point(123, 75);
+            this.dtRequalificationExpires.Name = "dtRequalificationExpires";
+            this.dtRequalificationExpires.Size = new System.Drawing.Size(240, 22);
+            this.dtRequalificationExpires.TabIndex = 33;
+            // 
+            // dtRequalificationDateOfMaking
+            // 
+            this.dtRequalificationDateOfMaking.Location = new System.Drawing.Point(123, 47);
+            this.dtRequalificationDateOfMaking.Name = "dtRequalificationDateOfMaking";
+            this.dtRequalificationDateOfMaking.Size = new System.Drawing.Size(240, 22);
+            this.dtRequalificationDateOfMaking.TabIndex = 31;
             // 
             // btnCancel
             // 
@@ -172,6 +172,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmNewRequalification";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nueva recalificación";
             this.ResumeLayout(false);
             this.PerformLayout();

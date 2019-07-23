@@ -70,6 +70,12 @@
     <Compile Include="Forms\FrmNewMedicalExam.Designer.cs">
       <DependentUpon>FrmNewMedicalExam.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmNewDriver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmNewDriver.Designer.cs">
+      <DependentUpon>FrmNewDriver.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\FrmMain.resx">
@@ -83,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmNewMedicalExam.resx">
       <DependentUpon>FrmNewMedicalExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmNewDriver.resx">
+      <DependentUpon>FrmNewDriver.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

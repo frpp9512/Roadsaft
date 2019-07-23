@@ -46,13 +46,6 @@
             label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // dtMedicalExamExpires
-            // 
-            this.dtMedicalExamExpires.Location = new System.Drawing.Point(130, 75);
-            this.dtMedicalExamExpires.Name = "dtMedicalExamExpires";
-            this.dtMedicalExamExpires.Size = new System.Drawing.Size(240, 22);
-            this.dtMedicalExamExpires.TabIndex = 37;
-            // 
             // label13
             // 
             label13.AutoSize = true;
@@ -61,13 +54,6 @@
             label13.Size = new System.Drawing.Size(103, 13);
             label13.TabIndex = 36;
             label13.Text = "Fecha de expiración:";
-            // 
-            // dtMedicalExamDateOfMaking
-            // 
-            this.dtMedicalExamDateOfMaking.Location = new System.Drawing.Point(130, 47);
-            this.dtMedicalExamDateOfMaking.Name = "dtMedicalExamDateOfMaking";
-            this.dtMedicalExamDateOfMaking.Size = new System.Drawing.Size(240, 22);
-            this.dtMedicalExamDateOfMaking.TabIndex = 35;
             // 
             // label11
             // 
@@ -88,14 +74,6 @@
             label18.TabIndex = 38;
             label18.Text = "Nuevo examen médico";
             // 
-            // cbxMedicalExamType
-            // 
-            this.cbxMedicalExamType.FormattingEnabled = true;
-            this.cbxMedicalExamType.Location = new System.Drawing.Point(130, 103);
-            this.cbxMedicalExamType.Name = "cbxMedicalExamType";
-            this.cbxMedicalExamType.Size = new System.Drawing.Size(240, 21);
-            this.cbxMedicalExamType.TabIndex = 39;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -105,14 +83,6 @@
             label1.TabIndex = 40;
             label1.Text = "Tipo de examen:";
             // 
-            // cbxMedicalExamResult
-            // 
-            this.cbxMedicalExamResult.FormattingEnabled = true;
-            this.cbxMedicalExamResult.Location = new System.Drawing.Point(130, 130);
-            this.cbxMedicalExamResult.Name = "cbxMedicalExamResult";
-            this.cbxMedicalExamResult.Size = new System.Drawing.Size(240, 21);
-            this.cbxMedicalExamResult.TabIndex = 39;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -121,6 +91,36 @@
             label2.Size = new System.Drawing.Size(112, 13);
             label2.TabIndex = 40;
             label2.Text = "Resultado del exámen:";
+            // 
+            // dtMedicalExamExpires
+            // 
+            this.dtMedicalExamExpires.Location = new System.Drawing.Point(130, 75);
+            this.dtMedicalExamExpires.Name = "dtMedicalExamExpires";
+            this.dtMedicalExamExpires.Size = new System.Drawing.Size(240, 22);
+            this.dtMedicalExamExpires.TabIndex = 37;
+            // 
+            // dtMedicalExamDateOfMaking
+            // 
+            this.dtMedicalExamDateOfMaking.Location = new System.Drawing.Point(130, 47);
+            this.dtMedicalExamDateOfMaking.Name = "dtMedicalExamDateOfMaking";
+            this.dtMedicalExamDateOfMaking.Size = new System.Drawing.Size(240, 22);
+            this.dtMedicalExamDateOfMaking.TabIndex = 35;
+            // 
+            // cbxMedicalExamType
+            // 
+            this.cbxMedicalExamType.FormattingEnabled = true;
+            this.cbxMedicalExamType.Location = new System.Drawing.Point(130, 103);
+            this.cbxMedicalExamType.Name = "cbxMedicalExamType";
+            this.cbxMedicalExamType.Size = new System.Drawing.Size(240, 21);
+            this.cbxMedicalExamType.TabIndex = 39;
+            // 
+            // cbxMedicalExamResult
+            // 
+            this.cbxMedicalExamResult.FormattingEnabled = true;
+            this.cbxMedicalExamResult.Location = new System.Drawing.Point(130, 130);
+            this.cbxMedicalExamResult.Name = "cbxMedicalExamResult";
+            this.cbxMedicalExamResult.Size = new System.Drawing.Size(240, 21);
+            this.cbxMedicalExamResult.TabIndex = 39;
             // 
             // btnCancel
             // 
@@ -162,6 +162,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmNewMedicalExam";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nuevo examen";
             this.ResumeLayout(false);
             this.PerformLayout();

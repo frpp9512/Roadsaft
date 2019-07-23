@@ -773,6 +773,7 @@
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(742, 506);
             this.Name = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMain";
             this.tabControl1.ResumeLayout(false);
             this.TpDriverInfo.ResumeLayout(false);

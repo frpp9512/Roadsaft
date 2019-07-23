@@ -81,21 +81,22 @@
             this.lbRequalificationCreationDate = new System.Windows.Forms.Label();
             this.TpMedicalExams = new System.Windows.Forms.TabPage();
             this.dgvMedicalExamHistorical = new System.Windows.Forms.DataGridView();
-            this.btnMedicalExamNew = new System.Windows.Forms.Button();
-            this.btnMedicalExamDeleteSelected = new System.Windows.Forms.Button();
-            this.btnMedicalExamArchiveSelected = new System.Windows.Forms.Button();
-            this.dgvMedicalExamActive = new System.Windows.Forms.DataGridView();
-            this.label20 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clMedExamType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clMedExamResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clMedExamHType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnMedicalExamNew = new System.Windows.Forms.Button();
+            this.btnMedicalExamDeleteSelected = new System.Windows.Forms.Button();
+            this.btnMedicalExamArchiveSelected = new System.Windows.Forms.Button();
+            this.dgvMedicalExamActive = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clMedExamType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clMedExamResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label20 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -299,9 +300,9 @@
             this.lvDriversList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lvDriversList.HideSelection = false;
-            this.lvDriversList.Location = new System.Drawing.Point(20, 93);
+            this.lvDriversList.Location = new System.Drawing.Point(20, 115);
             this.lvDriversList.Name = "lvDriversList";
-            this.lvDriversList.Size = new System.Drawing.Size(253, 362);
+            this.lvDriversList.Size = new System.Drawing.Size(253, 340);
             this.lvDriversList.TabIndex = 0;
             this.lvDriversList.UseCompatibleStateImageBehavior = false;
             // 
@@ -642,6 +643,31 @@
             this.dgvMedicalExamHistorical.Size = new System.Drawing.Size(415, 116);
             this.dgvMedicalExamHistorical.TabIndex = 32;
             // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Creado";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // clMedExamHType
+            // 
+            this.clMedExamHType.HeaderText = "Tipo";
+            this.clMedExamHType.Name = "clMedExamHType";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Realizado";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Expira";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "Resultado";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
             // btnMedicalExamNew
             // 
             this.btnMedicalExamNew.Location = new System.Drawing.Point(292, 160);
@@ -690,16 +716,6 @@
             this.dgvMedicalExamActive.Size = new System.Drawing.Size(415, 105);
             this.dgvMedicalExamActive.TabIndex = 26;
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            this.label20.Location = new System.Drawing.Point(15, 65);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(177, 25);
-            this.label20.TabIndex = 33;
-            this.label20.Text = "Listado de choferes";
-            // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.HeaderText = "Creado";
@@ -725,36 +741,31 @@
             this.clMedExamResult.HeaderText = "Resultado";
             this.clMedExamResult.Name = "clMedExamResult";
             // 
-            // dataGridViewTextBoxColumn7
+            // label20
             // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Creado";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
+            this.label20.Location = new System.Drawing.Point(15, 82);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(177, 25);
+            this.label20.TabIndex = 33;
+            this.label20.Text = "Listado de choferes";
             // 
-            // clMedExamHType
+            // button1
             // 
-            this.clMedExamHType.HeaderText = "Tipo";
-            this.clMedExamHType.Name = "clMedExamHType";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Realizado";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "Expira";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "Resultado";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.button1.Location = new System.Drawing.Point(204, 86);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(69, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "&Nuevo...";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(726, 467);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
@@ -833,5 +844,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.Button button1;
     }
 }

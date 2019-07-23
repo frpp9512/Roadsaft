@@ -46,6 +46,8 @@
             System.Windows.Forms.Label label17;
             System.Windows.Forms.Label label18;
             System.Windows.Forms.Label label19;
+            System.Windows.Forms.ColumnHeader lvClFullname;
+            System.Windows.Forms.ColumnHeader tvClPosition;
             this.lvDriversList = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -97,6 +99,7 @@
             this.clMedExamResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label20 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.tvClPersonalId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -115,6 +118,8 @@
             label17 = new System.Windows.Forms.Label();
             label18 = new System.Windows.Forms.Label();
             label19 = new System.Windows.Forms.Label();
+            lvClFullname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            tvClPosition = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.TpDriverInfo.SuspendLayout();
             this.TpDriverLicense.SuspendLayout();
@@ -297,14 +302,22 @@
             // 
             // lvDriversList
             // 
+            this.lvDriversList.Alignment = System.Windows.Forms.ListViewAlignment.Left;
             this.lvDriversList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.lvDriversList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            lvClFullname,
+            tvClPosition,
+            this.tvClPersonalId});
+            this.lvDriversList.FullRowSelect = true;
             this.lvDriversList.HideSelection = false;
             this.lvDriversList.Location = new System.Drawing.Point(20, 115);
             this.lvDriversList.Name = "lvDriversList";
-            this.lvDriversList.Size = new System.Drawing.Size(253, 340);
+            this.lvDriversList.Size = new System.Drawing.Size(247, 340);
             this.lvDriversList.TabIndex = 0;
             this.lvDriversList.UseCompatibleStateImageBehavior = false;
+            this.lvDriversList.View = System.Windows.Forms.View.Tile;
+            this.lvDriversList.SelectedIndexChanged += new System.EventHandler(this.LvDriversList_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -326,10 +339,10 @@
             this.tabControl1.Controls.Add(this.TpDriverLicense);
             this.tabControl1.Controls.Add(this.TpRequalification);
             this.tabControl1.Controls.Add(this.TpMedicalExams);
-            this.tabControl1.Location = new System.Drawing.Point(279, 93);
+            this.tabControl1.Location = new System.Drawing.Point(273, 93);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(435, 362);
+            this.tabControl1.Size = new System.Drawing.Size(524, 362);
             this.tabControl1.TabIndex = 2;
             // 
             // TpDriverInfo
@@ -345,7 +358,7 @@
             this.TpDriverInfo.Location = new System.Drawing.Point(4, 22);
             this.TpDriverInfo.Name = "TpDriverInfo";
             this.TpDriverInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.TpDriverInfo.Size = new System.Drawing.Size(427, 336);
+            this.TpDriverInfo.Size = new System.Drawing.Size(516, 336);
             this.TpDriverInfo.TabIndex = 0;
             this.TpDriverInfo.Text = "Información";
             this.TpDriverInfo.UseVisualStyleBackColor = true;
@@ -396,7 +409,7 @@
             this.TpDriverLicense.Location = new System.Drawing.Point(4, 22);
             this.TpDriverLicense.Name = "TpDriverLicense";
             this.TpDriverLicense.Padding = new System.Windows.Forms.Padding(3);
-            this.TpDriverLicense.Size = new System.Drawing.Size(427, 336);
+            this.TpDriverLicense.Size = new System.Drawing.Size(516, 336);
             this.TpDriverLicense.TabIndex = 1;
             this.TpDriverLicense.Text = "Licencia de conducción";
             this.TpDriverLicense.UseVisualStyleBackColor = true;
@@ -428,7 +441,7 @@
             this.dgvHistoricLicenses.Location = new System.Drawing.Point(11, 182);
             this.dgvHistoricLicenses.Name = "dgvHistoricLicenses";
             this.dgvHistoricLicenses.RowHeadersVisible = false;
-            this.dgvHistoricLicenses.Size = new System.Drawing.Size(410, 148);
+            this.dgvHistoricLicenses.Size = new System.Drawing.Size(499, 148);
             this.dgvHistoricLicenses.TabIndex = 11;
             // 
             // clCreatedDate
@@ -507,7 +520,7 @@
             this.TpRequalification.Location = new System.Drawing.Point(4, 22);
             this.TpRequalification.Name = "TpRequalification";
             this.TpRequalification.Padding = new System.Windows.Forms.Padding(3);
-            this.TpRequalification.Size = new System.Drawing.Size(427, 336);
+            this.TpRequalification.Size = new System.Drawing.Size(516, 336);
             this.TpRequalification.TabIndex = 2;
             this.TpRequalification.Text = "Recalificación";
             this.TpRequalification.UseVisualStyleBackColor = true;
@@ -539,7 +552,7 @@
             this.dgvRequalificationHistorical.Location = new System.Drawing.Point(11, 189);
             this.dgvRequalificationHistorical.Name = "dgvRequalificationHistorical";
             this.dgvRequalificationHistorical.RowHeadersVisible = false;
-            this.dgvRequalificationHistorical.Size = new System.Drawing.Size(410, 139);
+            this.dgvRequalificationHistorical.Size = new System.Drawing.Size(499, 139);
             this.dgvRequalificationHistorical.TabIndex = 25;
             // 
             // dataGridViewTextBoxColumn1
@@ -603,7 +616,6 @@
             this.lbRequalificationCreationDate.Size = new System.Drawing.Size(107, 13);
             this.lbRequalificationCreationDate.TabIndex = 15;
             this.lbRequalificationCreationDate.Text = "Creada: dd/MM/yyyy";
-            this.lbRequalificationCreationDate.Click += new System.EventHandler(this.Label11_Click);
             // 
             // TpMedicalExams
             // 
@@ -617,7 +629,7 @@
             this.TpMedicalExams.Location = new System.Drawing.Point(4, 22);
             this.TpMedicalExams.Name = "TpMedicalExams";
             this.TpMedicalExams.Padding = new System.Windows.Forms.Padding(3);
-            this.TpMedicalExams.Size = new System.Drawing.Size(427, 336);
+            this.TpMedicalExams.Size = new System.Drawing.Size(516, 336);
             this.TpMedicalExams.TabIndex = 3;
             this.TpMedicalExams.Text = "Exámenes Médicos";
             this.TpMedicalExams.UseVisualStyleBackColor = true;
@@ -640,7 +652,7 @@
             this.dgvMedicalExamHistorical.Location = new System.Drawing.Point(6, 214);
             this.dgvMedicalExamHistorical.Name = "dgvMedicalExamHistorical";
             this.dgvMedicalExamHistorical.RowHeadersVisible = false;
-            this.dgvMedicalExamHistorical.Size = new System.Drawing.Size(415, 116);
+            this.dgvMedicalExamHistorical.Size = new System.Drawing.Size(504, 116);
             this.dgvMedicalExamHistorical.TabIndex = 32;
             // 
             // dataGridViewTextBoxColumn7
@@ -713,7 +725,7 @@
             this.dgvMedicalExamActive.Location = new System.Drawing.Point(6, 49);
             this.dgvMedicalExamActive.Name = "dgvMedicalExamActive";
             this.dgvMedicalExamActive.RowHeadersVisible = false;
-            this.dgvMedicalExamActive.Size = new System.Drawing.Size(415, 105);
+            this.dgvMedicalExamActive.Size = new System.Drawing.Size(504, 105);
             this.dgvMedicalExamActive.TabIndex = 26;
             // 
             // dataGridViewTextBoxColumn2
@@ -753,18 +765,33 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(204, 86);
+            this.button1.Location = new System.Drawing.Point(198, 86);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(69, 23);
             this.button1.TabIndex = 12;
             this.button1.Text = "&Nuevo...";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // lvClFullname
+            // 
+            lvClFullname.Text = "Nombre completo";
+            lvClFullname.Width = 150;
+            // 
+            // tvClPosition
+            // 
+            tvClPosition.Text = "Cargo";
+            tvClPosition.Width = 120;
+            // 
+            // tvClPersonalId
+            // 
+            this.tvClPersonalId.Text = "Carné de identidad";
+            this.tvClPersonalId.Width = 100;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 467);
+            this.ClientSize = new System.Drawing.Size(809, 467);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.tabControl1);
@@ -846,5 +873,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ColumnHeader tvClPersonalId;
     }
 }

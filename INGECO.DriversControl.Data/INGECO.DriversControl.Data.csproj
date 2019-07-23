@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\DriversController.cs" />
+    <Compile Include="Controllers\DriversDatabaseController.cs" />
     <Compile Include="Interfaces\IDriversDataProvider.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\DriverLicense.cs" />

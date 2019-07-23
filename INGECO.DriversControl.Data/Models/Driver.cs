@@ -21,6 +21,7 @@ namespace INGECO.DriversControl.Data
             : base("driver",
                   new string[] 
                   {
+                      "driver_id",
                       "fullname",
                       "position",
                       "personal_id"

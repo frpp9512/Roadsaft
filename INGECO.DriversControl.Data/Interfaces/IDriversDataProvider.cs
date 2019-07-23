@@ -26,7 +26,22 @@ namespace INGECO.DriversControl.Data
         /// <summary>
         /// Get the history of all driver's licenses.
         /// </summary>
+        /// <param name="driver">The driver to get license history.</param>
         /// <returns>List of driver's licenses history.</returns>
         List<DriverLicense> GetDriverLicenseHistory(Driver driver);
+
+        /// <summary>
+        /// Get the history of all requalifications made to the driver.
+        /// </summary>
+        /// <param name="driver">The driver to get requalification history.</param>
+        /// <returns>List of driver's requalifications history.</returns>
+        List<Requalificaiton> GetDriverRequalificationHistory(Driver driver);
+
+        /// <summary>
+        /// Get the history of all medical exams made to the driver.
+        /// </summary>
+        /// <param name="driver">The driver to get medical exams history.</param>
+        /// <returns>List of driver's medical exams history.</returns>
+        List<MedicalExam> GetDriverMedicalExamsHistory(Driver driver);
     }
 }

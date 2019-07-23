@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INGECO.DriversControl", "INGECO.DriversControl\INGECO.DriversControl.csproj", "{CC12A1A1-4A1D-4A8F-9644-A5F1F2A9E748}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INGECO.DriversControl.Data", "INGECO.DriversControl.Data\INGECO.DriversControl.Data.csproj", "{23A6024C-81A4-4E5C-B9A2-8DD171408547}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CC12A1A1-4A1D-4A8F-9644-A5F1F2A9E748}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC12A1A1-4A1D-4A8F-9644-A5F1F2A9E748}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC12A1A1-4A1D-4A8F-9644-A5F1F2A9E748}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23A6024C-81A4-4E5C-B9A2-8DD171408547}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23A6024C-81A4-4E5C-B9A2-8DD171408547}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23A6024C-81A4-4E5C-B9A2-8DD171408547}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23A6024C-81A4-4E5C-B9A2-8DD171408547}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

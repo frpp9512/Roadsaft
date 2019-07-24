@@ -54,7 +54,7 @@ namespace INGECO.DriversControl
             var drivers = await Task.Run(() => DriverDataProviderContainer.Controller.GetDrivers());
             foreach (var driver in drivers)
             {
-                var item = new ListViewItem(new string[] { driver.FullName, driver.Position, driver.PersonalId, driver.Description })
+                var item = new ListViewItem(new string[] { driver.FullName, driver.Position, driver.PersonalId, driver.Age.ToString(), driver.Description })
                 {
                     ImageIndex = driver.HasExpiredParameters ? 2 : driver.GetIfAnyParameterExpireDateIsInPeriod(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam) ? 1 : 0,
                     Tag = driver,

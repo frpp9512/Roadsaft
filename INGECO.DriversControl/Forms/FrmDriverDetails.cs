@@ -363,6 +363,8 @@ namespace INGECO.DriversControl
             txtPosition.Text = driver.Position;
             txtPersonalId.Text = driver.PersonalId;
             txtDescription.Text = driver.Description;
+            txtBirthday.Text = $"{driver.Birthday.ToShortDateString()}";
+            txtAge.Text = $"{driver.Age} años";
         }
 
         /// <summary>

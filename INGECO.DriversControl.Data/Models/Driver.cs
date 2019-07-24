@@ -49,6 +49,30 @@ namespace INGECO.DriversControl.Data
         public string PersonalId { get; set; }
 
         /// <summary>
+        /// The birthday of the driver calculated by the personal id.
+        /// </summary>
+        public DateTime Birthday
+        {
+            get
+            {
+                _ = int.TryParse(PersonalId.Substring(4, 2), out int day);
+                _ = int.TryParse(PersonalId.Substring(2, 2), out int month);
+                _ = int.TryParse(PersonalId.Substring(0, 2), out int partYear);
+                _ = int.TryParse(DateTime.Now.Year.ToString().Substring(2, 2), out int currentPartYear);
+                int year;
+                _ = partYear > currentPartYear
+                    ? int.TryParse($"19{(partYear < 10 ? $"0{partYear}" : partYear.ToString())}", out year)
+                    : int.TryParse($"20{(partYear < 10 ? $"0{partYear}" : partYear.ToString())}", out year);
+                return new DateTime(year, (month == 0 || month > 12) ? 1 : month, (day == 0 || day > 31) ? 1 : day);
+            }
+        }
+
+        /// <summary>
+        /// The current age of the driver calculated with the birthday.
+        /// </summary>
+        public int Age => (DateTime.Now - Birthday).Days / 365;
+
+        /// <summary>
         /// A description of the driver.
         /// </summary>
         public string Description { get; set; }

@@ -49,6 +49,8 @@
             System.Windows.Forms.Label label12;
             System.Windows.Forms.Label label19;
             System.Windows.Forms.Label label18;
+            System.Windows.Forms.Label label23;
+            System.Windows.Forms.Label label24;
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TpDriverInfo = new System.Windows.Forms.TabPage();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -106,6 +108,8 @@
             this.clMedExamResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clMedExamDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtBirthday = new System.Windows.Forms.TextBox();
+            this.txtAge = new System.Windows.Forms.TextBox();
             label22 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -127,6 +131,8 @@
             label12 = new System.Windows.Forms.Label();
             label19 = new System.Windows.Forms.Label();
             label18 = new System.Windows.Forms.Label();
+            label23 = new System.Windows.Forms.Label();
+            label24 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.TpDriverInfo.SuspendLayout();
             this.TpDriverLicense.SuspendLayout();
@@ -141,7 +147,7 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new System.Drawing.Point(6, 132);
+            label22.Location = new System.Drawing.Point(6, 160);
             label22.Name = "label22";
             label22.Size = new System.Drawing.Size(63, 13);
             label22.TabIndex = 30;
@@ -351,13 +357,17 @@
             // 
             // TpDriverInfo
             // 
+            this.TpDriverInfo.Controls.Add(this.txtAge);
+            this.TpDriverInfo.Controls.Add(label24);
             this.TpDriverInfo.Controls.Add(this.txtDescription);
             this.TpDriverInfo.Controls.Add(label22);
             this.TpDriverInfo.Controls.Add(label10);
             this.TpDriverInfo.Controls.Add(this.btnSaveChanges);
+            this.TpDriverInfo.Controls.Add(this.txtBirthday);
             this.TpDriverInfo.Controls.Add(this.txtPersonalId);
             this.TpDriverInfo.Controls.Add(label4);
             this.TpDriverInfo.Controls.Add(this.txtPosition);
+            this.TpDriverInfo.Controls.Add(label23);
             this.TpDriverInfo.Controls.Add(label3);
             this.TpDriverInfo.Controls.Add(this.txtFullname);
             this.TpDriverInfo.Controls.Add(label2);
@@ -372,7 +382,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(111, 129);
+            this.txtDescription.Location = new System.Drawing.Point(111, 157);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(240, 45);
@@ -386,7 +396,7 @@
             this.btnSaveChanges.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveChanges.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveChanges.Location = new System.Drawing.Point(240, 180);
+            this.btnSaveChanges.Location = new System.Drawing.Point(240, 214);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(111, 23);
             this.btnSaveChanges.TabIndex = 6;
@@ -898,6 +908,40 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Detalles del chofer";
             // 
+            // txtBirthday
+            // 
+            this.txtBirthday.Location = new System.Drawing.Point(111, 129);
+            this.txtBirthday.Name = "txtBirthday";
+            this.txtBirthday.ReadOnly = true;
+            this.txtBirthday.Size = new System.Drawing.Size(106, 22);
+            this.txtBirthday.TabIndex = 5;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new System.Drawing.Point(6, 132);
+            label23.Name = "label23";
+            label23.Size = new System.Drawing.Size(67, 13);
+            label23.TabIndex = 2;
+            label23.Text = "Cumpleaños:";
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Location = new System.Drawing.Point(246, 132);
+            label24.Name = "label24";
+            label24.Size = new System.Drawing.Size(33, 13);
+            label24.TabIndex = 33;
+            label24.Text = "Edad:";
+            // 
+            // txtAge
+            // 
+            this.txtAge.Location = new System.Drawing.Point(285, 129);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.ReadOnly = true;
+            this.txtAge.Size = new System.Drawing.Size(66, 22);
+            this.txtAge.TabIndex = 34;
+            // 
             // FrmDriverDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -986,5 +1030,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clMedExamResult;
         private System.Windows.Forms.DataGridViewTextBoxColumn clMedExamDescription;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtAge;
+        private System.Windows.Forms.TextBox txtBirthday;
     }
 }

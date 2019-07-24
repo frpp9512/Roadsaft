@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace INGECO.DriversControl
 {
@@ -51,5 +52,54 @@ namespace INGECO.DriversControl
         /// </summary>
         public static TimeSpan ExpireWarningForMedicalExam { get; set; } = new TimeSpan(30, 0, 0, 0);
 
+        public static void SaveToFile()
+        {
+            var fields = typeof(Configuration).GetProperties().ToList();
+            using (var sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "config.cfg"))
+            {
+                fields.ForEach(f => sw.WriteLine($"{f.Name}={f.GetValue(null)}"));
+            }
+        }
+
+        public static void LoadFromFile()
+        {
+            using (var sr = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "config.cfg"))
+            {
+                while (!sr.EndOfStream)
+                {
+                    var readedline = sr.ReadLine();
+                    if (readedline.Contains('='))
+                    {
+                        var values = readedline.Split('=');
+                        switch (values[0])
+                        {
+                            case nameof(DatabaseHostName):
+                                DatabaseHostName = values[1];
+                                continue;
+                            case nameof(DatabaseUserName):
+                                DatabaseUserName = values[1];
+                                continue;
+                            case nameof(DatabasePassword):
+                                DatabasePassword = values[1];
+                                continue;
+                            case nameof(DatabaseName):
+                                DatabaseName = values[1];
+                                continue;
+                            case nameof(RefreshInterval):
+                                RefreshInterval = int.Parse(values[1]);
+                                continue;
+                            case nameof(ExpireWarningForLicense):
+                                ExpireWarningForLicense = TimeSpan.Parse(values[1]);
+                                continue;
+                            case nameof(ExpireWarningForRequalification):
+                                ExpireWarningForMedicalExam = TimeSpan.Parse(values[1]);
+                                continue;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

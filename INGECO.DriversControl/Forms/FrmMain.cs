@@ -18,7 +18,8 @@ namespace INGECO.DriversControl
         public FrmMain()
         {
             InitializeComponent();
-            DriverDataProviderContainer.InitializeWithDatabaseProvider();            
+            Configuration.LoadFromFile();
+            DriverDataProviderContainer.InitializeWithDatabaseProvider(Configuration.DatabaseHostName, Configuration.DatabaseUserName, Configuration.DatabasePassword, Configuration.DatabaseName);
             LoadDrivers();
             SetUpTimer();
         }

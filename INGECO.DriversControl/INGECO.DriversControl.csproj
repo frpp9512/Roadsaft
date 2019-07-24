@@ -66,6 +66,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Configuration.cs" />
+    <Compile Include="Forms\FrmDriverDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDriverDetails.Designer.cs">
+      <DependentUpon>FrmDriverDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\EnumsExtensions.cs" />
     <Compile Include="Forms\FrmMain.cs">
       <SubType>Form</SubType>
@@ -100,6 +106,9 @@
     <Compile Include="Helpers\ModelsExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FrmDriverDetails.resx">
+      <DependentUpon>FrmDriverDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>

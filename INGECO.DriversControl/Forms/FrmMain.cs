@@ -130,7 +130,7 @@ namespace INGECO.DriversControl
                             me.Created.ToShortDateString(),
                             me.Type.GetShowText(),
                             me.DateOfMaking.ToShortDateString(),
-                            me.Expires.ToShortDateString(),
+                            $"{me.Expires.ToShortDateString()} {(me.IsExpired ? "(Expiró)" : $"(Faltan {(me.Expires - DateTime.Now).Days} día(s))")}",
                             me.Result.GetShowText(),
                             me.Description
                             );
@@ -146,6 +146,10 @@ namespace INGECO.DriversControl
             LoadMedicalExamsHistory(driver);
         }
 
+        /// <summary>
+        /// Load the Medical Exam history for the specified driver.
+        /// </summary>
+        /// <param name="driver">The driver to load the medical exam history.</param>
         private void LoadMedicalExamsHistory(Driver driver)
         {
             dgvMedicalExamHistorical.SuspendLayout();
@@ -167,13 +171,32 @@ namespace INGECO.DriversControl
         {
             if (driver.Requalificaiton != null)
             {
-                lbRequalificationCreationDate.Text = driver.Requalificaiton.Created.ToShortDateString();
+                lbRequalificationCreationDate.Text = $"Registrada: {driver.Requalificaiton.Created.ToShortDateString()}";
                 txtRequalificationPage.Text = driver.Requalificaiton.Page;
                 txtRequalificationVolume.Text = driver.Requalificaiton.Volume;
-                dtRequalificationDateOfMaking.Value = driver.Requalificaiton.DateOfMaking;
-                dtRequalificationExpires.Value = driver.Requalificaiton.Expires;
+                txtRequalificationDateOfMaking.Text = driver.Requalificaiton.DateOfMaking.ToLongDateString();
+                txtRequalificationExpires.Text = driver.Requalificaiton.Expires.ToLongDateString();
                 txtRequalificationDescription.Text = driver.Requalificaiton.Description;
-                TpRequalification.ImageIndex = driver.Requalificaiton.IsExpired ? 2 : driver.Requalificaiton.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification) ? 1 : 0;
+                if (driver.Requalificaiton.IsExpired)
+                {
+                    TpRequalification.ImageIndex = 2;
+                    lbRequalificationExpire.Text = "La recalificación ha expirado.";
+                }
+                else
+                {
+                    var remainingTime = driver.Requalificaiton.Expires - DateTime.Now;
+                    lbRequalificationExpire.Text = $"Falta{(remainingTime.Days > 1 ? "n" : "")} {remainingTime.Days} día{(remainingTime.Days > 1 ? "s" : "")} para que expire la la recalificación.";
+                    if (driver.Requalificaiton.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification))
+                    {
+                        TpRequalification.ImageIndex = 1;
+                        lbRequalificationExpire.ForeColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        TpRequalification.ImageIndex = 0;
+                        lbRequalificationExpire.ForeColor = Color.Green;
+                    }
+                }
                 dgvRequalificationHistorical.SuspendLayout();
                 dgvRequalificationHistorical.Rows.Clear();
                 var requalificationsHistory = DriverDataProviderContainer.Controller.GetDriverRequalificationHistory(driver);
@@ -199,12 +222,32 @@ namespace INGECO.DriversControl
         {
             if (driver.DriverLicense != null)
             {
-                lbLicenseCreationDate.Text = driver.DriverLicense.Created.ToShortDateString();
+                lbLicenseCreationDate.Text = $"Registrada: {driver.DriverLicense.Created.ToShortDateString()}";
                 txtLicenseNumber.Text = driver.DriverLicense.Number;
                 txtLicenseCategory.Text = driver.DriverLicense.Category;
-                dtLicenseExpires.Value = driver.DriverLicense.Expires;
+                txtLicenseExpireDate.Text = driver.DriverLicense.Expires.ToLongDateString();
                 txtDriverLicenseDescription.Text = driver.DriverLicense.Description;
-                TpDriverLicense.ImageIndex = driver.DriverLicense.IsExpired ? 2 : driver.DriverLicense.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense) ? 1 : 0;
+                if (driver.DriverLicense.IsExpired)
+                {
+                    TpDriverLicense.ImageIndex = 2;
+                    lbLicenseExpiration.Text = "La licensia de conducción ha expirado.";
+                    lbLicenseExpiration.ForeColor = Color.Red;
+                }
+                else
+                {
+                    var remainingTime = driver.DriverLicense.Expires - DateTime.Now;
+                    lbLicenseExpiration.Text = $"Falta{(remainingTime.Days > 1 ? "n" : "")} {remainingTime.Days} día{(remainingTime.Days > 1 ? "s" : "")} para que expire la licencia.";
+                    if (driver.DriverLicense.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense))
+                    {
+                        TpDriverLicense.ImageIndex = 1;
+                        lbLicenseExpiration.ForeColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        TpDriverLicense.ImageIndex = 0;
+                        lbLicenseExpiration.ForeColor = Color.Green;
+                    }
+                }
                 dgvHistoricLicenses.SuspendLayout();
                 dgvHistoricLicenses.Rows.Clear();
                 var licensesHistory = DriverDataProviderContainer.Controller.GetDriverLicenseHistory(driver);
@@ -260,8 +303,10 @@ namespace INGECO.DriversControl
         {
             txtRequalificationPage.Text = string.Empty;
             txtRequalificationVolume.Text = string.Empty;
-            dtRequalificationDateOfMaking.Value = DateTime.Now;
-            dtRequalificationExpires.Value = DateTime.Now;
+            txtRequalificationDateOfMaking.Text = string.Empty;
+            txtRequalificationExpires.Text = string.Empty;
+            lbRequalificationExpire.Text = "No existe recalificación activa.";
+            lbRequalificationExpire.ForeColor = Color.Red;
             txtRequalificationDescription.Text = string.Empty;
             dgvRequalificationHistorical.Rows.Clear();
         }
@@ -274,7 +319,9 @@ namespace INGECO.DriversControl
             lbLicenseCreationDate.Text = string.Empty;
             txtLicenseNumber.Text = string.Empty;
             txtLicenseCategory.Text = string.Empty;
-            dtLicenseExpires.Value = DateTime.Now;
+            txtLicenseExpireDate.Text = string.Empty;
+            lbLicenseExpiration.Text = "No exite licencia activa.";
+            lbLicenseExpiration.ForeColor = Color.Red;
             txtDriverLicenseDescription.Text = string.Empty;
             dgvHistoricLicenses.Rows.Clear();
         }

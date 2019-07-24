@@ -73,7 +73,6 @@
             this.clExpires = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clLicenseDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLicenseRenewal = new System.Windows.Forms.Button();
-            this.dtLicenseExpires = new System.Windows.Forms.DateTimePicker();
             this.txtLicenseCategory = new System.Windows.Forms.TextBox();
             this.txtLicenseNumber = new System.Windows.Forms.TextBox();
             this.TpRequalification = new System.Windows.Forms.TabPage();
@@ -88,8 +87,6 @@
             this.clReqDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtRequalificationPage = new System.Windows.Forms.TextBox();
             this.txtRequalificationVolume = new System.Windows.Forms.TextBox();
-            this.dtRequalificationExpires = new System.Windows.Forms.DateTimePicker();
-            this.dtRequalificationDateOfMaking = new System.Windows.Forms.DateTimePicker();
             this.lbRequalificationCreationDate = new System.Windows.Forms.Label();
             this.TpMedicalExams = new System.Windows.Forms.TabPage();
             this.dgvMedicalExamHistorical = new System.Windows.Forms.DataGridView();
@@ -102,6 +99,10 @@
             this.btnMedicalExamNew = new System.Windows.Forms.Button();
             this.btnMedicalExamArchiveSelected = new System.Windows.Forms.Button();
             this.dgvMedicalExamActive = new System.Windows.Forms.DataGridView();
+            this.btnNewDriver = new System.Windows.Forms.Button();
+            this.btnRefreshDrivers = new System.Windows.Forms.Button();
+            this.lbLicenseExpiration = new System.Windows.Forms.Label();
+            this.lbRequalificationExpire = new System.Windows.Forms.Label();
             this.clIcon = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clMedExamType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,8 +110,9 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clMedExamResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clMedExamDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnNewDriver = new System.Windows.Forms.Button();
-            this.btnRefreshDrivers = new System.Windows.Forms.Button();
+            this.txtLicenseExpireDate = new System.Windows.Forms.TextBox();
+            this.txtRequalificationDateOfMaking = new System.Windows.Forms.TextBox();
+            this.txtRequalificationExpires = new System.Windows.Forms.TextBox();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -214,7 +216,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            label9.Location = new System.Drawing.Point(6, 197);
+            label9.Location = new System.Drawing.Point(6, 220);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(89, 25);
             label9.TabIndex = 12;
@@ -261,7 +263,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new System.Drawing.Point(116, 111);
+            label14.Location = new System.Drawing.Point(114, 124);
             label14.Name = "label14";
             label14.Size = new System.Drawing.Size(35, 13);
             label14.TabIndex = 20;
@@ -270,7 +272,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new System.Drawing.Point(225, 111);
+            label15.Location = new System.Drawing.Point(223, 124);
             label15.Name = "label15";
             label15.Size = new System.Drawing.Size(30, 13);
             label15.TabIndex = 22;
@@ -279,7 +281,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new System.Drawing.Point(8, 111);
+            label16.Location = new System.Drawing.Point(8, 124);
             label16.Name = "label16";
             label16.Size = new System.Drawing.Size(46, 13);
             label16.TabIndex = 24;
@@ -289,7 +291,7 @@
             // 
             label17.AutoSize = true;
             label17.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            label17.Location = new System.Drawing.Point(6, 212);
+            label17.Location = new System.Drawing.Point(6, 223);
             label17.Name = "label17";
             label17.Size = new System.Drawing.Size(89, 25);
             label17.TabIndex = 26;
@@ -328,7 +330,7 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new System.Drawing.Point(8, 139);
+            label20.Location = new System.Drawing.Point(8, 152);
             label20.Name = "label20";
             label20.Size = new System.Drawing.Size(63, 13);
             label20.TabIndex = 28;
@@ -337,7 +339,7 @@
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new System.Drawing.Point(8, 132);
+            label21.Location = new System.Drawing.Point(7, 145);
             label21.Name = "label21";
             label21.Size = new System.Drawing.Size(63, 13);
             label21.TabIndex = 30;
@@ -354,7 +356,6 @@
             // 
             // lvDriversList
             // 
-            this.lvDriversList.Alignment = System.Windows.Forms.ListViewAlignment.Left;
             this.lvDriversList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -384,7 +385,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 24F);
             this.label1.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label1.Location = new System.Drawing.Point(12, 25);
+            this.label1.Location = new System.Drawing.Point(12, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(306, 45);
             this.label1.TabIndex = 1;
@@ -471,6 +472,8 @@
             // 
             // TpDriverLicense
             // 
+            this.TpDriverLicense.Controls.Add(this.txtLicenseExpireDate);
+            this.TpDriverLicense.Controls.Add(this.lbLicenseExpiration);
             this.TpDriverLicense.Controls.Add(this.txtDriverLicenseDescription);
             this.TpDriverLicense.Controls.Add(label21);
             this.TpDriverLicense.Controls.Add(this.lbLicenseCreationDate);
@@ -478,7 +481,6 @@
             this.TpDriverLicense.Controls.Add(this.dgvHistoricLicenses);
             this.TpDriverLicense.Controls.Add(label8);
             this.TpDriverLicense.Controls.Add(this.btnLicenseRenewal);
-            this.TpDriverLicense.Controls.Add(this.dtLicenseExpires);
             this.TpDriverLicense.Controls.Add(label7);
             this.TpDriverLicense.Controls.Add(this.txtLicenseCategory);
             this.TpDriverLicense.Controls.Add(label6);
@@ -494,9 +496,10 @@
             // 
             // txtDriverLicenseDescription
             // 
-            this.txtDriverLicenseDescription.Location = new System.Drawing.Point(117, 129);
+            this.txtDriverLicenseDescription.Location = new System.Drawing.Point(117, 142);
             this.txtDriverLicenseDescription.Multiline = true;
             this.txtDriverLicenseDescription.Name = "txtDriverLicenseDescription";
+            this.txtDriverLicenseDescription.ReadOnly = true;
             this.txtDriverLicenseDescription.Size = new System.Drawing.Size(240, 45);
             this.txtDriverLicenseDescription.TabIndex = 31;
             // 
@@ -525,12 +528,12 @@
             this.clDateOfMaking,
             this.clExpires,
             this.clLicenseDescription});
-            this.dgvHistoricLicenses.Location = new System.Drawing.Point(11, 225);
+            this.dgvHistoricLicenses.Location = new System.Drawing.Point(11, 248);
             this.dgvHistoricLicenses.Name = "dgvHistoricLicenses";
             this.dgvHistoricLicenses.RowHeadersVisible = false;
             this.dgvHistoricLicenses.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvHistoricLicenses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHistoricLicenses.Size = new System.Drawing.Size(689, 174);
+            this.dgvHistoricLicenses.Size = new System.Drawing.Size(689, 151);
             this.dgvHistoricLicenses.TabIndex = 11;
             // 
             // clCreatedDate
@@ -572,7 +575,7 @@
             this.btnLicenseRenewal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnLicenseRenewal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLicenseRenewal.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnLicenseRenewal.Location = new System.Drawing.Point(241, 180);
+            this.btnLicenseRenewal.Location = new System.Drawing.Point(241, 193);
             this.btnLicenseRenewal.Name = "btnLicenseRenewal";
             this.btnLicenseRenewal.Size = new System.Drawing.Size(116, 23);
             this.btnLicenseRenewal.TabIndex = 9;
@@ -580,17 +583,11 @@
             this.btnLicenseRenewal.UseVisualStyleBackColor = true;
             this.btnLicenseRenewal.Click += new System.EventHandler(this.BtnLicenseRenewal_Click);
             // 
-            // dtLicenseExpires
-            // 
-            this.dtLicenseExpires.Location = new System.Drawing.Point(117, 101);
-            this.dtLicenseExpires.Name = "dtLicenseExpires";
-            this.dtLicenseExpires.Size = new System.Drawing.Size(240, 22);
-            this.dtLicenseExpires.TabIndex = 7;
-            // 
             // txtLicenseCategory
             // 
             this.txtLicenseCategory.Location = new System.Drawing.Point(117, 73);
             this.txtLicenseCategory.Name = "txtLicenseCategory";
+            this.txtLicenseCategory.ReadOnly = true;
             this.txtLicenseCategory.Size = new System.Drawing.Size(240, 22);
             this.txtLicenseCategory.TabIndex = 5;
             // 
@@ -598,11 +595,15 @@
             // 
             this.txtLicenseNumber.Location = new System.Drawing.Point(117, 45);
             this.txtLicenseNumber.Name = "txtLicenseNumber";
+            this.txtLicenseNumber.ReadOnly = true;
             this.txtLicenseNumber.Size = new System.Drawing.Size(240, 22);
             this.txtLicenseNumber.TabIndex = 3;
             // 
             // TpRequalification
             // 
+            this.TpRequalification.Controls.Add(this.txtRequalificationExpires);
+            this.TpRequalification.Controls.Add(this.txtRequalificationDateOfMaking);
+            this.TpRequalification.Controls.Add(this.lbRequalificationExpire);
             this.TpRequalification.Controls.Add(this.txtRequalificationDescription);
             this.TpRequalification.Controls.Add(label20);
             this.TpRequalification.Controls.Add(this.btnRenewRequalification);
@@ -613,9 +614,7 @@
             this.TpRequalification.Controls.Add(label15);
             this.TpRequalification.Controls.Add(this.txtRequalificationVolume);
             this.TpRequalification.Controls.Add(label14);
-            this.TpRequalification.Controls.Add(this.dtRequalificationExpires);
             this.TpRequalification.Controls.Add(label13);
-            this.TpRequalification.Controls.Add(this.dtRequalificationDateOfMaking);
             this.TpRequalification.Controls.Add(label11);
             this.TpRequalification.Controls.Add(this.lbRequalificationCreationDate);
             this.TpRequalification.Controls.Add(label12);
@@ -629,9 +628,10 @@
             // 
             // txtRequalificationDescription
             // 
-            this.txtRequalificationDescription.Location = new System.Drawing.Point(117, 136);
+            this.txtRequalificationDescription.Location = new System.Drawing.Point(117, 149);
             this.txtRequalificationDescription.Multiline = true;
             this.txtRequalificationDescription.Name = "txtRequalificationDescription";
+            this.txtRequalificationDescription.ReadOnly = true;
             this.txtRequalificationDescription.Size = new System.Drawing.Size(240, 45);
             this.txtRequalificationDescription.TabIndex = 29;
             // 
@@ -642,7 +642,7 @@
             this.btnRenewRequalification.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnRenewRequalification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRenewRequalification.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnRenewRequalification.Location = new System.Drawing.Point(212, 187);
+            this.btnRenewRequalification.Location = new System.Drawing.Point(212, 200);
             this.btnRenewRequalification.Name = "btnRenewRequalification";
             this.btnRenewRequalification.Size = new System.Drawing.Size(145, 23);
             this.btnRenewRequalification.TabIndex = 27;
@@ -666,12 +666,12 @@
             this.clVolume,
             this.clPage,
             this.clReqDescription});
-            this.dgvRequalificationHistorical.Location = new System.Drawing.Point(11, 240);
+            this.dgvRequalificationHistorical.Location = new System.Drawing.Point(11, 251);
             this.dgvRequalificationHistorical.Name = "dgvRequalificationHistorical";
             this.dgvRequalificationHistorical.RowHeadersVisible = false;
             this.dgvRequalificationHistorical.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvRequalificationHistorical.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRequalificationHistorical.Size = new System.Drawing.Size(689, 157);
+            this.dgvRequalificationHistorical.Size = new System.Drawing.Size(689, 146);
             this.dgvRequalificationHistorical.TabIndex = 25;
             // 
             // dataGridViewTextBoxColumn1
@@ -706,7 +706,7 @@
             // 
             // txtRequalificationPage
             // 
-            this.txtRequalificationPage.Location = new System.Drawing.Point(266, 108);
+            this.txtRequalificationPage.Location = new System.Drawing.Point(264, 121);
             this.txtRequalificationPage.Name = "txtRequalificationPage";
             this.txtRequalificationPage.ReadOnly = true;
             this.txtRequalificationPage.Size = new System.Drawing.Size(62, 22);
@@ -714,27 +714,11 @@
             // 
             // txtRequalificationVolume
             // 
-            this.txtRequalificationVolume.Location = new System.Drawing.Point(157, 108);
+            this.txtRequalificationVolume.Location = new System.Drawing.Point(155, 121);
             this.txtRequalificationVolume.Name = "txtRequalificationVolume";
             this.txtRequalificationVolume.ReadOnly = true;
             this.txtRequalificationVolume.Size = new System.Drawing.Size(62, 22);
             this.txtRequalificationVolume.TabIndex = 21;
-            // 
-            // dtRequalificationExpires
-            // 
-            this.dtRequalificationExpires.Enabled = false;
-            this.dtRequalificationExpires.Location = new System.Drawing.Point(117, 80);
-            this.dtRequalificationExpires.Name = "dtRequalificationExpires";
-            this.dtRequalificationExpires.Size = new System.Drawing.Size(240, 22);
-            this.dtRequalificationExpires.TabIndex = 19;
-            // 
-            // dtRequalificationDateOfMaking
-            // 
-            this.dtRequalificationDateOfMaking.Enabled = false;
-            this.dtRequalificationDateOfMaking.Location = new System.Drawing.Point(117, 52);
-            this.dtRequalificationDateOfMaking.Name = "dtRequalificationDateOfMaking";
-            this.dtRequalificationDateOfMaking.Size = new System.Drawing.Size(240, 22);
-            this.dtRequalificationDateOfMaking.TabIndex = 17;
             // 
             // lbRequalificationCreationDate
             // 
@@ -873,44 +857,6 @@
             this.dgvMedicalExamActive.Size = new System.Drawing.Size(694, 105);
             this.dgvMedicalExamActive.TabIndex = 26;
             // 
-            // clIcon
-            // 
-            this.clIcon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.clIcon.HeaderText = "";
-            this.clIcon.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.clIcon.Name = "clIcon";
-            this.clIcon.Width = 5;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Creado";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // clMedExamType
-            // 
-            this.clMedExamType.HeaderText = "Tipo";
-            this.clMedExamType.Name = "clMedExamType";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Realizado";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Expira";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // clMedExamResult
-            // 
-            this.clMedExamResult.HeaderText = "Resultado";
-            this.clMedExamResult.Name = "clMedExamResult";
-            // 
-            // clMedExamDescription
-            // 
-            this.clMedExamDescription.HeaderText = "Descripción";
-            this.clMedExamDescription.Name = "clMedExamDescription";
-            // 
             // btnNewDriver
             // 
             this.btnNewDriver.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
@@ -947,6 +893,92 @@
             // 
             tvClDescription.Text = "Descripción";
             tvClDescription.Width = 200;
+            // 
+            // lbLicenseExpiration
+            // 
+            this.lbLicenseExpiration.AutoSize = true;
+            this.lbLicenseExpiration.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLicenseExpiration.Location = new System.Drawing.Point(114, 126);
+            this.lbLicenseExpiration.Name = "lbLicenseExpiration";
+            this.lbLicenseExpiration.Size = new System.Drawing.Size(206, 13);
+            this.lbLicenseExpiration.TabIndex = 32;
+            this.lbLicenseExpiration.Text = "Faltan X días para que expire la licencia.";
+            // 
+            // lbRequalificationExpire
+            // 
+            this.lbRequalificationExpire.AutoSize = true;
+            this.lbRequalificationExpire.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRequalificationExpire.Location = new System.Drawing.Point(114, 105);
+            this.lbRequalificationExpire.Name = "lbRequalificationExpire";
+            this.lbRequalificationExpire.Size = new System.Drawing.Size(206, 13);
+            this.lbRequalificationExpire.TabIndex = 33;
+            this.lbRequalificationExpire.Text = "Faltan X días para que expire la licencia.";
+            // 
+            // clIcon
+            // 
+            this.clIcon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.clIcon.HeaderText = "";
+            this.clIcon.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.clIcon.Name = "clIcon";
+            this.clIcon.Width = 5;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Creado";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // clMedExamType
+            // 
+            this.clMedExamType.HeaderText = "Tipo";
+            this.clMedExamType.Name = "clMedExamType";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Realizado";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Expira";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 61;
+            // 
+            // clMedExamResult
+            // 
+            this.clMedExamResult.HeaderText = "Resultado";
+            this.clMedExamResult.Name = "clMedExamResult";
+            // 
+            // clMedExamDescription
+            // 
+            this.clMedExamDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clMedExamDescription.HeaderText = "Descripción";
+            this.clMedExamDescription.Name = "clMedExamDescription";
+            this.clMedExamDescription.Width = 86;
+            // 
+            // txtLicenseExpireDate
+            // 
+            this.txtLicenseExpireDate.Location = new System.Drawing.Point(117, 101);
+            this.txtLicenseExpireDate.Name = "txtLicenseExpireDate";
+            this.txtLicenseExpireDate.ReadOnly = true;
+            this.txtLicenseExpireDate.Size = new System.Drawing.Size(240, 22);
+            this.txtLicenseExpireDate.TabIndex = 33;
+            // 
+            // txtRequalificationDateOfMaking
+            // 
+            this.txtRequalificationDateOfMaking.Location = new System.Drawing.Point(117, 52);
+            this.txtRequalificationDateOfMaking.Name = "txtRequalificationDateOfMaking";
+            this.txtRequalificationDateOfMaking.ReadOnly = true;
+            this.txtRequalificationDateOfMaking.Size = new System.Drawing.Size(240, 22);
+            this.txtRequalificationDateOfMaking.TabIndex = 34;
+            // 
+            // txtRequalificationExpires
+            // 
+            this.txtRequalificationExpires.Location = new System.Drawing.Point(117, 80);
+            this.txtRequalificationExpires.Name = "txtRequalificationExpires";
+            this.txtRequalificationExpires.ReadOnly = true;
+            this.txtRequalificationExpires.Size = new System.Drawing.Size(240, 22);
+            this.txtRequalificationExpires.TabIndex = 34;
             // 
             // FrmMain
             // 
@@ -997,13 +1029,10 @@
         private System.Windows.Forms.Button btnSaveChanges;
         private System.Windows.Forms.TextBox txtLicenseNumber;
         private System.Windows.Forms.TextBox txtLicenseCategory;
-        private System.Windows.Forms.DateTimePicker dtLicenseExpires;
         private System.Windows.Forms.Button btnLicenseRenewal;
         private System.Windows.Forms.DataGridView dgvHistoricLicenses;
         private System.Windows.Forms.Label lbLicenseCreationDate;
         private System.Windows.Forms.Label lbRequalificationCreationDate;
-        private System.Windows.Forms.DateTimePicker dtRequalificationExpires;
-        private System.Windows.Forms.DateTimePicker dtRequalificationDateOfMaking;
         private System.Windows.Forms.TextBox txtRequalificationPage;
         private System.Windows.Forms.TextBox txtRequalificationVolume;
         private System.Windows.Forms.DataGridView dgvRequalificationHistorical;
@@ -1021,13 +1050,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn clHMedExamDescription;
-        private System.Windows.Forms.DataGridViewImageColumn clIcon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clMedExamType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clMedExamResult;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clMedExamDescription;
         private System.Windows.Forms.TextBox txtRequalificationDescription;
         private System.Windows.Forms.TextBox txtDriverLicenseDescription;
         private System.Windows.Forms.TextBox txtDescription;
@@ -1043,5 +1065,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clDateOfMaking;
         private System.Windows.Forms.DataGridViewTextBoxColumn clExpires;
         private System.Windows.Forms.DataGridViewTextBoxColumn clLicenseDescription;
+        private System.Windows.Forms.Label lbLicenseExpiration;
+        private System.Windows.Forms.Label lbRequalificationExpire;
+        private System.Windows.Forms.DataGridViewImageColumn clIcon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clMedExamType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clMedExamResult;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clMedExamDescription;
+        private System.Windows.Forms.TextBox txtLicenseExpireDate;
+        private System.Windows.Forms.TextBox txtRequalificationExpires;
+        private System.Windows.Forms.TextBox txtRequalificationDateOfMaking;
     }
 }

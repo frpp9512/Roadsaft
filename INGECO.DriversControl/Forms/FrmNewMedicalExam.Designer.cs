@@ -120,6 +120,7 @@
             // 
             // cbxMedicalExamType
             // 
+            this.cbxMedicalExamType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMedicalExamType.FormattingEnabled = true;
             this.cbxMedicalExamType.Location = new System.Drawing.Point(130, 103);
             this.cbxMedicalExamType.Name = "cbxMedicalExamType";
@@ -128,6 +129,7 @@
             // 
             // cbxMedicalExamResult
             // 
+            this.cbxMedicalExamResult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMedicalExamResult.FormattingEnabled = true;
             this.cbxMedicalExamResult.Location = new System.Drawing.Point(130, 130);
             this.cbxMedicalExamResult.Name = "cbxMedicalExamResult";

@@ -36,7 +36,7 @@
             this.txtPosition = new System.Windows.Forms.TextBox();
             this.txtFullname = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnLicenseRenewal = new System.Windows.Forms.Button();
+            this.btnNewDriver = new System.Windows.Forms.Button();
             label10 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -53,13 +53,6 @@
             label10.TabIndex = 19;
             label10.Text = "Nuevo chofer";
             // 
-            // txtPersonalId
-            // 
-            this.txtPersonalId.Location = new System.Drawing.Point(120, 100);
-            this.txtPersonalId.Name = "txtPersonalId";
-            this.txtPersonalId.Size = new System.Drawing.Size(240, 22);
-            this.txtPersonalId.TabIndex = 17;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -68,13 +61,6 @@
             label4.Size = new System.Drawing.Size(38, 13);
             label4.TabIndex = 16;
             label4.Text = "Cargo:";
-            // 
-            // txtPosition
-            // 
-            this.txtPosition.Location = new System.Drawing.Point(120, 72);
-            this.txtPosition.Name = "txtPosition";
-            this.txtPosition.Size = new System.Drawing.Size(240, 22);
-            this.txtPosition.TabIndex = 15;
             // 
             // label3
             // 
@@ -85,13 +71,6 @@
             label3.TabIndex = 14;
             label3.Text = "Carné de identidad:";
             // 
-            // txtFullname
-            // 
-            this.txtFullname.Location = new System.Drawing.Point(120, 44);
-            this.txtFullname.Name = "txtFullname";
-            this.txtFullname.Size = new System.Drawing.Size(240, 22);
-            this.txtFullname.TabIndex = 13;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -101,24 +80,47 @@
             label2.TabIndex = 12;
             label2.Text = "Nombre completo:";
             // 
+            // txtPersonalId
+            // 
+            this.txtPersonalId.Location = new System.Drawing.Point(120, 100);
+            this.txtPersonalId.Name = "txtPersonalId";
+            this.txtPersonalId.Size = new System.Drawing.Size(240, 22);
+            this.txtPersonalId.TabIndex = 2;
+            // 
+            // txtPosition
+            // 
+            this.txtPosition.Location = new System.Drawing.Point(120, 72);
+            this.txtPosition.Name = "txtPosition";
+            this.txtPosition.Size = new System.Drawing.Size(240, 22);
+            this.txtPosition.TabIndex = 1;
+            // 
+            // txtFullname
+            // 
+            this.txtFullname.Location = new System.Drawing.Point(120, 44);
+            this.txtFullname.Name = "txtFullname";
+            this.txtFullname.Size = new System.Drawing.Size(240, 22);
+            this.txtFullname.TabIndex = 0;
+            // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(276, 128);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
-            this.btnCancel.TabIndex = 21;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "&Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
-            // btnLicenseRenewal
+            // btnNewDriver
             // 
-            this.btnLicenseRenewal.Location = new System.Drawing.Point(186, 128);
-            this.btnLicenseRenewal.Name = "btnLicenseRenewal";
-            this.btnLicenseRenewal.Size = new System.Drawing.Size(84, 23);
-            this.btnLicenseRenewal.TabIndex = 22;
-            this.btnLicenseRenewal.Text = "&Crear";
-            this.btnLicenseRenewal.UseVisualStyleBackColor = true;
+            this.btnNewDriver.Location = new System.Drawing.Point(186, 128);
+            this.btnNewDriver.Name = "btnNewDriver";
+            this.btnNewDriver.Size = new System.Drawing.Size(84, 23);
+            this.btnNewDriver.TabIndex = 3;
+            this.btnNewDriver.Text = "&Crear";
+            this.btnNewDriver.UseVisualStyleBackColor = true;
+            this.btnNewDriver.Click += new System.EventHandler(this.BtnNewDriver_Click);
             // 
             // FrmNewDriver
             // 
@@ -126,7 +128,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(379, 164);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnLicenseRenewal);
+            this.Controls.Add(this.btnNewDriver);
             this.Controls.Add(label10);
             this.Controls.Add(this.txtPersonalId);
             this.Controls.Add(label4);
@@ -139,7 +141,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmNewDriver";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo chofer";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -151,6 +153,6 @@
         private System.Windows.Forms.TextBox txtPosition;
         private System.Windows.Forms.TextBox txtFullname;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnLicenseRenewal;
+        private System.Windows.Forms.Button btnNewDriver;
     }
 }

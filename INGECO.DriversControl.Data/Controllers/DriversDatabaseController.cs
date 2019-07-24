@@ -90,5 +90,18 @@ namespace INGECO.DriversControl.Data
             medexams.ForEach(m => m.Driver = driver);
             return medexams;
         }
+
+        public bool AddNewDriver(Driver driver)
+        {
+            try
+            {
+                driver.InsertMe();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

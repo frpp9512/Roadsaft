@@ -43,5 +43,12 @@ namespace INGECO.DriversControl.Data
         /// <param name="driver">The driver to get medical exams history.</param>
         /// <returns>List of driver's medical exams history.</returns>
         List<MedicalExam> GetDriverMedicalExamsHistory(Driver driver);
+
+        /// <summary>
+        /// Register new driver in the system.
+        /// </summary>
+        /// <param name="driver">The driver to register.</param>
+        /// <returns>True if driver was registered successfully.</returns>
+        bool AddNewDriver(Driver driver);
     }
 }

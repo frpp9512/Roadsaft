@@ -226,5 +226,23 @@ namespace INGECO.DriversControl
         {
             LoadDrivers();
         }
+
+        private void BtnNewDriver_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmNewDriver();
+            frm.NewDriverAdded += d => 
+            {
+                if (DriversDatabaseController.Controller.AddNewDriver(d))
+                {
+                    LoadDrivers();
+                    return true;
+                }
+                else
+                {
+                    return false; 
+                }
+            };
+            frm.Show();
+        }
     }
 }

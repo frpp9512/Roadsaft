@@ -49,6 +49,7 @@
             System.Windows.Forms.ColumnHeader lvClFullname;
             System.Windows.Forms.ColumnHeader tvClPosition;
             this.lvDriversList = new System.Windows.Forms.ListView();
+            this.tvClPersonalId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TpDriverInfo = new System.Windows.Forms.TabPage();
@@ -92,15 +93,14 @@
             this.btnMedicalExamDeleteSelected = new System.Windows.Forms.Button();
             this.btnMedicalExamArchiveSelected = new System.Windows.Forms.Button();
             this.dgvMedicalExamActive = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tvClPersonalId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnRefreshDrivers = new System.Windows.Forms.Button();
             this.clIcon = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clMedExamType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clMedExamResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnNewDriver = new System.Windows.Forms.Button();
+            this.btnRefreshDrivers = new System.Windows.Forms.Button();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -301,6 +301,16 @@
             label19.TabIndex = 31;
             label19.Text = "Histórico";
             // 
+            // lvClFullname
+            // 
+            lvClFullname.Text = "Nombre completo";
+            lvClFullname.Width = 150;
+            // 
+            // tvClPosition
+            // 
+            tvClPosition.Text = "Cargo";
+            tvClPosition.Width = 120;
+            // 
             // lvDriversList
             // 
             this.lvDriversList.Alignment = System.Windows.Forms.ListViewAlignment.Left;
@@ -319,6 +329,11 @@
             this.lvDriversList.UseCompatibleStateImageBehavior = false;
             this.lvDriversList.View = System.Windows.Forms.View.Tile;
             this.lvDriversList.SelectedIndexChanged += new System.EventHandler(this.LvDriversList_SelectedIndexChanged);
+            // 
+            // tvClPersonalId
+            // 
+            this.tvClPersonalId.Text = "Carné de identidad";
+            this.tvClPersonalId.Width = 100;
             // 
             // label1
             // 
@@ -734,40 +749,6 @@
             this.dgvMedicalExamActive.Size = new System.Drawing.Size(504, 105);
             this.dgvMedicalExamActive.TabIndex = 26;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(20, 86);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(69, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "&Nuevo...";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // lvClFullname
-            // 
-            lvClFullname.Text = "Nombre completo";
-            lvClFullname.Width = 150;
-            // 
-            // tvClPosition
-            // 
-            tvClPosition.Text = "Cargo";
-            tvClPosition.Width = 120;
-            // 
-            // tvClPersonalId
-            // 
-            this.tvClPersonalId.Text = "Carné de identidad";
-            this.tvClPersonalId.Width = 100;
-            // 
-            // btnRefreshDrivers
-            // 
-            this.btnRefreshDrivers.Location = new System.Drawing.Point(95, 86);
-            this.btnRefreshDrivers.Name = "btnRefreshDrivers";
-            this.btnRefreshDrivers.Size = new System.Drawing.Size(69, 23);
-            this.btnRefreshDrivers.TabIndex = 13;
-            this.btnRefreshDrivers.Text = "&Actualizar";
-            this.btnRefreshDrivers.UseVisualStyleBackColor = true;
-            this.btnRefreshDrivers.Click += new System.EventHandler(this.BtnRefreshDrivers_Click);
-            // 
             // clIcon
             // 
             this.clIcon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -801,13 +782,33 @@
             this.clMedExamResult.HeaderText = "Resultado";
             this.clMedExamResult.Name = "clMedExamResult";
             // 
+            // btnNewDriver
+            // 
+            this.btnNewDriver.Location = new System.Drawing.Point(20, 86);
+            this.btnNewDriver.Name = "btnNewDriver";
+            this.btnNewDriver.Size = new System.Drawing.Size(69, 23);
+            this.btnNewDriver.TabIndex = 12;
+            this.btnNewDriver.Text = "&Nuevo...";
+            this.btnNewDriver.UseVisualStyleBackColor = true;
+            this.btnNewDriver.Click += new System.EventHandler(this.BtnNewDriver_Click);
+            // 
+            // btnRefreshDrivers
+            // 
+            this.btnRefreshDrivers.Location = new System.Drawing.Point(95, 86);
+            this.btnRefreshDrivers.Name = "btnRefreshDrivers";
+            this.btnRefreshDrivers.Size = new System.Drawing.Size(69, 23);
+            this.btnRefreshDrivers.TabIndex = 13;
+            this.btnRefreshDrivers.Text = "&Actualizar";
+            this.btnRefreshDrivers.UseVisualStyleBackColor = true;
+            this.btnRefreshDrivers.Click += new System.EventHandler(this.BtnRefreshDrivers_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(809, 467);
             this.Controls.Add(this.btnRefreshDrivers);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnNewDriver);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lvDriversList);
@@ -880,7 +881,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNewDriver;
         private System.Windows.Forms.ColumnHeader tvClPersonalId;
         private System.Windows.Forms.Button btnRefreshDrivers;
         private System.Windows.Forms.DataGridViewImageColumn clIcon;

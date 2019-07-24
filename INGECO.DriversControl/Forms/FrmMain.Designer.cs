@@ -496,6 +496,7 @@
             this.btnLicenseRenewal.TabIndex = 9;
             this.btnLicenseRenewal.Text = "&Renovar licencia...";
             this.btnLicenseRenewal.UseVisualStyleBackColor = true;
+            this.btnLicenseRenewal.Click += new System.EventHandler(this.BtnLicenseRenewal_Click);
             // 
             // dtLicenseExpires
             // 

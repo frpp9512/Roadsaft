@@ -32,15 +32,18 @@
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label6;
             System.Windows.Forms.Label label5;
+            System.Windows.Forms.Label label1;
             this.btnLicenseRenewal = new System.Windows.Forms.Button();
             this.dtLicenseExpires = new System.Windows.Forms.DateTimePicker();
             this.txtLicenseCategory = new System.Windows.Forms.TextBox();
             this.txtLicenseNumber = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.dtDateOfMaking = new System.Windows.Forms.DateTimePicker();
             label8 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label8
@@ -56,7 +59,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(15, 101);
+            label7.Location = new System.Drawing.Point(15, 129);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(103, 13);
             label7.TabIndex = 18;
@@ -82,49 +85,68 @@
             // 
             // btnLicenseRenewal
             // 
-            this.btnLicenseRenewal.Location = new System.Drawing.Point(190, 126);
+            this.btnLicenseRenewal.Location = new System.Drawing.Point(190, 154);
             this.btnLicenseRenewal.Name = "btnLicenseRenewal";
             this.btnLicenseRenewal.Size = new System.Drawing.Size(84, 23);
-            this.btnLicenseRenewal.TabIndex = 20;
+            this.btnLicenseRenewal.TabIndex = 3;
             this.btnLicenseRenewal.Text = "&Crear";
             this.btnLicenseRenewal.UseVisualStyleBackColor = true;
+            this.btnLicenseRenewal.Click += new System.EventHandler(this.BtnLicenseRenewal_Click);
             // 
             // dtLicenseExpires
             // 
-            this.dtLicenseExpires.Location = new System.Drawing.Point(124, 98);
+            this.dtLicenseExpires.Location = new System.Drawing.Point(124, 126);
             this.dtLicenseExpires.Name = "dtLicenseExpires";
             this.dtLicenseExpires.Size = new System.Drawing.Size(240, 22);
-            this.dtLicenseExpires.TabIndex = 19;
+            this.dtLicenseExpires.TabIndex = 2;
             // 
             // txtLicenseCategory
             // 
             this.txtLicenseCategory.Location = new System.Drawing.Point(124, 70);
             this.txtLicenseCategory.Name = "txtLicenseCategory";
             this.txtLicenseCategory.Size = new System.Drawing.Size(240, 22);
-            this.txtLicenseCategory.TabIndex = 17;
+            this.txtLicenseCategory.TabIndex = 1;
             // 
             // txtLicenseNumber
             // 
             this.txtLicenseNumber.Location = new System.Drawing.Point(124, 42);
             this.txtLicenseNumber.Name = "txtLicenseNumber";
             this.txtLicenseNumber.Size = new System.Drawing.Size(240, 22);
-            this.txtLicenseNumber.TabIndex = 15;
+            this.txtLicenseNumber.TabIndex = 0;
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(280, 126);
+            this.btnCancel.Location = new System.Drawing.Point(280, 154);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
-            this.btnCancel.TabIndex = 20;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "&Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // dtDateOfMaking
+            // 
+            this.dtDateOfMaking.Location = new System.Drawing.Point(124, 98);
+            this.dtDateOfMaking.Name = "dtDateOfMaking";
+            this.dtDateOfMaking.Size = new System.Drawing.Size(240, 22);
+            this.dtDateOfMaking.TabIndex = 22;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(15, 101);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(105, 13);
+            label1.TabIndex = 23;
+            label1.Text = "Fecha de confección:";
             // 
             // FrmNewLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 159);
+            this.ClientSize = new System.Drawing.Size(378, 186);
+            this.Controls.Add(this.dtDateOfMaking);
+            this.Controls.Add(label1);
             this.Controls.Add(label8);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLicenseRenewal);
@@ -152,5 +174,6 @@
         private System.Windows.Forms.TextBox txtLicenseCategory;
         private System.Windows.Forms.TextBox txtLicenseNumber;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.DateTimePicker dtDateOfMaking;
     }
 }

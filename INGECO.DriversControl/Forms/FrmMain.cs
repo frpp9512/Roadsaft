@@ -244,5 +244,12 @@ namespace INGECO.DriversControl
             };
             frm.Show();
         }
+
+        private void BtnLicenseRenewal_Click(object sender, EventArgs e)
+        {
+            var frm = GetSelectedDriver().DriverLicense != null ? new FrmNewLicense(GetSelectedDriver().DriverLicense) : new FrmNewLicense();
+            frm.NewLicenseForRenewal += l => DriversDatabaseController.Controller.RenewalLicense(GetSelectedDriver(), l);
+            frm.Show();
+        }
     }
 }

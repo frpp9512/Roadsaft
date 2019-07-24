@@ -50,5 +50,12 @@ namespace INGECO.DriversControl.Data
         /// <param name="driver">The driver to register.</param>
         /// <returns>True if driver was registered successfully.</returns>
         bool AddNewDriver(Driver driver);
+
+        /// <summary>
+        /// Renew the current driver's license, deactivating the current one and setting active the new.
+        /// </summary>
+        /// <param name="driver">The driver to update driver's license.</param>
+        /// <param name="newLicense">The new driver's license.</param>
+        bool RenewalLicense(Driver driver, DriverLicense newLicense);
     }
 }

@@ -103,5 +103,26 @@ namespace INGECO.DriversControl.Data
                 return false;
             }
         }
+
+        public bool RenewalLicense(Driver driver, DriverLicense newLicense)
+        {
+            try
+            {
+                if (driver.DriverLicense != null)
+                {
+                    driver.DriverLicense.IsActive = false;
+                    driver.DriverLicense.UpdateMe();
+                }
+                newLicense.Driver = driver;
+                newLicense.IsActive = true;
+                newLicense.InsertMe();
+                driver.DriverLicense = newLicense;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

@@ -23,6 +23,8 @@ namespace INGECO.DriversControl
         public FrmNewLicense(DriverLicense currentLicense)
         {
             InitializeComponent();
+            dtDateOfMaking.Value = DateTime.Now;
+            dtLicenseExpires.Value = dtDateOfMaking.Value.AddYears(2);
             txtLicenseNumber.Text = currentLicense.Number;
             txtLicenseCategory.Text = currentLicense.Category;
         }

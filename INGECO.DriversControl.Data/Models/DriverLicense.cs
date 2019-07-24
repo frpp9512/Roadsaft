@@ -67,7 +67,21 @@ namespace INGECO.DriversControl.Data
         /// <summary>
         /// True if the driver's license is expired.
         /// </summary>
-        public bool IsExpired => Expires > DateTime.Now;
+        public bool IsExpired => Expires <= DateTime.Now;
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Determines if the expiration date is in the specified period.
+        /// </summary>
+        /// <param name="period">The specified period</param>
+        /// <returns>True if expiration date is in the period.</returns>
+        public bool GetIfExpirationDateIsInPeriod(TimeSpan period)
+        {
+            return (DateTime.Now + period) > Expires;
+        }
 
         #endregion
 

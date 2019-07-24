@@ -19,7 +19,7 @@ namespace INGECO.DriversControl.Data
         /// </summary>
         public Driver()
             : base("driver",
-                  new string[] 
+                  new string[]
                   {
                       "driver_id",
                       "fullname",
@@ -36,7 +36,7 @@ namespace INGECO.DriversControl.Data
         /// The full name of the driver.
         /// </summary>
         public string FullName { get; set; }
-        
+
         /// <summary>
         /// The position of the driver.
         /// </summary>
@@ -61,6 +61,37 @@ namespace INGECO.DriversControl.Data
         /// The current active medical exams of the driver
         /// </summary>
         public List<MedicalExam> MedicalExams { get; set; }
+
+        /// <summary>
+        /// False if DriverLicense, Requalification or any MedicalExam has expired.
+        /// </summary>
+        public bool HasExpiredParameters
+        {
+            get
+            {
+                return DriverLicense == null || Requalificaiton == null || MedicalExams == null
+                    ? true
+                    : DriverLicense.IsExpired || Requalificaiton.IsExpired || MedicalExams.Count(me => me.IsExpired) > 0;
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Determines if any of the expiration dates of License, Requalification or Medical Exams are in the specified period.
+        /// </summary>
+        /// <param name="periodForLicense">The specified period for driver's license.</param>
+        /// <param name="periodForRequalification">The specified period for driver's requalification.</param>
+        /// <param name="periodForMedicalExam">The specified period for a driver's medical examl.</param>
+        /// <returns>True if expiration date is in the period.</returns>
+        public bool GetIfAnyParameterExpireDateIsInPeriod(TimeSpan periodForLicense, TimeSpan periodForRequalification, TimeSpan periodForMedicalExam)
+        {
+            return DriverLicense == null || Requalificaiton == null || MedicalExams == null
+                    ? false
+                    : DriverLicense.GetIfExpirationDateIsInPeriod(periodForLicense) || Requalificaiton.GetIfExpirationDateIsInPeriod(periodForRequalification) || MedicalExams.Count(me => me.GetIfExpirationDateIsInPeriod(periodForMedicalExam)) > 0;
+        }
 
         #endregion
 

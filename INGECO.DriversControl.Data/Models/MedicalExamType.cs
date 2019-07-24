@@ -12,6 +12,6 @@
         /// <summary>
         /// An specific exam to check the psichological and physiological status of the driver.
         /// </summary>
-        Psichological
+        Psychological
     }
 }

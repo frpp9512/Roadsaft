@@ -15,7 +15,7 @@ namespace INGECO.DriversControl
     {
         public FrmMain()
         {
-            InitializeComponent();
+            InitializeComponent();            
             DriversDatabaseController.Controller.InitializeDataConnection("localhost", "root", "", "ingeco_driverscontrol");
             LoadDrivers();
         }
@@ -25,19 +25,33 @@ namespace INGECO.DriversControl
         /// </summary>
         private async void LoadDrivers()
         {
+            btnRefreshDrivers.Enabled = false;
+            var selectedIndex = -1;
+            if (lvDriversList.SelectedIndices.Count > 0)
+            {
+                selectedIndex = lvDriversList.SelectedIndices[0];
+            }
+            ClearTabs();
             SetListViewImageLists();
             lvDriversList.SuspendLayout();
             lvDriversList.Items.Clear();
             var drivers = await Task.Run(() => DriversDatabaseController.Controller.GetDrivers());
             foreach (var driver in drivers)
             {
-                var item = new ListViewItem(new string[] { driver.FullName, driver.Position, driver.PersonalId }, 0)
+                var item = new ListViewItem(new string[] { driver.FullName, driver.Position, driver.PersonalId })
                 {
+                    ImageIndex = driver.HasExpiredParameters ? 2 : driver.GetIfAnyParameterExpireDateIsInPeriod(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam) ? 1 : 0,
                     Tag = driver
                 };
                 _ = lvDriversList.Items.Add(item);
             }
+            if (lvDriversList.Items.Count > 0 && selectedIndex >= 0 && selectedIndex < lvDriversList.Items.Count)
+            {
+                lvDriversList.SelectedItems.Clear();
+                lvDriversList.Items[selectedIndex].Selected = true;
+            }
             lvDriversList.ResumeLayout();
+            btnRefreshDrivers.Enabled = true;
         }
 
         /// <summary>
@@ -51,14 +65,29 @@ namespace INGECO.DriversControl
             imageList.Images.Add(Properties.Resources.error);
             lvDriversList.LargeImageList = imageList;
             lvDriversList.SmallImageList = imageList;
+            tabControl1.ImageList = imageList;
+        }
+
+        private void ClearTabs()
+        {
+            ClearLicenseTab();
+            ClearRequalificationTab();
+            ClearMedicalExamTab();
         }
 
         private void LvDriversList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(lvDriversList.SelectedItems.Count > 0)
             {
-                ShowDriverInfo(lvDriversList.SelectedItems[0].Tag as Driver);
+                lvDriversList.Enabled = false;
+                ShowDriverInfo(GetSelectedDriver());
+                lvDriversList.Enabled = true;
             }
+        }
+
+        private Driver GetSelectedDriver()
+        {
+            return lvDriversList.SelectedItems[0].Tag as Driver;
         }
 
         private void ShowDriverInfo(Driver driver)
@@ -69,7 +98,7 @@ namespace INGECO.DriversControl
             UpdateMedicalExamsTab(driver);
         }
 
-        private async void UpdateMedicalExamsTab(Driver driver)
+        private void UpdateMedicalExamsTab(Driver driver)
         {
             if (driver.MedicalExams?.Count > 0)
             {
@@ -77,21 +106,34 @@ namespace INGECO.DriversControl
                 dgvMedicalExamActive.Rows.Clear();
                 foreach (var me in driver.MedicalExams)
                 {
-                    var added = dgvMedicalExamActive.Rows.Add(me.Created.ToShortDateString(), me.Type, me.DateOfMaking.ToShortDateString(), me.Expires.ToShortDateString(), me.Result);
+                    var added = dgvMedicalExamActive.Rows.Add
+                        (
+                            me.IsExpired ?
+                                Properties.Resources.error 
+                                : me.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForMedicalExam)
+                                ? Properties.Resources.warning 
+                                : Properties.Resources.ok,
+                            me.Created.ToShortDateString(),
+                            me.Type.GetShowText(),
+                            me.DateOfMaking.ToShortDateString(),
+                            me.Expires.ToShortDateString(),
+                            me.Result.GetShowText());
                     dgvMedicalExamActive.Rows[added].Tag = me;
                 }
+                TpMedicalExams.ImageIndex = driver.MedicalExams.Count(me => me.IsExpired) > 0 ? 2 : driver.MedicalExams.Count(me => me.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForMedicalExam)) > 0 ? 1 : 0;
                 dgvMedicalExamHistorical.SuspendLayout();
                 dgvMedicalExamHistorical.Rows.Clear();
-                var medicalExamsHistory = await Task.Run(() => DriversDatabaseController.Controller.GetDriverMedicalExamsHistory(driver));
+                var medicalExamsHistory = DriversDatabaseController.Controller.GetDriverMedicalExamsHistory(driver);
                 foreach (var mh in medicalExamsHistory)
                 {
-                    var added = dgvMedicalExamHistorical.Rows.Add(mh.Created.ToShortDateString(), mh.Type, mh.DateOfMaking.ToShortDateString(), mh.Expires.ToShortDateString(), mh.Result);
+                    var added = dgvMedicalExamHistorical.Rows.Add(mh.Created.ToShortDateString(), mh.Type.GetShowText(), mh.DateOfMaking.ToShortDateString(), mh.Expires.ToShortDateString(), mh.Result.GetShowText());
                     dgvMedicalExamHistorical.Rows[added].Tag = mh;
                 }
                 dgvRequalificationHistorical.ResumeLayout();
             }
             else
             {
+                TpMedicalExams.ImageIndex = 2;
                 ClearMedicalExamTab();
             }
         }
@@ -102,17 +144,19 @@ namespace INGECO.DriversControl
             dgvMedicalExamHistorical.Rows.Clear();
         }
 
-        private async void UpdateRequalificationTab(Driver driver)
+        private void UpdateRequalificationTab(Driver driver)
         {
             if (driver.Requalificaiton != null)
             {
+                lbRequalificationCreationDate.Text = driver.Requalificaiton.Created.ToShortDateString();
                 txtRequalificationPage.Text = driver.Requalificaiton.Page;
                 txtRequalificationVolume.Text = driver.Requalificaiton.Volume;
                 dtRequalificationDateOfMaking.Value = driver.Requalificaiton.DateOfMaking;
                 dtRequalificationExpires.Value = driver.Requalificaiton.Expires;
+                TpRequalification.ImageIndex = driver.Requalificaiton.IsExpired ? 2 : driver.Requalificaiton.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification) ? 1 : 0;
                 dgvRequalificationHistorical.SuspendLayout();
                 dgvRequalificationHistorical.Rows.Clear();
-                var requalificationsHistory = await Task.Run(() => DriversDatabaseController.Controller.GetDriverRequalificationHistory(driver));
+                var requalificationsHistory = DriversDatabaseController.Controller.GetDriverRequalificationHistory(driver);
                 foreach (var req in requalificationsHistory)
                 {
                     var added = dgvRequalificationHistorical.Rows.Add(req.Created.ToShortDateString(), req.DateOfMaking, req.Expires, req.Volume, req.Page);
@@ -122,6 +166,7 @@ namespace INGECO.DriversControl
             }
             else
             {
+                TpRequalification.ImageIndex = 2;
                 ClearRequalificationTab();
             }
         }
@@ -135,7 +180,7 @@ namespace INGECO.DriversControl
             dgvRequalificationHistorical.Rows.Clear();
         }
 
-        private async void UpdateLicenseTab(Driver driver)
+        private void UpdateLicenseTab(Driver driver)
         {
             if (driver.DriverLicense != null)
             {
@@ -143,9 +188,10 @@ namespace INGECO.DriversControl
                 txtLicenseNumber.Text = driver.DriverLicense.Number;
                 txtLicenseCategory.Text = driver.DriverLicense.Category;
                 dtLicenseExpires.Value = driver.DriverLicense.Expires;
+                TpDriverLicense.ImageIndex = driver.DriverLicense.IsExpired ? 2 : driver.DriverLicense.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense) ? 1 : 0;
                 dgvHistoricLicenses.SuspendLayout();
                 dgvHistoricLicenses.Rows.Clear();
-                var licensesHistory = await Task.Run(() => DriversDatabaseController.Controller.GetDriverLicenseHistory(driver));
+                var licensesHistory = DriversDatabaseController.Controller.GetDriverLicenseHistory(driver);
                 foreach (var lh in licensesHistory)
                 {
                     var added = dgvHistoricLicenses.Rows.Add(lh.Created.ToShortDateString(), lh.Number, lh.Category, lh.DateOfMaking, lh.Expires);
@@ -155,6 +201,7 @@ namespace INGECO.DriversControl
             }
             else
             {
+                TpDriverLicense.ImageIndex = 2;
                 ClearLicenseTab();
             }
         }
@@ -173,6 +220,11 @@ namespace INGECO.DriversControl
             txtFullname.Text = driver.FullName;
             txtPosition.Text = driver.Position;
             txtPersonalId.Text = driver.PersonalId;
+        }
+
+        private void BtnRefreshDrivers_Click(object sender, EventArgs e)
+        {
+            LoadDrivers();
         }
     }
 }

@@ -70,7 +70,21 @@ namespace INGECO.DriversControl.Data
         /// <summary>
         /// True if the medical exam is expired.
         /// </summary>
-        public bool IsExpired => Expires > DateTime.Now;
+        public bool IsExpired => Expires <= DateTime.Now;
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Determines if the expiration date is in the specified period.
+        /// </summary>
+        /// <param name="period">The specified period.</param>
+        /// <returns>True if expiration date is in the period.</returns>
+        public bool GetIfExpirationDateIsInPeriod(TimeSpan period)
+        {
+            return (DateTime.Now + period) > Expires;
+        }
 
         #endregion
 
@@ -86,7 +100,7 @@ namespace INGECO.DriversControl.Data
             Expires = dr.GetValue<DateTime>("med_exam_expires");
             Result = dr.GetValue<MedicalExamResult>("med_exam_result");
             IsActive = dr.GetValue<bool>("med_exam_isactive");
-            Driver = new Driver { PrimaryKeyValue = dr.GetValue<string>("driver_id") };
+            Driver = new Driver { PrimaryKeyValue = dr.GetValue<int>("driver_id") };
         }
 
         #endregion

@@ -95,12 +95,21 @@
             label1.TabIndex = 23;
             label1.Text = "Fecha de confección:";
             // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new System.Drawing.Point(15, 157);
+            label21.Name = "label21";
+            label21.Size = new System.Drawing.Size(63, 13);
+            label21.TabIndex = 32;
+            label21.Text = "Descripción:";
+            // 
             // btnLicenseRenewal
             // 
             this.btnLicenseRenewal.Location = new System.Drawing.Point(190, 205);
             this.btnLicenseRenewal.Name = "btnLicenseRenewal";
             this.btnLicenseRenewal.Size = new System.Drawing.Size(84, 23);
-            this.btnLicenseRenewal.TabIndex = 3;
+            this.btnLicenseRenewal.TabIndex = 5;
             this.btnLicenseRenewal.Text = "&Crear";
             this.btnLicenseRenewal.UseVisualStyleBackColor = true;
             this.btnLicenseRenewal.Click += new System.EventHandler(this.BtnLicenseRenewal_Click);
@@ -110,7 +119,7 @@
             this.dtLicenseExpires.Location = new System.Drawing.Point(124, 126);
             this.dtLicenseExpires.Name = "dtLicenseExpires";
             this.dtLicenseExpires.Size = new System.Drawing.Size(240, 22);
-            this.dtLicenseExpires.TabIndex = 2;
+            this.dtLicenseExpires.TabIndex = 3;
             // 
             // txtLicenseCategory
             // 
@@ -132,7 +141,7 @@
             this.btnCancel.Location = new System.Drawing.Point(280, 205);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
-            this.btnCancel.TabIndex = 4;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "&Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -141,7 +150,7 @@
             this.dtDateOfMaking.Location = new System.Drawing.Point(124, 98);
             this.dtDateOfMaking.Name = "dtDateOfMaking";
             this.dtDateOfMaking.Size = new System.Drawing.Size(240, 22);
-            this.dtDateOfMaking.TabIndex = 22;
+            this.dtDateOfMaking.TabIndex = 2;
             // 
             // txtDriverLicenseDescription
             // 
@@ -149,16 +158,7 @@
             this.txtDriverLicenseDescription.Multiline = true;
             this.txtDriverLicenseDescription.Name = "txtDriverLicenseDescription";
             this.txtDriverLicenseDescription.Size = new System.Drawing.Size(240, 45);
-            this.txtDriverLicenseDescription.TabIndex = 33;
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Location = new System.Drawing.Point(15, 157);
-            label21.Name = "label21";
-            label21.Size = new System.Drawing.Size(63, 13);
-            label21.TabIndex = 32;
-            label21.Text = "Descripción:";
+            this.txtDriverLicenseDescription.TabIndex = 4;
             // 
             // FrmNewLicense
             // 

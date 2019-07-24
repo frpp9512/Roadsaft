@@ -83,6 +83,15 @@
             label2.TabIndex = 12;
             label2.Text = "Nombre completo:";
             // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new System.Drawing.Point(15, 131);
+            label22.Name = "label22";
+            label22.Size = new System.Drawing.Size(63, 13);
+            label22.TabIndex = 32;
+            label22.Text = "Descripción:";
+            // 
             // txtPersonalId
             // 
             this.txtPersonalId.Location = new System.Drawing.Point(120, 100);
@@ -110,7 +119,7 @@
             this.btnCancel.Location = new System.Drawing.Point(276, 179);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
-            this.btnCancel.TabIndex = 4;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "&Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
@@ -120,7 +129,7 @@
             this.btnNewDriver.Location = new System.Drawing.Point(186, 179);
             this.btnNewDriver.Name = "btnNewDriver";
             this.btnNewDriver.Size = new System.Drawing.Size(84, 23);
-            this.btnNewDriver.TabIndex = 3;
+            this.btnNewDriver.TabIndex = 4;
             this.btnNewDriver.Text = "&Crear";
             this.btnNewDriver.UseVisualStyleBackColor = true;
             this.btnNewDriver.Click += new System.EventHandler(this.BtnNewDriver_Click);
@@ -131,16 +140,7 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(240, 45);
-            this.txtDescription.TabIndex = 33;
-            // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.Location = new System.Drawing.Point(15, 131);
-            label22.Name = "label22";
-            label22.Size = new System.Drawing.Size(63, 13);
-            label22.TabIndex = 32;
-            label22.Text = "Descripción:";
+            this.txtDescription.TabIndex = 3;
             // 
             // FrmNewDriver
             // 

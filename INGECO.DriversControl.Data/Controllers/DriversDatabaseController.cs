@@ -163,5 +163,35 @@ namespace INGECO.DriversControl.Data
                 return false;
             }
         }
+
+        public bool AddNewMedicalExam(Driver driver, MedicalExam medicalExam)
+        {
+            try
+            {
+                medicalExam.Driver = driver;
+                medicalExam.InsertMe();
+                driver.MedicalExams.Add(medicalExam);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool ArchiveMedicalExam(Driver driver, MedicalExam medicalExam)
+        {
+            try
+            {
+                medicalExam.IsActive = false;
+                _ = driver.MedicalExams.Remove(medicalExam);
+                medicalExam.UpdateMe();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

@@ -95,63 +95,6 @@
             label2.TabIndex = 40;
             label2.Text = "Resultado del exámen:";
             // 
-            // dtMedicalExamExpires
-            // 
-            this.dtMedicalExamExpires.Location = new System.Drawing.Point(130, 75);
-            this.dtMedicalExamExpires.Name = "dtMedicalExamExpires";
-            this.dtMedicalExamExpires.Size = new System.Drawing.Size(240, 22);
-            this.dtMedicalExamExpires.TabIndex = 37;
-            // 
-            // dtMedicalExamDateOfMaking
-            // 
-            this.dtMedicalExamDateOfMaking.Location = new System.Drawing.Point(130, 47);
-            this.dtMedicalExamDateOfMaking.Name = "dtMedicalExamDateOfMaking";
-            this.dtMedicalExamDateOfMaking.Size = new System.Drawing.Size(240, 22);
-            this.dtMedicalExamDateOfMaking.TabIndex = 35;
-            // 
-            // cbxMedicalExamType
-            // 
-            this.cbxMedicalExamType.FormattingEnabled = true;
-            this.cbxMedicalExamType.Location = new System.Drawing.Point(130, 103);
-            this.cbxMedicalExamType.Name = "cbxMedicalExamType";
-            this.cbxMedicalExamType.Size = new System.Drawing.Size(240, 21);
-            this.cbxMedicalExamType.TabIndex = 39;
-            // 
-            // cbxMedicalExamResult
-            // 
-            this.cbxMedicalExamResult.FormattingEnabled = true;
-            this.cbxMedicalExamResult.Location = new System.Drawing.Point(130, 130);
-            this.cbxMedicalExamResult.Name = "cbxMedicalExamResult";
-            this.cbxMedicalExamResult.Size = new System.Drawing.Size(240, 21);
-            this.cbxMedicalExamResult.TabIndex = 39;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(286, 218);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(84, 23);
-            this.btnCancel.TabIndex = 41;
-            this.btnCancel.Text = "&Cancelar";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnLicenseRenewal
-            // 
-            this.btnLicenseRenewal.Location = new System.Drawing.Point(196, 218);
-            this.btnLicenseRenewal.Name = "btnLicenseRenewal";
-            this.btnLicenseRenewal.Size = new System.Drawing.Size(84, 23);
-            this.btnLicenseRenewal.TabIndex = 42;
-            this.btnLicenseRenewal.Text = "&Crear";
-            this.btnLicenseRenewal.UseVisualStyleBackColor = true;
-            // 
-            // txtMedicalExamDescription
-            // 
-            this.txtMedicalExamDescription.Location = new System.Drawing.Point(130, 157);
-            this.txtMedicalExamDescription.Multiline = true;
-            this.txtMedicalExamDescription.Name = "txtMedicalExamDescription";
-            this.txtMedicalExamDescription.Size = new System.Drawing.Size(240, 45);
-            this.txtMedicalExamDescription.TabIndex = 44;
-            // 
             // label21
             // 
             label21.AutoSize = true;
@@ -161,11 +104,70 @@
             label21.TabIndex = 43;
             label21.Text = "Descripción:";
             // 
+            // dtMedicalExamExpires
+            // 
+            this.dtMedicalExamExpires.Location = new System.Drawing.Point(130, 75);
+            this.dtMedicalExamExpires.Name = "dtMedicalExamExpires";
+            this.dtMedicalExamExpires.Size = new System.Drawing.Size(240, 22);
+            this.dtMedicalExamExpires.TabIndex = 2;
+            // 
+            // dtMedicalExamDateOfMaking
+            // 
+            this.dtMedicalExamDateOfMaking.Location = new System.Drawing.Point(130, 47);
+            this.dtMedicalExamDateOfMaking.Name = "dtMedicalExamDateOfMaking";
+            this.dtMedicalExamDateOfMaking.Size = new System.Drawing.Size(240, 22);
+            this.dtMedicalExamDateOfMaking.TabIndex = 1;
+            // 
+            // cbxMedicalExamType
+            // 
+            this.cbxMedicalExamType.FormattingEnabled = true;
+            this.cbxMedicalExamType.Location = new System.Drawing.Point(130, 103);
+            this.cbxMedicalExamType.Name = "cbxMedicalExamType";
+            this.cbxMedicalExamType.Size = new System.Drawing.Size(240, 21);
+            this.cbxMedicalExamType.TabIndex = 3;
+            // 
+            // cbxMedicalExamResult
+            // 
+            this.cbxMedicalExamResult.FormattingEnabled = true;
+            this.cbxMedicalExamResult.Location = new System.Drawing.Point(130, 130);
+            this.cbxMedicalExamResult.Name = "cbxMedicalExamResult";
+            this.cbxMedicalExamResult.Size = new System.Drawing.Size(240, 21);
+            this.cbxMedicalExamResult.TabIndex = 4;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(286, 208);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(84, 23);
+            this.btnCancel.TabIndex = 7;
+            this.btnCancel.Text = "&Cancelar";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            // 
+            // btnLicenseRenewal
+            // 
+            this.btnLicenseRenewal.Location = new System.Drawing.Point(196, 208);
+            this.btnLicenseRenewal.Name = "btnLicenseRenewal";
+            this.btnLicenseRenewal.Size = new System.Drawing.Size(84, 23);
+            this.btnLicenseRenewal.TabIndex = 6;
+            this.btnLicenseRenewal.Text = "&Crear";
+            this.btnLicenseRenewal.UseVisualStyleBackColor = true;
+            this.btnLicenseRenewal.Click += new System.EventHandler(this.BtnLicenseRenewal_Click);
+            // 
+            // txtMedicalExamDescription
+            // 
+            this.txtMedicalExamDescription.Location = new System.Drawing.Point(130, 157);
+            this.txtMedicalExamDescription.Multiline = true;
+            this.txtMedicalExamDescription.Name = "txtMedicalExamDescription";
+            this.txtMedicalExamDescription.Size = new System.Drawing.Size(240, 45);
+            this.txtMedicalExamDescription.TabIndex = 5;
+            // 
             // FrmNewMedicalExam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 253);
+            this.ClientSize = new System.Drawing.Size(384, 243);
             this.Controls.Add(this.txtMedicalExamDescription);
             this.Controls.Add(label21);
             this.Controls.Add(this.btnCancel);

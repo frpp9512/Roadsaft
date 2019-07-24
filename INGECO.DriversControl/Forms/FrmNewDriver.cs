@@ -42,6 +42,12 @@ namespace INGECO.DriversControl
                     _ = MessageBox.Show("Chofer agregado satisfactoriamente.", "Nuevo chofer", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearFields();
                 }
+                else
+                {
+                    _ = MessageBox.Show("Ha ocurrido un error registrando el chofer. Contacte al desarrollador para solicitar soporte acerca de este error.", "Error registrando chofer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    DialogResult = DialogResult.Cancel;
+                    Close();
+                }
             }
             else
             {

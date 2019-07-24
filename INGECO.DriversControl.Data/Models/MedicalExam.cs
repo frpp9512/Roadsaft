@@ -96,7 +96,7 @@ namespace INGECO.DriversControl.Data
 
         #region DBObject Implementation
 
-        protected override object[] Values => new object[] { Type, Created, Expires, Result, Description, IsActive, Driver?.PrimaryKeyValue };
+        protected override object[] Values => new object[] { Type.ToString(), Created, DateOfMaking, Expires, Result.ToString(), Description, IsActive, Driver?.PrimaryKeyValue };
 
         protected override void SetValues(DataResult dr)
         {

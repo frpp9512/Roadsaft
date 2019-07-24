@@ -8,10 +8,10 @@
         /// <summary>
         /// General exam to check the health status of the driver.
         /// </summary>
-        General,
+        General = 0,
         /// <summary>
         /// An specific exam to check the psichological and physiological status of the driver.
         /// </summary>
-        Psychological
+        Psychological = 1
     }
 }

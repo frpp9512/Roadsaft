@@ -68,6 +68,22 @@ namespace INGECO.DriversControl.Data
         bool AddNewRequalification(Driver driver, Requalificaiton requalificaiton);
 
         /// <summary>
+        /// Register a driver's medical exam in the system.
+        /// </summary>
+        /// <param name="driver">The driver to register to the medical exam.</param>
+        /// <param name="medicalExam">The medical exam to register.</param>
+        /// <returns>True if driver's medical exam was registerd successfully.</returns>
+        bool AddNewMedicalExam(Driver driver, MedicalExam medicalExam);
+
+        /// <summary>
+        /// Archives the medical exam in the system.
+        /// </summary>
+        /// <param name="driver">The medical exam's driver.</param>
+        /// <param name="medicalExam">The medical exam to archive.</param>
+        /// <returns>True if the medical exam was archived successfully.</returns>
+        bool ArchiveMedicalExam(Driver driver, MedicalExam medicalExam);
+
+        /// <summary>
         /// Renew the current driver's license, deactivating the current one and setting like active the new.
         /// </summary>
         /// <param name="driver">The driver to update driver's license.</param>

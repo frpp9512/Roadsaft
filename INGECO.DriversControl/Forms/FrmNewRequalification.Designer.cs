@@ -106,33 +106,42 @@
             label12.TabIndex = 28;
             label12.Text = "Nueva recalificación";
             // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new System.Drawing.Point(14, 134);
+            label20.Name = "label20";
+            label20.Size = new System.Drawing.Size(63, 13);
+            label20.TabIndex = 41;
+            label20.Text = "Descripción:";
+            // 
             // txtRequalificationPage
             // 
             this.txtRequalificationPage.Location = new System.Drawing.Point(272, 103);
             this.txtRequalificationPage.Name = "txtRequalificationPage";
             this.txtRequalificationPage.Size = new System.Drawing.Size(62, 22);
-            this.txtRequalificationPage.TabIndex = 37;
+            this.txtRequalificationPage.TabIndex = 3;
             // 
             // txtRequalificationVolume
             // 
             this.txtRequalificationVolume.Location = new System.Drawing.Point(163, 103);
             this.txtRequalificationVolume.Name = "txtRequalificationVolume";
             this.txtRequalificationVolume.Size = new System.Drawing.Size(62, 22);
-            this.txtRequalificationVolume.TabIndex = 35;
+            this.txtRequalificationVolume.TabIndex = 2;
             // 
             // dtRequalificationExpires
             // 
             this.dtRequalificationExpires.Location = new System.Drawing.Point(123, 75);
             this.dtRequalificationExpires.Name = "dtRequalificationExpires";
             this.dtRequalificationExpires.Size = new System.Drawing.Size(240, 22);
-            this.dtRequalificationExpires.TabIndex = 33;
+            this.dtRequalificationExpires.TabIndex = 1;
             // 
             // dtRequalificationDateOfMaking
             // 
             this.dtRequalificationDateOfMaking.Location = new System.Drawing.Point(123, 47);
             this.dtRequalificationDateOfMaking.Name = "dtRequalificationDateOfMaking";
             this.dtRequalificationDateOfMaking.Size = new System.Drawing.Size(240, 22);
-            this.dtRequalificationDateOfMaking.TabIndex = 31;
+            this.dtRequalificationDateOfMaking.TabIndex = 0;
             // 
             // btnCancel
             // 
@@ -140,7 +149,7 @@
             this.btnCancel.Location = new System.Drawing.Point(279, 182);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
-            this.btnCancel.TabIndex = 39;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "&Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -149,7 +158,7 @@
             this.btnRequalificaitonRenewal.Location = new System.Drawing.Point(189, 182);
             this.btnRequalificaitonRenewal.Name = "btnRequalificaitonRenewal";
             this.btnRequalificaitonRenewal.Size = new System.Drawing.Size(84, 23);
-            this.btnRequalificaitonRenewal.TabIndex = 40;
+            this.btnRequalificaitonRenewal.TabIndex = 5;
             this.btnRequalificaitonRenewal.Text = "&Crear";
             this.btnRequalificaitonRenewal.UseVisualStyleBackColor = true;
             this.btnRequalificaitonRenewal.Click += new System.EventHandler(this.BtnRequalificaitonRenewal_Click);
@@ -160,16 +169,7 @@
             this.txtRequalificationDescription.Multiline = true;
             this.txtRequalificationDescription.Name = "txtRequalificationDescription";
             this.txtRequalificationDescription.Size = new System.Drawing.Size(240, 45);
-            this.txtRequalificationDescription.TabIndex = 42;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Location = new System.Drawing.Point(14, 134);
-            label20.Name = "label20";
-            label20.Size = new System.Drawing.Size(63, 13);
-            label20.TabIndex = 41;
-            label20.Text = "Descripción:";
+            this.txtRequalificationDescription.TabIndex = 4;
             // 
             // FrmNewRequalification
             // 

@@ -75,6 +75,19 @@ namespace INGECO.DriversControl
         }
 
         /// <summary>
+        /// Update the form by the current selected driver in the ListView.
+        /// </summary>
+        private void UpdatedSelectedDriver()
+        {
+            if (lvDriversList.SelectedItems.Count > 0)
+            {
+                lvDriversList.Enabled = false;
+                ShowDriverInfo(GetSelectedDriver());
+                lvDriversList.Enabled = true;
+            }
+        }
+
+        /// <summary>
         /// Returns the current selected driver in the ListView.
         /// </summary>
         /// <returns></returns>
@@ -124,21 +137,26 @@ namespace INGECO.DriversControl
                     dgvMedicalExamActive.Rows[added].Tag = me;
                 }
                 TpMedicalExams.ImageIndex = driver.MedicalExams.Count(me => me.IsExpired) > 0 ? 2 : driver.MedicalExams.Count(me => me.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForMedicalExam)) > 0 ? 1 : 0;
-                dgvMedicalExamHistorical.SuspendLayout();
-                dgvMedicalExamHistorical.Rows.Clear();
-                var medicalExamsHistory = DriverDataProviderContainer.Controller.GetDriverMedicalExamsHistory(driver);
-                foreach (var mh in medicalExamsHistory)
-                {
-                    var added = dgvMedicalExamHistorical.Rows.Add(mh.Created.ToShortDateString(), mh.Type.GetShowText(), mh.DateOfMaking.ToShortDateString(), mh.Expires.ToShortDateString(), mh.Result.GetShowText(), mh.Description);
-                    dgvMedicalExamHistorical.Rows[added].Tag = mh;
-                }
-                dgvRequalificationHistorical.ResumeLayout();
             }
             else
             {
                 TpMedicalExams.ImageIndex = 2;
                 ClearMedicalExamTab();
             }
+            LoadMedicalExamsHistory(driver);
+        }
+
+        private void LoadMedicalExamsHistory(Driver driver)
+        {
+            dgvMedicalExamHistorical.SuspendLayout();
+            dgvMedicalExamHistorical.Rows.Clear();
+            var medicalExamsHistory = DriverDataProviderContainer.Controller.GetDriverMedicalExamsHistory(driver);
+            foreach (var mh in medicalExamsHistory)
+            {
+                var added = dgvMedicalExamHistorical.Rows.Add(mh.Created.ToShortDateString(), mh.Type.GetShowText(), mh.DateOfMaking.ToShortDateString(), mh.Expires.ToShortDateString(), mh.Result.GetShowText(), mh.Description);
+                dgvMedicalExamHistorical.Rows[added].Tag = mh;
+            }
+            dgvRequalificationHistorical.ResumeLayout();
         }
 
         /// <summary>
@@ -324,18 +342,76 @@ namespace INGECO.DriversControl
             _ = frm.ShowDialog();
         }
 
+        /// <summary>
+        /// Open the new medical exam form.
+        /// </summary>
+        private void NewMedicalExam()
+        {
+            var frm = new FrmNewMedicalExam();
+            frm.NewMedicalExamAdded += me =>
+            {
+                if (DriverDataProviderContainer.Controller.AddNewMedicalExam(GetSelectedDriver(), me))
+                {
+                    LoadDrivers();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            };
+            frm.Show();
+        }
+
+        /// <summary>
+        /// Archive current selected medical exams.
+        /// </summary>
+        private void ArchiveMedicalExam()
+        {
+            if (GetSelectedRowsCount() > 0)
+            {
+                if (MessageBox.Show(
+                    $"¿Está seguro que desea archivar {(GetSelectedRowsCount() > 1 ? $"los {GetSelectedRowsCount()}" : "el")} examen{(GetSelectedRowsCount() > 1 ? "es" : "")} seleccionado{(GetSelectedRowsCount() > 1 ? "s" : "")}?",
+                    $"Archivar examen{(GetSelectedRowsCount() > 1 ? "es" : "")} médico{(GetSelectedRowsCount() > 1 ? "s" : "")}",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    int total = GetSelectedRowsCount(), errors = 0;
+                    for (var i = 0; i < GetSelectedRowsCount(); i++)
+                    {
+                        if (!DriverDataProviderContainer.Controller.ArchiveMedicalExam(GetSelectedDriver(), (dgvMedicalExamActive.Rows[i].Tag as MedicalExam)))
+                        {
+                            errors++;
+                        }
+                    }
+                    _ = errors > 0
+                        ? MessageBox.Show($"Han ocurrido errores archivando {(total > 1 ? "los" : "el")} examen{(total > 1 ? "es" : "")}. Contacte al desarrollador para obtener soporte acerca de este error.",
+                            $"Error archivando examen{(total > 1 ? "es" : "")}",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error)
+                        : MessageBox.Show($"Se han archivado satisfactoriamente {total} examen{(total > 1 ? "es" : "")} médico{(total > 1 ? "s" : "")}.",
+                            "Examenes archivados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadDrivers();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the actual amount of selected rows in the Active Medical Exam datagrid.
+        /// </summary>
+        /// <returns>The count of selected rows.</returns>
+        private int GetSelectedRowsCount()
+        {
+            return dgvMedicalExamActive.SelectedRows.Count;
+        }
+
         #endregion
 
         #region Events subscribers
 
         private void LvDriversList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(lvDriversList.SelectedItems.Count > 0)
-            {
-                lvDriversList.Enabled = false;
-                ShowDriverInfo(GetSelectedDriver());
-                lvDriversList.Enabled = true;
-            }
+            UpdatedSelectedDriver();
         }
 
         private void BtnRefreshDrivers_Click(object sender, EventArgs e)
@@ -356,6 +432,16 @@ namespace INGECO.DriversControl
         private void BtnRenewRequalification_Click(object sender, EventArgs e)
         {
             RequalificationRenewal();
+        }
+
+        private void BtnMedicalExamNew_Click(object sender, EventArgs e)
+        {
+            NewMedicalExam();
+        }
+
+        private void BtnMedicalExamArchiveSelected_Click(object sender, EventArgs e)
+        {
+            ArchiveMedicalExam();
         }
 
         #endregion

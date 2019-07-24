@@ -8,10 +8,10 @@
         /// <summary>
         /// When the driver is enable to do his job.
         /// </summary>
-        Able,
+        Able = 0,
         /// <summary>
         /// When the driver is disable to do his job.
         /// </summary>
-        Disable
+        Disable = 1
     }
 }

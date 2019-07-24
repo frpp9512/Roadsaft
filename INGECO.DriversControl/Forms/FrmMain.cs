@@ -249,7 +249,8 @@ namespace INGECO.DriversControl
         {
             var frm = GetSelectedDriver().DriverLicense != null ? new FrmNewLicense(GetSelectedDriver().DriverLicense) : new FrmNewLicense();
             frm.NewLicenseForRenewal += l => DriversDatabaseController.Controller.RenewalLicense(GetSelectedDriver(), l);
-            frm.Show();
+            frm.ShowDialog();
+            LoadDrivers();
         }
     }
 }

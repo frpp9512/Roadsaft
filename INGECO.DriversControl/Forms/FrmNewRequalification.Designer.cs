@@ -146,6 +146,12 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnCancel.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
+            this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnCancel.Location = new System.Drawing.Point(279, 182);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
@@ -155,6 +161,12 @@
             // 
             // btnRequalificaitonRenewal
             // 
+            this.btnRequalificaitonRenewal.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnRequalificaitonRenewal.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
+            this.btnRequalificaitonRenewal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnRequalificaitonRenewal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnRequalificaitonRenewal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRequalificaitonRenewal.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnRequalificaitonRenewal.Location = new System.Drawing.Point(189, 182);
             this.btnRequalificaitonRenewal.Name = "btnRequalificaitonRenewal";
             this.btnRequalificaitonRenewal.Size = new System.Drawing.Size(84, 23);

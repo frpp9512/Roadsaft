@@ -137,6 +137,12 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnCancel.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
+            this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnCancel.Location = new System.Drawing.Point(286, 208);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
@@ -147,6 +153,12 @@
             // 
             // btnLicenseRenewal
             // 
+            this.btnLicenseRenewal.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnLicenseRenewal.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
+            this.btnLicenseRenewal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnLicenseRenewal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnLicenseRenewal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLicenseRenewal.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnLicenseRenewal.Location = new System.Drawing.Point(196, 208);
             this.btnLicenseRenewal.Name = "btnLicenseRenewal";
             this.btnLicenseRenewal.Size = new System.Drawing.Size(84, 23);

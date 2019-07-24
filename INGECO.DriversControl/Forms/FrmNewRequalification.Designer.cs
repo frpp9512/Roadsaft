@@ -34,18 +34,21 @@
             System.Windows.Forms.Label label13;
             System.Windows.Forms.Label label11;
             System.Windows.Forms.Label label12;
+            System.Windows.Forms.Label label20;
             this.txtRequalificationPage = new System.Windows.Forms.TextBox();
             this.txtRequalificationVolume = new System.Windows.Forms.TextBox();
             this.dtRequalificationExpires = new System.Windows.Forms.DateTimePicker();
             this.dtRequalificationDateOfMaking = new System.Windows.Forms.DateTimePicker();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnLicenseRenewal = new System.Windows.Forms.Button();
+            this.btnRequalificaitonRenewal = new System.Windows.Forms.Button();
+            this.txtRequalificationDescription = new System.Windows.Forms.TextBox();
             label16 = new System.Windows.Forms.Label();
             label15 = new System.Windows.Forms.Label();
             label14 = new System.Windows.Forms.Label();
             label13 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             label12 = new System.Windows.Forms.Label();
+            label20 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label16
@@ -134,29 +137,49 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(279, 131);
+            this.btnCancel.Location = new System.Drawing.Point(279, 182);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
             this.btnCancel.TabIndex = 39;
             this.btnCancel.Text = "&Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // btnLicenseRenewal
+            // btnRequalificaitonRenewal
             // 
-            this.btnLicenseRenewal.Location = new System.Drawing.Point(189, 131);
-            this.btnLicenseRenewal.Name = "btnLicenseRenewal";
-            this.btnLicenseRenewal.Size = new System.Drawing.Size(84, 23);
-            this.btnLicenseRenewal.TabIndex = 40;
-            this.btnLicenseRenewal.Text = "&Crear";
-            this.btnLicenseRenewal.UseVisualStyleBackColor = true;
+            this.btnRequalificaitonRenewal.Location = new System.Drawing.Point(189, 182);
+            this.btnRequalificaitonRenewal.Name = "btnRequalificaitonRenewal";
+            this.btnRequalificaitonRenewal.Size = new System.Drawing.Size(84, 23);
+            this.btnRequalificaitonRenewal.TabIndex = 40;
+            this.btnRequalificaitonRenewal.Text = "&Crear";
+            this.btnRequalificaitonRenewal.UseVisualStyleBackColor = true;
+            this.btnRequalificaitonRenewal.Click += new System.EventHandler(this.BtnRequalificaitonRenewal_Click);
+            // 
+            // txtRequalificationDescription
+            // 
+            this.txtRequalificationDescription.Location = new System.Drawing.Point(123, 131);
+            this.txtRequalificationDescription.Multiline = true;
+            this.txtRequalificationDescription.Name = "txtRequalificationDescription";
+            this.txtRequalificationDescription.Size = new System.Drawing.Size(240, 45);
+            this.txtRequalificationDescription.TabIndex = 42;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new System.Drawing.Point(14, 134);
+            label20.Name = "label20";
+            label20.Size = new System.Drawing.Size(63, 13);
+            label20.TabIndex = 41;
+            label20.Text = "Descripción:";
             // 
             // FrmNewRequalification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 165);
+            this.ClientSize = new System.Drawing.Size(381, 215);
+            this.Controls.Add(this.txtRequalificationDescription);
+            this.Controls.Add(label20);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnLicenseRenewal);
+            this.Controls.Add(this.btnRequalificaitonRenewal);
             this.Controls.Add(label16);
             this.Controls.Add(this.txtRequalificationPage);
             this.Controls.Add(label15);
@@ -185,6 +208,7 @@
         private System.Windows.Forms.DateTimePicker dtRequalificationExpires;
         private System.Windows.Forms.DateTimePicker dtRequalificationDateOfMaking;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnLicenseRenewal;
+        private System.Windows.Forms.Button btnRequalificaitonRenewal;
+        private System.Windows.Forms.TextBox txtRequalificationDescription;
     }
 }

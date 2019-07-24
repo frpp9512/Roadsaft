@@ -34,7 +34,8 @@ namespace INGECO.DriversControl
                 {
                     FullName = txtFullname.Text,
                     PersonalId = txtPersonalId.Text,
-                    Position = txtPosition.Text
+                    Position = txtPosition.Text,
+                    Description = txtDescription.Text
                 };
                 if (NewDriverAdded?.Invoke(driver) == true)
                 {
@@ -50,7 +51,7 @@ namespace INGECO.DriversControl
 
         private void ClearFields()
         {
-            txtFullname.Text = txtPersonalId.Text = txtPosition.Text = string.Empty;
+            txtFullname.Text = txtPersonalId.Text = txtPosition.Text = txtDescription.Text = string.Empty;
             txtFullname.Select();
         }
 

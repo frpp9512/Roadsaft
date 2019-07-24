@@ -33,17 +33,20 @@
             System.Windows.Forms.Label label18;
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label label21;
             this.dtMedicalExamExpires = new System.Windows.Forms.DateTimePicker();
             this.dtMedicalExamDateOfMaking = new System.Windows.Forms.DateTimePicker();
             this.cbxMedicalExamType = new System.Windows.Forms.ComboBox();
             this.cbxMedicalExamResult = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnLicenseRenewal = new System.Windows.Forms.Button();
+            this.txtMedicalExamDescription = new System.Windows.Forms.TextBox();
             label13 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             label18 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
+            label21 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label13
@@ -86,7 +89,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(12, 133);
+            label2.Location = new System.Drawing.Point(14, 133);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(112, 13);
             label2.TabIndex = 40;
@@ -125,7 +128,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(286, 157);
+            this.btnCancel.Location = new System.Drawing.Point(286, 218);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
             this.btnCancel.TabIndex = 41;
@@ -134,18 +137,37 @@
             // 
             // btnLicenseRenewal
             // 
-            this.btnLicenseRenewal.Location = new System.Drawing.Point(196, 157);
+            this.btnLicenseRenewal.Location = new System.Drawing.Point(196, 218);
             this.btnLicenseRenewal.Name = "btnLicenseRenewal";
             this.btnLicenseRenewal.Size = new System.Drawing.Size(84, 23);
             this.btnLicenseRenewal.TabIndex = 42;
             this.btnLicenseRenewal.Text = "&Crear";
             this.btnLicenseRenewal.UseVisualStyleBackColor = true;
             // 
+            // txtMedicalExamDescription
+            // 
+            this.txtMedicalExamDescription.Location = new System.Drawing.Point(130, 157);
+            this.txtMedicalExamDescription.Multiline = true;
+            this.txtMedicalExamDescription.Name = "txtMedicalExamDescription";
+            this.txtMedicalExamDescription.Size = new System.Drawing.Size(240, 45);
+            this.txtMedicalExamDescription.TabIndex = 44;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new System.Drawing.Point(14, 160);
+            label21.Name = "label21";
+            label21.Size = new System.Drawing.Size(63, 13);
+            label21.TabIndex = 43;
+            label21.Text = "Descripción:";
+            // 
             // FrmNewMedicalExam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 190);
+            this.ClientSize = new System.Drawing.Size(384, 253);
+            this.Controls.Add(this.txtMedicalExamDescription);
+            this.Controls.Add(label21);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLicenseRenewal);
             this.Controls.Add(label2);
@@ -177,5 +199,6 @@
         private System.Windows.Forms.ComboBox cbxMedicalExamResult;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnLicenseRenewal;
+        private System.Windows.Forms.TextBox txtMedicalExamDescription;
     }
 }

@@ -33,17 +33,20 @@
             System.Windows.Forms.Label label6;
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label1;
+            System.Windows.Forms.Label label21;
             this.btnLicenseRenewal = new System.Windows.Forms.Button();
             this.dtLicenseExpires = new System.Windows.Forms.DateTimePicker();
             this.txtLicenseCategory = new System.Windows.Forms.TextBox();
             this.txtLicenseNumber = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dtDateOfMaking = new System.Windows.Forms.DateTimePicker();
+            this.txtDriverLicenseDescription = new System.Windows.Forms.TextBox();
             label8 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
+            label21 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label8
@@ -83,9 +86,18 @@
             label5.TabIndex = 14;
             label5.Text = "Número de licencia:";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(15, 101);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(105, 13);
+            label1.TabIndex = 23;
+            label1.Text = "Fecha de confección:";
+            // 
             // btnLicenseRenewal
             // 
-            this.btnLicenseRenewal.Location = new System.Drawing.Point(190, 154);
+            this.btnLicenseRenewal.Location = new System.Drawing.Point(190, 205);
             this.btnLicenseRenewal.Name = "btnLicenseRenewal";
             this.btnLicenseRenewal.Size = new System.Drawing.Size(84, 23);
             this.btnLicenseRenewal.TabIndex = 3;
@@ -117,7 +129,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(280, 154);
+            this.btnCancel.Location = new System.Drawing.Point(280, 205);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
             this.btnCancel.TabIndex = 4;
@@ -131,20 +143,30 @@
             this.dtDateOfMaking.Size = new System.Drawing.Size(240, 22);
             this.dtDateOfMaking.TabIndex = 22;
             // 
-            // label1
+            // txtDriverLicenseDescription
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(15, 101);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(105, 13);
-            label1.TabIndex = 23;
-            label1.Text = "Fecha de confección:";
+            this.txtDriverLicenseDescription.Location = new System.Drawing.Point(124, 154);
+            this.txtDriverLicenseDescription.Multiline = true;
+            this.txtDriverLicenseDescription.Name = "txtDriverLicenseDescription";
+            this.txtDriverLicenseDescription.Size = new System.Drawing.Size(240, 45);
+            this.txtDriverLicenseDescription.TabIndex = 33;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new System.Drawing.Point(15, 157);
+            label21.Name = "label21";
+            label21.Size = new System.Drawing.Size(63, 13);
+            label21.TabIndex = 32;
+            label21.Text = "Descripción:";
             // 
             // FrmNewLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 186);
+            this.ClientSize = new System.Drawing.Size(378, 237);
+            this.Controls.Add(this.txtDriverLicenseDescription);
+            this.Controls.Add(label21);
             this.Controls.Add(this.dtDateOfMaking);
             this.Controls.Add(label1);
             this.Controls.Add(label8);
@@ -175,5 +197,6 @@
         private System.Windows.Forms.TextBox txtLicenseNumber;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DateTimePicker dtDateOfMaking;
+        private System.Windows.Forms.TextBox txtDriverLicenseDescription;
     }
 }

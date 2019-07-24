@@ -23,6 +23,7 @@ namespace INGECO.DriversControl.Data
                       "med_exam_dateofmaking",
                       "med_exam_expires",
                       "med_exam_result",
+                      "med_exam_description",
                       "med_exam_isactive",
                       "driver_id"
                   })
@@ -63,6 +64,11 @@ namespace INGECO.DriversControl.Data
         public MedicalExamResult Result { get; set; }
 
         /// <summary>
+        /// A descrption of the Medical Exam.
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
         /// True if the medical exams is active.
         /// </summary>
         public bool IsActive { get; set; }
@@ -90,7 +96,7 @@ namespace INGECO.DriversControl.Data
 
         #region DBObject Implementation
 
-        protected override object[] Values => new object[] { Type, Created, Expires, Result, IsActive, Driver?.PrimaryKeyValue };
+        protected override object[] Values => new object[] { Type, Created, Expires, Result, Description, IsActive, Driver?.PrimaryKeyValue };
 
         protected override void SetValues(DataResult dr)
         {
@@ -99,6 +105,7 @@ namespace INGECO.DriversControl.Data
             DateOfMaking = dr.GetValue<DateTime>("med_exam_dateofmaking");
             Expires = dr.GetValue<DateTime>("med_exam_expires");
             Result = dr.GetValue<MedicalExamResult>("med_exam_result");
+            Description = dr.GetValue<string>("med_exam_description");
             IsActive = dr.GetValue<bool>("med_exam_isactive");
             Driver = new Driver { PrimaryKeyValue = dr.GetValue<int>("driver_id") };
         }

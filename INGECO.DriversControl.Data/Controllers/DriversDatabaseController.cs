@@ -12,20 +12,6 @@ namespace INGECO.DriversControl.Data
     /// </summary>
     public class DriversDatabaseController : IDriversDataProvider
     {
-        #region Singlenton
-
-        /// <summary>
-        /// The current instance for <see cref="DriversDatabaseController"/>.
-        /// </summary>
-        static DriversDatabaseController controller = null;
-
-        /// <summary>
-        /// Gets the current instance for <see cref="DriversDatabaseController"/> or a new one by default.
-        /// </summary>
-        public static DriversDatabaseController Controller => controller ?? new DriversDatabaseController();
-
-        #endregion
-
         public List<DriverLicense> GetDriverLicenseHistory(Driver driver)
         {
             var lics = MySQLConnector.CurrentConnection.ExecuteStoredProcedure("GetLicensesHistoryForDriver", new Parameter("driver_id", driver.PrimaryKeyValue)).GetList<DriverLicense>();
@@ -113,10 +99,63 @@ namespace INGECO.DriversControl.Data
                     driver.DriverLicense.IsActive = false;
                     driver.DriverLicense.UpdateMe();
                 }
-                newLicense.Driver = driver;
                 newLicense.IsActive = true;
-                newLicense.InsertMe();
+                if(!AddNewDriverLicense(driver, newLicense))
+                {
+                    throw new Exception("Error adding new driver's license.");
+                }
                 driver.DriverLicense = newLicense;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool RenewalRequalification(Driver driver, Requalificaiton requalificaiton)
+        {
+            try
+            {
+                if (driver.Requalificaiton != null)
+                {
+                    driver.Requalificaiton.IsActive = false;
+                    driver.Requalificaiton.UpdateMe();
+                }
+                requalificaiton.IsActive = true;
+                if (!AddNewRequalification(driver, requalificaiton))
+                {
+                    throw new Exception("Error adding new driver's requalification.");
+                }
+                driver.Requalificaiton = requalificaiton;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool AddNewDriverLicense(Driver driver, DriverLicense license)
+        {
+            try
+            {
+                license.Driver = driver;
+                license.InsertMe();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool AddNewRequalification(Driver driver, Requalificaiton requalificaiton)
+        {
+            try
+            {
+                requalificaiton.Driver = driver;
+                requalificaiton.InsertMe();
                 return true;
             }
             catch (Exception)

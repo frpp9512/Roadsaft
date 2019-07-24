@@ -37,7 +37,8 @@ namespace INGECO.DriversControl
                     Number = txtLicenseNumber.Text,
                     Category = txtLicenseCategory.Text,
                     DateOfMaking = dtDateOfMaking.Value,
-                    Expires = dtLicenseExpires.Value
+                    Expires = dtLicenseExpires.Value,
+                    Description = txtDriverLicenseDescription.Text
                 };
                 _ = NewLicenseForRenewal?.Invoke(license);
                 _ = MessageBox.Show("Licencia renovada satisfactoriamente.", "Renovar licencia", MessageBoxButtons.OK, MessageBoxIcon.Information);

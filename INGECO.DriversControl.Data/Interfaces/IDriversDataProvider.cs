@@ -45,17 +45,42 @@ namespace INGECO.DriversControl.Data
         List<MedicalExam> GetDriverMedicalExamsHistory(Driver driver);
 
         /// <summary>
-        /// Register new driver in the system.
+        /// Register a driver in the system.
         /// </summary>
         /// <param name="driver">The driver to register.</param>
         /// <returns>True if driver was registered successfully.</returns>
         bool AddNewDriver(Driver driver);
 
         /// <summary>
-        /// Renew the current driver's license, deactivating the current one and setting active the new.
+        /// Register a driver's license in the system.
+        /// </summary>
+        /// <param name="driver">The driver to register to the license.</param>
+        /// <param name="license">The license to register.</param>
+        /// <returns>True if driver's license was registered successfully.</returns>
+        bool AddNewDriverLicense(Driver driver, DriverLicense license);
+
+        /// <summary>
+        /// Register a driver's requalification in the system.
+        /// </summary>
+        /// <param name="driver">The driver to register to the requalification.</param>
+        /// <param name="requalificaiton">The recalification to register.</param>
+        /// <returns>True if driver's requalification was registered successfully.</returns>
+        bool AddNewRequalification(Driver driver, Requalificaiton requalificaiton);
+
+        /// <summary>
+        /// Renew the current driver's license, deactivating the current one and setting like active the new.
         /// </summary>
         /// <param name="driver">The driver to update driver's license.</param>
         /// <param name="newLicense">The new driver's license.</param>
+        /// <returns>True if the process finish successfully.</returns>
         bool RenewalLicense(Driver driver, DriverLicense newLicense);
+
+        /// <summary>
+        /// Renew the current driver's requalification, deactivating the current one and setting like active the new.
+        /// </summary>
+        /// <param name="driver">The driver to update requalificaiton.</param>
+        /// <param name="requalificaiton">The new driver's requalification</param>
+        /// <returns>True if the process finish successfully.</returns>
+        bool RenewalRequalification(Driver driver, Requalificaiton requalificaiton);
     }
 }

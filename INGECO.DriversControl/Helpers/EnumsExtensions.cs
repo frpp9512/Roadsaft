@@ -14,9 +14,9 @@ namespace INGECO.DriversControl
             switch (medicalExamResult)
             {
                 case MedicalExamResult.Able:
-                    return "Habilitado";
+                    return "Apto";
                 case MedicalExamResult.Disable:
-                    return "Deshabilitado";
+                    return "No apto";
                 default:
                     return "<No se encuentra el texto>";
             }

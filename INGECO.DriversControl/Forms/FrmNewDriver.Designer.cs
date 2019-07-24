@@ -32,15 +32,18 @@
             System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label label22;
             this.txtPersonalId = new System.Windows.Forms.TextBox();
             this.txtPosition = new System.Windows.Forms.TextBox();
             this.txtFullname = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnNewDriver = new System.Windows.Forms.Button();
+            this.txtDescription = new System.Windows.Forms.TextBox();
             label10 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
+            label22 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label10
@@ -104,7 +107,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(276, 128);
+            this.btnCancel.Location = new System.Drawing.Point(276, 179);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
             this.btnCancel.TabIndex = 4;
@@ -114,7 +117,7 @@
             // 
             // btnNewDriver
             // 
-            this.btnNewDriver.Location = new System.Drawing.Point(186, 128);
+            this.btnNewDriver.Location = new System.Drawing.Point(186, 179);
             this.btnNewDriver.Name = "btnNewDriver";
             this.btnNewDriver.Size = new System.Drawing.Size(84, 23);
             this.btnNewDriver.TabIndex = 3;
@@ -122,11 +125,30 @@
             this.btnNewDriver.UseVisualStyleBackColor = true;
             this.btnNewDriver.Click += new System.EventHandler(this.BtnNewDriver_Click);
             // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(120, 128);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(240, 45);
+            this.txtDescription.TabIndex = 33;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new System.Drawing.Point(15, 131);
+            label22.Name = "label22";
+            label22.Size = new System.Drawing.Size(63, 13);
+            label22.TabIndex = 32;
+            label22.Text = "Descripción:";
+            // 
             // FrmNewDriver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 164);
+            this.ClientSize = new System.Drawing.Size(379, 215);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(label22);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnNewDriver);
             this.Controls.Add(label10);
@@ -154,5 +176,6 @@
         private System.Windows.Forms.TextBox txtFullname;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnNewDriver;
+        private System.Windows.Forms.TextBox txtDescription;
     }
 }

@@ -48,6 +48,9 @@
             System.Windows.Forms.Label label19;
             System.Windows.Forms.ColumnHeader lvClFullname;
             System.Windows.Forms.ColumnHeader tvClPosition;
+            System.Windows.Forms.Label label20;
+            System.Windows.Forms.Label label21;
+            System.Windows.Forms.Label label22;
             this.lvDriversList = new System.Windows.Forms.ListView();
             this.tvClPersonalId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
@@ -60,11 +63,6 @@
             this.TpDriverLicense = new System.Windows.Forms.TabPage();
             this.lbLicenseCreationDate = new System.Windows.Forms.Label();
             this.dgvHistoricLicenses = new System.Windows.Forms.DataGridView();
-            this.clCreatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clDateOfMaking = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clExpires = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLicenseRenewal = new System.Windows.Forms.Button();
             this.dtLicenseExpires = new System.Windows.Forms.DateTimePicker();
             this.txtLicenseCategory = new System.Windows.Forms.TextBox();
@@ -72,11 +70,6 @@
             this.TpRequalification = new System.Windows.Forms.TabPage();
             this.btnRenewRequalification = new System.Windows.Forms.Button();
             this.dgvRequalificationHistorical = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clVolume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clPage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtRequalificationPage = new System.Windows.Forms.TextBox();
             this.txtRequalificationVolume = new System.Windows.Forms.TextBox();
             this.dtRequalificationExpires = new System.Windows.Forms.DateTimePicker();
@@ -84,23 +77,40 @@
             this.lbRequalificationCreationDate = new System.Windows.Forms.Label();
             this.TpMedicalExams = new System.Windows.Forms.TabPage();
             this.dgvMedicalExamHistorical = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clMedExamHType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnMedicalExamNew = new System.Windows.Forms.Button();
             this.btnMedicalExamDeleteSelected = new System.Windows.Forms.Button();
             this.btnMedicalExamArchiveSelected = new System.Windows.Forms.Button();
             this.dgvMedicalExamActive = new System.Windows.Forms.DataGridView();
+            this.btnNewDriver = new System.Windows.Forms.Button();
+            this.btnRefreshDrivers = new System.Windows.Forms.Button();
             this.clIcon = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clMedExamType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clMedExamResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnNewDriver = new System.Windows.Forms.Button();
-            this.btnRefreshDrivers = new System.Windows.Forms.Button();
+            this.clMedExamDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clMedExamHType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clHMedExamDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtRequalificationDescription = new System.Windows.Forms.TextBox();
+            this.txtDriverLicenseDescription = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clVolume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clPage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clReqDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clCreatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clDateOfMaking = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clExpires = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clLicenseDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -121,6 +131,9 @@
             label19 = new System.Windows.Forms.Label();
             lvClFullname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClPosition = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            label20 = new System.Windows.Forms.Label();
+            label21 = new System.Windows.Forms.Label();
+            label22 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.TpDriverInfo.SuspendLayout();
             this.TpDriverLicense.SuspendLayout();
@@ -200,7 +213,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            label9.Location = new System.Drawing.Point(6, 154);
+            label9.Location = new System.Drawing.Point(6, 197);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(89, 25);
             label9.TabIndex = 12;
@@ -275,7 +288,7 @@
             // 
             label17.AutoSize = true;
             label17.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            label17.Location = new System.Drawing.Point(6, 161);
+            label17.Location = new System.Drawing.Point(6, 212);
             label17.Name = "label17";
             label17.Size = new System.Drawing.Size(89, 25);
             label17.TabIndex = 26;
@@ -324,7 +337,7 @@
             this.lvDriversList.HideSelection = false;
             this.lvDriversList.Location = new System.Drawing.Point(20, 115);
             this.lvDriversList.Name = "lvDriversList";
-            this.lvDriversList.Size = new System.Drawing.Size(247, 340);
+            this.lvDriversList.Size = new System.Drawing.Size(247, 396);
             this.lvDriversList.TabIndex = 0;
             this.lvDriversList.UseCompatibleStateImageBehavior = false;
             this.lvDriversList.View = System.Windows.Forms.View.Tile;
@@ -358,11 +371,13 @@
             this.tabControl1.Location = new System.Drawing.Point(273, 93);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(524, 362);
+            this.tabControl1.Size = new System.Drawing.Size(524, 418);
             this.tabControl1.TabIndex = 2;
             // 
             // TpDriverInfo
             // 
+            this.TpDriverInfo.Controls.Add(this.txtDescription);
+            this.TpDriverInfo.Controls.Add(label22);
             this.TpDriverInfo.Controls.Add(label10);
             this.TpDriverInfo.Controls.Add(this.btnSaveChanges);
             this.TpDriverInfo.Controls.Add(this.txtPersonalId);
@@ -374,14 +389,14 @@
             this.TpDriverInfo.Location = new System.Drawing.Point(4, 22);
             this.TpDriverInfo.Name = "TpDriverInfo";
             this.TpDriverInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.TpDriverInfo.Size = new System.Drawing.Size(516, 336);
+            this.TpDriverInfo.Size = new System.Drawing.Size(516, 392);
             this.TpDriverInfo.TabIndex = 0;
             this.TpDriverInfo.Text = "Información";
             this.TpDriverInfo.UseVisualStyleBackColor = true;
             // 
             // btnSaveChanges
             // 
-            this.btnSaveChanges.Location = new System.Drawing.Point(252, 129);
+            this.btnSaveChanges.Location = new System.Drawing.Point(252, 180);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(99, 23);
             this.btnSaveChanges.TabIndex = 6;
@@ -411,6 +426,8 @@
             // 
             // TpDriverLicense
             // 
+            this.TpDriverLicense.Controls.Add(this.txtDriverLicenseDescription);
+            this.TpDriverLicense.Controls.Add(label21);
             this.TpDriverLicense.Controls.Add(this.lbLicenseCreationDate);
             this.TpDriverLicense.Controls.Add(label9);
             this.TpDriverLicense.Controls.Add(this.dgvHistoricLicenses);
@@ -425,7 +442,7 @@
             this.TpDriverLicense.Location = new System.Drawing.Point(4, 22);
             this.TpDriverLicense.Name = "TpDriverLicense";
             this.TpDriverLicense.Padding = new System.Windows.Forms.Padding(3);
-            this.TpDriverLicense.Size = new System.Drawing.Size(516, 336);
+            this.TpDriverLicense.Size = new System.Drawing.Size(516, 392);
             this.TpDriverLicense.TabIndex = 1;
             this.TpDriverLicense.Text = "Licencia de conducción";
             this.TpDriverLicense.UseVisualStyleBackColor = true;
@@ -453,44 +470,18 @@
             this.clNumber,
             this.clCategory,
             this.clDateOfMaking,
-            this.clExpires});
-            this.dgvHistoricLicenses.Location = new System.Drawing.Point(11, 182);
+            this.clExpires,
+            this.clLicenseDescription});
+            this.dgvHistoricLicenses.Location = new System.Drawing.Point(11, 225);
             this.dgvHistoricLicenses.Name = "dgvHistoricLicenses";
             this.dgvHistoricLicenses.RowHeadersVisible = false;
             this.dgvHistoricLicenses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHistoricLicenses.Size = new System.Drawing.Size(499, 148);
+            this.dgvHistoricLicenses.Size = new System.Drawing.Size(499, 161);
             this.dgvHistoricLicenses.TabIndex = 11;
-            // 
-            // clCreatedDate
-            // 
-            this.clCreatedDate.HeaderText = "Creada";
-            this.clCreatedDate.Name = "clCreatedDate";
-            // 
-            // clNumber
-            // 
-            this.clNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.clNumber.HeaderText = "Número";
-            this.clNumber.Name = "clNumber";
-            this.clNumber.Width = 71;
-            // 
-            // clCategory
-            // 
-            this.clCategory.HeaderText = "Categoría";
-            this.clCategory.Name = "clCategory";
-            // 
-            // clDateOfMaking
-            // 
-            this.clDateOfMaking.HeaderText = "Confeccionada";
-            this.clDateOfMaking.Name = "clDateOfMaking";
-            // 
-            // clExpires
-            // 
-            this.clExpires.HeaderText = "Expira";
-            this.clExpires.Name = "clExpires";
             // 
             // btnLicenseRenewal
             // 
-            this.btnLicenseRenewal.Location = new System.Drawing.Point(258, 129);
+            this.btnLicenseRenewal.Location = new System.Drawing.Point(258, 180);
             this.btnLicenseRenewal.Name = "btnLicenseRenewal";
             this.btnLicenseRenewal.Size = new System.Drawing.Size(99, 23);
             this.btnLicenseRenewal.TabIndex = 9;
@@ -521,6 +512,8 @@
             // 
             // TpRequalification
             // 
+            this.TpRequalification.Controls.Add(this.txtRequalificationDescription);
+            this.TpRequalification.Controls.Add(label20);
             this.TpRequalification.Controls.Add(this.btnRenewRequalification);
             this.TpRequalification.Controls.Add(label17);
             this.TpRequalification.Controls.Add(this.dgvRequalificationHistorical);
@@ -538,19 +531,20 @@
             this.TpRequalification.Location = new System.Drawing.Point(4, 22);
             this.TpRequalification.Name = "TpRequalification";
             this.TpRequalification.Padding = new System.Windows.Forms.Padding(3);
-            this.TpRequalification.Size = new System.Drawing.Size(516, 336);
+            this.TpRequalification.Size = new System.Drawing.Size(516, 392);
             this.TpRequalification.TabIndex = 2;
             this.TpRequalification.Text = "Recalificación";
             this.TpRequalification.UseVisualStyleBackColor = true;
             // 
             // btnRenewRequalification
             // 
-            this.btnRenewRequalification.Location = new System.Drawing.Point(228, 136);
+            this.btnRenewRequalification.Location = new System.Drawing.Point(228, 187);
             this.btnRenewRequalification.Name = "btnRenewRequalification";
             this.btnRenewRequalification.Size = new System.Drawing.Size(129, 23);
             this.btnRenewRequalification.TabIndex = 27;
             this.btnRenewRequalification.Text = "&Renovar recalificación...";
             this.btnRenewRequalification.UseVisualStyleBackColor = true;
+            this.btnRenewRequalification.Click += new System.EventHandler(this.BtnRenewRequalification_Click);
             // 
             // dgvRequalificationHistorical
             // 
@@ -566,43 +560,20 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.clVolume,
-            this.clPage});
-            this.dgvRequalificationHistorical.Location = new System.Drawing.Point(11, 189);
+            this.clPage,
+            this.clReqDescription});
+            this.dgvRequalificationHistorical.Location = new System.Drawing.Point(11, 240);
             this.dgvRequalificationHistorical.Name = "dgvRequalificationHistorical";
             this.dgvRequalificationHistorical.RowHeadersVisible = false;
             this.dgvRequalificationHistorical.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRequalificationHistorical.Size = new System.Drawing.Size(499, 139);
+            this.dgvRequalificationHistorical.Size = new System.Drawing.Size(499, 144);
             this.dgvRequalificationHistorical.TabIndex = 25;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Creada";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Confeccionada";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Expira";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // clVolume
-            // 
-            this.clVolume.HeaderText = "Tomo";
-            this.clVolume.Name = "clVolume";
-            // 
-            // clPage
-            // 
-            this.clPage.HeaderText = "Folio";
-            this.clPage.Name = "clPage";
             // 
             // txtRequalificationPage
             // 
             this.txtRequalificationPage.Location = new System.Drawing.Point(266, 108);
             this.txtRequalificationPage.Name = "txtRequalificationPage";
+            this.txtRequalificationPage.ReadOnly = true;
             this.txtRequalificationPage.Size = new System.Drawing.Size(62, 22);
             this.txtRequalificationPage.TabIndex = 23;
             // 
@@ -610,11 +581,13 @@
             // 
             this.txtRequalificationVolume.Location = new System.Drawing.Point(157, 108);
             this.txtRequalificationVolume.Name = "txtRequalificationVolume";
+            this.txtRequalificationVolume.ReadOnly = true;
             this.txtRequalificationVolume.Size = new System.Drawing.Size(62, 22);
             this.txtRequalificationVolume.TabIndex = 21;
             // 
             // dtRequalificationExpires
             // 
+            this.dtRequalificationExpires.Enabled = false;
             this.dtRequalificationExpires.Location = new System.Drawing.Point(117, 80);
             this.dtRequalificationExpires.Name = "dtRequalificationExpires";
             this.dtRequalificationExpires.Size = new System.Drawing.Size(240, 22);
@@ -622,6 +595,7 @@
             // 
             // dtRequalificationDateOfMaking
             // 
+            this.dtRequalificationDateOfMaking.Enabled = false;
             this.dtRequalificationDateOfMaking.Location = new System.Drawing.Point(117, 52);
             this.dtRequalificationDateOfMaking.Name = "dtRequalificationDateOfMaking";
             this.dtRequalificationDateOfMaking.Size = new System.Drawing.Size(240, 22);
@@ -648,7 +622,7 @@
             this.TpMedicalExams.Location = new System.Drawing.Point(4, 22);
             this.TpMedicalExams.Name = "TpMedicalExams";
             this.TpMedicalExams.Padding = new System.Windows.Forms.Padding(3);
-            this.TpMedicalExams.Size = new System.Drawing.Size(516, 336);
+            this.TpMedicalExams.Size = new System.Drawing.Size(516, 392);
             this.TpMedicalExams.TabIndex = 3;
             this.TpMedicalExams.Text = "Exámenes Médicos";
             this.TpMedicalExams.UseVisualStyleBackColor = true;
@@ -667,38 +641,14 @@
             this.clMedExamHType,
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10});
+            this.dataGridViewTextBoxColumn10,
+            this.clHMedExamDescription});
             this.dgvMedicalExamHistorical.Location = new System.Drawing.Point(6, 214);
             this.dgvMedicalExamHistorical.Name = "dgvMedicalExamHistorical";
             this.dgvMedicalExamHistorical.RowHeadersVisible = false;
             this.dgvMedicalExamHistorical.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMedicalExamHistorical.Size = new System.Drawing.Size(504, 116);
+            this.dgvMedicalExamHistorical.Size = new System.Drawing.Size(504, 172);
             this.dgvMedicalExamHistorical.TabIndex = 32;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Creado";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // clMedExamHType
-            // 
-            this.clMedExamHType.HeaderText = "Tipo";
-            this.clMedExamHType.Name = "clMedExamHType";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Realizado";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "Expira";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "Resultado";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             // 
             // btnMedicalExamNew
             // 
@@ -732,8 +682,7 @@
             this.dgvMedicalExamActive.AllowUserToAddRows = false;
             this.dgvMedicalExamActive.AllowUserToDeleteRows = false;
             this.dgvMedicalExamActive.AllowUserToResizeRows = false;
-            this.dgvMedicalExamActive.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvMedicalExamActive.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvMedicalExamActive.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMedicalExamActive.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -742,13 +691,34 @@
             this.clMedExamType,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn6,
-            this.clMedExamResult});
+            this.clMedExamResult,
+            this.clMedExamDescription});
             this.dgvMedicalExamActive.Location = new System.Drawing.Point(6, 49);
             this.dgvMedicalExamActive.Name = "dgvMedicalExamActive";
             this.dgvMedicalExamActive.RowHeadersVisible = false;
             this.dgvMedicalExamActive.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMedicalExamActive.Size = new System.Drawing.Size(504, 105);
             this.dgvMedicalExamActive.TabIndex = 26;
+            // 
+            // btnNewDriver
+            // 
+            this.btnNewDriver.Location = new System.Drawing.Point(20, 86);
+            this.btnNewDriver.Name = "btnNewDriver";
+            this.btnNewDriver.Size = new System.Drawing.Size(69, 23);
+            this.btnNewDriver.TabIndex = 12;
+            this.btnNewDriver.Text = "&Nuevo...";
+            this.btnNewDriver.UseVisualStyleBackColor = true;
+            this.btnNewDriver.Click += new System.EventHandler(this.BtnNewDriver_Click);
+            // 
+            // btnRefreshDrivers
+            // 
+            this.btnRefreshDrivers.Location = new System.Drawing.Point(95, 86);
+            this.btnRefreshDrivers.Name = "btnRefreshDrivers";
+            this.btnRefreshDrivers.Size = new System.Drawing.Size(69, 23);
+            this.btnRefreshDrivers.TabIndex = 13;
+            this.btnRefreshDrivers.Text = "&Actualizar";
+            this.btnRefreshDrivers.UseVisualStyleBackColor = true;
+            this.btnRefreshDrivers.Click += new System.EventHandler(this.BtnRefreshDrivers_Click);
             // 
             // clIcon
             // 
@@ -783,31 +753,159 @@
             this.clMedExamResult.HeaderText = "Resultado";
             this.clMedExamResult.Name = "clMedExamResult";
             // 
-            // btnNewDriver
+            // clMedExamDescription
             // 
-            this.btnNewDriver.Location = new System.Drawing.Point(20, 86);
-            this.btnNewDriver.Name = "btnNewDriver";
-            this.btnNewDriver.Size = new System.Drawing.Size(69, 23);
-            this.btnNewDriver.TabIndex = 12;
-            this.btnNewDriver.Text = "&Nuevo...";
-            this.btnNewDriver.UseVisualStyleBackColor = true;
-            this.btnNewDriver.Click += new System.EventHandler(this.BtnNewDriver_Click);
+            this.clMedExamDescription.HeaderText = "Descripción";
+            this.clMedExamDescription.Name = "clMedExamDescription";
             // 
-            // btnRefreshDrivers
+            // dataGridViewTextBoxColumn7
             // 
-            this.btnRefreshDrivers.Location = new System.Drawing.Point(95, 86);
-            this.btnRefreshDrivers.Name = "btnRefreshDrivers";
-            this.btnRefreshDrivers.Size = new System.Drawing.Size(69, 23);
-            this.btnRefreshDrivers.TabIndex = 13;
-            this.btnRefreshDrivers.Text = "&Actualizar";
-            this.btnRefreshDrivers.UseVisualStyleBackColor = true;
-            this.btnRefreshDrivers.Click += new System.EventHandler(this.BtnRefreshDrivers_Click);
+            this.dataGridViewTextBoxColumn7.HeaderText = "Creado";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // clMedExamHType
+            // 
+            this.clMedExamHType.HeaderText = "Tipo";
+            this.clMedExamHType.Name = "clMedExamHType";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Realizado";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Expira";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "Resultado";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // clHMedExamDescription
+            // 
+            this.clHMedExamDescription.HeaderText = "Descripción";
+            this.clHMedExamDescription.Name = "clHMedExamDescription";
+            // 
+            // txtRequalificationDescription
+            // 
+            this.txtRequalificationDescription.Location = new System.Drawing.Point(117, 136);
+            this.txtRequalificationDescription.Multiline = true;
+            this.txtRequalificationDescription.Name = "txtRequalificationDescription";
+            this.txtRequalificationDescription.Size = new System.Drawing.Size(240, 45);
+            this.txtRequalificationDescription.TabIndex = 29;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new System.Drawing.Point(8, 139);
+            label20.Name = "label20";
+            label20.Size = new System.Drawing.Size(63, 13);
+            label20.TabIndex = 28;
+            label20.Text = "Descripción:";
+            // 
+            // txtDriverLicenseDescription
+            // 
+            this.txtDriverLicenseDescription.Location = new System.Drawing.Point(117, 129);
+            this.txtDriverLicenseDescription.Multiline = true;
+            this.txtDriverLicenseDescription.Name = "txtDriverLicenseDescription";
+            this.txtDriverLicenseDescription.Size = new System.Drawing.Size(240, 45);
+            this.txtDriverLicenseDescription.TabIndex = 31;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new System.Drawing.Point(8, 132);
+            label21.Name = "label21";
+            label21.Size = new System.Drawing.Size(63, 13);
+            label21.TabIndex = 30;
+            label21.Text = "Descripción:";
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(111, 129);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(240, 45);
+            this.txtDescription.TabIndex = 31;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new System.Drawing.Point(6, 132);
+            label22.Name = "label22";
+            label22.Size = new System.Drawing.Size(63, 13);
+            label22.TabIndex = 30;
+            label22.Text = "Descripción:";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Creada";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Confeccionada";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Expira";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // clVolume
+            // 
+            this.clVolume.HeaderText = "Tomo";
+            this.clVolume.Name = "clVolume";
+            // 
+            // clPage
+            // 
+            this.clPage.HeaderText = "Folio";
+            this.clPage.Name = "clPage";
+            // 
+            // clReqDescription
+            // 
+            this.clReqDescription.HeaderText = "Descripción";
+            this.clReqDescription.Name = "clReqDescription";
+            // 
+            // clCreatedDate
+            // 
+            this.clCreatedDate.HeaderText = "Creada";
+            this.clCreatedDate.Name = "clCreatedDate";
+            // 
+            // clNumber
+            // 
+            this.clNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.clNumber.HeaderText = "Número";
+            this.clNumber.Name = "clNumber";
+            this.clNumber.Width = 71;
+            // 
+            // clCategory
+            // 
+            this.clCategory.HeaderText = "Categoría";
+            this.clCategory.Name = "clCategory";
+            // 
+            // clDateOfMaking
+            // 
+            this.clDateOfMaking.HeaderText = "Confeccionada";
+            this.clDateOfMaking.Name = "clDateOfMaking";
+            // 
+            // clExpires
+            // 
+            this.clExpires.HeaderText = "Expira";
+            this.clExpires.Name = "clExpires";
+            // 
+            // clLicenseDescription
+            // 
+            this.clLicenseDescription.HeaderText = "Descripción";
+            this.clLicenseDescription.Name = "clLicenseDescription";
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 467);
+            this.ClientSize = new System.Drawing.Size(809, 523);
             this.Controls.Add(this.btnRefreshDrivers);
             this.Controls.Add(this.btnNewDriver);
             this.Controls.Add(this.tabControl1);
@@ -854,11 +952,6 @@
         private System.Windows.Forms.DateTimePicker dtLicenseExpires;
         private System.Windows.Forms.Button btnLicenseRenewal;
         private System.Windows.Forms.DataGridView dgvHistoricLicenses;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clCreatedDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clCategory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clDateOfMaking;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clExpires;
         private System.Windows.Forms.Label lbLicenseCreationDate;
         private System.Windows.Forms.Label lbRequalificationCreationDate;
         private System.Windows.Forms.DateTimePicker dtRequalificationExpires;
@@ -867,29 +960,41 @@
         private System.Windows.Forms.TextBox txtRequalificationVolume;
         private System.Windows.Forms.DataGridView dgvRequalificationHistorical;
         private System.Windows.Forms.Button btnRenewRequalification;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clVolume;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clPage;
         private System.Windows.Forms.DataGridView dgvMedicalExamActive;
         private System.Windows.Forms.Button btnMedicalExamNew;
         private System.Windows.Forms.Button btnMedicalExamArchiveSelected;
         private System.Windows.Forms.Button btnMedicalExamDeleteSelected;
         private System.Windows.Forms.DataGridView dgvMedicalExamHistorical;
+        private System.Windows.Forms.Button btnNewDriver;
+        private System.Windows.Forms.ColumnHeader tvClPersonalId;
+        private System.Windows.Forms.Button btnRefreshDrivers;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn clMedExamHType;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.Button btnNewDriver;
-        private System.Windows.Forms.ColumnHeader tvClPersonalId;
-        private System.Windows.Forms.Button btnRefreshDrivers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clHMedExamDescription;
         private System.Windows.Forms.DataGridViewImageColumn clIcon;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn clMedExamType;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn clMedExamResult;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clMedExamDescription;
+        private System.Windows.Forms.TextBox txtRequalificationDescription;
+        private System.Windows.Forms.TextBox txtDriverLicenseDescription;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clVolume;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clPage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clReqDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clCreatedDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clCategory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clDateOfMaking;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clExpires;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clLicenseDescription;
     }
 }

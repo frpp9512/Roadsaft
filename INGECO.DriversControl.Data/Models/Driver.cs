@@ -24,7 +24,8 @@ namespace INGECO.DriversControl.Data
                       "driver_id",
                       "fullname",
                       "position",
-                      "personal_id"
+                      "personal_id",
+                      "description"
                   })
         { }
 
@@ -48,6 +49,11 @@ namespace INGECO.DriversControl.Data
         public string PersonalId { get; set; }
 
         /// <summary>
+        /// A description of the driver.
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
         /// The current active requalification of the driver
         /// </summary>
         public Requalificaiton Requalificaiton { get; set; }
@@ -69,7 +75,7 @@ namespace INGECO.DriversControl.Data
         {
             get
             {
-                return DriverLicense == null || Requalificaiton == null || MedicalExams == null
+                return DriverLicense == null || Requalificaiton == null || MedicalExams == null || MedicalExams.Count == 0
                     ? true
                     : DriverLicense.IsExpired || Requalificaiton.IsExpired || MedicalExams.Count(me => me.IsExpired) > 0;
             }
@@ -97,13 +103,14 @@ namespace INGECO.DriversControl.Data
 
         #region DBObject Implementation
 
-        protected override object[] Values => new object[] { FullName, Position, PersonalId };
+        protected override object[] Values => new object[] { FullName, Position, PersonalId, Description };
 
         protected override void SetValues(DataResult dr)
         {
             FullName = dr.GetValue<string>("fullname");
             Position = dr.GetValue<string>("position");
             PersonalId = dr.GetValue<string>("personal_id");
+            Description = dr.GetValue<string>("description");
         }
 
         #endregion

@@ -47,6 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>drivers_control.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="SmartB1t.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System" />
@@ -150,6 +153,8 @@
     <None Include="Resources\ok.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="drivers_control.ico" />
+    <None Include="Resources\drivers_control.png" />
     <Content Include="To-Do.txt" />
   </ItemGroup>
   <ItemGroup>

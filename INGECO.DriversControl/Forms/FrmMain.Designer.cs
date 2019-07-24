@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label4;
@@ -52,6 +53,7 @@
             System.Windows.Forms.Label label21;
             System.Windows.Forms.Label label22;
             System.Windows.Forms.ColumnHeader tvClDescription;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.lvDriversList = new System.Windows.Forms.ListView();
             this.tvClPersonalId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
@@ -113,6 +115,9 @@
             this.txtLicenseExpireDate = new System.Windows.Forms.TextBox();
             this.txtRequalificationDateOfMaking = new System.Windows.Forms.TextBox();
             this.txtRequalificationExpires = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.driversControlNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -146,6 +151,7 @@
             this.TpMedicalExams.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedicalExamHistorical)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedicalExamActive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -385,7 +391,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 24F);
             this.label1.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label1.Location = new System.Drawing.Point(12, 20);
+            this.label1.Location = new System.Drawing.Point(95, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(306, 45);
             this.label1.TabIndex = 1;
@@ -980,22 +986,44 @@
             this.txtRequalificationExpires.Size = new System.Drawing.Size(240, 22);
             this.txtRequalificationExpires.TabIndex = 34;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::INGECO.DriversControl.Properties.Resources.drivers_control;
+            this.pictureBox1.Location = new System.Drawing.Point(20, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(69, 68);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
+            // 
+            // driversControlNotifyIcon
+            // 
+            this.driversControlNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("driversControlNotifyIcon.Icon")));
+            this.driversControlNotifyIcon.Text = "Control de choferes";
+            this.driversControlNotifyIcon.Visible = true;
+            // 
+            // refreshTimer
+            // 
+            this.refreshTimer.Interval = 1000;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1027, 536);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnRefreshDrivers);
             this.Controls.Add(this.btnNewDriver);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lvDriversList);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(742, 506);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmMain";
+            this.Text = "Control de choferes";
             this.tabControl1.ResumeLayout(false);
             this.TpDriverInfo.ResumeLayout(false);
             this.TpDriverInfo.PerformLayout();
@@ -1009,6 +1037,7 @@
             this.TpMedicalExams.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedicalExamHistorical)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedicalExamActive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1077,5 +1106,8 @@
         private System.Windows.Forms.TextBox txtLicenseExpireDate;
         private System.Windows.Forms.TextBox txtRequalificationExpires;
         private System.Windows.Forms.TextBox txtRequalificationDateOfMaking;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.NotifyIcon driversControlNotifyIcon;
+        private System.Windows.Forms.Timer refreshTimer;
     }
 }

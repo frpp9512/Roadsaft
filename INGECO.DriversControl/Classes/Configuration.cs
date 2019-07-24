@@ -32,6 +32,11 @@ namespace INGECO.DriversControl
         public static string DatabaseName { get; set; }
 
         /// <summary>
+        /// The time interval (in minutes) taked for refresh drivers data.
+        /// </summary>
+        public static int RefreshInterval { get; set; } = 2;
+
+        /// <summary>
         /// The time before expiration to be warned for driver's license expiration.
         /// </summary>
         public static TimeSpan ExpireWarningForLicense { get; set; } = new TimeSpan(30, 0, 0, 0);

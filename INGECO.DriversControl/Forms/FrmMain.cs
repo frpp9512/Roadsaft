@@ -18,13 +18,24 @@ namespace INGECO.DriversControl
         public FrmMain()
         {
             InitializeComponent();
-            DriverDataProviderContainer.InitializeWithDatabaseProvider();
+            DriverDataProviderContainer.InitializeWithDatabaseProvider();            
             LoadDrivers();
+            SetUpTimer();
         }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Set the configured interval to the timer and set the action to do on Tick.
+        /// </summary>
+        private void SetUpTimer()
+        {
+            refreshTimer.Interval = Configuration.RefreshInterval * 60 * 1000;
+            refreshTimer.Tick += (s, ea) => LoadDrivers();
+            refreshTimer.Start();
+        }
 
         /// <summary>
         /// Loads all the drivers registered in the system.
@@ -57,7 +68,71 @@ namespace INGECO.DriversControl
                 lvDriversList.Items[selectedIndex].Selected = true;
             }
             lvDriversList.ResumeLayout();
+            ShowLoadedDriversStatistic(drivers);
             btnRefreshDrivers.Enabled = true;
+        }
+
+        private void ShowLoadedDriversStatistic(List<Driver> drivers)
+        {
+            var noLicenseCount = drivers.Count(d => d.DriverLicense == null);
+            var noRequalificationCount = drivers.Count(d => d.Requalificaiton == null);
+            var noMedChecksCount = drivers.Count(d => d.MedicalExams.Count == 0);
+            var expiredLicenseCount = drivers.Count(d => d.DriverLicense?.IsExpired == true);
+            var expiredRequalificationsCount = drivers.Count(d => d.Requalificaiton?.IsExpired == true);
+            var driversWithExpiredMedChecksCount = drivers.Count(d => d.MedicalExams.Count(me => me.IsExpired) > 0);
+            var warningLicenseCount = drivers.Count(d => d.DriverLicense?.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense) == true);
+            var warningRequalificationCount = drivers.Count(d => d.Requalificaiton?.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification) == true);
+            var warningMedicalChecksCount = drivers.Count(d => d.MedicalExams.Count(me => me.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForMedicalExam)) > 0);
+            var statisticMessage = new StringBuilder();
+            if (expiredLicenseCount > 0)
+            {
+                _ = statisticMessage.AppendLine($"Existe{(expiredLicenseCount > 1 ? "n" : "")} {expiredLicenseCount} chofer{(expiredLicenseCount > 1 ? "es" : "")} con la licencia expirada.");
+            }
+            if (expiredRequalificationsCount > 0)
+            {
+                _ = statisticMessage.AppendLine($"Existe{(expiredRequalificationsCount > 1 ? "n" : "")} {expiredRequalificationsCount} chofer{(expiredRequalificationsCount > 1 ? "es" : "")} con la recalificación expirada.");
+            }
+            if (driversWithExpiredMedChecksCount > 0)
+            {
+                _ = statisticMessage.AppendLine($"Existe{(driversWithExpiredMedChecksCount > 1 ? "n" : "")} {driversWithExpiredMedChecksCount} chofer{(driversWithExpiredMedChecksCount > 1 ? "es" : "")} con chequeos médicos vencidos.");
+            }
+            if (noLicenseCount > 0)
+            {
+                _ = statisticMessage.AppendLine($"Existe{(noLicenseCount > 1 ? "n" : "")} {noLicenseCount} chofer{(noLicenseCount > 1 ? "es" : "")} sin una licencia activa.");
+            }
+            if (noRequalificationCount > 0)
+            {
+                _ = statisticMessage.AppendLine($"Existe{(noRequalificationCount > 1 ? "n" : "")} {noRequalificationCount} chofer{(noRequalificationCount > 1 ? "es" : "")} sin recalificación activa.");
+            }
+            if (noMedChecksCount > 0)
+            {
+                _ = statisticMessage.AppendLine($"Existe{(noMedChecksCount > 1 ? "n" : "")} {noMedChecksCount} chofer{(noMedChecksCount > 1 ? "es" : "")} sin chequeos médicos activos.");
+            }
+            if (warningLicenseCount > 0)
+            {
+                _ = statisticMessage.AppendLine($"Existe{(warningLicenseCount > 1 ? "n" : "")} {warningLicenseCount} chofer{(warningLicenseCount > 1 ? "es" : "")} con licencia{(warningLicenseCount > 1 ? "s" : "")} próxima{(warningLicenseCount > 1 ? "s" : "")} a vencerse.");
+            }
+            if (warningRequalificationCount > 0)
+            {
+                _ = statisticMessage.AppendLine($"Existe{(warningRequalificationCount > 1 ? "n" : "")} {warningRequalificationCount} chofer{(warningRequalificationCount > 1 ? "es" : "")} con recalificaci{(warningRequalificationCount > 1 ? "ones" : "ón")} próxima{(warningRequalificationCount > 1 ? "s" : "")} a vencerse.");
+            }
+            if (warningMedicalChecksCount > 0)
+            {
+                _ = statisticMessage.AppendLine($"Existe{(warningMedicalChecksCount > 1 ? "n" : "")} {warningMedicalChecksCount} chofer{(warningMedicalChecksCount > 1 ? "es" : "")} con chequeos médicos próximos a vencerse.");
+            }
+            if (statisticMessage.Length == 0)
+            {
+                statisticMessage.AppendLine("Todo se encuentra en orden.");
+            }
+            driversControlNotifyIcon.ShowBalloonTip
+                (
+                3,
+                "Control de choferes",
+                statisticMessage.ToString(),
+                (expiredLicenseCount + expiredRequalificationsCount + driversWithExpiredMedChecksCount + noLicenseCount + noRequalificationCount + noMedChecksCount) > 0 ? ToolTipIcon.Error
+                : (warningLicenseCount + warningRequalificationCount + warningMedicalChecksCount) > 0 ? ToolTipIcon.Warning
+                : ToolTipIcon.Info
+                );
         }
 
         /// <summary>

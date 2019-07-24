@@ -118,6 +118,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.driversControlNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -375,6 +376,7 @@
             this.lvDriversList.HideSelection = false;
             this.lvDriversList.Location = new System.Drawing.Point(20, 115);
             this.lvDriversList.Name = "lvDriversList";
+            this.lvDriversList.ShowItemToolTips = true;
             this.lvDriversList.Size = new System.Drawing.Size(275, 409);
             this.lvDriversList.TabIndex = 0;
             this.lvDriversList.UseCompatibleStateImageBehavior = false;
@@ -887,7 +889,7 @@
             this.btnRefreshDrivers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnRefreshDrivers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshDrivers.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefreshDrivers.Location = new System.Drawing.Point(95, 86);
+            this.btnRefreshDrivers.Location = new System.Drawing.Point(226, 86);
             this.btnRefreshDrivers.Name = "btnRefreshDrivers";
             this.btnRefreshDrivers.Size = new System.Drawing.Size(69, 23);
             this.btnRefreshDrivers.TabIndex = 13;
@@ -1001,10 +1003,26 @@
             this.driversControlNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("driversControlNotifyIcon.Icon")));
             this.driversControlNotifyIcon.Text = "Control de choferes";
             this.driversControlNotifyIcon.Visible = true;
+            this.driversControlNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DriversControlNotifyIcon_MouseDoubleClick);
             // 
             // refreshTimer
             // 
             this.refreshTimer.Interval = 1000;
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.button1.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(95, 86);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(69, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "&Filtrar...";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -1012,6 +1030,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1027, 536);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnRefreshDrivers);
             this.Controls.Add(this.btnNewDriver);
@@ -1024,6 +1043,7 @@
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control de choferes";
+            this.SizeChanged += new System.EventHandler(this.FrmMain_SizeChanged);
             this.tabControl1.ResumeLayout(false);
             this.TpDriverInfo.ResumeLayout(false);
             this.TpDriverInfo.PerformLayout();
@@ -1109,5 +1129,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.NotifyIcon driversControlNotifyIcon;
         private System.Windows.Forms.Timer refreshTimer;
+        private System.Windows.Forms.Button button1;
     }
 }

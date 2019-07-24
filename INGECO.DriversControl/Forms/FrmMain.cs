@@ -21,6 +21,7 @@ namespace INGECO.DriversControl
             DriverDataProviderContainer.InitializeWithDatabaseProvider();            
             LoadDrivers();
             SetUpTimer();
+            
         }
 
         #endregion
@@ -58,7 +59,8 @@ namespace INGECO.DriversControl
                 var item = new ListViewItem(new string[] { driver.FullName, driver.Position, driver.PersonalId, driver.Description })
                 {
                     ImageIndex = driver.HasExpiredParameters ? 2 : driver.GetIfAnyParameterExpireDateIsInPeriod(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam) ? 1 : 0,
-                    Tag = driver
+                    Tag = driver,
+                    ToolTipText = driver.GetStatusToolTip()
                 };
                 _ = lvDriversList.Items.Add(item);
             }
@@ -564,6 +566,29 @@ namespace INGECO.DriversControl
         private void BtnMedicalExamArchiveSelected_Click(object sender, EventArgs e)
         {
             ArchiveMedicalExam();
+        }
+
+        private void FrmMain_SizeChanged(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                ShowInTaskbar = false;
+            }
+            else
+            {
+                if (WindowState == FormWindowState.Normal || WindowState == FormWindowState.Maximized)
+                {
+                    ShowInTaskbar = true;
+                }
+            }
+        }
+
+        private void DriversControlNotifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
         }
 
         #endregion

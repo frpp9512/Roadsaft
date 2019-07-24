@@ -81,12 +81,42 @@ namespace INGECO.DriversControl.Data
             }
         }
 
+        /// <summary>
+        /// Returns <see langword="true"/> if the driver has a setted Driver's License.
+        /// </summary>
+        public bool HasActiveLicense => DriverLicense != null;
+
+        /// <summary>
+        /// Returns <see langword="true"/> if the active driver's license is expired. If the driver's license is not setted returns <see langword="false"/>.
+        /// </summary>
+        public bool HasExpiredLicense => HasActiveLicense ? DriverLicense.IsExpired : false;
+
+        /// <summary>
+        /// Returns <see langword="true"/> if the driver has a setted Requalification.
+        /// </summary>
+        public bool HasActiveRequalification => Requalificaiton != null;
+
+        /// <summary>
+        /// Returns <see langword="true"/> if the active Requalification is expired. If the Requalification is not setted returns <see langword="false"/>
+        /// </summary>
+        public bool HasExpiredRequalification => HasActiveRequalification ? Requalificaiton.IsExpired : false;
+
+        /// <summary>
+        /// Returns <see langword="true"/> if the driver have at least one active Medical Exam.
+        /// </summary>
+        public bool HasMedicalExams => MedicalExams.Count > 0;
+
+        /// <summary>
+        /// Returns <see langword="true"/> if the driver have at least one Medical Exam expired. If have no Medical Exam returns <see langword="false"/>.
+        /// </summary>
+        public bool HasExpiredMedicalExam => HasMedicalExams ? MedicalExams.Count(me => me.IsExpired) > 0 : false;
+
         #endregion
 
         #region Methods
 
         /// <summary>
-        /// Determines if any of the expiration dates of License, Requalification or Medical Exams are in the specified period.
+        /// Determines if any of the expiration dates of Driver's License, Requalification or Medical Exams are in the specified period.
         /// </summary>
         /// <param name="periodForLicense">The specified period for driver's license.</param>
         /// <param name="periodForRequalification">The specified period for driver's requalification.</param>

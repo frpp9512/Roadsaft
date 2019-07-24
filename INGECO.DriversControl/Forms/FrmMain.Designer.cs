@@ -517,6 +517,7 @@
             this.dgvHistoricLicenses.Location = new System.Drawing.Point(11, 225);
             this.dgvHistoricLicenses.Name = "dgvHistoricLicenses";
             this.dgvHistoricLicenses.RowHeadersVisible = false;
+            this.dgvHistoricLicenses.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvHistoricLicenses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHistoricLicenses.Size = new System.Drawing.Size(499, 161);
             this.dgvHistoricLicenses.TabIndex = 11;
@@ -647,6 +648,7 @@
             this.dgvRequalificationHistorical.Location = new System.Drawing.Point(11, 240);
             this.dgvRequalificationHistorical.Name = "dgvRequalificationHistorical";
             this.dgvRequalificationHistorical.RowHeadersVisible = false;
+            this.dgvRequalificationHistorical.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvRequalificationHistorical.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRequalificationHistorical.Size = new System.Drawing.Size(499, 144);
             this.dgvRequalificationHistorical.TabIndex = 25;
@@ -757,6 +759,7 @@
             this.dgvMedicalExamHistorical.Location = new System.Drawing.Point(6, 214);
             this.dgvMedicalExamHistorical.Name = "dgvMedicalExamHistorical";
             this.dgvMedicalExamHistorical.RowHeadersVisible = false;
+            this.dgvMedicalExamHistorical.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvMedicalExamHistorical.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMedicalExamHistorical.Size = new System.Drawing.Size(504, 172);
             this.dgvMedicalExamHistorical.TabIndex = 32;
@@ -830,6 +833,7 @@
             this.dgvMedicalExamActive.Location = new System.Drawing.Point(6, 49);
             this.dgvMedicalExamActive.Name = "dgvMedicalExamActive";
             this.dgvMedicalExamActive.RowHeadersVisible = false;
+            this.dgvMedicalExamActive.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvMedicalExamActive.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMedicalExamActive.Size = new System.Drawing.Size(504, 105);
             this.dgvMedicalExamActive.TabIndex = 26;

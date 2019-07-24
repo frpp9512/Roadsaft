@@ -18,15 +18,21 @@ namespace INGECO.DriversControl
         public FrmNewLicense()
         {
             InitializeComponent();
+            SetTimeInterval();
         }
 
         public FrmNewLicense(DriverLicense currentLicense)
         {
             InitializeComponent();
-            dtDateOfMaking.Value = DateTime.Now;
-            dtLicenseExpires.Value = dtDateOfMaking.Value.AddYears(2);
+            SetTimeInterval();
             txtLicenseNumber.Text = currentLicense.Number;
             txtLicenseCategory.Text = currentLicense.Category;
+        }
+
+        private void SetTimeInterval()
+        {
+            dtDateOfMaking.Value = DateTime.Now;
+            dtLicenseExpires.Value = dtDateOfMaking.Value.AddYears(2);
         }
 
         private void BtnLicenseRenewal_Click(object sender, EventArgs e)

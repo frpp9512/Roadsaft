@@ -30,12 +30,12 @@ namespace INGECO.DriversControl
 
         private void FillComboboxes()
         {
-            _ = cbxMedicalExamResult.Items.Add(MedicalExamResult.Able.GetShowText());
-            _ = cbxMedicalExamResult.Items.Add(MedicalExamResult.Disable.GetShowText());
+            _ = cbxMedicalExamResult.Items.Add(MedicalExamResult.Able.GetDisplayText());
+            _ = cbxMedicalExamResult.Items.Add(MedicalExamResult.Disable.GetDisplayText());
             cbxMedicalExamResult.SelectedIndex = 0;
 
-            _ = cbxMedicalExamType.Items.Add(MedicalExamType.General.GetShowText());
-            _ = cbxMedicalExamType.Items.Add(MedicalExamType.Psychological.GetShowText());
+            _ = cbxMedicalExamType.Items.Add(MedicalExamType.General.GetDisplayText());
+            _ = cbxMedicalExamType.Items.Add(MedicalExamType.Psychological.GetDisplayText());
             cbxMedicalExamType.SelectedIndex = 0;
         }
 

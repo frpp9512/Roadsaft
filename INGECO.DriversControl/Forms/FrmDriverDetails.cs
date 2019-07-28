@@ -216,10 +216,10 @@ namespace INGECO.DriversControl
                                 ? Properties.Resources.warning
                                 : Properties.Resources.ok,
                             me.Created.ToShortDateString(),
-                            me.Type.GetShowText(),
+                            me.Type.GetDisplayText(),
                             me.DateOfMaking.ToShortDateString(),
                             $"{me.Expires.ToShortDateString()} {(me.IsExpired ? "(Expiró)" : $"(Faltan {(me.Expires - DateTime.Now).Days} día(s))")}",
-                            me.Result.GetShowText(),
+                            me.Result.GetDisplayText(),
                             me.Description
                             );
                     dgvMedicalExamActive.Rows[added].Tag = me;
@@ -245,7 +245,7 @@ namespace INGECO.DriversControl
             var medicalExamsHistory = DriverDataProviderContainer.Controller.GetDriverMedicalExamsHistory(driver);
             foreach (var mh in medicalExamsHistory)
             {
-                var added = dgvMedicalExamHistorical.Rows.Add(mh.Created.ToShortDateString(), mh.Type.GetShowText(), mh.DateOfMaking.ToShortDateString(), mh.Expires.ToShortDateString(), mh.Result.GetShowText(), mh.Description);
+                var added = dgvMedicalExamHistorical.Rows.Add(mh.Created.ToShortDateString(), mh.Type.GetDisplayText(), mh.DateOfMaking.ToShortDateString(), mh.Expires.ToShortDateString(), mh.Result.GetDisplayText(), mh.Description);
                 dgvMedicalExamHistorical.Rows[added].Tag = mh;
             }
             dgvRequalificationHistorical.ResumeLayout();

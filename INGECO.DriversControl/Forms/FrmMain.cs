@@ -22,7 +22,12 @@ namespace INGECO.DriversControl
         {
             InitializeComponent();
             Configuration.LoadFromFile();
-            DriverDataProviderContainer.InitializeWithDatabaseProvider(Configuration.DatabaseHostName, Configuration.DatabaseUserName, Configuration.DatabasePassword, Configuration.DatabaseName);
+            DriverDataProviderContainer.InitializeWithDatabaseProvider(
+                Configuration.DatabaseHostName,
+                Configuration.DatabaseUserName,
+                Configuration.DatabasePassword,
+                Configuration.DatabaseName
+                );
             SetShowingView(View.Details);
             SetDriversView(DriversView.AllDrivers);
             SetUpTimer();
@@ -61,6 +66,7 @@ namespace INGECO.DriversControl
         /// </summary>
         private async void LoadDrivers()
         {
+            stlbLoading.Visible = true;
             LoadedDrivers = await Task.Run(() => 
             {
                 switch (DriversView)
@@ -78,9 +84,14 @@ namespace INGECO.DriversControl
                 }
             });
             ShowLoadedDriversStatistic(LoadedDrivers);
+            stlbLoading.Visible = false;
             DriversQuickSearch(txtQuickSearch.Text);
         }
 
+        /// <summary>
+        /// Perform a quick search with with the loaded drivers.
+        /// </summary>
+        /// <param name="value">The value to make the search.</param>
         private void DriversQuickSearch(string value)
         {
             btnRefreshDrivers.Enabled = false;
@@ -105,7 +116,7 @@ namespace INGECO.DriversControl
                         Tag = driver,
                         ToolTipText = driver.GetStatusToolTip()
                     };
-                    _ = lvDriversList.Items.Add(item); 
+                    _ = lvDriversList.Items.Add(item);
                 }
             }
             if (lvDriversList.Items.Count > 0 && selectedIndex >= 0 && selectedIndex < lvDriversList.Items.Count)
@@ -113,8 +124,8 @@ namespace INGECO.DriversControl
                 lvDriversList.SelectedItems.Clear();
                 lvDriversList.Items[selectedIndex].Selected = true;
             }
+            stlbShowStatics.Text = $"Mostrando {lvDriversList.Items.Count} chofer{(lvDriversList.Items.Count == 1 ? "" : "es")} de {LoadedDrivers.Count} mostrado{(LoadedDrivers.Count == 1 ? "" : "s")}.";
             lvDriversList.ResumeLayout();
-            
             btnRefreshDrivers.Enabled = true;
         }
 
@@ -387,6 +398,7 @@ namespace INGECO.DriversControl
             var menuOptions = new ToolStripMenuItem[] { todosLosChoferesToolStripMenuItem, choferessinProblemasToolStripMenuItem, choferesConAdvertenciasToolStripMenuItem, choferesConProblemasToolStripMenuItem };            
             menuOptions.ToList().ForEach(m => m.Checked = m == sender);            
             DriversView = (DriversView)(menuOptions.ToList().IndexOf(sender as ToolStripMenuItem));
+            stlbDriversView.Text = $"Visualizando: {DriversView.GetDisplayText()}";
             menuOptions = null;
             LoadDrivers();
         }

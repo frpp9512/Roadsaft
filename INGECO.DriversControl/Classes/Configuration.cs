@@ -52,6 +52,9 @@ namespace INGECO.DriversControl
         /// </summary>
         public static TimeSpan ExpireWarningForMedicalExam { get; set; } = new TimeSpan(30, 0, 0, 0);
 
+        /// <summary>
+        /// Save the configuration to file.
+        /// </summary>
         public static void SaveToFile()
         {
             var fields = typeof(Configuration).GetProperties().ToList();
@@ -61,6 +64,9 @@ namespace INGECO.DriversControl
             }
         }
 
+        /// <summary>
+        /// Loads the configuration from file.
+        /// </summary>
         public static void LoadFromFile()
         {
             using (var sr = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "config.cfg"))

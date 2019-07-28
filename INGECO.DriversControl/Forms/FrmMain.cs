@@ -11,18 +11,36 @@ using System.Windows.Forms;
 
 namespace INGECO.DriversControl
 {
-    public partial class FrmMain : Form
+    public partial class FrmDriversMainForm : Form
     {
         #region Constructor
 
-        public FrmMain()
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public FrmDriversMainForm()
         {
             InitializeComponent();
             Configuration.LoadFromFile();
             DriverDataProviderContainer.InitializeWithDatabaseProvider(Configuration.DatabaseHostName, Configuration.DatabaseUserName, Configuration.DatabasePassword, Configuration.DatabaseName);
-            LoadDrivers();
+            SetShowingView(View.Details);
+            SetDriversView(DriversView.AllDrivers);
             SetUpTimer();
         }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// The loaded drivers to be managed in the form.
+        /// </summary>
+        public List<Driver> LoadedDrivers { get; set; }
+        
+        /// <summary>
+        /// The current selected DriversView option.
+        /// </summary>
+        public DriversView DriversView { get; set; }
 
         #endregion
 
@@ -43,6 +61,28 @@ namespace INGECO.DriversControl
         /// </summary>
         private async void LoadDrivers()
         {
+            LoadedDrivers = await Task.Run(() => 
+            {
+                switch (DriversView)
+                {
+                    case DriversView.AllDrivers:
+                        return DriverDataProviderContainer.Controller.GetDrivers();
+                    case DriversView.DriversWithoutIssues:
+                        return DriverDataProviderContainer.Controller.GetDriversWithoutIssues(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam);
+                    case DriversView.DriversWithWarnings:
+                        return DriverDataProviderContainer.Controller.GetDriversWithWarnings(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam);
+                    case DriversView.DriversWithIssues:
+                        return DriverDataProviderContainer.Controller.GetDriverWithExpiredAttributes(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam);
+                    default:
+                        throw new Exception("Ha ocurrido un error cargando los choferes.");
+                }
+            });
+            ShowLoadedDriversStatistic(LoadedDrivers);
+            DriversQuickSearch(txtQuickSearch.Text);
+        }
+
+        private void DriversQuickSearch(string value)
+        {
             btnRefreshDrivers.Enabled = false;
             var selectedIndex = -1;
             if (lvDriversList.SelectedIndices.Count > 0)
@@ -51,17 +91,22 @@ namespace INGECO.DriversControl
             }
             SetListViewImageLists();
             lvDriversList.SuspendLayout();
-            lvDriversList.Items.Clear();
-            var drivers = await Task.Run(() => DriverDataProviderContainer.Controller.GetDrivers());
-            foreach (var driver in drivers)
+            lvDriversList.Items.Clear();            
+            foreach (var driver in LoadedDrivers)
             {
-                var item = new ListViewItem(new string[] { driver.FullName, driver.Position, driver.PersonalId, driver.Age.ToString(), driver.Description })
+                if (driver.FullName.ToLower().Contains(value.ToLower()) ||
+                    driver.PersonalId.Contains(value) || 
+                    driver.DriverLicense?.Number.Contains(value) == true
+                    )
                 {
-                    ImageIndex = driver.HasExpiredParameters ? 2 : driver.GetIfAnyParameterExpireDateIsInPeriod(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam) ? 1 : 0,
-                    Tag = driver,
-                    ToolTipText = driver.GetStatusToolTip()
-                };
-                _ = lvDriversList.Items.Add(item);
+                    var item = new ListViewItem(new string[] { driver.FullName, driver.Position, driver.PersonalId, driver.Age.ToString(), driver.Description })
+                    {
+                        ImageIndex = driver.HasExpiredParameters ? 2 : driver.GetIfAnyParameterExpireDateIsInPeriod(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam) ? 1 : 0,
+                        Tag = driver,
+                        ToolTipText = driver.GetStatusToolTip()
+                    };
+                    _ = lvDriversList.Items.Add(item); 
+                }
             }
             if (lvDriversList.Items.Count > 0 && selectedIndex >= 0 && selectedIndex < lvDriversList.Items.Count)
             {
@@ -69,7 +114,7 @@ namespace INGECO.DriversControl
                 lvDriversList.Items[selectedIndex].Selected = true;
             }
             lvDriversList.ResumeLayout();
-            ShowLoadedDriversStatistic(drivers);
+            
             btnRefreshDrivers.Enabled = true;
         }
 
@@ -192,6 +237,84 @@ namespace INGECO.DriversControl
             }
         }
 
+        /// <summary>
+        /// Sets a view for the ListView.
+        /// </summary>
+        /// <param name="view">The view to set.</param>
+        private void SetShowingView(View view)
+        {
+            switch (view)
+            {
+                case View.LargeIcon:
+                    lvDriversList.View = View.LargeIcon;
+                    icónosPequeñosToolStripMenuItem.Checked = false;
+                    detallesToolStripMenuItem.Checked = false;
+                    icónosGrandesToolStripMenuItem.Checked = true;
+                    listaToolStripMenuItem.Checked = false;
+                    teselasToolStripMenuItem.Checked = false;
+                    break;
+                case View.Details:
+                    lvDriversList.View = View.Details;
+                    icónosPequeñosToolStripMenuItem.Checked = false;
+                    detallesToolStripMenuItem.Checked = true;
+                    icónosGrandesToolStripMenuItem.Checked = false;
+                    listaToolStripMenuItem.Checked = false;
+                    teselasToolStripMenuItem.Checked = false;
+                    return;
+                case View.SmallIcon:
+                    lvDriversList.View = View.SmallIcon;
+                    icónosPequeñosToolStripMenuItem.Checked = true;
+                    detallesToolStripMenuItem.Checked = false;
+                    icónosGrandesToolStripMenuItem.Checked = false;
+                    listaToolStripMenuItem.Checked = false;
+                    teselasToolStripMenuItem.Checked = false;
+                    return;
+                case View.List:
+                    lvDriversList.View = View.List;
+                    icónosPequeñosToolStripMenuItem.Checked = false;
+                    detallesToolStripMenuItem.Checked = false;
+                    icónosGrandesToolStripMenuItem.Checked = false;
+                    listaToolStripMenuItem.Checked = true;
+                    teselasToolStripMenuItem.Checked = false;
+                    return;
+                case View.Tile:
+                    lvDriversList.View = View.Tile;
+                    icónosPequeñosToolStripMenuItem.Checked = false;
+                    detallesToolStripMenuItem.Checked = false;
+                    icónosGrandesToolStripMenuItem.Checked = false;
+                    listaToolStripMenuItem.Checked = false;
+                    teselasToolStripMenuItem.Checked = true;
+                    return;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Sets the current Driver's view.
+        /// </summary>
+        /// <param name="driversView">The new Driver's view.</param>
+        private void SetDriversView(DriversView driversView)
+        {
+            switch (driversView)
+            {
+                case DriversView.AllDrivers:
+                    SelectDriversView(todosLosChoferesToolStripMenuItem, new EventArgs());
+                    break;
+                case DriversView.DriversWithoutIssues:
+                    SelectDriversView(choferessinProblemasToolStripMenuItem, new EventArgs());
+                    break;
+                case DriversView.DriversWithWarnings:
+                    SelectDriversView(choferesConAdvertenciasToolStripMenuItem, new EventArgs());
+                    break;
+                case DriversView.DriversWithIssues:
+                    SelectDriversView(choferesConProblemasToolStripMenuItem, new EventArgs());
+                    break;
+                default:
+                    break;
+            }
+        }
+
         #endregion
 
         #region Events subscribers
@@ -234,11 +357,45 @@ namespace INGECO.DriversControl
             OpenSelectedDriverDetails();
         }
 
-        #endregion
-
-        private void ProgramaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DetallesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            SetShowingView(View.Details);
         }
+
+        private void IcónosGrandesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetShowingView(View.LargeIcon);
+        }
+
+        private void IcónosPequeñosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetShowingView(View.SmallIcon);
+        }
+
+        private void ListaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetShowingView(View.List);
+        }
+
+        private void TeselasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetShowingView(View.Tile);
+        }
+
+        private void SelectDriversView(object sender, EventArgs e)
+        {
+            var menuOptions = new ToolStripMenuItem[] { todosLosChoferesToolStripMenuItem, choferessinProblemasToolStripMenuItem, choferesConAdvertenciasToolStripMenuItem, choferesConProblemasToolStripMenuItem };            
+            menuOptions.ToList().ForEach(m => m.Checked = m == sender);            
+            DriversView = (DriversView)(menuOptions.ToList().IndexOf(sender as ToolStripMenuItem));
+            menuOptions = null;
+            LoadDrivers();
+        }
+
+        private void TxtQuickSearch_TextChanged(object sender, EventArgs e)
+        {
+            DriversQuickSearch(txtQuickSearch.Text);
+        }
+
+        #endregion
     }
 }

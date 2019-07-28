@@ -18,10 +18,34 @@ namespace INGECO.DriversControl.Data
         void InitializeDataConnection(params object[] parameters);
 
         /// <summary>
-        /// Get the list of drivers stored in the system.
+        /// Gets the list of <see cref="Driver"/> stored in the system.
         /// </summary>
         /// <returns>The list of drivers.</returns>
         List<Driver> GetDrivers();
+
+        /// <summary>
+        /// Gets the list of <see cref="Driver"/> without any warning or expired attribute.
+        /// </summary>
+        /// <returns>A list of <see cref="Driver"/> without any warning or expired attribute.</returns>
+        List<Driver> GetDriversWithoutIssues(TimeSpan licenseExpireWarning, TimeSpan requalificationExpireWarning, TimeSpan medicalExamExpireWarning);
+
+        /// <summary>
+        /// Gets the list of <see cref="Driver"/> with warnings on any attribute.
+        /// </summary>
+        /// <param name="licenseExpireWarning">Time period for determine license expiration warning.</param>
+        /// <param name="requalificationExpireWarning">Time period for determine requalification expiration warning.</param>
+        /// <param name="medicalExamExpireWarning">Time period for determine medical exam expiration warning.</param>
+        /// <returns>A list of <see cref="Driver"/> with warnings on any attribute.</returns>
+        List<Driver> GetDriversWithWarnings(TimeSpan licenseExpireWarning, TimeSpan requalificationExpireWarning, TimeSpan medicalExamExpireWarning);
+
+        /// <summary>
+        /// Gets the list of <see cref="Driver"/> with expired attributes.
+        /// </summary>
+        /// <param name="licenseExpireWarning">Time period for determine license expiration warning.</param>
+        /// <param name="requalificationExpireWarning">Time period for determine requalification expiration warning.</param>
+        /// <param name="medicalExamExpireWarning">Time period for determine medical exam expiration warning.</param>
+        /// <returns>A list of <see cref="Driver"/> with expired attributes.</returns>
+        List<Driver> GetDriverWithExpiredAttributes(TimeSpan licenseExpireWarning, TimeSpan requalificationExpireWarning, TimeSpan medicalExamExpireWarning);
 
         /// <summary>
         /// Get the history of all driver's licenses.

@@ -193,5 +193,47 @@ namespace INGECO.DriversControl.Data
                 return false;
             }
         }
+
+        public List<Driver> GetDriversWithoutIssues(TimeSpan licenseExpireWarning, TimeSpan requalificationExpireWarning, TimeSpan medicalExamExpireWarning)
+        {
+            var drivers = MySQLConnector.CurrentConnection
+                .ExecuteStoredProcedure
+                (
+                "GetDriversWithoutIssues",
+                new Parameter("maximalDateForLicense", DateTime.Now + licenseExpireWarning),
+                new Parameter("maximalDateForRequalification", DateTime.Now + requalificationExpireWarning),
+                new Parameter("maximalDateForMedExams", DateTime.Now + medicalExamExpireWarning)
+                ).GetList<Driver>();
+            drivers.ForEach(d => SetDriverDependencies(d));
+            return drivers;
+        }
+
+        public List<Driver> GetDriversWithWarnings(TimeSpan licenseExpireWarning, TimeSpan requalificationExpireWarning, TimeSpan medicalExamExpireWarning)
+        {
+            var drivers = MySQLConnector.CurrentConnection
+                .ExecuteStoredProcedure
+                (
+                "GetDriversWithWarnings",
+                new Parameter("maximalDateForLicense", DateTime.Now + licenseExpireWarning),
+                new Parameter("maximalDateForRequalification", DateTime.Now + requalificationExpireWarning),
+                new Parameter("maximalDateForMedExams", DateTime.Now + medicalExamExpireWarning)
+                ).GetList<Driver>();
+            drivers.ForEach(d => SetDriverDependencies(d));
+            return drivers;
+        }
+
+        public List<Driver> GetDriverWithExpiredAttributes(TimeSpan licenseExpireWarning, TimeSpan requalificationExpireWarning, TimeSpan medicalExamExpireWarning)
+        {
+            var drivers = MySQLConnector.CurrentConnection
+                .ExecuteStoredProcedure
+                (
+                "GetDriversWithExpiredAttributes",
+                new Parameter("maximalDateForLicense", DateTime.Now + licenseExpireWarning),
+                new Parameter("maximalDateForRequalification", DateTime.Now + requalificationExpireWarning),
+                new Parameter("maximalDateForMedExams", DateTime.Now + medicalExamExpireWarning)
+                ).GetList<Driver>();
+            drivers.ForEach(d => SetDriverDependencies(d));
+            return drivers;
+        }
     }
 }

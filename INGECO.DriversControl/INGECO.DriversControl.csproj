@@ -66,19 +66,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Configuration.cs" />
+    <Compile Include="Enums\DriversView.cs" />
     <Compile Include="Forms\FrmDriverDetails.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmDriverDetails.Designer.cs">
       <DependentUpon>FrmDriverDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\EnumsExtensions.cs" />
     <Compile Include="Forms\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\EnumsExtensions.cs" />
     <Compile Include="Forms\FrmNewLicense.cs">
       <SubType>Form</SubType>
     </Compile>

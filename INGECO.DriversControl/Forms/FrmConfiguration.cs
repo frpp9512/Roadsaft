@@ -22,7 +22,8 @@ namespace INGECO.DriversControl
         {
             nudRefreshTime.Value = Configuration.RefreshInterval;
             nudLicenseTimePeriod.Value = Configuration.ExpireWarningForLicense.Days;
-            nudRequalificationTimePeriod.Value = Configuration.ExpireWarningForMedicalExam.Days;
+            nudRequalificationTimePeriod.Value = Configuration.ExpireWarningForRequalification.Days;
+            nudMedExamsTimePeriod.Value = Configuration.ExpireWarningForMedicalExam.Days;
             txtDatabaseHost.Text = Configuration.DatabaseHostName;
             txtDatabaseUser.Text = Configuration.DatabaseUserName;
             txtDatabasePassword.Text = "xxxxxxx";
@@ -48,7 +49,7 @@ namespace INGECO.DriversControl
             Configuration.RefreshInterval = Convert.ToInt32(nudRefreshTime.Value);
             Configuration.ExpireWarningForLicense = new TimeSpan(Convert.ToInt32(nudLicenseTimePeriod.Value), 0, 0, 0);
             Configuration.ExpireWarningForRequalification = new TimeSpan(Convert.ToInt32(nudRequalificationTimePeriod.Value), 0, 0, 0);
-            Configuration.ExpireWarningForMedicalExam = new TimeSpan(Convert.ToInt32(nudLicenseTimePeriod.Value), 0, 0, 0);
+            Configuration.ExpireWarningForMedicalExam = new TimeSpan(Convert.ToInt32(nudMedExamsTimePeriod.Value), 0, 0, 0);
             Configuration.SaveToFile();
             _ = MessageBox.Show("Configuración guardada satisfactoriamente.", "Configuración guardada", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

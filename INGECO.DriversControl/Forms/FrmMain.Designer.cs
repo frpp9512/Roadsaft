@@ -43,6 +43,10 @@
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             this.appMainMenu = new System.Windows.Forms.MenuStrip();
             this.programaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detallesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.icónosGrandesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,16 +69,21 @@
             this.stlbDriversView = new System.Windows.Forms.ToolStripStatusLabel();
             this.stlbShowStatics = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.driverContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.detallesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.imprimirfichaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.renovarLicenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renovarRecalificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoChequeoMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             lvClFullname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClPosition = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.appMainMenu.SuspendLayout();
             this.appStatusBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.driverContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvClFullname
@@ -104,6 +113,7 @@
             this.tvClPersonalId,
             this.tvClAge,
             tvClDescription});
+            this.lvDriversList.ContextMenuStrip = this.driverContextMenu;
             this.lvDriversList.FullRowSelect = true;
             this.lvDriversList.HideSelection = false;
             this.lvDriversList.Location = new System.Drawing.Point(12, 135);
@@ -203,6 +213,29 @@
             this.programaToolStripMenuItem.Name = "programaToolStripMenuItem";
             this.programaToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.programaToolStripMenuItem.Text = "&Programa";
+            // 
+            // actualizarToolStripMenuItem
+            // 
+            this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
+            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.actualizarToolStripMenuItem.Text = "&Actualizar";
+            // 
+            // imprimirToolStripMenuItem
+            // 
+            this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
+            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.imprimirToolStripMenuItem.Text = "&Imprimir...";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(126, 6);
+            // 
+            // cerrarToolStripMenuItem
+            // 
+            this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.cerrarToolStripMenuItem.Text = "&Cerrar";
             // 
             // verToolStripMenuItem
             // 
@@ -309,7 +342,7 @@
             // configuraciónToolStripMenuItem
             // 
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.configuraciónToolStripMenuItem.Text = "Configuración...";
             this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.ConfiguraciónToolStripMenuItem_Click);
             // 
@@ -389,28 +422,59 @@
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
-            // imprimirToolStripMenuItem
+            // driverContextMenu
             // 
-            this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
-            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.imprimirToolStripMenuItem.Text = "&Imprimir...";
+            this.driverContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.detallesToolStripMenuItem1,
+            this.toolStripSeparator3,
+            this.imprimirfichaToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.renovarLicenciaToolStripMenuItem,
+            this.renovarRecalificaciónToolStripMenuItem,
+            this.nuevoChequeoMédicoToolStripMenuItem});
+            this.driverContextMenu.Name = "driverContextMenu";
+            this.driverContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.driverContextMenu.Size = new System.Drawing.Size(211, 126);
             // 
-            // toolStripSeparator2
+            // detallesToolStripMenuItem1
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.detallesToolStripMenuItem1.Name = "detallesToolStripMenuItem1";
+            this.detallesToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
+            this.detallesToolStripMenuItem1.Text = "&Detalles...";
             // 
-            // cerrarToolStripMenuItem
+            // toolStripSeparator3
             // 
-            this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cerrarToolStripMenuItem.Text = "&Cerrar";
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(207, 6);
             // 
-            // actualizarToolStripMenuItem
+            // imprimirfichaToolStripMenuItem
             // 
-            this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
-            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.actualizarToolStripMenuItem.Text = "&Actualizar";
+            this.imprimirfichaToolStripMenuItem.Name = "imprimirfichaToolStripMenuItem";
+            this.imprimirfichaToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.imprimirfichaToolStripMenuItem.Text = "Imprimir &ficha...";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(207, 6);
+            // 
+            // renovarLicenciaToolStripMenuItem
+            // 
+            this.renovarLicenciaToolStripMenuItem.Name = "renovarLicenciaToolStripMenuItem";
+            this.renovarLicenciaToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.renovarLicenciaToolStripMenuItem.Text = "&Renovar licencia...";
+            // 
+            // renovarRecalificaciónToolStripMenuItem
+            // 
+            this.renovarRecalificaciónToolStripMenuItem.Name = "renovarRecalificaciónToolStripMenuItem";
+            this.renovarRecalificaciónToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.renovarRecalificaciónToolStripMenuItem.Text = "Renovar recalificación...";
+            // 
+            // nuevoChequeoMédicoToolStripMenuItem
+            // 
+            this.nuevoChequeoMédicoToolStripMenuItem.Name = "nuevoChequeoMédicoToolStripMenuItem";
+            this.nuevoChequeoMédicoToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.nuevoChequeoMédicoToolStripMenuItem.Text = "Nuevo chequeo &médico...";
             // 
             // FrmDriversMainForm
             // 
@@ -440,6 +504,7 @@
             this.appStatusBar.ResumeLayout(false);
             this.appStatusBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.driverContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -483,5 +548,13 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem actualizarToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip driverContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem detallesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem imprimirfichaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem renovarLicenciaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renovarRecalificaciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevoChequeoMédicoToolStripMenuItem;
     }
 }

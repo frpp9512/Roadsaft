@@ -56,6 +56,10 @@ namespace INGECO.DriversControl
         /// </summary>
         private void SetUpTimer()
         {
+            if(refreshTimer.Enabled == true)
+            {
+                refreshTimer.Stop();
+            }
             refreshTimer.Interval = Configuration.RefreshInterval * 60 * 1000;
             refreshTimer.Tick += (s, ea) => LoadDrivers();
             refreshTimer.Start();
@@ -101,8 +105,8 @@ namespace INGECO.DriversControl
                 selectedIndex = lvDriversList.SelectedIndices[0];
             }
             SetListViewImageLists();
+            lvDriversList.Items.Clear();
             lvDriversList.SuspendLayout();
-            lvDriversList.Items.Clear();            
             foreach (var driver in LoadedDrivers)
             {
                 if (driver.FullName.ToLower().Contains(value.ToLower()) ||
@@ -295,6 +299,7 @@ namespace INGECO.DriversControl
                     icónosGrandesToolStripMenuItem.Checked = false;
                     listaToolStripMenuItem.Checked = false;
                     teselasToolStripMenuItem.Checked = true;
+                    DriversQuickSearch(txtQuickSearch.Text);
                     return;
                 default:
                     break;
@@ -324,6 +329,20 @@ namespace INGECO.DriversControl
                 default:
                     break;
             }
+        }
+
+        /// <summary>
+        /// Opens the configuration form.
+        /// </summary>
+        private void OpenConfigurationForm()
+        {
+            var frm = new FrmConfiguration();
+            frm.FormClosed += (s, ea) =>
+            {
+                SetUpTimer();
+                LoadDrivers();
+            };
+            frm.Show();
         }
 
         #endregion
@@ -406,6 +425,11 @@ namespace INGECO.DriversControl
         private void TxtQuickSearch_TextChanged(object sender, EventArgs e)
         {
             DriversQuickSearch(txtQuickSearch.Text);
+        }
+
+        private void ConfiguraciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenConfigurationForm();
         }
 
         #endregion

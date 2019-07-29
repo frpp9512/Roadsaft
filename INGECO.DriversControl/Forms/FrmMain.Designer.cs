@@ -39,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnNewDriver = new System.Windows.Forms.Button();
             this.btnRefreshDrivers = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.driversControlNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             this.appMainMenu = new System.Windows.Forms.MenuStrip();
@@ -62,15 +61,20 @@
             this.txtQuickSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.appStatusBar = new System.Windows.Forms.StatusStrip();
-            this.stlbShowStatics = new System.Windows.Forms.ToolStripStatusLabel();
-            this.stlbDriversView = new System.Windows.Forms.ToolStripStatusLabel();
             this.stlbLoading = new System.Windows.Forms.ToolStripStatusLabel();
+            this.stlbDriversView = new System.Windows.Forms.ToolStripStatusLabel();
+            this.stlbShowStatics = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             lvClFullname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClPosition = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.appMainMenu.SuspendLayout();
             this.appStatusBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lvClFullname
@@ -107,6 +111,7 @@
             this.lvDriversList.ShowItemToolTips = true;
             this.lvDriversList.Size = new System.Drawing.Size(702, 369);
             this.lvDriversList.TabIndex = 0;
+            this.lvDriversList.TileSize = new System.Drawing.Size(200, 50);
             this.lvDriversList.UseCompatibleStateImageBehavior = false;
             this.lvDriversList.View = System.Windows.Forms.View.Details;
             this.lvDriversList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LvDriversList_MouseDoubleClick);
@@ -164,16 +169,6 @@
             this.btnRefreshDrivers.UseVisualStyleBackColor = true;
             this.btnRefreshDrivers.Click += new System.EventHandler(this.BtnRefreshDrivers_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::INGECO.DriversControl.Properties.Resources.drivers_control;
-            this.pictureBox1.Location = new System.Drawing.Point(20, 27);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(69, 68);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 14;
-            this.pictureBox1.TabStop = false;
-            // 
             // driversControlNotifyIcon
             // 
             this.driversControlNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("driversControlNotifyIcon.Icon")));
@@ -200,6 +195,11 @@
             // 
             // programaToolStripMenuItem
             // 
+            this.programaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.actualizarToolStripMenuItem,
+            this.imprimirToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.cerrarToolStripMenuItem});
             this.programaToolStripMenuItem.Name = "programaToolStripMenuItem";
             this.programaToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.programaToolStripMenuItem.Text = "&Programa";
@@ -309,8 +309,9 @@
             // configuraciónToolStripMenuItem
             // 
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.configuraciónToolStripMenuItem.Text = "Configuración,,,";
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.configuraciónToolStripMenuItem.Text = "Configuración...";
+            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.ConfiguraciónToolStripMenuItem_Click);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -357,18 +358,6 @@
             this.appStatusBar.TabIndex = 19;
             this.appStatusBar.Text = "Barra de estado";
             // 
-            // stlbShowStatics
-            // 
-            this.stlbShowStatics.Name = "stlbShowStatics";
-            this.stlbShowStatics.Size = new System.Drawing.Size(203, 17);
-            this.stlbShowStatics.Text = "Mostrando X choferes de X cargados.";
-            // 
-            // stlbDriversView
-            // 
-            this.stlbDriversView.Name = "stlbDriversView";
-            this.stlbDriversView.Size = new System.Drawing.Size(179, 17);
-            this.stlbDriversView.Text = "Visualizando: Todos los choferes.";
-            // 
             // stlbLoading
             // 
             this.stlbLoading.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -377,6 +366,51 @@
             this.stlbLoading.Size = new System.Drawing.Size(68, 17);
             this.stlbLoading.Text = "Cargando...";
             this.stlbLoading.Visible = false;
+            // 
+            // stlbDriversView
+            // 
+            this.stlbDriversView.Name = "stlbDriversView";
+            this.stlbDriversView.Size = new System.Drawing.Size(179, 17);
+            this.stlbDriversView.Text = "Visualizando: Todos los choferes.";
+            // 
+            // stlbShowStatics
+            // 
+            this.stlbShowStatics.Name = "stlbShowStatics";
+            this.stlbShowStatics.Size = new System.Drawing.Size(203, 17);
+            this.stlbShowStatics.Text = "Mostrando X choferes de X cargados.";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::INGECO.DriversControl.Properties.Resources.drivers_control;
+            this.pictureBox1.Location = new System.Drawing.Point(20, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(69, 68);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
+            // 
+            // imprimirToolStripMenuItem
+            // 
+            this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
+            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.imprimirToolStripMenuItem.Text = "&Imprimir...";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // cerrarToolStripMenuItem
+            // 
+            this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cerrarToolStripMenuItem.Text = "&Cerrar";
+            // 
+            // actualizarToolStripMenuItem
+            // 
+            this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
+            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.actualizarToolStripMenuItem.Text = "&Actualizar";
             // 
             // FrmDriversMainForm
             // 
@@ -401,11 +435,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control de choferes";
             this.SizeChanged += new System.EventHandler(this.FrmMain_SizeChanged);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.appMainMenu.ResumeLayout(false);
             this.appMainMenu.PerformLayout();
             this.appStatusBar.ResumeLayout(false);
             this.appStatusBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -445,5 +479,9 @@
         private System.Windows.Forms.ToolStripStatusLabel stlbShowStatics;
         private System.Windows.Forms.ToolStripStatusLabel stlbDriversView;
         private System.Windows.Forms.ToolStripStatusLabel stlbLoading;
+        private System.Windows.Forms.ToolStripMenuItem imprimirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem actualizarToolStripMenuItem;
     }
 }

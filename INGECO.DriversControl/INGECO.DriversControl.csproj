@@ -79,6 +79,12 @@
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmConfiguration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmConfiguration.Designer.cs">
+      <DependentUpon>FrmConfiguration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\EnumsExtensions.cs" />
     <Compile Include="Forms\FrmNewLicense.cs">
       <SubType>Form</SubType>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmNewDriver.resx">
       <DependentUpon>FrmNewDriver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmConfiguration.resx">
+      <DependentUpon>FrmConfiguration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,10 +33,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\..\MyOwnBussiness_v2\SmartB1t.Database\SmartB1t.Database\bin\Debug\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\MyOwnBussiness_v2\MyOwnBussiness_v2\bin\Debug\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="SmartB1t.Database">
-      <HintPath>..\..\..\..\..\MyOwnBussiness_v2\SmartB1t.Database\SmartB1t.Database\bin\Debug\SmartB1t.Database.dll</HintPath>
+      <HintPath>..\..\..\..\..\MyOwnBussiness_v2\MyOwnBussiness_v2\bin\Debug\SmartB1t.Database.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

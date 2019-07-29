@@ -69,6 +69,13 @@ namespace INGECO.DriversControl.Data
         List<MedicalExam> GetDriverMedicalExamsHistory(Driver driver);
 
         /// <summary>
+        /// Deativate the driver in the system.
+        /// </summary>
+        /// <param name="driver">The driver to deativate.</param>
+        /// <returns><see langword="true"/> if the driver was deativated successfully.</returns>
+        bool DeactivateDriver(Driver driver);
+
+        /// <summary>
         /// Register a driver in the system.
         /// </summary>
         /// <param name="driver">The driver to register.</param>

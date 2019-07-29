@@ -97,6 +97,7 @@ namespace INGECO.DriversControl.Data
                 if (driver.DriverLicense != null)
                 {
                     driver.DriverLicense.IsActive = false;
+                    driver.Requalificaiton.Archived = DateTime.Now;
                     driver.DriverLicense.UpdateMe();
                 }
                 newLicense.IsActive = true;
@@ -120,6 +121,7 @@ namespace INGECO.DriversControl.Data
                 if (driver.Requalificaiton != null)
                 {
                     driver.Requalificaiton.IsActive = false;
+                    driver.Requalificaiton.Archived = DateTime.Now;
                     driver.Requalificaiton.UpdateMe();
                 }
                 requalificaiton.IsActive = true;
@@ -184,6 +186,7 @@ namespace INGECO.DriversControl.Data
             try
             {
                 medicalExam.IsActive = false;
+                medicalExam.Archived = DateTime.Now;
                 _ = driver.MedicalExams.Remove(medicalExam);
                 medicalExam.UpdateMe();
                 return true;
@@ -234,6 +237,22 @@ namespace INGECO.DriversControl.Data
                 ).GetList<Driver>();
             drivers.ForEach(d => SetDriverDependencies(d));
             return drivers;
+        }
+
+        public bool DeactivateDriver(Driver driver)
+        {
+            try
+            {
+                driver.IsActive = false;
+                driver.Archived = DateTime.Now;
+                driver.UpdateMe();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
         }
     }
 }

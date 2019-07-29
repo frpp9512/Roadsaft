@@ -210,12 +210,26 @@ namespace INGECO.DriversControl
         }
 
         /// <summary>
-        /// Returns the current selected driver in the ListView.
+        /// Gets the first of the selected drivers in the ListView.
         /// </summary>
-        /// <returns></returns>
-        private Driver GetSelectedDriver()
+        /// <returns>The first of the selected drivers.</returns>
+        private Driver GetFirstSelectedDriver()
         {
             return lvDriversList.SelectedItems[0].Tag as Driver;
+        }
+
+        /// <summary>
+        /// Gets the current selected drivers in the ListView.
+        /// </summary>
+        /// <returns>The current selected drivers.</returns>
+        private List<Driver> GetSelectedDrivers()
+        {
+            var selectedDrivers = new List<Driver>();
+            for (var i = 0; i < lvDriversList.SelectedItems.Count; i++)
+            {
+                selectedDrivers.Add(lvDriversList.SelectedItems[i].Tag as Driver);
+            }
+            return selectedDrivers;
         }
 
         /// <summary>
@@ -246,7 +260,7 @@ namespace INGECO.DriversControl
         {
             if (lvDriversList.SelectedItems.Count > 0)
             {
-                var frm = new FrmDriverDetails(GetSelectedDriver());
+                var frm = new FrmDriverDetails(GetFirstSelectedDriver());
                 frm.UpdateRequested += (s, ea) => LoadDrivers();
                 frm.ShowDialog();
             }
@@ -345,6 +359,27 @@ namespace INGECO.DriversControl
             frm.Show();
         }
 
+        /// <summary>
+        /// Deactivates the current selected drivers.
+        /// </summary>
+        private void DeactivateSelectedDrivers()
+        {
+            var selected = GetSelectedDrivers();
+            if (MessageBox.Show($"¿Está seguro que desea dar baja {(selected.Count > 1 ? $"a los {selected.Count} choferes seleccionados" : $"al chofer '{selected[0].FullName}'")}?", "Dar baja a choferes", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                foreach (var driver in selected)
+                {
+                    if (!DriverDataProviderContainer.Controller.DeactivateDriver(driver))
+                    {
+                        _ = MessageBox.Show("Ha ocurrido un error en la desactivación de un chofer. Vuelva a intentarlo, si el error persiste comunicarse con el desarrollador.", "Error dando baja a chofer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                _ = MessageBox.Show($"Se ha dado baja satisfactoriamente {(selected.Count > 1 ? $"a los {selected.Count} choferes seleccionados" : $"al chofer '{selected[0].FullName}'")}.", "Dar baja a chofer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            LoadDrivers();
+        }
+
         #endregion
 
         #region Events subscribers
@@ -419,7 +454,14 @@ namespace INGECO.DriversControl
             DriversView = (DriversView)(menuOptions.ToList().IndexOf(sender as ToolStripMenuItem));
             stlbDriversView.Text = $"Visualizando: {DriversView.GetDisplayText()}";
             menuOptions = null;
-            LoadDrivers();
+            try
+            {
+                LoadDrivers();
+            }
+            catch(Exception ex)
+            { 
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void TxtQuickSearch_TextChanged(object sender, EventArgs e)
@@ -430,6 +472,36 @@ namespace INGECO.DriversControl
         private void ConfiguraciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenConfigurationForm();
+        }
+
+        private void DriverContextMenu_Opening(object sender, CancelEventArgs e)
+        {
+            var driverMenuOptions = new ToolStripMenuItem[]
+            {
+                detallesToolStripMenuItem1,
+                imprimirfichaToolStripMenuItem,
+                renovarLicenciaToolStripMenuItem,
+                renovarRecalificaciónToolStripMenuItem,
+                nuevoChequeoMédicoToolStripMenuItem,
+            };
+            var separators = new ToolStripSeparator[]
+            {
+                toolStripSeparator3,
+                toolStripSeparator4,
+                toolStripSeparator5
+            };
+            separators.ToList().ForEach(m => m.Visible = lvDriversList.SelectedItems.Count > 0);
+            driverMenuOptions.ToList().ForEach(m => m.Visible = lvDriversList.SelectedItems.Count > 0);
+        }
+
+        private void DetallesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenSelectedDriverDetails();
+        }
+
+        private void DarBajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeactivateSelectedDrivers();
         }
 
         #endregion

@@ -21,6 +21,7 @@ namespace INGECO.DriversControl.Data
                       "dl_dateofmaking",
                       "dl_expires",
                       "dl_description",
+                      "dl_archived",
                       "dl_isactive",
                       "driver_id"
                   })
@@ -66,6 +67,11 @@ namespace INGECO.DriversControl.Data
         public string Description { get; set; }
 
         /// <summary>
+        /// The date and time when the Driver License was archived.
+        /// </summary>
+        public DateTime Archived { get; set; }
+
+        /// <summary>
         /// True if the driver's license is active.
         /// </summary>
         public bool IsActive { get; set; }
@@ -93,7 +99,7 @@ namespace INGECO.DriversControl.Data
 
         #region DBObject Implementation
 
-        protected override object[] Values => new object[] { Number, Category, Created, DateOfMaking, Expires, Description, IsActive, Driver.PrimaryKeyValue };
+        protected override object[] Values => new object[] { Number, Category, Created, DateOfMaking, Expires, Description, Archived, IsActive, Driver.PrimaryKeyValue };
 
         protected override void SetValues(DataResult dr)
         {
@@ -103,6 +109,7 @@ namespace INGECO.DriversControl.Data
             DateOfMaking = dr.GetValue<DateTime>("dl_dateofmaking");
             Expires = dr.GetValue<DateTime>("dl_expires");
             Description = dr.GetValue<string>("dl_description");
+            Archived = dr.GetValue<DateTime>("dl_archived");
             IsActive = dr.GetValue<bool>("dl_isactive");
             Driver = new Driver { PrimaryKeyValue = dr.GetValue<int>("driver_id") };
         }

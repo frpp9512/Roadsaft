@@ -24,6 +24,7 @@ namespace INGECO.DriversControl.Data
                       "volume",
                       "page",
                       "req_description",
+                      "req_archived",
                       "req_isactive",
                       "driver_id"
                   })
@@ -71,6 +72,11 @@ namespace INGECO.DriversControl.Data
         public string Description { get; set; }
 
         /// <summary>
+        /// The date and time when the Requalification was archived.
+        /// </summary>
+        public DateTime Archived { get; set; }
+
+        /// <summary>
         /// True when the re-qualification is active.
         /// </summary>
         public bool IsActive { get; set; }
@@ -98,7 +104,7 @@ namespace INGECO.DriversControl.Data
 
         #region DBObject Implementation
 
-        protected override object[] Values => new object[] { Created, DateOfMaking, Expires, Volume, Page, Description, IsActive, Driver.PrimaryKeyValue };
+        protected override object[] Values => new object[] { Created, DateOfMaking, Expires, Volume, Page, Description, Archived, IsActive, Driver.PrimaryKeyValue };
 
         protected override void SetValues(DataResult dr)
         {
@@ -108,6 +114,7 @@ namespace INGECO.DriversControl.Data
             Volume = dr.GetValue<string>("volume");
             Page = dr.GetValue<string>("page");
             Description = dr.GetValue<string>("req_description");
+            Archived = dr.GetValue<DateTime>("req_archived");
             IsActive = dr.GetValue<bool>("req_isactive");
             Driver = new Driver { PrimaryKeyValue = dr.GetValue<int>("driver_id") };
         }

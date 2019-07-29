@@ -245,7 +245,7 @@ namespace INGECO.DriversControl
             var medicalExamsHistory = DriverDataProviderContainer.Controller.GetDriverMedicalExamsHistory(driver);
             foreach (var mh in medicalExamsHistory)
             {
-                var added = dgvMedicalExamHistorical.Rows.Add(mh.Created.ToShortDateString(), mh.Type.GetDisplayText(), mh.DateOfMaking.ToShortDateString(), mh.Expires.ToShortDateString(), mh.Result.GetDisplayText(), mh.Description);
+                var added = dgvMedicalExamHistorical.Rows.Add(mh.Archived.ToShortDateString(), mh.Created.ToShortDateString(), mh.Type.GetDisplayText(), mh.DateOfMaking.ToShortDateString(), mh.Expires.ToShortDateString(), mh.Result.GetDisplayText(), mh.Description);
                 dgvMedicalExamHistorical.Rows[added].Tag = mh;
             }
             dgvRequalificationHistorical.ResumeLayout();
@@ -269,6 +269,7 @@ namespace INGECO.DriversControl
                 {
                     TpRequalification.ImageIndex = 2;
                     lbRequalificationExpire.Text = "La recalificación ha expirado.";
+                    lbRequalificationExpire.ForeColor = Color.Red;
                 }
                 else
                 {
@@ -277,7 +278,7 @@ namespace INGECO.DriversControl
                     if (driver.Requalificaiton.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification))
                     {
                         TpRequalification.ImageIndex = 1;
-                        lbRequalificationExpire.ForeColor = Color.Yellow;
+                        lbRequalificationExpire.ForeColor = Color.Orange;
                     }
                     else
                     {
@@ -290,7 +291,7 @@ namespace INGECO.DriversControl
                 var requalificationsHistory = DriverDataProviderContainer.Controller.GetDriverRequalificationHistory(driver);
                 foreach (var req in requalificationsHistory)
                 {
-                    var added = dgvRequalificationHistorical.Rows.Add(req.Created.ToShortDateString(), req.DateOfMaking, req.Expires, req.Volume, req.Page, req.Description);
+                    var added = dgvRequalificationHistorical.Rows.Add(req.Archived.ToShortDateString(), req.Created.ToShortDateString(), req.DateOfMaking, req.Expires, req.Volume, req.Page, req.Description);
                     dgvRequalificationHistorical.Rows[added].Tag = req;
                 }
                 dgvRequalificationHistorical.ResumeLayout();
@@ -328,7 +329,7 @@ namespace INGECO.DriversControl
                     if (driver.DriverLicense.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense))
                     {
                         TpDriverLicense.ImageIndex = 1;
-                        lbLicenseExpiration.ForeColor = Color.Yellow;
+                        lbLicenseExpiration.ForeColor = Color.Orange;
                     }
                     else
                     {
@@ -341,7 +342,7 @@ namespace INGECO.DriversControl
                 var licensesHistory = DriverDataProviderContainer.Controller.GetDriverLicenseHistory(driver);
                 foreach (var lh in licensesHistory)
                 {
-                    var added = dgvHistoricLicenses.Rows.Add(lh.Created.ToShortDateString(), lh.Number, lh.Category, lh.DateOfMaking, lh.Expires, lh.Description);
+                    var added = dgvHistoricLicenses.Rows.Add(lh.Archived.ToShortDateString(), lh.Created.ToShortDateString(), lh.Number, lh.Category, lh.DateOfMaking, lh.Expires, lh.Description);
                     dgvHistoricLicenses.Rows[added].Tag = lh;
                 }
                 dgvHistoricLicenses.ResumeLayout();

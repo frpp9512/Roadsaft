@@ -36,6 +36,17 @@
             this.lvDriversList = new System.Windows.Forms.ListView();
             this.tvClPersonalId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tvClAge = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.driverContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.detallesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.darBajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.imprimirfichaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.renovarLicenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renovarRecalificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoChequeoMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.imprimirlistadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.btnNewDriver = new System.Windows.Forms.Button();
             this.btnRefreshDrivers = new System.Windows.Forms.Button();
@@ -69,21 +80,13 @@
             this.stlbDriversView = new System.Windows.Forms.ToolStripStatusLabel();
             this.stlbShowStatics = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.driverContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.detallesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.imprimirfichaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.renovarLicenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renovarRecalificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nuevoChequeoMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             lvClFullname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClPosition = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.driverContextMenu.SuspendLayout();
             this.appMainMenu.SuspendLayout();
             this.appStatusBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.driverContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvClFullname
@@ -135,6 +138,83 @@
             // 
             this.tvClAge.Text = "Edad";
             this.tvClAge.Width = 45;
+            // 
+            // driverContextMenu
+            // 
+            this.driverContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.detallesToolStripMenuItem1,
+            this.darBajaToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.imprimirfichaToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.renovarLicenciaToolStripMenuItem,
+            this.renovarRecalificaciónToolStripMenuItem,
+            this.nuevoChequeoMédicoToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.imprimirlistadoToolStripMenuItem});
+            this.driverContextMenu.Name = "driverContextMenu";
+            this.driverContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.driverContextMenu.Size = new System.Drawing.Size(211, 198);
+            this.driverContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.DriverContextMenu_Opening);
+            // 
+            // detallesToolStripMenuItem1
+            // 
+            this.detallesToolStripMenuItem1.Name = "detallesToolStripMenuItem1";
+            this.detallesToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
+            this.detallesToolStripMenuItem1.Text = "&Detalles...";
+            this.detallesToolStripMenuItem1.Click += new System.EventHandler(this.DetallesToolStripMenuItem1_Click);
+            // 
+            // darBajaToolStripMenuItem
+            // 
+            this.darBajaToolStripMenuItem.Name = "darBajaToolStripMenuItem";
+            this.darBajaToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.darBajaToolStripMenuItem.Text = "Dar &baja";
+            this.darBajaToolStripMenuItem.Click += new System.EventHandler(this.DarBajaToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(207, 6);
+            // 
+            // imprimirfichaToolStripMenuItem
+            // 
+            this.imprimirfichaToolStripMenuItem.Name = "imprimirfichaToolStripMenuItem";
+            this.imprimirfichaToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.imprimirfichaToolStripMenuItem.Text = "Imprimir &ficha...";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(207, 6);
+            // 
+            // renovarLicenciaToolStripMenuItem
+            // 
+            this.renovarLicenciaToolStripMenuItem.Name = "renovarLicenciaToolStripMenuItem";
+            this.renovarLicenciaToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.renovarLicenciaToolStripMenuItem.Text = "&Renovar licencia...";
+            // 
+            // renovarRecalificaciónToolStripMenuItem
+            // 
+            this.renovarRecalificaciónToolStripMenuItem.Name = "renovarRecalificaciónToolStripMenuItem";
+            this.renovarRecalificaciónToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.renovarRecalificaciónToolStripMenuItem.Text = "Renovar recalificación...";
+            // 
+            // nuevoChequeoMédicoToolStripMenuItem
+            // 
+            this.nuevoChequeoMédicoToolStripMenuItem.Name = "nuevoChequeoMédicoToolStripMenuItem";
+            this.nuevoChequeoMédicoToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.nuevoChequeoMédicoToolStripMenuItem.Text = "Nuevo chequeo &médico...";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(207, 6);
+            // 
+            // imprimirlistadoToolStripMenuItem
+            // 
+            this.imprimirlistadoToolStripMenuItem.Name = "imprimirlistadoToolStripMenuItem";
+            this.imprimirlistadoToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.imprimirlistadoToolStripMenuItem.Text = "Imprimir &listado...";
             // 
             // label1
             // 
@@ -217,24 +297,24 @@
             // actualizarToolStripMenuItem
             // 
             this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
-            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.actualizarToolStripMenuItem.Text = "&Actualizar";
             // 
             // imprimirToolStripMenuItem
             // 
             this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
-            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.imprimirToolStripMenuItem.Text = "&Imprimir...";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(126, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // cerrarToolStripMenuItem
             // 
             this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cerrarToolStripMenuItem.Text = "&Cerrar";
             // 
             // verToolStripMenuItem
@@ -422,60 +502,6 @@
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
-            // driverContextMenu
-            // 
-            this.driverContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.detallesToolStripMenuItem1,
-            this.toolStripSeparator3,
-            this.imprimirfichaToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.renovarLicenciaToolStripMenuItem,
-            this.renovarRecalificaciónToolStripMenuItem,
-            this.nuevoChequeoMédicoToolStripMenuItem});
-            this.driverContextMenu.Name = "driverContextMenu";
-            this.driverContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.driverContextMenu.Size = new System.Drawing.Size(211, 126);
-            // 
-            // detallesToolStripMenuItem1
-            // 
-            this.detallesToolStripMenuItem1.Name = "detallesToolStripMenuItem1";
-            this.detallesToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
-            this.detallesToolStripMenuItem1.Text = "&Detalles...";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(207, 6);
-            // 
-            // imprimirfichaToolStripMenuItem
-            // 
-            this.imprimirfichaToolStripMenuItem.Name = "imprimirfichaToolStripMenuItem";
-            this.imprimirfichaToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.imprimirfichaToolStripMenuItem.Text = "Imprimir &ficha...";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(207, 6);
-            // 
-            // renovarLicenciaToolStripMenuItem
-            // 
-            this.renovarLicenciaToolStripMenuItem.Name = "renovarLicenciaToolStripMenuItem";
-            this.renovarLicenciaToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.renovarLicenciaToolStripMenuItem.Text = "&Renovar licencia...";
-            // 
-            // renovarRecalificaciónToolStripMenuItem
-            // 
-            this.renovarRecalificaciónToolStripMenuItem.Name = "renovarRecalificaciónToolStripMenuItem";
-            this.renovarRecalificaciónToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.renovarRecalificaciónToolStripMenuItem.Text = "Renovar recalificación...";
-            // 
-            // nuevoChequeoMédicoToolStripMenuItem
-            // 
-            this.nuevoChequeoMédicoToolStripMenuItem.Name = "nuevoChequeoMédicoToolStripMenuItem";
-            this.nuevoChequeoMédicoToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.nuevoChequeoMédicoToolStripMenuItem.Text = "Nuevo chequeo &médico...";
-            // 
             // FrmDriversMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -499,12 +525,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control de choferes";
             this.SizeChanged += new System.EventHandler(this.FrmMain_SizeChanged);
+            this.driverContextMenu.ResumeLayout(false);
             this.appMainMenu.ResumeLayout(false);
             this.appMainMenu.PerformLayout();
             this.appStatusBar.ResumeLayout(false);
             this.appStatusBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.driverContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -556,5 +582,8 @@
         private System.Windows.Forms.ToolStripMenuItem renovarLicenciaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renovarRecalificaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoChequeoMédicoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem imprimirlistadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem darBajaToolStripMenuItem;
     }
 }

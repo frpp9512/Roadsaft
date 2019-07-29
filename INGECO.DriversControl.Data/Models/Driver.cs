@@ -25,7 +25,9 @@ namespace INGECO.DriversControl.Data
                       "fullname",
                       "position",
                       "personal_id",
-                      "description"
+                      "description",
+                      "archived",
+                      "isActive"
                   })
         { }
 
@@ -76,6 +78,16 @@ namespace INGECO.DriversControl.Data
         /// A description of the driver.
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// The date and time when the driver was deactivated.
+        /// </summary>
+        public DateTime Archived { get; set; }
+
+        /// <summary>
+        /// <see langword="true"/> if driver is active in the system.
+        /// </summary>
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// The current active requalification of the driver
@@ -157,7 +169,7 @@ namespace INGECO.DriversControl.Data
 
         #region DBObject Implementation
 
-        protected override object[] Values => new object[] { FullName, Position, PersonalId, Description };
+        protected override object[] Values => new object[] { FullName, Position, PersonalId, Description, Archived, IsActive };
 
         protected override void SetValues(DataResult dr)
         {
@@ -165,6 +177,8 @@ namespace INGECO.DriversControl.Data
             Position = dr.GetValue<string>("position");
             PersonalId = dr.GetValue<string>("personal_id");
             Description = dr.GetValue<string>("description");
+            Archived = dr.GetValue<DateTime>("archived");
+            IsActive = dr.GetValue<bool>("isActive");
         }
 
         #endregion

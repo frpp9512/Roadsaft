@@ -32,7 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data">
+    <Reference Include="MySql.Data, Version=5.2.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\MyOwnBussiness_v2\MyOwnBussiness_v2\bin\Debug\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="SmartB1t.Database">
@@ -52,6 +53,7 @@
     <Compile Include="Controllers\DriverDataProviderContainer.cs" />
     <Compile Include="Interfaces\IDriversDataProvider.cs" />
     <Compile Include="Models\Driver.cs" />
+    <Compile Include="Models\DriverCategory.cs" />
     <Compile Include="Models\DriverLicense.cs" />
     <Compile Include="Models\MedicalExam.cs" />
     <Compile Include="Models\MedicalExamResult.cs" />

@@ -24,6 +24,14 @@ namespace INGECO.DriversControl
         public FrmNewDriver()
         {
             InitializeComponent();
+            FillCombobox();
+        }
+
+        private void FillCombobox()
+        {
+            cbxDriverCategory.Items.Add(DriverCategory.Professional.GetDisplayText());
+            cbxDriverCategory.Items.Add(DriverCategory.NonProfessional.GetDisplayText());
+            cbxDriverCategory.SelectedIndex = 0;
         }
 
         private void BtnNewDriver_Click(object sender, EventArgs e)
@@ -35,6 +43,7 @@ namespace INGECO.DriversControl
                     FullName = txtFullname.Text,
                     PersonalId = txtPersonalId.Text,
                     Position = txtPosition.Text,
+                    Category = (DriverCategory)cbxDriverCategory.SelectedIndex,
                     Description = txtDescription.Text
                 };
                 if (NewDriverAdded?.Invoke(driver) == true)

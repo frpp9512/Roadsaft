@@ -30,6 +30,7 @@ namespace INGECO.DriversControl
         public FrmDriverDetails()
         {
             InitializeComponent();
+            FillDriverCategoryCombobox();
             SetTabControlImageList();
             UpdatedSelectedDriver();
         }
@@ -37,6 +38,7 @@ namespace INGECO.DriversControl
         public FrmDriverDetails(Driver driver)
         {
             InitializeComponent();
+            FillDriverCategoryCombobox();
             SetTabControlImageList();
             this.Driver = driver;
             UpdatedSelectedDriver();
@@ -54,6 +56,16 @@ namespace INGECO.DriversControl
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Fills the <see cref="DriverCategory"/> combobox with the available options.
+        /// </summary>
+        private void FillDriverCategoryCombobox()
+        {
+            cbxDriverCategory.Items.Add(DriverCategory.Professional.GetDisplayText());
+            cbxDriverCategory.Items.Add(DriverCategory.NonProfessional.GetDisplayText());
+            cbxDriverCategory.SelectedIndex = 0;
+        }
 
         /// <summary>
         /// Sets the image list that will be used in the TabControl.
@@ -363,6 +375,7 @@ namespace INGECO.DriversControl
             txtFullname.Text = driver.FullName;
             txtPosition.Text = driver.Position;
             txtPersonalId.Text = driver.PersonalId;
+            cbxDriverCategory.SelectedIndex = (int)driver.Category;
             txtDescription.Text = driver.Description;
             txtBirthday.Text = $"{driver.Birthday.ToShortDateString()}";
             txtAge.Text = $"{driver.Age} años";

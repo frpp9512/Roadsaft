@@ -1,4 +1,0 @@
-﻿ To-Do List
- - Add warning at renewal of driver´s license or requalification if are far from expire date.
- - Set like starting date of making in the new license or requalification, the current date. And set like expire date 2 years from the start date.
- - Create container to call IDriversDataProvider

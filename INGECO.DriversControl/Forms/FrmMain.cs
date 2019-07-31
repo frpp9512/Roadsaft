@@ -107,16 +107,18 @@ namespace INGECO.DriversControl
             SetListViewImageLists();
             lvDriversList.Items.Clear();
             lvDriversList.SuspendLayout();
+            var professionalGroup = new ListViewGroup("Profesionales");
+            var nonProfessionalGroup = new ListViewGroup("No Profesionales");
             foreach (var driver in LoadedDrivers)
             {
                 if (driver.FullName.ToLower().Contains(value.ToLower()) ||
                     driver.PersonalId.Contains(value) || 
-                    driver.DriverLicense?.Number.Contains(value) == true
-                    )
+                    driver.DriverLicense?.Number.Contains(value) == true)
                 {
-                    var item = new ListViewItem(new string[] { driver.FullName, driver.Position, driver.PersonalId, driver.Age.ToString(), driver.Description })
+                    var item = new ListViewItem(new string[] { driver.FullName, driver.Position, driver.Category.GetDisplayText(), driver.PersonalId, driver.Age.ToString(), driver.Description })
                     {
                         ImageIndex = driver.HasExpiredParameters ? 2 : driver.GetIfAnyParameterExpireDateIsInPeriod(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam) ? 1 : 0,
+                        Group = driver.Category == DriverCategory.Professional ? professionalGroup : nonProfessionalGroup,
                         Tag = driver,
                         ToolTipText = driver.GetStatusToolTip()
                     };
@@ -128,6 +130,8 @@ namespace INGECO.DriversControl
                 lvDriversList.SelectedItems.Clear();
                 lvDriversList.Items[selectedIndex].Selected = true;
             }
+            lvDriversList.Groups.Add(professionalGroup);
+            lvDriversList.Groups.Add(nonProfessionalGroup);
             stlbShowStatics.Text = $"Mostrando {lvDriversList.Items.Count} chofer{(lvDriversList.Items.Count == 1 ? "" : "es")} de {LoadedDrivers.Count} mostrado{(LoadedDrivers.Count == 1 ? "" : "s")}.";
             lvDriversList.ResumeLayout();
             btnRefreshDrivers.Enabled = true;
@@ -380,6 +384,15 @@ namespace INGECO.DriversControl
             LoadDrivers();
         }
 
+        /// <summary>
+        /// Open the <see cref="FrmDriversReports"/> form.
+        /// </summary>
+        private void OpenDriversReport()
+        {
+            var frm = new FrmDriversReports(LoadedDrivers);
+            frm.Show();
+        }
+
         #endregion
 
         #region Events subscribers
@@ -502,6 +515,16 @@ namespace INGECO.DriversControl
         private void DarBajaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DeactivateSelectedDrivers();
+        }
+
+        private void ImprimirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenDriversReport();
+        }
+
+        private void ImprimirlistadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenDriversReport();
         }
 
         #endregion

@@ -1,0 +1,5 @@
+﻿ To-Do List
+ - Add DriverType field, Enum('Professional', 'NonProfessional')
+ - Show drivers grouped by DriverType field
+ - Add option to delete history item
+ - Finish up reporting

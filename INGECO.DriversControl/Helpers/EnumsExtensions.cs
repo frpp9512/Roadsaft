@@ -66,5 +66,23 @@ namespace INGECO.DriversControl
                     return "<No se encuentra el texto>";
             }
         }
+
+        /// <summary>
+        /// Get the text to display in the user interface.
+        /// </summary>
+        /// <param name="category">The <see cref="DriverCategory"/> to determine display text.</param>
+        /// <returns>The text to display in the user interface.</returns>
+        public static string GetDisplayText(this DriverCategory category)
+        {
+            switch (category)
+            {
+                case DriverCategory.Professional:
+                    return "Profesional";
+                case DriverCategory.NonProfessional:
+                    return "No profesional";
+                default:
+                    return "<No se encuentra el texto>";
+            }
+        }
     }
 }

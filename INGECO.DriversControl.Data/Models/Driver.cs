@@ -25,6 +25,7 @@ namespace INGECO.DriversControl.Data
                       "fullname",
                       "position",
                       "personal_id",
+                      "category",
                       "description",
                       "archived",
                       "isActive"
@@ -49,6 +50,11 @@ namespace INGECO.DriversControl.Data
         /// The personal id of the driver.
         /// </summary>
         public string PersonalId { get; set; }
+
+        /// <summary>
+        /// The category of the driver.
+        /// </summary>
+        public DriverCategory Category { get; set; }
 
         /// <summary>
         /// The birthday of the driver calculated by the personal id.
@@ -140,7 +146,7 @@ namespace INGECO.DriversControl.Data
         /// <summary>
         /// Returns <see langword="true"/> if the driver have at least one active Medical Exam.
         /// </summary>
-        public bool HasMedicalExams => MedicalExams.Count > 0;
+        public bool HasMedicalExams => MedicalExams?.Count > 0;
 
         /// <summary>
         /// Returns <see langword="true"/> if the driver have at least one Medical Exam expired. If have no Medical Exam returns <see langword="false"/>.
@@ -169,13 +175,14 @@ namespace INGECO.DriversControl.Data
 
         #region DBObject Implementation
 
-        protected override object[] Values => new object[] { FullName, Position, PersonalId, Description, Archived, IsActive };
+        protected override object[] Values => new object[] { FullName, Position, PersonalId, Category, Description, Archived, IsActive };
 
         protected override void SetValues(DataResult dr)
         {
             FullName = dr.GetValue<string>("fullname");
             Position = dr.GetValue<string>("position");
             PersonalId = dr.GetValue<string>("personal_id");
+            Category = dr.GetValue<DriverCategory>("category");
             Description = dr.GetValue<string>("description");
             Archived = dr.GetValue<DateTime>("archived");
             IsActive = dr.GetValue<bool>("isActive");

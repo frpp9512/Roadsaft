@@ -33,17 +33,20 @@
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label22;
+            System.Windows.Forms.Label label1;
             this.txtPersonalId = new System.Windows.Forms.TextBox();
             this.txtPosition = new System.Windows.Forms.TextBox();
             this.txtFullname = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnNewDriver = new System.Windows.Forms.Button();
             this.txtDescription = new System.Windows.Forms.TextBox();
+            this.cbxDriverCategory = new System.Windows.Forms.ComboBox();
             label10 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label22 = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label10
@@ -86,7 +89,7 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new System.Drawing.Point(15, 131);
+            label22.Location = new System.Drawing.Point(15, 158);
             label22.Name = "label22";
             label22.Size = new System.Drawing.Size(63, 13);
             label22.TabIndex = 32;
@@ -122,7 +125,7 @@
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Location = new System.Drawing.Point(276, 179);
+            this.btnCancel.Location = new System.Drawing.Point(276, 209);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
             this.btnCancel.TabIndex = 5;
@@ -138,7 +141,7 @@
             this.btnNewDriver.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnNewDriver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewDriver.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnNewDriver.Location = new System.Drawing.Point(186, 179);
+            this.btnNewDriver.Location = new System.Drawing.Point(186, 209);
             this.btnNewDriver.Name = "btnNewDriver";
             this.btnNewDriver.Size = new System.Drawing.Size(84, 23);
             this.btnNewDriver.TabIndex = 4;
@@ -148,18 +151,38 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(120, 128);
+            this.txtDescription.Location = new System.Drawing.Point(120, 155);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(240, 45);
+            this.txtDescription.Size = new System.Drawing.Size(240, 48);
             this.txtDescription.TabIndex = 3;
+            // 
+            // cbxDriverCategory
+            // 
+            this.cbxDriverCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxDriverCategory.FormattingEnabled = true;
+            this.cbxDriverCategory.Location = new System.Drawing.Point(120, 128);
+            this.cbxDriverCategory.Name = "cbxDriverCategory";
+            this.cbxDriverCategory.Size = new System.Drawing.Size(240, 21);
+            this.cbxDriverCategory.TabIndex = 33;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(15, 131);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(55, 13);
+            label1.TabIndex = 32;
+            label1.Text = "Categoría:";
             // 
             // FrmNewDriver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 215);
+            this.ClientSize = new System.Drawing.Size(379, 244);
+            this.Controls.Add(this.cbxDriverCategory);
             this.Controls.Add(this.txtDescription);
+            this.Controls.Add(label1);
             this.Controls.Add(label22);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnNewDriver);
@@ -189,5 +212,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnNewDriver;
         private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.ComboBox cbxDriverCategory;
     }
 }

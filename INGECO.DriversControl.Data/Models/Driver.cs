@@ -27,6 +27,7 @@ namespace INGECO.DriversControl.Data
                       "personal_id",
                       "category",
                       "description",
+                      "registered",
                       "archived",
                       "isActive"
                   })
@@ -84,6 +85,11 @@ namespace INGECO.DriversControl.Data
         /// A description of the driver.
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// The date and time when the driver was registered in the system.
+        /// </summary>
+        public DateTime Registered { get; set; }
 
         /// <summary>
         /// The date and time when the driver was deactivated.
@@ -153,6 +159,11 @@ namespace INGECO.DriversControl.Data
         /// </summary>
         public bool HasExpiredMedicalExam => HasMedicalExams ? MedicalExams.Count(me => me.IsExpired) > 0 : false;
 
+        /// <summary>
+        /// The time elapsed since the driver was registered in the system.
+        /// </summary>
+        public TimeSpan RegisteredTime => DateTime.Now - Registered;
+
         #endregion
 
         #region Methods
@@ -175,7 +186,7 @@ namespace INGECO.DriversControl.Data
 
         #region DBObject Implementation
 
-        protected override object[] Values => new object[] { FullName, Position, PersonalId, Category, Description, Archived, IsActive };
+        protected override object[] Values => new object[] { FullName, Position, PersonalId, Category, Description, Registered, Archived, IsActive };
 
         protected override void SetValues(DataResult dr)
         {
@@ -184,6 +195,7 @@ namespace INGECO.DriversControl.Data
             PersonalId = dr.GetValue<string>("personal_id");
             Category = dr.GetValue<DriverCategory>("category");
             Description = dr.GetValue<string>("description");
+            Registered = dr.GetValue<DateTime>("registered");
             Archived = dr.GetValue<DateTime>("archived");
             IsActive = dr.GetValue<bool>("isActive");
         }

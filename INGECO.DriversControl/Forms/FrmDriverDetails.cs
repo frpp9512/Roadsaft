@@ -237,6 +237,7 @@ namespace INGECO.DriversControl
                     dgvMedicalExamActive.Rows[added].Tag = me;
                 }
                 TpMedicalExams.ImageIndex = driver.MedicalExams.Count(me => me.IsExpired) > 0 ? 2 : driver.MedicalExams.Count(me => me.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForMedicalExam)) > 0 ? 1 : 0;
+                dgvMedicalExamActive.ResumeLayout();
             }
             else
             {
@@ -260,7 +261,7 @@ namespace INGECO.DriversControl
                 var added = dgvMedicalExamHistorical.Rows.Add(mh.Archived.ToShortDateString(), mh.Created.ToShortDateString(), mh.Type.GetDisplayText(), mh.DateOfMaking.ToShortDateString(), mh.Expires.ToShortDateString(), mh.Result.GetDisplayText(), mh.Description);
                 dgvMedicalExamHistorical.Rows[added].Tag = mh;
             }
-            dgvRequalificationHistorical.ResumeLayout();
+            dgvMedicalExamHistorical.ResumeLayout();
         }
 
         /// <summary>
@@ -372,6 +373,7 @@ namespace INGECO.DriversControl
         /// <param name="driver"></param>
         private void UpdateInfoTab(Driver driver)
         {
+            lbRegistered.Text = $"Registrado: {driver.Registered.ToShortDateString()} (Hace {(driver.RegisteredTime.Days > 365 ? $"{driver.RegisteredTime.Days / 365} año(s)." : driver.RegisteredTime.Days > 30 ? $"{driver.RegisteredTime.Days / 30} mes(es)." : $"{driver.RegisteredTime.Days} día(s).")})";
             txtFullname.Text = driver.FullName;
             txtPosition.Text = driver.Position;
             txtPersonalId.Text = driver.PersonalId;

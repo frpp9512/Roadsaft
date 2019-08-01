@@ -47,6 +47,7 @@
             this.renovarRecalificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoChequeoMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.actualizarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.imprimirlistadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.btnNewDriver = new System.Windows.Forms.Button();
@@ -80,8 +81,8 @@
             this.stlbLoading = new System.Windows.Forms.ToolStripStatusLabel();
             this.stlbDriversView = new System.Windows.Forms.ToolStripStatusLabel();
             this.stlbShowStatics = new System.Windows.Forms.ToolStripStatusLabel();
+            this.historialDeBajasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.actualizarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             lvClFullname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClPosition = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -163,7 +164,7 @@
             this.imprimirlistadoToolStripMenuItem});
             this.driverContextMenu.Name = "driverContextMenu";
             this.driverContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.driverContextMenu.Size = new System.Drawing.Size(211, 220);
+            this.driverContextMenu.Size = new System.Drawing.Size(211, 198);
             this.driverContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.DriverContextMenu_Opening);
             // 
             // detallesToolStripMenuItem1
@@ -218,6 +219,13 @@
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(207, 6);
+            // 
+            // actualizarToolStripMenuItem1
+            // 
+            this.actualizarToolStripMenuItem1.Name = "actualizarToolStripMenuItem1";
+            this.actualizarToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.actualizarToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
+            this.actualizarToolStripMenuItem1.Text = "&Actualizar";
             // 
             // imprimirlistadoToolStripMenuItem
             // 
@@ -298,6 +306,7 @@
             // 
             this.programaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.actualizarToolStripMenuItem,
+            this.historialDeBajasToolStripMenuItem,
             this.imprimirToolStripMenuItem,
             this.toolStripSeparator2,
             this.cerrarToolStripMenuItem});
@@ -311,6 +320,7 @@
             this.actualizarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.actualizarToolStripMenuItem.Text = "&Actualizar";
+            this.actualizarToolStripMenuItem.Click += new System.EventHandler(this.ActualizarToolStripMenuItem_Click);
             // 
             // imprimirToolStripMenuItem
             // 
@@ -438,7 +448,7 @@
             // 
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.configuraciónToolStripMenuItem.Text = "Configuración...";
             this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.ConfiguraciónToolStripMenuItem_Click);
             // 
@@ -508,6 +518,13 @@
             this.stlbShowStatics.Size = new System.Drawing.Size(203, 17);
             this.stlbShowStatics.Text = "Mostrando X choferes de X cargados.";
             // 
+            // historialDeBajasToolStripMenuItem
+            // 
+            this.historialDeBajasToolStripMenuItem.Name = "historialDeBajasToolStripMenuItem";
+            this.historialDeBajasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.historialDeBajasToolStripMenuItem.Text = "&Historial de bajas...";
+            this.historialDeBajasToolStripMenuItem.Click += new System.EventHandler(this.HistorialDeBajasToolStripMenuItem_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::INGECO.DriversControl.Properties.Resources.drivers_control;
@@ -517,13 +534,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
-            // 
-            // actualizarToolStripMenuItem1
-            // 
-            this.actualizarToolStripMenuItem1.Name = "actualizarToolStripMenuItem1";
-            this.actualizarToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.actualizarToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
-            this.actualizarToolStripMenuItem1.Text = "&Actualizar";
             // 
             // FrmDriversMainForm
             // 
@@ -610,5 +620,6 @@
         private System.Windows.Forms.ToolStripMenuItem darBajaToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader tcClCategory;
         private System.Windows.Forms.ToolStripMenuItem actualizarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem historialDeBajasToolStripMenuItem;
     }
 }

@@ -307,5 +307,19 @@ namespace INGECO.DriversControl.Data
                 return false;
             }
         }
+
+        public List<Driver> GetDriversHistory()
+        {
+            var drivers = new List<Driver>();
+            try
+            {
+                drivers = MySQLConnector.CurrentConnection.ExecuteStoredProcedure("GetInactiveDrivers").GetList<Driver>();
+            }
+            catch (Exception)
+            {
+                
+            }
+            return drivers;
+        }
     }
 }

@@ -491,6 +491,7 @@ namespace INGECO.DriversControl
         {
             var driverMenuOptions = new ToolStripMenuItem[]
             {
+                darBajaToolStripMenuItem,
                 detallesToolStripMenuItem1,
                 imprimirfichaToolStripMenuItem,
                 renovarLicenciaToolStripMenuItem,
@@ -525,6 +526,17 @@ namespace INGECO.DriversControl
         private void ImprimirlistadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenDriversReport();
+        }
+
+        private void HistorialDeBajasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmDriversHistory();
+            frm.Show();
+        }
+
+        private void ActualizarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadDrivers();
         }
 
         #endregion

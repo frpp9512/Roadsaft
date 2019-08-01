@@ -1,3 +1,3 @@
 ﻿ To-Do List
- - Add option to delete history item
  - Create Driver report.
+ - Access to renewal license, requalification and new medical exam from main form.

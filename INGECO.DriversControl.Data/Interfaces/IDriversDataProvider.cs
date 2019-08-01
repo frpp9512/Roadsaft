@@ -48,6 +48,12 @@ namespace INGECO.DriversControl.Data
         List<Driver> GetDriverWithExpiredAttributes(TimeSpan licenseExpireWarning, TimeSpan requalificationExpireWarning, TimeSpan medicalExamExpireWarning);
 
         /// <summary>
+        /// Gets the list of <see cref="Driver"/> that has been deactivated in the system.
+        /// </summary>
+        /// <returns>The list of deactivated drivers.</returns>
+        List<Driver> GetDriversHistory();
+
+        /// <summary>
         /// Get the history of all driver's licenses.
         /// </summary>
         /// <param name="driver">The driver to get license history.</param>

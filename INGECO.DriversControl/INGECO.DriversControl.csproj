@@ -52,8 +52,12 @@
     <ApplicationIcon>Resources\drivers_control.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MySql.Data">
       <HintPath>..\..\..\..\..\Desktop\GIT_Desktop\SmarB1t.Database\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
@@ -92,6 +96,12 @@
     <Compile Include="Forms\FrmConfiguration.Designer.cs">
       <DependentUpon>FrmConfiguration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmDriversHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDriversHistory.Designer.cs">
+      <DependentUpon>FrmDriversHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\Report forms\FrmDriversReports.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +137,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\Report classes\ReportingDriver.cs" />
+    <EmbeddedResource Include="Forms\FrmDriversHistory.resx">
+      <DependentUpon>FrmDriversHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Report forms\FrmDriversReports.resx">
       <DependentUpon>FrmDriversReports.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +175,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\INGECO.DriversControl.Data.Driver.datasource" />
     <None Include="Properties\DataSources\ReportingDriver.datasource" />
     <None Include="Properties\DataSources\ReportingMedicalExam.datasource" />
     <None Include="Properties\Settings.settings">

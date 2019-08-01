@@ -50,7 +50,6 @@ namespace INGECO.DriversControl
             reportViewer1.ZoomMode = ZoomMode.PageWidth;
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("Drivers", ReportingDrivers));
-            //reportViewer1.LocalReport.SetParameters(new ReportParameter("ViewFilter", DriversView.GetDisplayText()));
             reportViewer1.RefreshReport();            
         }
     }

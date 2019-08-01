@@ -118,6 +118,7 @@
             this.clMedExamResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clMedExamDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbRegistered = new System.Windows.Forms.Label();
             label22 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -394,6 +395,7 @@
             // 
             // TpDriverInfo
             // 
+            this.TpDriverInfo.Controls.Add(this.lbRegistered);
             this.TpDriverInfo.Controls.Add(this.cbxDriverCategory);
             this.TpDriverInfo.Controls.Add(label25);
             this.TpDriverInfo.Controls.Add(this.txtAge);
@@ -557,6 +559,7 @@
             this.dgvHistoricLicenses.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvHistoricLicenses.BackgroundColor = System.Drawing.Color.White;
             this.dgvHistoricLicenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHistoricLicenses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clLArchived,
@@ -745,6 +748,7 @@
             this.dgvRequalificationHistorical.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvRequalificationHistorical.BackgroundColor = System.Drawing.Color.White;
             this.dgvRequalificationHistorical.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRequalificationHistorical.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clRArchived,
@@ -849,6 +853,7 @@
             this.dgvMedicalExamHistorical.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvMedicalExamHistorical.BackgroundColor = System.Drawing.Color.White;
             this.dgvMedicalExamHistorical.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMedicalExamHistorical.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clMeArchived,
@@ -945,6 +950,7 @@
             this.dgvMedicalExamActive.AllowUserToResizeRows = false;
             this.dgvMedicalExamActive.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvMedicalExamActive.BackgroundColor = System.Drawing.Color.White;
             this.dgvMedicalExamActive.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMedicalExamActive.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clIcon,
@@ -1014,6 +1020,15 @@
             this.label1.Size = new System.Drawing.Size(290, 45);
             this.label1.TabIndex = 4;
             this.label1.Text = "Detalles del chofer";
+            // 
+            // lbRegistered
+            // 
+            this.lbRegistered.AutoSize = true;
+            this.lbRegistered.Location = new System.Drawing.Point(195, 19);
+            this.lbRegistered.Name = "lbRegistered";
+            this.lbRegistered.Size = new System.Drawing.Size(58, 13);
+            this.lbRegistered.TabIndex = 37;
+            this.lbRegistered.Text = "Registrado:";
             // 
             // FrmDriverDetails
             // 
@@ -1112,5 +1127,6 @@
         private System.Windows.Forms.ComboBox cbxDriverCategory;
         private System.Windows.Forms.ContextMenuStrip cmsHistory;
         private System.Windows.Forms.ToolStripMenuItem eliminarRegistroToolStripMenuItem;
+        private System.Windows.Forms.Label lbRegistered;
     }
 }

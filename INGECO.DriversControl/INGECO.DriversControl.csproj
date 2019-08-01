@@ -102,6 +102,18 @@
     <Compile Include="Forms\FrmDriversHistory.Designer.cs">
       <DependentUpon>FrmDriversHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Report forms\FrmDriverReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\Report forms\FrmDriverReport.Designer.cs">
+      <DependentUpon>FrmDriverReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\Report forms\FrmDriversReports.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,9 +152,16 @@
     <EmbeddedResource Include="Forms\FrmDriversHistory.resx">
       <DependentUpon>FrmDriversHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Report forms\FrmDriverReport.resx">
+      <DependentUpon>FrmDriverReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Report forms\FrmDriversReports.resx">
       <DependentUpon>FrmDriversReports.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Reports\DriverReport.rdlc" />
     <EmbeddedResource Include="Reports\Reports\DriversReport.rdlc" />
     <EmbeddedResource Include="Forms\FrmDriverDetails.resx">
       <DependentUpon>FrmDriverDetails.cs</DependentUpon>

@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace INGECO.DriversControl
 {
+    /// <summary>
+    /// The main form that manages the Drivers.
+    /// </summary>
     public partial class FrmDriversMainForm : Form
     {
         #region Constructor
@@ -393,6 +396,24 @@ namespace INGECO.DriversControl
             frm.Show();
         }
 
+        /// <summary>
+        /// Open the About from.
+        /// </summary>
+        private void OpenAboutForm()
+        {
+            var frm = new FrmAbout();
+            frm.Show();
+        }
+
+        /// <summary>
+        /// Opens the Driver Report form.
+        /// </summary>
+        private void OpenDriverReportForm()
+        {
+            var frm = new FrmDriverReport(GetSelectedDrivers());
+            frm.Show();
+        }
+
         #endregion
 
         #region Events subscribers
@@ -537,6 +558,16 @@ namespace INGECO.DriversControl
         private void ActualizarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadDrivers();
+        }
+
+        private void AcercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenAboutForm();
+        }
+
+        private void ImprimirfichaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenDriverReportForm();
         }
 
         #endregion

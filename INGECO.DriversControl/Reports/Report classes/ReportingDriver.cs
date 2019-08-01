@@ -23,6 +23,20 @@ namespace INGECO.DriversControl
         public DateTime LicenseExpires => DriverLicense == null ? DateTime.MinValue : DriverLicense.Expires;
 
         /// <summary>
+        /// The volume where driver's requalification is registered.
+        /// </summary>
+        public string RequalificationVolume => Requalificaiton?.Volume;
+
+        /// <summary>
+        /// The volume's page where driver's requalification is registered.
+        /// </summary>
+        public string RequalificationPage => Requalificaiton?.Page;
+
+        /// <summary>
+        /// The summary of requalification data to be dislpayed in UI or report.
+        /// </summary>
+        public string RequalificationSummary => $"Tomo: {RequalificationVolume}\r\nFolio: {RequalificationPage}";
+        /// <summary>
         /// The date when the requalification expires.
         /// </summary>
         public DateTime RequalificationExpires => Requalificaiton == null ? DateTime.MinValue : Requalificaiton.Expires;

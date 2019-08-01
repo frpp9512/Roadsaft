@@ -30,17 +30,7 @@ namespace INGECO.DriversControl
         public FrmDriversReports(List<Driver> drivers, DriversView driversView)
         {
             InitializeComponent();
-            ReportingDrivers = drivers.Select(d => new ReportingDriver
-            {
-                FullName = d.FullName,
-                PersonalId = d.PersonalId,
-                Category = d.Category,
-                DriverLicense = d.DriverLicense,
-                Description = d.Description,
-                MedicalExams = d.MedicalExams,
-                Position = d.Position,
-                Requalificaiton = d.Requalificaiton,
-            }).ToList();
+            ReportingDrivers = drivers.GetReportingDrivers();
             DriversView = driversView;
         }
 

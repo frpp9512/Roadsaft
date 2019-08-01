@@ -1,5 +1,6 @@
 ﻿using INGECO.DriversControl.Data;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -69,6 +70,28 @@ namespace INGECO.DriversControl
                 sb.AppendLine("Todo esta en orden.");
             }
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Converts the <see cref="Driver"/> stored in the list to <see cref="ReportingDriver"/>.
+        /// </summary>
+        /// <param name="drivers">The drivers to convert.</param>
+        /// <returns>A list of converted <see cref="ReportingDriver"/></returns>
+        public static List<ReportingDriver> GetReportingDrivers(this List<Driver> drivers)
+        {
+            return drivers.Select(d => new ReportingDriver
+            {
+                FullName = d.FullName,
+                PersonalId = d.PersonalId,
+                Category = d.Category,
+                DriverLicense = d.DriverLicense,
+                Description = d.Description,
+                MedicalExams = d.MedicalExams,
+                Position = d.Position,
+                Requalificaiton = d.Requalificaiton,
+                Registered = d.Registered,
+                Archived = d.Archived
+            }).ToList();
         }
     }
 }

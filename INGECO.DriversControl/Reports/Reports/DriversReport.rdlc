@@ -21,10 +21,13 @@
               <Width>0.79675in</Width>
             </TablixColumn>
             <TablixColumn>
+              <Width>0.8905in</Width>
+            </TablixColumn>
+            <TablixColumn>
               <Width>0.74467in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.72917in</Width>
+              <Width>2.83868in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -73,9 +76,10 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <ColSpan>7</ColSpan>
+                    <ColSpan>8</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
                 <TablixCell />
                 <TablixCell />
                 <TablixCell />
@@ -295,6 +299,44 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox77</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                          <Width>1.5pt</Width>
+                        </BottomBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox13">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Datos recalif.</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox13</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -585,6 +627,43 @@ IIf(Fields!LicenseWarning.Value or Fields!RequalificationWarning.Value or Fields
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="RequalificationSummary">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!RequalificationSummary.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontWeight>=iif(Fields!HasExpiredRequalification.Value or Fields!RequalificationWarning.Value, "Bold", "Default")</FontWeight>
+                                <Color>=Iif(Fields!HasExpiredRequalification.Value, "Red", Iif(Fields!RequalificationWarning.Value, "DarkOrange", "Black"))</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>RequalificationSummary</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BackgroundColor>=IIf(Fields!HasExpiredLicense.Value or Fields!HasExpiredRequalification.Value or Fields!HasExpiredMedicalExam.Value, "LightSalmon", 
+IIf(Fields!LicenseWarning.Value or Fields!RequalificationWarning.Value or Fields!MedExamsWarning.Value, "PaleGoldenrod", "White"))</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="RequalificationExpires">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -662,6 +741,7 @@ IIf(Fields!LicenseWarning.Value or Fields!RequalificationWarning.Value or Fields
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
+            <TablixMember />
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -788,7 +868,7 @@ IIf(Fields!LicenseWarning.Value or Fields!RequalificationWarning.Value or Fields
   <Width>25.8227cm</Width>
   <Page>
     <PageFooter>
-      <Height>0.79375cm</Height>
+      <Height>0.92286cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -817,6 +897,40 @@ IIf(Fields!LicenseWarning.Value or Fields!RequalificationWarning.Value or Fields
           <Left>19.15266cm</Left>
           <Height>0.6cm</Height>
           <Width>6.67004cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox14">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>="Página: " &amp; Globals!PageNumber &amp; " de " &amp; Globals!TotalPages</Value>
+                  <Style>
+                    <FontStyle>Italic</FontStyle>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox14</rd:DefaultName>
+          <Top>0.17639cm</Top>
+          <Left>0.07938cm</Left>
+          <Height>0.6cm</Height>
+          <Width>4.86834cm</Width>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -977,6 +1091,14 @@ IIf(Fields!LicenseWarning.Value or Fields!RequalificationWarning.Value or Fields
           <DataField>PrimaryKeyValue</DataField>
           <rd:TypeName>System.Object</rd:TypeName>
         </Field>
+        <Field Name="Registered">
+          <DataField>Registered</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RegisteredTime">
+          <DataField>RegisteredTime</DataField>
+          <rd:TypeName>System.TimeSpan</rd:TypeName>
+        </Field>
         <Field Name="Requalificaiton">
           <DataField>Requalificaiton</DataField>
           <rd:TypeName>INGECO.DriversControl.Data.Requalificaiton</rd:TypeName>
@@ -984,6 +1106,18 @@ IIf(Fields!LicenseWarning.Value or Fields!RequalificationWarning.Value or Fields
         <Field Name="RequalificationExpires">
           <DataField>RequalificationExpires</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RequalificationPage">
+          <DataField>RequalificationPage</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RequalificationSummary">
+          <DataField>RequalificationSummary</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RequalificationVolume">
+          <DataField>RequalificationVolume</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="RequalificationWarning">
           <DataField>RequalificationWarning</DataField>

@@ -430,6 +430,33 @@ namespace INGECO.DriversControl
             dgvHistoricLicenses.Rows.Clear();
         }
 
+        /// <summary>
+        /// Update the driver's info with the speciefied in the Info Tab.
+        /// </summary>
+        private void UpdateDriverInfo()
+        {
+            if (txtFullname.Text.Length > 0 && txtPersonalId.Text.Length == 11 && txtPosition.Text.Length > 0 && cbxDriverCategory.SelectedIndex >= 0)
+            {
+                Driver.FullName = txtFullname.Text;
+                Driver.PersonalId = txtPersonalId.Text;
+                Driver.Position = txtPosition.Text;
+                Driver.Category = (DriverCategory)cbxDriverCategory.SelectedIndex;
+                Driver.Description = txtDescription.Text;
+                if (DriverDataProviderContainer.Controller.UpdateDriverInfo(Driver))
+                {
+                    _ = MessageBox.Show("Se ha actualizado la información del chofer satifactoriamente.", "Actualizar chofer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    _ = MessageBox.Show("Ha ocurrido un error actualizando la información del chofer", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                _ = MessageBox.Show("Rellene los campos debidamente.", "Actualizar chofer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         #endregion
 
         #region Event subscribers
@@ -452,6 +479,69 @@ namespace INGECO.DriversControl
         private void BtnMedicalExamArchiveSelected_Click(object sender, EventArgs e)
         {
             ArchiveMedicalExam();
+        }
+
+        private void BtnSaveChanges_Click(object sender, EventArgs e)
+        {
+            UpdateDriverInfo();
+        }
+
+        private void EliminarRegistroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == TpDriverLicense)
+            {
+                if (dgvHistoricLicenses.SelectedRows.Count > 0)
+                {
+                    if (MessageBox.Show("¿Está seguro que desea eliminar el registro seleccionado?", "Eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                    {
+                        var license = dgvHistoricLicenses.SelectedRows[0].Tag as DriverLicense;                        
+                        _ = DriverDataProviderContainer.Controller.RemoveDriverLicense(license)
+                            ? MessageBox.Show("El registro de licencia de conducción fue eliminado satisfactoriamente.", "Eliminar registro", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            : MessageBox.Show("Ha ocurrido un error eliminadno el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        UpdateLicenseTab(Driver);
+                    }
+                }
+            }
+            else
+            {
+                if (tabControl1.SelectedTab == TpRequalification)
+                {
+                    if (dgvRequalificationHistorical.SelectedRows.Count > 0)
+                    {
+                        if (MessageBox.Show("¿Está seguro que desea eliminar el registro seleccionado?", "Eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            var requalification = dgvRequalificationHistorical.SelectedRows[0].Tag as Requalificaiton;
+                            _ = DriverDataProviderContainer.Controller.RemoveRequalification(requalification)
+                                ? MessageBox.Show("El registro de recalificación fue eliminado satisfactoriamente.", "Eliminar registro", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                : MessageBox.Show("Ha ocurrido un error eliminadno el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UpdateRequalificationTab(Driver);
+                        }
+                    }
+                }
+                else
+                {
+                    if (dgvMedicalExamHistorical.SelectedRows.Count > 0)
+                    {
+                        if (MessageBox.Show("¿Está seguro que desea eliminar el registro seleccionado?", "Eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            var medicalExam = dgvMedicalExamHistorical.SelectedRows[0].Tag as MedicalExam;
+                            _ = DriverDataProviderContainer.Controller.RemoveMedicalExam(medicalExam)
+                                ? MessageBox.Show("El registro de examen médico fue eliminado satisfactoriamente.", "Eliminar registro", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                : MessageBox.Show("Ha ocurrido un error eliminadno el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UpdateMedicalExamsTab(Driver);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void SelectOnRightClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                (sender as DataGridView).ClearSelection();
+                (sender as DataGridView).Rows[e.RowIndex].Selected = true;
+            }
         }
 
         #endregion

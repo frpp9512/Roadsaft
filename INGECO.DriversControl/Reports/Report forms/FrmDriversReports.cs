@@ -1,4 +1,5 @@
 ﻿using INGECO.DriversControl.Data;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,9 +20,14 @@ namespace INGECO.DriversControl
         /// <summary>
         /// The list of <see cref="ReportingDriver"/> showed in the report.
         /// </summary>
-        internal List<ReportingDriver> ReportingDrivers { get; set; }
+        internal List<ReportingDriver> ReportingDrivers { get; private set; }
 
-        public FrmDriversReports(List<Driver> drivers)
+        /// <summary>
+        /// The Drivers view used for generate the list of drivers.
+        /// </summary>
+        internal DriversView DriversView { get; private set; }
+
+        public FrmDriversReports(List<Driver> drivers, DriversView driversView)
         {
             InitializeComponent();
             ReportingDrivers = drivers.Select(d => new ReportingDriver
@@ -35,15 +41,17 @@ namespace INGECO.DriversControl
                 Position = d.Position,
                 Requalificaiton = d.Requalificaiton,
             }).ToList();
+            DriversView = driversView;
         }
 
         private void FrmDriversReports_Load(object sender, EventArgs e)
         {
-            reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
-            reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
+            reportViewer1.ZoomMode = ZoomMode.PageWidth;
             reportViewer1.LocalReport.DataSources.Clear();
-            reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("Drivers", ReportingDrivers));
-            reportViewer1.RefreshReport();
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("Drivers", ReportingDrivers));
+            //reportViewer1.LocalReport.SetParameters(new ReportParameter("ViewFilter", DriversView.GetDisplayText()));
+            reportViewer1.RefreshReport();            
         }
     }
 }

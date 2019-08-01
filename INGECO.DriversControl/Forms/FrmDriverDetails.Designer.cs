@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label22;
             System.Windows.Forms.Label label10;
             System.Windows.Forms.Label label4;
@@ -54,6 +55,7 @@
             System.Windows.Forms.Label label25;
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TpDriverInfo = new System.Windows.Forms.TabPage();
+            this.cbxDriverCategory = new System.Windows.Forms.ComboBox();
             this.txtAge = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnSaveChanges = new System.Windows.Forms.Button();
@@ -74,6 +76,8 @@
             this.clDateOfMaking = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clExpires = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clLicenseDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmsHistory = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.eliminarRegistroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLicenseRenewal = new System.Windows.Forms.Button();
             this.txtLicenseCategory = new System.Windows.Forms.TextBox();
             this.txtLicenseNumber = new System.Windows.Forms.TextBox();
@@ -114,7 +118,6 @@
             this.clMedExamResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clMedExamDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbxDriverCategory = new System.Windows.Forms.ComboBox();
             label22 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -143,6 +146,7 @@
             this.TpDriverInfo.SuspendLayout();
             this.TpDriverLicense.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistoricLicenses)).BeginInit();
+            this.cmsHistory.SuspendLayout();
             this.TpRequalification.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRequalificationHistorical)).BeginInit();
             this.TpMedicalExams.SuspendLayout();
@@ -364,6 +368,15 @@
             label24.TabIndex = 33;
             label24.Text = "Edad:";
             // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Location = new System.Drawing.Point(6, 132);
+            label25.Name = "label25";
+            label25.Size = new System.Drawing.Size(55, 13);
+            label25.TabIndex = 35;
+            label25.Text = "Categoría:";
+            // 
             // tabControl1
             // 
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -406,6 +419,15 @@
             this.TpDriverInfo.Text = "Información";
             this.TpDriverInfo.UseVisualStyleBackColor = true;
             // 
+            // cbxDriverCategory
+            // 
+            this.cbxDriverCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxDriverCategory.FormattingEnabled = true;
+            this.cbxDriverCategory.Location = new System.Drawing.Point(111, 129);
+            this.cbxDriverCategory.Name = "cbxDriverCategory";
+            this.cbxDriverCategory.Size = new System.Drawing.Size(240, 21);
+            this.cbxDriverCategory.TabIndex = 36;
+            // 
             // txtAge
             // 
             this.txtAge.Location = new System.Drawing.Point(285, 156);
@@ -436,6 +458,7 @@
             this.btnSaveChanges.TabIndex = 6;
             this.btnSaveChanges.Text = "&Guardar cambios";
             this.btnSaveChanges.UseVisualStyleBackColor = true;
+            this.btnSaveChanges.Click += new System.EventHandler(this.BtnSaveChanges_Click);
             // 
             // txtBirthday
             // 
@@ -544,12 +567,15 @@
             this.clExpires,
             this.clLicenseDescription});
             this.dgvHistoricLicenses.Location = new System.Drawing.Point(11, 248);
+            this.dgvHistoricLicenses.MultiSelect = false;
             this.dgvHistoricLicenses.Name = "dgvHistoricLicenses";
             this.dgvHistoricLicenses.RowHeadersVisible = false;
+            this.dgvHistoricLicenses.RowTemplate.ContextMenuStrip = this.cmsHistory;
             this.dgvHistoricLicenses.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvHistoricLicenses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHistoricLicenses.Size = new System.Drawing.Size(705, 99);
             this.dgvHistoricLicenses.TabIndex = 11;
+            this.dgvHistoricLicenses.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SelectOnRightClick);
             // 
             // clLArchived
             // 
@@ -587,6 +613,21 @@
             // 
             this.clLicenseDescription.HeaderText = "Descripción";
             this.clLicenseDescription.Name = "clLicenseDescription";
+            // 
+            // cmsHistory
+            // 
+            this.cmsHistory.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.eliminarRegistroToolStripMenuItem});
+            this.cmsHistory.Name = "cmsHistory";
+            this.cmsHistory.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.cmsHistory.Size = new System.Drawing.Size(170, 26);
+            // 
+            // eliminarRegistroToolStripMenuItem
+            // 
+            this.eliminarRegistroToolStripMenuItem.Name = "eliminarRegistroToolStripMenuItem";
+            this.eliminarRegistroToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.eliminarRegistroToolStripMenuItem.Text = "&Eliminar registro...";
+            this.eliminarRegistroToolStripMenuItem.Click += new System.EventHandler(this.EliminarRegistroToolStripMenuItem_Click);
             // 
             // btnLicenseRenewal
             // 
@@ -714,12 +755,15 @@
             this.clPage,
             this.clReqDescription});
             this.dgvRequalificationHistorical.Location = new System.Drawing.Point(11, 251);
+            this.dgvRequalificationHistorical.MultiSelect = false;
             this.dgvRequalificationHistorical.Name = "dgvRequalificationHistorical";
             this.dgvRequalificationHistorical.RowHeadersVisible = false;
+            this.dgvRequalificationHistorical.RowTemplate.ContextMenuStrip = this.cmsHistory;
             this.dgvRequalificationHistorical.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvRequalificationHistorical.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRequalificationHistorical.Size = new System.Drawing.Size(705, 94);
             this.dgvRequalificationHistorical.TabIndex = 25;
+            this.dgvRequalificationHistorical.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SelectOnRightClick);
             // 
             // clRArchived
             // 
@@ -815,12 +859,15 @@
             this.dataGridViewTextBoxColumn10,
             this.clHMedExamDescription});
             this.dgvMedicalExamHistorical.Location = new System.Drawing.Point(6, 214);
+            this.dgvMedicalExamHistorical.MultiSelect = false;
             this.dgvMedicalExamHistorical.Name = "dgvMedicalExamHistorical";
             this.dgvMedicalExamHistorical.RowHeadersVisible = false;
+            this.dgvMedicalExamHistorical.RowTemplate.ContextMenuStrip = this.cmsHistory;
             this.dgvMedicalExamHistorical.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvMedicalExamHistorical.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMedicalExamHistorical.Size = new System.Drawing.Size(710, 133);
             this.dgvMedicalExamHistorical.TabIndex = 32;
+            this.dgvMedicalExamHistorical.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SelectOnRightClick);
             // 
             // clMeArchived
             // 
@@ -968,24 +1015,6 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Detalles del chofer";
             // 
-            // cbxDriverCategory
-            // 
-            this.cbxDriverCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxDriverCategory.FormattingEnabled = true;
-            this.cbxDriverCategory.Location = new System.Drawing.Point(111, 129);
-            this.cbxDriverCategory.Name = "cbxDriverCategory";
-            this.cbxDriverCategory.Size = new System.Drawing.Size(240, 21);
-            this.cbxDriverCategory.TabIndex = 36;
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Location = new System.Drawing.Point(6, 132);
-            label25.Name = "label25";
-            label25.Size = new System.Drawing.Size(55, 13);
-            label25.TabIndex = 35;
-            label25.Text = "Categoría:";
-            // 
             // FrmDriverDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1003,6 +1032,7 @@
             this.TpDriverLicense.ResumeLayout(false);
             this.TpDriverLicense.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistoricLicenses)).EndInit();
+            this.cmsHistory.ResumeLayout(false);
             this.TpRequalification.ResumeLayout(false);
             this.TpRequalification.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRequalificationHistorical)).EndInit();
@@ -1080,5 +1110,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn clHMedExamDescription;
         private System.Windows.Forms.ComboBox cbxDriverCategory;
+        private System.Windows.Forms.ContextMenuStrip cmsHistory;
+        private System.Windows.Forms.ToolStripMenuItem eliminarRegistroToolStripMenuItem;
     }
 }

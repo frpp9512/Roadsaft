@@ -254,5 +254,58 @@ namespace INGECO.DriversControl.Data
                 throw;
             }
         }
+
+        public bool UpdateDriverInfo(Driver driver)
+        {
+            try
+            {
+                driver.UpdateMe();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool RemoveDriverLicense(DriverLicense driverLicense)
+        {
+            try
+            {
+                driverLicense.DeleteMe();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool RemoveRequalification(Requalificaiton requalificaiton)
+        {
+            try
+            {
+                requalificaiton.DeleteMe();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool RemoveMedicalExam(MedicalExam medicalExam)
+        {
+
+            try
+            {
+                medicalExam.DeleteMe();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

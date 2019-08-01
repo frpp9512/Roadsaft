@@ -30,10 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.ReportingDriverBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.ReportingDriverBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ReportingDriverBindingSource
+            // 
+            this.ReportingDriverBindingSource.DataSource = typeof(INGECO.DriversControl.ReportingDriver);
             // 
             // reportViewer1
             // 
@@ -41,17 +45,11 @@
             reportDataSource1.Name = "Drivers";
             reportDataSource1.Value = this.ReportingDriverBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "INGECO.DriversControl.Reports.DriversReport.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "INGECO.DriversControl.Reports.Reports.DriversReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ShowRefreshButton = false;
-            this.reportViewer1.ShowStopButton = false;
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // ReportingDriverBindingSource
-            // 
-            this.ReportingDriverBindingSource.DataSource = typeof(INGECO.DriversControl.ReportingDriver);
             // 
             // FrmDriversReports
             // 
@@ -69,8 +67,7 @@
         }
 
         #endregion
-
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource ReportingDriverBindingSource;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

@@ -107,6 +107,13 @@ namespace INGECO.DriversControl.Data
         bool AddNewMedicalExam(Driver driver, MedicalExam medicalExam);
 
         /// <summary>
+        /// Updates the info of the specified driver.
+        /// </summary>
+        /// <param name="driver">The driver with the modified properties.</param>
+        /// <returns><see langword="true"/> if the driver was modified successfully.</returns>
+        bool UpdateDriverInfo(Driver driver);
+
+        /// <summary>
         /// Archives the medical exam in the system.
         /// </summary>
         /// <param name="driver">The medical exam's driver.</param>
@@ -129,5 +136,26 @@ namespace INGECO.DriversControl.Data
         /// <param name="requalificaiton">The new driver's requalification</param>
         /// <returns>True if the process finish successfully.</returns>
         bool RenewalRequalification(Driver driver, Requalificaiton requalificaiton);
+
+        /// <summary>
+        /// Removes the speciefied driver license from the system.
+        /// </summary>
+        /// <param name="driverLicense">The driver license to remove.</param>
+        /// <returns><see langword="true"/> if the license was removed successfully.</returns>
+        bool RemoveDriverLicense(DriverLicense driverLicense);
+
+        /// <summary>
+        /// Removes the specified requalification from the system.
+        /// </summary>
+        /// <param name="requalificaiton">The requalification to remove.</param>
+        /// <returns><see langword="true"/> if the requalification was removed successfully.</returns>
+        bool RemoveRequalification(Requalificaiton requalificaiton);
+
+        /// <summary>
+        /// Removes the specified medical exam from the system.
+        /// </summary>
+        /// <param name="medicalExam">The medical exam to remove.</param>
+        /// <returns><see langword="true"/> if the medical exam was successfully removed.</returns>
+        bool RemoveMedicalExam(MedicalExam medicalExam);
     }
 }

@@ -389,7 +389,7 @@ namespace INGECO.DriversControl
         /// </summary>
         private void OpenDriversReport()
         {
-            var frm = new FrmDriversReports(LoadedDrivers);
+            var frm = new FrmDriversReports(LoadedDrivers, DriversView);
             frm.Show();
         }
 
@@ -472,8 +472,8 @@ namespace INGECO.DriversControl
                 LoadDrivers();
             }
             catch(Exception ex)
-            { 
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                _ = MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

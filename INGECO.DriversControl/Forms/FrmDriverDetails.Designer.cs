@@ -55,6 +55,7 @@
             System.Windows.Forms.Label label25;
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TpDriverInfo = new System.Windows.Forms.TabPage();
+            this.lbRegistered = new System.Windows.Forms.Label();
             this.cbxDriverCategory = new System.Windows.Forms.ComboBox();
             this.txtAge = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -118,7 +119,8 @@
             this.clMedExamResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clMedExamDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.lbRegistered = new System.Windows.Forms.Label();
+            this.btnRestoreGeneralInfo = new System.Windows.Forms.Button();
+            this.btnPrintDriverReport = new System.Windows.Forms.Button();
             label22 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -395,6 +397,7 @@
             // 
             // TpDriverInfo
             // 
+            this.TpDriverInfo.Controls.Add(this.btnRestoreGeneralInfo);
             this.TpDriverInfo.Controls.Add(this.lbRegistered);
             this.TpDriverInfo.Controls.Add(this.cbxDriverCategory);
             this.TpDriverInfo.Controls.Add(label25);
@@ -421,6 +424,15 @@
             this.TpDriverInfo.Text = "Información";
             this.TpDriverInfo.UseVisualStyleBackColor = true;
             // 
+            // lbRegistered
+            // 
+            this.lbRegistered.AutoSize = true;
+            this.lbRegistered.Location = new System.Drawing.Point(195, 19);
+            this.lbRegistered.Name = "lbRegistered";
+            this.lbRegistered.Size = new System.Drawing.Size(58, 13);
+            this.lbRegistered.TabIndex = 37;
+            this.lbRegistered.Text = "Registrado:";
+            // 
             // cbxDriverCategory
             // 
             this.cbxDriverCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -428,7 +440,7 @@
             this.cbxDriverCategory.Location = new System.Drawing.Point(111, 129);
             this.cbxDriverCategory.Name = "cbxDriverCategory";
             this.cbxDriverCategory.Size = new System.Drawing.Size(240, 21);
-            this.cbxDriverCategory.TabIndex = 36;
+            this.cbxDriverCategory.TabIndex = 3;
             // 
             // txtAge
             // 
@@ -436,7 +448,8 @@
             this.txtAge.Name = "txtAge";
             this.txtAge.ReadOnly = true;
             this.txtAge.Size = new System.Drawing.Size(66, 22);
-            this.txtAge.TabIndex = 34;
+            this.txtAge.TabIndex = 5;
+            this.txtAge.TabStop = false;
             // 
             // txtDescription
             // 
@@ -444,7 +457,7 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(240, 45);
-            this.txtDescription.TabIndex = 31;
+            this.txtDescription.TabIndex = 6;
             // 
             // btnSaveChanges
             // 
@@ -454,10 +467,10 @@
             this.btnSaveChanges.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveChanges.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveChanges.Location = new System.Drawing.Point(240, 241);
+            this.btnSaveChanges.Location = new System.Drawing.Point(240, 235);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(111, 23);
-            this.btnSaveChanges.TabIndex = 6;
+            this.btnSaveChanges.TabIndex = 8;
             this.btnSaveChanges.Text = "&Guardar cambios";
             this.btnSaveChanges.UseVisualStyleBackColor = true;
             this.btnSaveChanges.Click += new System.EventHandler(this.BtnSaveChanges_Click);
@@ -468,28 +481,29 @@
             this.txtBirthday.Name = "txtBirthday";
             this.txtBirthday.ReadOnly = true;
             this.txtBirthday.Size = new System.Drawing.Size(106, 22);
-            this.txtBirthday.TabIndex = 5;
+            this.txtBirthday.TabIndex = 4;
+            this.txtBirthday.TabStop = false;
             // 
             // txtPersonalId
             // 
             this.txtPersonalId.Location = new System.Drawing.Point(111, 101);
             this.txtPersonalId.Name = "txtPersonalId";
             this.txtPersonalId.Size = new System.Drawing.Size(240, 22);
-            this.txtPersonalId.TabIndex = 5;
+            this.txtPersonalId.TabIndex = 2;
             // 
             // txtPosition
             // 
             this.txtPosition.Location = new System.Drawing.Point(111, 73);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(240, 22);
-            this.txtPosition.TabIndex = 3;
+            this.txtPosition.TabIndex = 1;
             // 
             // txtFullname
             // 
             this.txtFullname.Location = new System.Drawing.Point(111, 45);
             this.txtFullname.Name = "txtFullname";
             this.txtFullname.Size = new System.Drawing.Size(240, 22);
-            this.txtFullname.TabIndex = 1;
+            this.txtFullname.TabIndex = 0;
             // 
             // TpDriverLicense
             // 
@@ -572,6 +586,7 @@
             this.dgvHistoricLicenses.Location = new System.Drawing.Point(11, 248);
             this.dgvHistoricLicenses.MultiSelect = false;
             this.dgvHistoricLicenses.Name = "dgvHistoricLicenses";
+            this.dgvHistoricLicenses.ReadOnly = true;
             this.dgvHistoricLicenses.RowHeadersVisible = false;
             this.dgvHistoricLicenses.RowTemplate.ContextMenuStrip = this.cmsHistory;
             this.dgvHistoricLicenses.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
@@ -584,38 +599,45 @@
             // 
             this.clLArchived.HeaderText = "Archivada";
             this.clLArchived.Name = "clLArchived";
+            this.clLArchived.ReadOnly = true;
             // 
             // clCreatedDate
             // 
             this.clCreatedDate.HeaderText = "Registrada";
             this.clCreatedDate.Name = "clCreatedDate";
+            this.clCreatedDate.ReadOnly = true;
             // 
             // clNumber
             // 
             this.clNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.clNumber.HeaderText = "Número";
             this.clNumber.Name = "clNumber";
+            this.clNumber.ReadOnly = true;
             this.clNumber.Width = 71;
             // 
             // clCategory
             // 
             this.clCategory.HeaderText = "Categoría";
             this.clCategory.Name = "clCategory";
+            this.clCategory.ReadOnly = true;
             // 
             // clDateOfMaking
             // 
             this.clDateOfMaking.HeaderText = "Confeccionada";
             this.clDateOfMaking.Name = "clDateOfMaking";
+            this.clDateOfMaking.ReadOnly = true;
             // 
             // clExpires
             // 
             this.clExpires.HeaderText = "Expira";
             this.clExpires.Name = "clExpires";
+            this.clExpires.ReadOnly = true;
             // 
             // clLicenseDescription
             // 
             this.clLicenseDescription.HeaderText = "Descripción";
             this.clLicenseDescription.Name = "clLicenseDescription";
+            this.clLicenseDescription.ReadOnly = true;
             // 
             // cmsHistory
             // 
@@ -761,6 +783,7 @@
             this.dgvRequalificationHistorical.Location = new System.Drawing.Point(11, 251);
             this.dgvRequalificationHistorical.MultiSelect = false;
             this.dgvRequalificationHistorical.Name = "dgvRequalificationHistorical";
+            this.dgvRequalificationHistorical.ReadOnly = true;
             this.dgvRequalificationHistorical.RowHeadersVisible = false;
             this.dgvRequalificationHistorical.RowTemplate.ContextMenuStrip = this.cmsHistory;
             this.dgvRequalificationHistorical.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
@@ -773,36 +796,43 @@
             // 
             this.clRArchived.HeaderText = "Archivada";
             this.clRArchived.Name = "clRArchived";
+            this.clRArchived.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Creada";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.HeaderText = "Confeccionada";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.HeaderText = "Expira";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // clVolume
             // 
             this.clVolume.HeaderText = "Tomo";
             this.clVolume.Name = "clVolume";
+            this.clVolume.ReadOnly = true;
             // 
             // clPage
             // 
             this.clPage.HeaderText = "Folio";
             this.clPage.Name = "clPage";
+            this.clPage.ReadOnly = true;
             // 
             // clReqDescription
             // 
             this.clReqDescription.HeaderText = "Descripción";
             this.clReqDescription.Name = "clReqDescription";
+            this.clReqDescription.ReadOnly = true;
             // 
             // txtRequalificationPage
             // 
@@ -866,6 +896,7 @@
             this.dgvMedicalExamHistorical.Location = new System.Drawing.Point(6, 214);
             this.dgvMedicalExamHistorical.MultiSelect = false;
             this.dgvMedicalExamHistorical.Name = "dgvMedicalExamHistorical";
+            this.dgvMedicalExamHistorical.ReadOnly = true;
             this.dgvMedicalExamHistorical.RowHeadersVisible = false;
             this.dgvMedicalExamHistorical.RowTemplate.ContextMenuStrip = this.cmsHistory;
             this.dgvMedicalExamHistorical.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
@@ -878,36 +909,43 @@
             // 
             this.clMeArchived.HeaderText = "Archivado";
             this.clMeArchived.Name = "clMeArchived";
+            this.clMeArchived.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.HeaderText = "Registrado";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // clMedExamHType
             // 
             this.clMedExamHType.HeaderText = "Tipo";
             this.clMedExamHType.Name = "clMedExamHType";
+            this.clMedExamHType.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.HeaderText = "Realizado";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.HeaderText = "Expira";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.HeaderText = "Resultado";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
             // clHMedExamDescription
             // 
             this.clHMedExamDescription.HeaderText = "Descripción";
             this.clHMedExamDescription.Name = "clHMedExamDescription";
+            this.clHMedExamDescription.ReadOnly = true;
             // 
             // btnMedicalExamNew
             // 
@@ -962,6 +1000,7 @@
             this.clMedExamDescription});
             this.dgvMedicalExamActive.Location = new System.Drawing.Point(6, 49);
             this.dgvMedicalExamActive.Name = "dgvMedicalExamActive";
+            this.dgvMedicalExamActive.ReadOnly = true;
             this.dgvMedicalExamActive.RowHeadersVisible = false;
             this.dgvMedicalExamActive.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvMedicalExamActive.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -974,40 +1013,47 @@
             this.clIcon.HeaderText = "";
             this.clIcon.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.clIcon.Name = "clIcon";
+            this.clIcon.ReadOnly = true;
             this.clIcon.Width = 5;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.HeaderText = "Creado";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // clMedExamType
             // 
             this.clMedExamType.HeaderText = "Tipo";
             this.clMedExamType.Name = "clMedExamType";
+            this.clMedExamType.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.HeaderText = "Realizado";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dataGridViewTextBoxColumn6.HeaderText = "Expira";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Width = 61;
             // 
             // clMedExamResult
             // 
             this.clMedExamResult.HeaderText = "Resultado";
             this.clMedExamResult.Name = "clMedExamResult";
+            this.clMedExamResult.ReadOnly = true;
             // 
             // clMedExamDescription
             // 
             this.clMedExamDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.clMedExamDescription.HeaderText = "Descripción";
             this.clMedExamDescription.Name = "clMedExamDescription";
+            this.clMedExamDescription.ReadOnly = true;
             this.clMedExamDescription.Width = 86;
             // 
             // label1
@@ -1021,26 +1067,51 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Detalles del chofer";
             // 
-            // lbRegistered
+            // btnRestoreGeneralInfo
             // 
-            this.lbRegistered.AutoSize = true;
-            this.lbRegistered.Location = new System.Drawing.Point(195, 19);
-            this.lbRegistered.Name = "lbRegistered";
-            this.lbRegistered.Size = new System.Drawing.Size(58, 13);
-            this.lbRegistered.TabIndex = 37;
-            this.lbRegistered.Text = "Registrado:";
+            this.btnRestoreGeneralInfo.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnRestoreGeneralInfo.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
+            this.btnRestoreGeneralInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnRestoreGeneralInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnRestoreGeneralInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRestoreGeneralInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestoreGeneralInfo.Location = new System.Drawing.Point(111, 235);
+            this.btnRestoreGeneralInfo.Name = "btnRestoreGeneralInfo";
+            this.btnRestoreGeneralInfo.Size = new System.Drawing.Size(78, 23);
+            this.btnRestoreGeneralInfo.TabIndex = 7;
+            this.btnRestoreGeneralInfo.Text = "&Restaurar";
+            this.btnRestoreGeneralInfo.UseVisualStyleBackColor = true;
+            this.btnRestoreGeneralInfo.Click += new System.EventHandler(this.BtnRestoreGeneralInfo_Click);
+            // 
+            // btnPrintDriverReport
+            // 
+            this.btnPrintDriverReport.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnPrintDriverReport.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
+            this.btnPrintDriverReport.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnPrintDriverReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnPrintDriverReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrintDriverReport.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintDriverReport.Location = new System.Drawing.Point(638, 29);
+            this.btnPrintDriverReport.Name = "btnPrintDriverReport";
+            this.btnPrintDriverReport.Size = new System.Drawing.Size(100, 23);
+            this.btnPrintDriverReport.TabIndex = 14;
+            this.btnPrintDriverReport.Text = "&Imprimir ficha...";
+            this.btnPrintDriverReport.UseVisualStyleBackColor = true;
+            this.btnPrintDriverReport.Click += new System.EventHandler(this.BtnPrintDriverReport_Click);
             // 
             // FrmDriverDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(754, 466);
+            this.Controls.Add(this.btnPrintDriverReport);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F);
             this.Name = "FrmDriverDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Detalles del chofer";
+            this.Load += new System.EventHandler(this.FrmDriverDetails_Load);
             this.tabControl1.ResumeLayout(false);
             this.TpDriverInfo.ResumeLayout(false);
             this.TpDriverInfo.PerformLayout();
@@ -1128,5 +1199,7 @@
         private System.Windows.Forms.ContextMenuStrip cmsHistory;
         private System.Windows.Forms.ToolStripMenuItem eliminarRegistroToolStripMenuItem;
         private System.Windows.Forms.Label lbRegistered;
+        private System.Windows.Forms.Button btnRestoreGeneralInfo;
+        private System.Windows.Forms.Button btnPrintDriverReport;
     }
 }

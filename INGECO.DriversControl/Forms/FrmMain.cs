@@ -31,8 +31,9 @@ namespace INGECO.DriversControl
                 Configuration.DatabasePassword,
                 Configuration.DatabaseName
                 );
-            SetShowingView(View.Details);
-            SetDriversView(DriversView.AllDrivers);
+            SetShowingView(Configuration.LastUsedView);
+            SetDriverCategoryFilter(Configuration.LastDriverCategoryFilter);
+            SetDriversView(Configuration.LastDriversView);
             SetUpTimer();
         }
 
@@ -49,6 +50,11 @@ namespace INGECO.DriversControl
         /// The current selected DriversView option.
         /// </summary>
         public DriversView DriversView { get; set; }
+
+        /// <summary>
+        /// The current filter by driver category.
+        /// </summary>
+        public DriverCategoryFilter DriverCategoryFilter { get; set; }
 
         #endregion
 
@@ -79,13 +85,71 @@ namespace INGECO.DriversControl
                 switch (DriversView)
                 {
                     case DriversView.AllDrivers:
-                        return DriverDataProviderContainer.Controller.GetDrivers();
+                        return DriverDataProviderContainer
+                        .Controller
+                        .GetDrivers()
+                        .Where
+                        (
+                            d => DriverCategoryFilter == DriverCategoryFilter.ProfessionalsOnly 
+                            ? d.Category == DriverCategory.Professional 
+                            : DriverCategoryFilter == DriverCategoryFilter.NonProfessionalsOnly 
+                            ? d.Category == DriverCategory.NonProfessional 
+                            : true)
+                            .ToList();
                     case DriversView.DriversWithoutIssues:
-                        return DriverDataProviderContainer.Controller.GetDriversWithoutIssues(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam);
+                        return DriverDataProviderContainer
+                        .Controller
+                        .GetDriversWithoutIssues
+                        (
+                            Configuration.ExpireWarningForLicense,
+                            Configuration.ExpireWarningForRequalification,
+                            Configuration.ExpireWarningForMedicalExam
+                        )
+                        .Where
+                        (
+                            d => DriverCategoryFilter == DriverCategoryFilter.ProfessionalsOnly
+                            ? d.Category == DriverCategory.Professional
+                            : DriverCategoryFilter == DriverCategoryFilter.NonProfessionalsOnly
+                            ? d.Category == DriverCategory.NonProfessional
+                            : true
+                        )
+                        .ToList();
                     case DriversView.DriversWithWarnings:
-                        return DriverDataProviderContainer.Controller.GetDriversWithWarnings(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam);
+                        return DriverDataProviderContainer
+                        .Controller
+                        .GetDriversWithWarnings
+                        (
+                            Configuration.ExpireWarningForLicense,
+                            Configuration.ExpireWarningForRequalification,
+                            Configuration.ExpireWarningForMedicalExam
+                        )
+                        .Where
+                        (
+                            d => DriverCategoryFilter == DriverCategoryFilter.ProfessionalsOnly
+                            ? d.Category == DriverCategory.Professional
+                            : DriverCategoryFilter == DriverCategoryFilter.NonProfessionalsOnly
+                            ? d.Category == DriverCategory.NonProfessional
+                            : true
+                        )
+                        .ToList();
                     case DriversView.DriversWithIssues:
-                        return DriverDataProviderContainer.Controller.GetDriverWithExpiredAttributes(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam);
+                        return DriverDataProviderContainer
+                        .Controller
+                        .GetDriverWithExpiredAttributes
+                        (
+                            Configuration.ExpireWarningForLicense,
+                            Configuration.ExpireWarningForRequalification,
+                            Configuration.ExpireWarningForMedicalExam
+                        )
+                        .Where
+                        (
+                            d => DriverCategoryFilter == DriverCategoryFilter.ProfessionalsOnly
+                            ? d.Category == DriverCategory.Professional
+                            : DriverCategoryFilter == DriverCategoryFilter.NonProfessionalsOnly
+                            ? d.Category == DriverCategory.NonProfessional
+                            : true
+                        )
+                        .ToList();
                     default:
                         throw new Exception("Ha ocurrido un error cargando los choferes.");
                 }
@@ -101,43 +165,53 @@ namespace INGECO.DriversControl
         /// <param name="value">The value to make the search.</param>
         private void DriversQuickSearch(string value)
         {
-            btnRefreshDrivers.Enabled = false;
-            var selectedIndex = -1;
-            if (lvDriversList.SelectedIndices.Count > 0)
+            if (LoadedDrivers != null)
             {
-                selectedIndex = lvDriversList.SelectedIndices[0];
-            }
-            SetListViewImageLists();
-            lvDriversList.Items.Clear();
-            lvDriversList.SuspendLayout();
-            var professionalGroup = new ListViewGroup("Profesionales");
-            var nonProfessionalGroup = new ListViewGroup("No Profesionales");
-            foreach (var driver in LoadedDrivers)
-            {
-                if (driver.FullName.ToLower().Contains(value.ToLower()) ||
-                    driver.PersonalId.Contains(value) || 
-                    driver.DriverLicense?.Number.Contains(value) == true)
+                btnRefreshDrivers.Enabled = false;
+                var selectedIndex = -1;
+                if (lvDriversList.SelectedIndices.Count > 0)
                 {
-                    var item = new ListViewItem(new string[] { driver.FullName, driver.Position, driver.Category.GetDisplayText(), driver.PersonalId, driver.Age.ToString(), driver.Description })
-                    {
-                        ImageIndex = driver.HasExpiredParameters ? 2 : driver.GetIfAnyParameterExpireDateIsInPeriod(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam) ? 1 : 0,
-                        Group = driver.Category == DriverCategory.Professional ? professionalGroup : nonProfessionalGroup,
-                        Tag = driver,
-                        ToolTipText = driver.GetStatusToolTip()
-                    };
-                    _ = lvDriversList.Items.Add(item);
+                    selectedIndex = lvDriversList.SelectedIndices[0];
                 }
+                SetListViewImageLists();
+                lvDriversList.Items.Clear();
+                lvDriversList.SuspendLayout();
+                var professionalGroup = new ListViewGroup("Profesionales");
+                var nonProfessionalGroup = new ListViewGroup("No Profesionales");
+                foreach (var driver in LoadedDrivers)
+                {
+                    if (driver.FullName.ToLower().Contains(value.ToLower()) ||
+                        driver.PersonalId.Contains(value) ||
+                        driver.DriverLicense?.Number.Contains(value) == true)
+                    {
+                        var item = new ListViewItem(new string[] { driver.FullName, driver.Position, driver.Category.GetDisplayText(), driver.PersonalId, driver.Age.ToString(), driver.Description })
+                        {
+                            ImageIndex = driver.HasExpiredParameters ? 2 : driver.GetIfAnyParameterExpireDateIsInPeriod(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam) ? 1 : 0,
+                            Group = driver.Category == DriverCategory.Professional ? professionalGroup : nonProfessionalGroup,
+                            Tag = driver,
+                            ToolTipText = driver.GetStatusToolTip()
+                        };
+                        _ = lvDriversList.Items.Add(item);
+                    }
+                }
+                if (lvDriversList.Items.Count > 0 && selectedIndex >= 0 && selectedIndex < lvDriversList.Items.Count)
+                {
+                    lvDriversList.SelectedItems.Clear();
+                    lvDriversList.Items[selectedIndex].Selected = true;
+                }
+                _ = lvDriversList.Groups.Add(professionalGroup);
+                _ = lvDriversList.Groups.Add(nonProfessionalGroup);
+                UpdateStatusBarInfo();
+                lvDriversList.ResumeLayout();
+                btnRefreshDrivers.Enabled = true;
             }
-            if (lvDriversList.Items.Count > 0 && selectedIndex >= 0 && selectedIndex < lvDriversList.Items.Count)
-            {
-                lvDriversList.SelectedItems.Clear();
-                lvDriversList.Items[selectedIndex].Selected = true;
-            }
-            lvDriversList.Groups.Add(professionalGroup);
-            lvDriversList.Groups.Add(nonProfessionalGroup);
-            stlbShowStatics.Text = $"Mostrando {lvDriversList.Items.Count} chofer{(lvDriversList.Items.Count == 1 ? "" : "es")} de {LoadedDrivers.Count} mostrado{(LoadedDrivers.Count == 1 ? "" : "s")}.";
-            lvDriversList.ResumeLayout();
-            btnRefreshDrivers.Enabled = true;
+        }
+
+        private void UpdateStatusBarInfo()
+        {
+            stlbShowStatics.Text = $"Mostrando {lvDriversList.Items.Count} chofer{(lvDriversList.Items.Count == 1 ? "" : "es")} de {LoadedDrivers.Count} cargado{(LoadedDrivers.Count == 1 ? "" : "s")}.";
+            stlbDriversView.Text = $"Visualizando: {DriversView.GetDisplayText()}.";
+            stlbDriverCategoryFilter.Text = $"Filtrando por: {DriverCategoryFilter.GetDisplayText()}.";
         }
 
         private void ShowLoadedDriversStatistic(List<Driver> drivers)
@@ -263,11 +337,11 @@ namespace INGECO.DriversControl
         /// <summary>
         /// Open the Drivers Details form.
         /// </summary>
-        private void OpenSelectedDriverDetails()
+        private void OpenSelectedDriverDetails(DriverDetailsInitialAction initAction)
         {
             if (lvDriversList.SelectedItems.Count > 0)
             {
-                var frm = new FrmDriverDetails(GetFirstSelectedDriver());
+                var frm = new FrmDriverDetails(GetFirstSelectedDriver(), initAction);
                 frm.UpdateRequested += (s, ea) => LoadDrivers();
                 frm.ShowDialog();
             }
@@ -353,6 +427,29 @@ namespace INGECO.DriversControl
         }
 
         /// <summary>
+        /// Set the current Driver Category Filter.
+        /// </summary>
+        /// <param name="filter"></param>
+        private void SetDriverCategoryFilter(DriverCategoryFilter filter)
+        {
+            DriverCategoryFilter = filter;
+            switch (filter)
+            {
+                case DriverCategoryFilter.All:
+                    todosLosChoferesToolStripMenuItem1.Checked = true;
+                    break;
+                case DriverCategoryFilter.ProfessionalsOnly:
+                    profesionalesToolStripMenuItem.Checked = true;
+                    break;
+                case DriverCategoryFilter.NonProfessionalsOnly:
+                    noProfesionalesToolStripMenuItem.Checked = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
         /// Opens the configuration form.
         /// </summary>
         private void OpenConfigurationForm()
@@ -414,6 +511,56 @@ namespace INGECO.DriversControl
             frm.Show();
         }
 
+        /// <summary>
+        /// Selects all drivers showed in the List View.
+        /// </summary>
+        private void SelectAllDrivers()
+        {
+            if (lvDriversList.Items.Count > 0)
+            {
+                for (var i = 0; i < lvDriversList.Items.Count; i++)
+                {
+                    lvDriversList.Items[i].Selected = lvDriversList.Items[i].Selected ? lvDriversList.Items[i].Selected : true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Deselect all when multiple items are selected in the List View."
+        /// </summary>
+        private void DeselectAll()
+        {
+            if (lvDriversList.SelectedItems.Count > 1)
+            {
+                for (var i = 1; i < lvDriversList.Items.Count; i++)
+                {
+                    if (lvDriversList.SelectedItems[0] != lvDriversList.Items[i])
+                    {
+                        lvDriversList.Items[i].Selected = lvDriversList.Items[i].Selected ? false : lvDriversList.Items[i].Selected;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Update the status bar info with the selected driver(s).
+        /// </summary>
+        private void UpdateSelectedDriverStatusBarInfo()
+        {
+            var selected = GetSelectedDrivers();
+            if (selected.Count > 0)
+            {
+                if (selected.Count == 1)
+                {
+                    tslbSelectedDriver.Text = $"Seleccionado: {selected[0].FullName}";
+                }
+                else
+                {
+                    tslbSelectedDriver.Text = $"Seleccionados {selected.Count} choferes.";
+                }
+            }
+        }
+
         #endregion
 
         #region Events subscribers
@@ -453,7 +600,7 @@ namespace INGECO.DriversControl
 
         private void LvDriversList_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            OpenSelectedDriverDetails();
+            OpenSelectedDriverDetails(DriverDetailsInitialAction.None);
         }
 
         private void DetallesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -485,8 +632,8 @@ namespace INGECO.DriversControl
         {
             var menuOptions = new ToolStripMenuItem[] { todosLosChoferesToolStripMenuItem, choferessinProblemasToolStripMenuItem, choferesConAdvertenciasToolStripMenuItem, choferesConProblemasToolStripMenuItem };            
             menuOptions.ToList().ForEach(m => m.Checked = m == sender);            
-            DriversView = (DriversView)(menuOptions.ToList().IndexOf(sender as ToolStripMenuItem));
-            stlbDriversView.Text = $"Visualizando: {DriversView.GetDisplayText()}";
+            DriversView = (DriversView)menuOptions.ToList().IndexOf(sender as ToolStripMenuItem);
+            
             menuOptions = null;
             try
             {
@@ -531,7 +678,7 @@ namespace INGECO.DriversControl
 
         private void DetallesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenSelectedDriverDetails();
+            OpenSelectedDriverDetails(DriverDetailsInitialAction.None);
         }
 
         private void DarBajaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -568,6 +715,88 @@ namespace INGECO.DriversControl
         private void ImprimirfichaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenDriverReportForm();
+        }
+
+        private void SelectDriverCategoryFilter(object sender, EventArgs e)
+        {
+            var menuOptions = new ToolStripMenuItem[] { todosLosChoferesToolStripMenuItem1, profesionalesToolStripMenuItem, noProfesionalesToolStripMenuItem };
+            menuOptions.ToList().ForEach(mu => mu.Checked = mu == sender);
+            DriverCategoryFilter = (DriverCategoryFilter)menuOptions.ToList().IndexOf(sender as ToolStripMenuItem);
+            try
+            {
+                LoadDrivers();
+            }
+            catch (Exception ex)
+            {
+                _ = MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FrmDriversMainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Configuration.LastUsedView = lvDriversList.View;
+            Configuration.LastDriversView = DriversView;
+            Configuration.LastDriverCategoryFilter = DriverCategoryFilter;
+            Configuration.SaveToFile();
+        }
+
+        private void SeleccionarTodosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SelectAllDrivers();
+        }
+
+        private void LvDriversList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateSelectedDriverStatusBarInfo();
+        }
+
+        private void RenovarLicenciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenSelectedDriverDetails(DriverDetailsInitialAction.LicenseRenewal);
+        }
+
+        private void RenovarRecalificaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenSelectedDriverDetails(DriverDetailsInitialAction.RequalificationRenewal);
+        }
+
+        private void NuevoChequeoMédicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenSelectedDriverDetails(DriverDetailsInitialAction.NewMedicalExam);
+        }
+
+        private void LicenciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenSelectedDriverDetails(DriverDetailsInitialAction.LicenseTabOpen);
+        }
+
+        private void RecalificaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenSelectedDriverDetails(DriverDetailsInitialAction.RequalificationTabOpen);
+        }
+
+        private void ExamenesMédicosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenSelectedDriverDetails(DriverDetailsInitialAction.MedicalExamTabOpen);
+        }
+
+        #endregion
+
+        #region Method overriding
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if(keyData == Keys.Escape)
+            {
+                DeselectAll();
+                return true;
+            }
+            if(keyData == Keys.Enter)
+            {
+                OpenSelectedDriverDetails(DriverDetailsInitialAction.None);
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         #endregion

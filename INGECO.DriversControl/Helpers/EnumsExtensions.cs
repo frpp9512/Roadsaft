@@ -84,5 +84,25 @@ namespace INGECO.DriversControl
                     return "<No se encuentra el texto>";
             }
         }
+
+        /// <summary>
+        /// Get the text to display in the user interface.
+        /// </summary>
+        /// <param name="filter">The <see cref="DriverCategoryFilter"/> to determine display text.</param>
+        /// <returns>The text to display in the user interface.</returns>
+        public static string GetDisplayText(this DriverCategoryFilter filter)
+        {
+            switch (filter)
+            {
+                case DriverCategoryFilter.All:
+                    return "Todos los choferes";
+                case DriverCategoryFilter.ProfessionalsOnly:
+                    return "Solo profesionales";
+                case DriverCategoryFilter.NonProfessionalsOnly:
+                    return "Solo no profesionales";
+                default:
+                    return "<No se encuentra el texto>";
+            }
+        }
     }
 }

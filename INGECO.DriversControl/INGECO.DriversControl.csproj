@@ -78,6 +78,8 @@
   <ItemGroup>
     <Compile Include="Classes\Configuration.cs" />
     <Compile Include="Enums\DriversView.cs" />
+    <Compile Include="Enums\DriverCategoryFilter.cs" />
+    <Compile Include="Enums\DriverDetailsInitialAction.cs" />
     <Compile Include="Forms\FrmDriverDetails.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
 
 namespace INGECO.DriversControl
 {
@@ -53,6 +54,21 @@ namespace INGECO.DriversControl
         public static TimeSpan ExpireWarningForMedicalExam { get; set; } = new TimeSpan(30, 0, 0, 0);
 
         /// <summary>
+        /// The last view used in the user interface.
+        /// </summary>
+        public static View LastUsedView { get; set; } = View.Details;
+
+        /// <summary>
+        /// The last selected DriversView option.
+        /// </summary>
+        public static DriversView LastDriversView { get; set; } = DriversView.AllDrivers;
+
+        /// <summary>
+        /// The last used filter by driver category.
+        /// </summary>
+        public static DriverCategoryFilter LastDriverCategoryFilter { get; set; } = DriverCategoryFilter.All;
+
+        /// <summary>
         /// Save the configuration to file.
         /// </summary>
         public static void SaveToFile()
@@ -62,7 +78,7 @@ namespace INGECO.DriversControl
             {
                 fields.ForEach(f => sw.WriteLine($"{f.Name}={f.GetValue(null)}"));
             }
-        }
+        }        
 
         /// <summary>
         /// Loads the configuration from file.
@@ -99,6 +115,15 @@ namespace INGECO.DriversControl
                                 continue;
                             case nameof(ExpireWarningForRequalification):
                                 ExpireWarningForMedicalExam = TimeSpan.Parse(values[1]);
+                                continue;
+                            case nameof(LastUsedView):
+                                LastUsedView = (View)Enum.Parse(typeof(View), values[1]);
+                                continue;
+                            case nameof(LastDriversView):
+                                LastDriversView = (DriversView)Enum.Parse(typeof(DriversView), values[1]);
+                                continue;
+                            case nameof(LastDriverCategoryFilter):
+                                LastDriverCategoryFilter = (DriverCategoryFilter)Enum.Parse(typeof(DriverCategoryFilter), values[1]);
                                 continue;
                             default:
                                 break;

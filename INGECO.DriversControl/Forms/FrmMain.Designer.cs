@@ -62,6 +62,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.seleccionarTodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.detallesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.icónosGrandesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.icónosPequeñosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,6 +74,10 @@
             this.choferessinProblemasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.choferesConAdvertenciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.choferesConProblemasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.todosLosChoferesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.profesionalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noProfesionalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,9 +86,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.appStatusBar = new System.Windows.Forms.StatusStrip();
             this.stlbLoading = new System.Windows.Forms.ToolStripStatusLabel();
-            this.stlbDriversView = new System.Windows.Forms.ToolStripStatusLabel();
             this.stlbShowStatics = new System.Windows.Forms.ToolStripStatusLabel();
+            this.stlbDriversView = new System.Windows.Forms.ToolStripStatusLabel();
+            this.stlbDriverCategoryFilter = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tslbSelectedDriver = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.licenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recalificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.examenesMédicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             lvClFullname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClPosition = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -131,6 +142,7 @@
             this.lvDriversList.TileSize = new System.Drawing.Size(200, 50);
             this.lvDriversList.UseCompatibleStateImageBehavior = false;
             this.lvDriversList.View = System.Windows.Forms.View.Details;
+            this.lvDriversList.SelectedIndexChanged += new System.EventHandler(this.LvDriversList_SelectedIndexChanged);
             this.lvDriversList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LvDriversList_MouseDoubleClick);
             // 
             // tcClCategory
@@ -164,20 +176,26 @@
             this.imprimirlistadoToolStripMenuItem});
             this.driverContextMenu.Name = "driverContextMenu";
             this.driverContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.driverContextMenu.Size = new System.Drawing.Size(232, 220);
+            this.driverContextMenu.Size = new System.Drawing.Size(256, 220);
             this.driverContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.DriverContextMenu_Opening);
             // 
             // detallesToolStripMenuItem1
             // 
+            this.detallesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.licenciaToolStripMenuItem,
+            this.recalificaciónToolStripMenuItem,
+            this.examenesMédicosToolStripMenuItem});
             this.detallesToolStripMenuItem1.Name = "detallesToolStripMenuItem1";
-            this.detallesToolStripMenuItem1.Size = new System.Drawing.Size(231, 22);
+            this.detallesToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.detallesToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
             this.detallesToolStripMenuItem1.Text = "&Detalles...";
             this.detallesToolStripMenuItem1.Click += new System.EventHandler(this.DetallesToolStripMenuItem1_Click);
             // 
             // darBajaToolStripMenuItem
             // 
             this.darBajaToolStripMenuItem.Name = "darBajaToolStripMenuItem";
-            this.darBajaToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.darBajaToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.darBajaToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.darBajaToolStripMenuItem.Text = "Dar &baja";
             this.darBajaToolStripMenuItem.Click += new System.EventHandler(this.DarBajaToolStripMenuItem_Click);
             // 
@@ -203,20 +221,26 @@
             // renovarLicenciaToolStripMenuItem
             // 
             this.renovarLicenciaToolStripMenuItem.Name = "renovarLicenciaToolStripMenuItem";
-            this.renovarLicenciaToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.renovarLicenciaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.renovarLicenciaToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.renovarLicenciaToolStripMenuItem.Text = "&Renovar licencia...";
+            this.renovarLicenciaToolStripMenuItem.Click += new System.EventHandler(this.RenovarLicenciaToolStripMenuItem_Click);
             // 
             // renovarRecalificaciónToolStripMenuItem
             // 
             this.renovarRecalificaciónToolStripMenuItem.Name = "renovarRecalificaciónToolStripMenuItem";
-            this.renovarRecalificaciónToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.renovarRecalificaciónToolStripMenuItem.Text = "Renovar recalificación...";
+            this.renovarRecalificaciónToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.renovarRecalificaciónToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.renovarRecalificaciónToolStripMenuItem.Text = "Renovar &recalificación...";
+            this.renovarRecalificaciónToolStripMenuItem.Click += new System.EventHandler(this.RenovarRecalificaciónToolStripMenuItem_Click);
             // 
             // nuevoChequeoMédicoToolStripMenuItem
             // 
             this.nuevoChequeoMédicoToolStripMenuItem.Name = "nuevoChequeoMédicoToolStripMenuItem";
-            this.nuevoChequeoMédicoToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.nuevoChequeoMédicoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
+            this.nuevoChequeoMédicoToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.nuevoChequeoMédicoToolStripMenuItem.Text = "Nuevo chequeo &médico...";
+            this.nuevoChequeoMédicoToolStripMenuItem.Click += new System.EventHandler(this.NuevoChequeoMédicoToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -355,6 +379,8 @@
             // verToolStripMenuItem
             // 
             this.verToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.seleccionarTodosToolStripMenuItem,
+            this.toolStripSeparator7,
             this.detallesToolStripMenuItem,
             this.icónosGrandesToolStripMenuItem,
             this.icónosPequeñosToolStripMenuItem,
@@ -364,16 +390,33 @@
             this.todosLosChoferesToolStripMenuItem,
             this.choferessinProblemasToolStripMenuItem,
             this.choferesConAdvertenciasToolStripMenuItem,
-            this.choferesConProblemasToolStripMenuItem});
+            this.choferesConProblemasToolStripMenuItem,
+            this.toolStripSeparator6,
+            this.todosLosChoferesToolStripMenuItem1,
+            this.profesionalesToolStripMenuItem,
+            this.noProfesionalesToolStripMenuItem});
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
             this.verToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.verToolStripMenuItem.Text = "&Ver";
+            // 
+            // seleccionarTodosToolStripMenuItem
+            // 
+            this.seleccionarTodosToolStripMenuItem.Name = "seleccionarTodosToolStripMenuItem";
+            this.seleccionarTodosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.seleccionarTodosToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.seleccionarTodosToolStripMenuItem.Text = "Se&leccionar todos";
+            this.seleccionarTodosToolStripMenuItem.Click += new System.EventHandler(this.SeleccionarTodosToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(317, 6);
             // 
             // detallesToolStripMenuItem
             // 
             this.detallesToolStripMenuItem.Name = "detallesToolStripMenuItem";
             this.detallesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D1)));
-            this.detallesToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.detallesToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
             this.detallesToolStripMenuItem.Text = "&Detalles";
             this.detallesToolStripMenuItem.Click += new System.EventHandler(this.DetallesToolStripMenuItem_Click);
             // 
@@ -381,7 +424,7 @@
             // 
             this.icónosGrandesToolStripMenuItem.Name = "icónosGrandesToolStripMenuItem";
             this.icónosGrandesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D2)));
-            this.icónosGrandesToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.icónosGrandesToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
             this.icónosGrandesToolStripMenuItem.Text = "Icónos &grandes";
             this.icónosGrandesToolStripMenuItem.Click += new System.EventHandler(this.IcónosGrandesToolStripMenuItem_Click);
             // 
@@ -389,7 +432,7 @@
             // 
             this.icónosPequeñosToolStripMenuItem.Name = "icónosPequeñosToolStripMenuItem";
             this.icónosPequeñosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D3)));
-            this.icónosPequeñosToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.icónosPequeñosToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
             this.icónosPequeñosToolStripMenuItem.Text = "Icónos &pequeños";
             this.icónosPequeñosToolStripMenuItem.Click += new System.EventHandler(this.IcónosPequeñosToolStripMenuItem_Click);
             // 
@@ -397,7 +440,7 @@
             // 
             this.listaToolStripMenuItem.Name = "listaToolStripMenuItem";
             this.listaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D4)));
-            this.listaToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.listaToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
             this.listaToolStripMenuItem.Text = "&Lista";
             this.listaToolStripMenuItem.Click += new System.EventHandler(this.ListaToolStripMenuItem_Click);
             // 
@@ -405,20 +448,22 @@
             // 
             this.teselasToolStripMenuItem.Name = "teselasToolStripMenuItem";
             this.teselasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D5)));
-            this.teselasToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.teselasToolStripMenuItem.Text = "&Teselas";
+            this.teselasToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.teselasToolStripMenuItem.Text = "T&eselas";
             this.teselasToolStripMenuItem.Click += new System.EventHandler(this.TeselasToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(245, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(317, 6);
             // 
             // todosLosChoferesToolStripMenuItem
             // 
             this.todosLosChoferesToolStripMenuItem.CheckOnClick = true;
             this.todosLosChoferesToolStripMenuItem.Name = "todosLosChoferesToolStripMenuItem";
-            this.todosLosChoferesToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.todosLosChoferesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.T)));
+            this.todosLosChoferesToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
             this.todosLosChoferesToolStripMenuItem.Text = "Todos los &choferes";
             this.todosLosChoferesToolStripMenuItem.Click += new System.EventHandler(this.SelectDriversView);
             // 
@@ -426,7 +471,9 @@
             // 
             this.choferessinProblemasToolStripMenuItem.CheckOnClick = true;
             this.choferessinProblemasToolStripMenuItem.Name = "choferessinProblemasToolStripMenuItem";
-            this.choferessinProblemasToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.choferessinProblemasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.choferessinProblemasToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
             this.choferessinProblemasToolStripMenuItem.Text = "Choferes &sin problemas";
             this.choferessinProblemasToolStripMenuItem.Click += new System.EventHandler(this.SelectDriversView);
             // 
@@ -434,7 +481,9 @@
             // 
             this.choferesConAdvertenciasToolStripMenuItem.CheckOnClick = true;
             this.choferesConAdvertenciasToolStripMenuItem.Name = "choferesConAdvertenciasToolStripMenuItem";
-            this.choferesConAdvertenciasToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.choferesConAdvertenciasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.A)));
+            this.choferesConAdvertenciasToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
             this.choferesConAdvertenciasToolStripMenuItem.Text = "Choferes con &advertencias";
             this.choferesConAdvertenciasToolStripMenuItem.Click += new System.EventHandler(this.SelectDriversView);
             // 
@@ -442,9 +491,40 @@
             // 
             this.choferesConProblemasToolStripMenuItem.CheckOnClick = true;
             this.choferesConProblemasToolStripMenuItem.Name = "choferesConProblemasToolStripMenuItem";
-            this.choferesConProblemasToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.choferesConProblemasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.E)));
+            this.choferesConProblemasToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
             this.choferesConProblemasToolStripMenuItem.Text = "Choferes con atributos &expirados";
             this.choferesConProblemasToolStripMenuItem.Click += new System.EventHandler(this.SelectDriversView);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(317, 6);
+            // 
+            // todosLosChoferesToolStripMenuItem1
+            // 
+            this.todosLosChoferesToolStripMenuItem1.Name = "todosLosChoferesToolStripMenuItem1";
+            this.todosLosChoferesToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.T)));
+            this.todosLosChoferesToolStripMenuItem1.Size = new System.Drawing.Size(320, 22);
+            this.todosLosChoferesToolStripMenuItem1.Text = "Todos los ch&oferes";
+            this.todosLosChoferesToolStripMenuItem1.Click += new System.EventHandler(this.SelectDriverCategoryFilter);
+            // 
+            // profesionalesToolStripMenuItem
+            // 
+            this.profesionalesToolStripMenuItem.Name = "profesionalesToolStripMenuItem";
+            this.profesionalesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
+            this.profesionalesToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.profesionalesToolStripMenuItem.Text = "&Profesionales";
+            this.profesionalesToolStripMenuItem.Click += new System.EventHandler(this.SelectDriverCategoryFilter);
+            // 
+            // noProfesionalesToolStripMenuItem
+            // 
+            this.noProfesionalesToolStripMenuItem.Name = "noProfesionalesToolStripMenuItem";
+            this.noProfesionalesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.N)));
+            this.noProfesionalesToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.noProfesionalesToolStripMenuItem.Text = "&No profesionales";
+            this.noProfesionalesToolStripMenuItem.Click += new System.EventHandler(this.SelectDriverCategoryFilter);
             // 
             // opcionesToolStripMenuItem
             // 
@@ -500,8 +580,10 @@
             // 
             this.appStatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stlbLoading,
+            this.stlbShowStatics,
             this.stlbDriversView,
-            this.stlbShowStatics});
+            this.stlbDriverCategoryFilter,
+            this.tslbSelectedDriver});
             this.appStatusBar.Location = new System.Drawing.Point(0, 514);
             this.appStatusBar.Name = "appStatusBar";
             this.appStatusBar.Size = new System.Drawing.Size(864, 22);
@@ -517,17 +599,29 @@
             this.stlbLoading.Text = "Cargando...";
             this.stlbLoading.Visible = false;
             // 
+            // stlbShowStatics
+            // 
+            this.stlbShowStatics.Name = "stlbShowStatics";
+            this.stlbShowStatics.Size = new System.Drawing.Size(203, 17);
+            this.stlbShowStatics.Text = "Mostrando X choferes de X cargados.";
+            // 
             // stlbDriversView
             // 
             this.stlbDriversView.Name = "stlbDriversView";
             this.stlbDriversView.Size = new System.Drawing.Size(179, 17);
             this.stlbDriversView.Text = "Visualizando: Todos los choferes.";
             // 
-            // stlbShowStatics
+            // stlbDriverCategoryFilter
             // 
-            this.stlbShowStatics.Name = "stlbShowStatics";
-            this.stlbShowStatics.Size = new System.Drawing.Size(203, 17);
-            this.stlbShowStatics.Text = "Mostrando X choferes de X cargados.";
+            this.stlbDriverCategoryFilter.Name = "stlbDriverCategoryFilter";
+            this.stlbDriverCategoryFilter.Size = new System.Drawing.Size(78, 17);
+            this.stlbDriverCategoryFilter.Text = "Filtrando por:";
+            // 
+            // tslbSelectedDriver
+            // 
+            this.tslbSelectedDriver.Name = "tslbSelectedDriver";
+            this.tslbSelectedDriver.Size = new System.Drawing.Size(80, 17);
+            this.tslbSelectedDriver.Text = "Seleccionado:";
             // 
             // pictureBox1
             // 
@@ -538,6 +632,27 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
+            // 
+            // licenciaToolStripMenuItem
+            // 
+            this.licenciaToolStripMenuItem.Name = "licenciaToolStripMenuItem";
+            this.licenciaToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.licenciaToolStripMenuItem.Text = "Li&cencia...";
+            this.licenciaToolStripMenuItem.Click += new System.EventHandler(this.LicenciaToolStripMenuItem_Click);
+            // 
+            // recalificaciónToolStripMenuItem
+            // 
+            this.recalificaciónToolStripMenuItem.Name = "recalificaciónToolStripMenuItem";
+            this.recalificaciónToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.recalificaciónToolStripMenuItem.Text = "Recali&ficación...";
+            this.recalificaciónToolStripMenuItem.Click += new System.EventHandler(this.RecalificaciónToolStripMenuItem_Click);
+            // 
+            // examenesMédicosToolStripMenuItem
+            // 
+            this.examenesMédicosToolStripMenuItem.Name = "examenesMédicosToolStripMenuItem";
+            this.examenesMédicosToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.examenesMédicosToolStripMenuItem.Text = "E&xamenes médicos...";
+            this.examenesMédicosToolStripMenuItem.Click += new System.EventHandler(this.ExamenesMédicosToolStripMenuItem_Click);
             // 
             // FrmDriversMainForm
             // 
@@ -561,6 +676,7 @@
             this.Name = "FrmDriversMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control de choferes";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmDriversMainForm_FormClosing);
             this.SizeChanged += new System.EventHandler(this.FrmMain_SizeChanged);
             this.driverContextMenu.ResumeLayout(false);
             this.appMainMenu.ResumeLayout(false);
@@ -625,5 +741,16 @@
         private System.Windows.Forms.ColumnHeader tcClCategory;
         private System.Windows.Forms.ToolStripMenuItem actualizarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem historialDeBajasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem todosLosChoferesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem profesionalesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem noProfesionalesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel stlbDriverCategoryFilter;
+        private System.Windows.Forms.ToolStripMenuItem seleccionarTodosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripStatusLabel tslbSelectedDriver;
+        private System.Windows.Forms.ToolStripMenuItem licenciaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem recalificaciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem examenesMédicosToolStripMenuItem;
     }
 }

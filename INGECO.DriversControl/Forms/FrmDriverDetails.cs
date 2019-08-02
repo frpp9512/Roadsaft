@@ -25,22 +25,33 @@ namespace INGECO.DriversControl
 
         #endregion
 
+        #region Properties
+
+        /// <summary>
+        /// The specified initial action to perform when the form loads.
+        /// </summary>
+        public DriverDetailsInitialAction InitialAction { get; private set; }
+
+        #endregion
+
         #region Constructors
 
         public FrmDriverDetails()
         {
             InitializeComponent();
+            InitialAction = DriverDetailsInitialAction.None;
             FillDriverCategoryCombobox();
             SetTabControlImageList();
             UpdatedSelectedDriver();
         }
 
-        public FrmDriverDetails(Driver driver)
+        public FrmDriverDetails(Driver driver, DriverDetailsInitialAction initAction)
         {
             InitializeComponent();
             FillDriverCategoryCombobox();
             SetTabControlImageList();
             this.Driver = driver;
+            InitialAction = initAction;
             UpdatedSelectedDriver();
         }
 
@@ -77,6 +88,42 @@ namespace INGECO.DriversControl
             imageList.Images.Add(Properties.Resources.warning);
             imageList.Images.Add(Properties.Resources.error);            
             tabControl1.ImageList = imageList;
+        }
+
+        /// <summary>
+        /// Performs the specified initial action.
+        /// </summary>
+        /// <param name="initAction">The initial action to perform.</param>
+        private void PerformInitialAction()
+        {
+            switch (InitialAction)
+            {
+                case DriverDetailsInitialAction.None:
+                    break;
+                case DriverDetailsInitialAction.LicenseTabOpen:
+                    tabControl1.SelectedTab = TpDriverLicense;
+                    break;
+                case DriverDetailsInitialAction.RequalificationTabOpen:
+                    tabControl1.SelectedTab = TpRequalification;
+                    break;
+                case DriverDetailsInitialAction.MedicalExamTabOpen:
+                    tabControl1.SelectedTab = TpMedicalExams;
+                    break;
+                case DriverDetailsInitialAction.LicenseRenewal:
+                    tabControl1.SelectedTab = TpDriverLicense;
+                    DriverLicenseRenewal();
+                    break;
+                case DriverDetailsInitialAction.RequalificationRenewal:
+                    tabControl1.SelectedTab = TpRequalification;
+                    RequalificationRenewal();
+                    break;
+                case DriverDetailsInitialAction.NewMedicalExam:
+                    tabControl1.SelectedTab = TpMedicalExams;
+                    NewMedicalExam();
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>
@@ -142,7 +189,7 @@ namespace INGECO.DriversControl
                     return false;
                 }
             };
-            frm.Show();
+            frm.ShowDialog();            
         }
 
         /// <summary>
@@ -459,6 +506,15 @@ namespace INGECO.DriversControl
             }
         }
 
+        /// <summary>
+        /// Opens the Driver Report form.
+        /// </summary>
+        private void OpenDriverReportForm()
+        {
+            var frm = new FrmDriverReport(new List<Driver> { Driver });
+            frm.Show();
+        }
+
         #endregion
 
         #region Event subscribers
@@ -544,6 +600,21 @@ namespace INGECO.DriversControl
                 (sender as DataGridView).ClearSelection();
                 (sender as DataGridView).Rows[e.RowIndex].Selected = true;
             }
+        }
+
+        private void FrmDriverDetails_Load(object sender, EventArgs e)
+        {
+            PerformInitialAction();
+        }
+
+        private void BtnRestoreGeneralInfo_Click(object sender, EventArgs e)
+        {
+            UpdateInfoTab(Driver);
+        }
+
+        private void BtnPrintDriverReport_Click(object sender, EventArgs e)
+        {
+            OpenDriverReportForm();
         }
 
         #endregion

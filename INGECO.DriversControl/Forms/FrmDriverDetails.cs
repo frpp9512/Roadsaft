@@ -86,7 +86,8 @@ namespace INGECO.DriversControl
             var imageList = new ImageList();
             imageList.Images.Add(Properties.Resources.ok);
             imageList.Images.Add(Properties.Resources.warning);
-            imageList.Images.Add(Properties.Resources.error);            
+            imageList.Images.Add(Properties.Resources.error);
+            imageList.Images.Add(Properties.Resources.info_small);
             tabControl1.ImageList = imageList;
         }
 
@@ -420,6 +421,7 @@ namespace INGECO.DriversControl
         /// <param name="driver"></param>
         private void UpdateInfoTab(Driver driver)
         {
+            TpDriverInfo.ImageIndex = 3;
             lbRegistered.Text = $"Registrado: {driver.Registered.ToShortDateString()} (Hace {(driver.RegisteredTime.Days > 365 ? $"{driver.RegisteredTime.Days / 365} año(s)." : driver.RegisteredTime.Days > 30 ? $"{driver.RegisteredTime.Days / 30} mes(es)." : $"{driver.RegisteredTime.Days} día(s).")})";
             txtFullname.Text = driver.FullName;
             txtPosition.Text = driver.Position;

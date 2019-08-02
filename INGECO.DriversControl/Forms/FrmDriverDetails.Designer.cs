@@ -53,13 +53,13 @@
             System.Windows.Forms.Label label23;
             System.Windows.Forms.Label label24;
             System.Windows.Forms.Label label25;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDriverDetails));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TpDriverInfo = new System.Windows.Forms.TabPage();
             this.lbRegistered = new System.Windows.Forms.Label();
             this.cbxDriverCategory = new System.Windows.Forms.ComboBox();
             this.txtAge = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
-            this.btnSaveChanges = new System.Windows.Forms.Button();
             this.txtBirthday = new System.Windows.Forms.TextBox();
             this.txtPersonalId = new System.Windows.Forms.TextBox();
             this.txtPosition = new System.Windows.Forms.TextBox();
@@ -79,7 +79,6 @@
             this.clLicenseDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmsHistory = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.eliminarRegistroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnLicenseRenewal = new System.Windows.Forms.Button();
             this.txtLicenseCategory = new System.Windows.Forms.TextBox();
             this.txtLicenseNumber = new System.Windows.Forms.TextBox();
             this.TpRequalification = new System.Windows.Forms.TabPage();
@@ -87,7 +86,6 @@
             this.txtRequalificationDateOfMaking = new System.Windows.Forms.TextBox();
             this.lbRequalificationExpire = new System.Windows.Forms.Label();
             this.txtRequalificationDescription = new System.Windows.Forms.TextBox();
-            this.btnRenewRequalification = new System.Windows.Forms.Button();
             this.dgvRequalificationHistorical = new System.Windows.Forms.DataGridView();
             this.clRArchived = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -108,8 +106,6 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clHMedExamDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnMedicalExamNew = new System.Windows.Forms.Button();
-            this.btnMedicalExamArchiveSelected = new System.Windows.Forms.Button();
             this.dgvMedicalExamActive = new System.Windows.Forms.DataGridView();
             this.clIcon = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -119,8 +115,18 @@
             this.clMedExamResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clMedExamDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnRestoreGeneralInfo = new System.Windows.Forms.Button();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btnPrintDriverReport = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.btnRestoreGeneralInfo = new System.Windows.Forms.Button();
+            this.btnSaveChanges = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnLicenseRenewal = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnRenewRequalification = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnMedicalExamNew = new System.Windows.Forms.Button();
+            this.btnMedicalExamArchiveSelected = new System.Windows.Forms.Button();
             label22 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -155,12 +161,17 @@
             this.TpMedicalExams.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedicalExamHistorical)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedicalExamActive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new System.Drawing.Point(6, 187);
+            label22.Location = new System.Drawing.Point(6, 207);
             label22.Name = "label22";
             label22.Size = new System.Drawing.Size(63, 13);
             label22.TabIndex = 30;
@@ -170,7 +181,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            label10.Location = new System.Drawing.Point(3, 10);
+            label10.Location = new System.Drawing.Point(62, 6);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(186, 25);
             label10.TabIndex = 11;
@@ -179,7 +190,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(6, 76);
+            label4.Location = new System.Drawing.Point(6, 96);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(38, 13);
             label4.TabIndex = 4;
@@ -188,7 +199,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(6, 104);
+            label3.Location = new System.Drawing.Point(6, 124);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(99, 13);
             label3.TabIndex = 2;
@@ -197,7 +208,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(6, 48);
+            label2.Location = new System.Drawing.Point(6, 68);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(94, 13);
             label2.TabIndex = 0;
@@ -206,7 +217,7 @@
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new System.Drawing.Point(7, 145);
+            label21.Location = new System.Drawing.Point(7, 164);
             label21.Name = "label21";
             label21.Size = new System.Drawing.Size(63, 13);
             label21.TabIndex = 30;
@@ -216,7 +227,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            label9.Location = new System.Drawing.Point(6, 220);
+            label9.Location = new System.Drawing.Point(6, 233);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(89, 25);
             label9.TabIndex = 12;
@@ -226,7 +237,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            label8.Location = new System.Drawing.Point(5, 12);
+            label8.Location = new System.Drawing.Point(64, 6);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(136, 25);
             label8.TabIndex = 10;
@@ -235,7 +246,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(8, 104);
+            label7.Location = new System.Drawing.Point(8, 123);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(103, 13);
             label7.TabIndex = 6;
@@ -244,7 +255,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(8, 76);
+            label6.Location = new System.Drawing.Point(8, 95);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(65, 13);
             label6.TabIndex = 4;
@@ -253,7 +264,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(8, 48);
+            label5.Location = new System.Drawing.Point(8, 67);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(100, 13);
             label5.TabIndex = 2;
@@ -262,7 +273,7 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new System.Drawing.Point(8, 152);
+            label20.Location = new System.Drawing.Point(8, 163);
             label20.Name = "label20";
             label20.Size = new System.Drawing.Size(63, 13);
             label20.TabIndex = 28;
@@ -272,7 +283,7 @@
             // 
             label17.AutoSize = true;
             label17.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            label17.Location = new System.Drawing.Point(6, 223);
+            label17.Location = new System.Drawing.Point(6, 234);
             label17.Name = "label17";
             label17.Size = new System.Drawing.Size(89, 25);
             label17.TabIndex = 26;
@@ -281,7 +292,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new System.Drawing.Point(8, 124);
+            label16.Location = new System.Drawing.Point(8, 135);
             label16.Name = "label16";
             label16.Size = new System.Drawing.Size(46, 13);
             label16.TabIndex = 24;
@@ -290,7 +301,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new System.Drawing.Point(223, 124);
+            label15.Location = new System.Drawing.Point(223, 135);
             label15.Name = "label15";
             label15.Size = new System.Drawing.Size(30, 13);
             label15.TabIndex = 22;
@@ -299,7 +310,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new System.Drawing.Point(114, 124);
+            label14.Location = new System.Drawing.Point(114, 135);
             label14.Name = "label14";
             label14.Size = new System.Drawing.Size(35, 13);
             label14.TabIndex = 20;
@@ -308,7 +319,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(8, 83);
+            label13.Location = new System.Drawing.Point(8, 94);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(103, 13);
             label13.TabIndex = 18;
@@ -317,7 +328,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(8, 55);
+            label11.Location = new System.Drawing.Point(8, 66);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(83, 13);
             label11.TabIndex = 16;
@@ -327,7 +338,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            label12.Location = new System.Drawing.Point(6, 14);
+            label12.Location = new System.Drawing.Point(64, 6);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(185, 25);
             label12.TabIndex = 14;
@@ -337,7 +348,7 @@
             // 
             label19.AutoSize = true;
             label19.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            label19.Location = new System.Drawing.Point(1, 186);
+            label19.Location = new System.Drawing.Point(1, 188);
             label19.Name = "label19";
             label19.Size = new System.Drawing.Size(89, 25);
             label19.TabIndex = 31;
@@ -347,7 +358,7 @@
             // 
             label18.AutoSize = true;
             label18.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            label18.Location = new System.Drawing.Point(1, 12);
+            label18.Location = new System.Drawing.Point(59, 6);
             label18.Name = "label18";
             label18.Size = new System.Drawing.Size(239, 25);
             label18.TabIndex = 27;
@@ -356,7 +367,7 @@
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new System.Drawing.Point(6, 159);
+            label23.Location = new System.Drawing.Point(6, 179);
             label23.Name = "label23";
             label23.Size = new System.Drawing.Size(67, 13);
             label23.TabIndex = 2;
@@ -365,7 +376,7 @@
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new System.Drawing.Point(246, 159);
+            label24.Location = new System.Drawing.Point(246, 179);
             label24.Name = "label24";
             label24.Size = new System.Drawing.Size(33, 13);
             label24.TabIndex = 33;
@@ -374,7 +385,7 @@
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new System.Drawing.Point(6, 132);
+            label25.Location = new System.Drawing.Point(6, 152);
             label25.Name = "label25";
             label25.Size = new System.Drawing.Size(55, 13);
             label25.TabIndex = 35;
@@ -389,14 +400,15 @@
             this.tabControl1.Controls.Add(this.TpDriverLicense);
             this.tabControl1.Controls.Add(this.TpRequalification);
             this.tabControl1.Controls.Add(this.TpMedicalExams);
-            this.tabControl1.Location = new System.Drawing.Point(12, 75);
+            this.tabControl1.Location = new System.Drawing.Point(12, 86);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(730, 379);
+            this.tabControl1.Size = new System.Drawing.Size(730, 395);
             this.tabControl1.TabIndex = 3;
             // 
             // TpDriverInfo
             // 
+            this.TpDriverInfo.Controls.Add(this.pictureBox4);
             this.TpDriverInfo.Controls.Add(this.btnRestoreGeneralInfo);
             this.TpDriverInfo.Controls.Add(this.lbRegistered);
             this.TpDriverInfo.Controls.Add(this.cbxDriverCategory);
@@ -419,7 +431,7 @@
             this.TpDriverInfo.Location = new System.Drawing.Point(4, 22);
             this.TpDriverInfo.Name = "TpDriverInfo";
             this.TpDriverInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.TpDriverInfo.Size = new System.Drawing.Size(722, 353);
+            this.TpDriverInfo.Size = new System.Drawing.Size(722, 369);
             this.TpDriverInfo.TabIndex = 0;
             this.TpDriverInfo.Text = "Información";
             this.TpDriverInfo.UseVisualStyleBackColor = true;
@@ -427,7 +439,7 @@
             // lbRegistered
             // 
             this.lbRegistered.AutoSize = true;
-            this.lbRegistered.Location = new System.Drawing.Point(195, 19);
+            this.lbRegistered.Location = new System.Drawing.Point(64, 31);
             this.lbRegistered.Name = "lbRegistered";
             this.lbRegistered.Size = new System.Drawing.Size(58, 13);
             this.lbRegistered.TabIndex = 37;
@@ -437,14 +449,14 @@
             // 
             this.cbxDriverCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDriverCategory.FormattingEnabled = true;
-            this.cbxDriverCategory.Location = new System.Drawing.Point(111, 129);
+            this.cbxDriverCategory.Location = new System.Drawing.Point(111, 149);
             this.cbxDriverCategory.Name = "cbxDriverCategory";
             this.cbxDriverCategory.Size = new System.Drawing.Size(240, 21);
             this.cbxDriverCategory.TabIndex = 3;
             // 
             // txtAge
             // 
-            this.txtAge.Location = new System.Drawing.Point(285, 156);
+            this.txtAge.Location = new System.Drawing.Point(285, 176);
             this.txtAge.Name = "txtAge";
             this.txtAge.ReadOnly = true;
             this.txtAge.Size = new System.Drawing.Size(66, 22);
@@ -453,31 +465,15 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(111, 184);
+            this.txtDescription.Location = new System.Drawing.Point(111, 204);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(240, 45);
             this.txtDescription.TabIndex = 6;
             // 
-            // btnSaveChanges
-            // 
-            this.btnSaveChanges.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnSaveChanges.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
-            this.btnSaveChanges.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
-            this.btnSaveChanges.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
-            this.btnSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveChanges.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveChanges.Location = new System.Drawing.Point(240, 235);
-            this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(111, 23);
-            this.btnSaveChanges.TabIndex = 8;
-            this.btnSaveChanges.Text = "&Guardar cambios";
-            this.btnSaveChanges.UseVisualStyleBackColor = true;
-            this.btnSaveChanges.Click += new System.EventHandler(this.BtnSaveChanges_Click);
-            // 
             // txtBirthday
             // 
-            this.txtBirthday.Location = new System.Drawing.Point(111, 156);
+            this.txtBirthday.Location = new System.Drawing.Point(111, 176);
             this.txtBirthday.Name = "txtBirthday";
             this.txtBirthday.ReadOnly = true;
             this.txtBirthday.Size = new System.Drawing.Size(106, 22);
@@ -486,27 +482,28 @@
             // 
             // txtPersonalId
             // 
-            this.txtPersonalId.Location = new System.Drawing.Point(111, 101);
+            this.txtPersonalId.Location = new System.Drawing.Point(111, 121);
             this.txtPersonalId.Name = "txtPersonalId";
             this.txtPersonalId.Size = new System.Drawing.Size(240, 22);
             this.txtPersonalId.TabIndex = 2;
             // 
             // txtPosition
             // 
-            this.txtPosition.Location = new System.Drawing.Point(111, 73);
+            this.txtPosition.Location = new System.Drawing.Point(111, 93);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(240, 22);
             this.txtPosition.TabIndex = 1;
             // 
             // txtFullname
             // 
-            this.txtFullname.Location = new System.Drawing.Point(111, 45);
+            this.txtFullname.Location = new System.Drawing.Point(111, 65);
             this.txtFullname.Name = "txtFullname";
             this.txtFullname.Size = new System.Drawing.Size(240, 22);
             this.txtFullname.TabIndex = 0;
             // 
             // TpDriverLicense
             // 
+            this.TpDriverLicense.Controls.Add(this.pictureBox1);
             this.TpDriverLicense.Controls.Add(this.txtLicenseExpireDate);
             this.TpDriverLicense.Controls.Add(this.lbLicenseExpiration);
             this.TpDriverLicense.Controls.Add(this.txtDriverLicenseDescription);
@@ -515,23 +512,23 @@
             this.TpDriverLicense.Controls.Add(label9);
             this.TpDriverLicense.Controls.Add(this.dgvHistoricLicenses);
             this.TpDriverLicense.Controls.Add(label8);
-            this.TpDriverLicense.Controls.Add(this.btnLicenseRenewal);
             this.TpDriverLicense.Controls.Add(label7);
             this.TpDriverLicense.Controls.Add(this.txtLicenseCategory);
             this.TpDriverLicense.Controls.Add(label6);
             this.TpDriverLicense.Controls.Add(this.txtLicenseNumber);
             this.TpDriverLicense.Controls.Add(label5);
+            this.TpDriverLicense.Controls.Add(this.btnLicenseRenewal);
             this.TpDriverLicense.Location = new System.Drawing.Point(4, 22);
             this.TpDriverLicense.Name = "TpDriverLicense";
             this.TpDriverLicense.Padding = new System.Windows.Forms.Padding(3);
-            this.TpDriverLicense.Size = new System.Drawing.Size(722, 353);
+            this.TpDriverLicense.Size = new System.Drawing.Size(722, 369);
             this.TpDriverLicense.TabIndex = 1;
             this.TpDriverLicense.Text = "Licencia de conducción";
             this.TpDriverLicense.UseVisualStyleBackColor = true;
             // 
             // txtLicenseExpireDate
             // 
-            this.txtLicenseExpireDate.Location = new System.Drawing.Point(117, 101);
+            this.txtLicenseExpireDate.Location = new System.Drawing.Point(117, 120);
             this.txtLicenseExpireDate.Name = "txtLicenseExpireDate";
             this.txtLicenseExpireDate.ReadOnly = true;
             this.txtLicenseExpireDate.Size = new System.Drawing.Size(240, 22);
@@ -541,7 +538,7 @@
             // 
             this.lbLicenseExpiration.AutoSize = true;
             this.lbLicenseExpiration.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLicenseExpiration.Location = new System.Drawing.Point(114, 126);
+            this.lbLicenseExpiration.Location = new System.Drawing.Point(114, 145);
             this.lbLicenseExpiration.Name = "lbLicenseExpiration";
             this.lbLicenseExpiration.Size = new System.Drawing.Size(206, 13);
             this.lbLicenseExpiration.TabIndex = 32;
@@ -549,7 +546,7 @@
             // 
             // txtDriverLicenseDescription
             // 
-            this.txtDriverLicenseDescription.Location = new System.Drawing.Point(117, 142);
+            this.txtDriverLicenseDescription.Location = new System.Drawing.Point(117, 161);
             this.txtDriverLicenseDescription.Multiline = true;
             this.txtDriverLicenseDescription.Name = "txtDriverLicenseDescription";
             this.txtDriverLicenseDescription.ReadOnly = true;
@@ -559,7 +556,7 @@
             // lbLicenseCreationDate
             // 
             this.lbLicenseCreationDate.AutoSize = true;
-            this.lbLicenseCreationDate.Location = new System.Drawing.Point(147, 21);
+            this.lbLicenseCreationDate.Location = new System.Drawing.Point(66, 31);
             this.lbLicenseCreationDate.Name = "lbLicenseCreationDate";
             this.lbLicenseCreationDate.Size = new System.Drawing.Size(107, 13);
             this.lbLicenseCreationDate.TabIndex = 13;
@@ -583,7 +580,7 @@
             this.clDateOfMaking,
             this.clExpires,
             this.clLicenseDescription});
-            this.dgvHistoricLicenses.Location = new System.Drawing.Point(11, 248);
+            this.dgvHistoricLicenses.Location = new System.Drawing.Point(11, 261);
             this.dgvHistoricLicenses.MultiSelect = false;
             this.dgvHistoricLicenses.Name = "dgvHistoricLicenses";
             this.dgvHistoricLicenses.ReadOnly = true;
@@ -591,7 +588,7 @@
             this.dgvHistoricLicenses.RowTemplate.ContextMenuStrip = this.cmsHistory;
             this.dgvHistoricLicenses.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvHistoricLicenses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHistoricLicenses.Size = new System.Drawing.Size(705, 99);
+            this.dgvHistoricLicenses.Size = new System.Drawing.Size(705, 102);
             this.dgvHistoricLicenses.TabIndex = 11;
             this.dgvHistoricLicenses.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SelectOnRightClick);
             // 
@@ -654,24 +651,9 @@
             this.eliminarRegistroToolStripMenuItem.Text = "&Eliminar registro...";
             this.eliminarRegistroToolStripMenuItem.Click += new System.EventHandler(this.EliminarRegistroToolStripMenuItem_Click);
             // 
-            // btnLicenseRenewal
-            // 
-            this.btnLicenseRenewal.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnLicenseRenewal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
-            this.btnLicenseRenewal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
-            this.btnLicenseRenewal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLicenseRenewal.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnLicenseRenewal.Location = new System.Drawing.Point(241, 193);
-            this.btnLicenseRenewal.Name = "btnLicenseRenewal";
-            this.btnLicenseRenewal.Size = new System.Drawing.Size(116, 23);
-            this.btnLicenseRenewal.TabIndex = 9;
-            this.btnLicenseRenewal.Text = "&Renovar licencia...";
-            this.btnLicenseRenewal.UseVisualStyleBackColor = true;
-            this.btnLicenseRenewal.Click += new System.EventHandler(this.BtnLicenseRenewal_Click);
-            // 
             // txtLicenseCategory
             // 
-            this.txtLicenseCategory.Location = new System.Drawing.Point(117, 73);
+            this.txtLicenseCategory.Location = new System.Drawing.Point(117, 92);
             this.txtLicenseCategory.Name = "txtLicenseCategory";
             this.txtLicenseCategory.ReadOnly = true;
             this.txtLicenseCategory.Size = new System.Drawing.Size(240, 22);
@@ -679,7 +661,7 @@
             // 
             // txtLicenseNumber
             // 
-            this.txtLicenseNumber.Location = new System.Drawing.Point(117, 45);
+            this.txtLicenseNumber.Location = new System.Drawing.Point(117, 64);
             this.txtLicenseNumber.Name = "txtLicenseNumber";
             this.txtLicenseNumber.ReadOnly = true;
             this.txtLicenseNumber.Size = new System.Drawing.Size(240, 22);
@@ -687,12 +669,12 @@
             // 
             // TpRequalification
             // 
+            this.TpRequalification.Controls.Add(this.pictureBox2);
             this.TpRequalification.Controls.Add(this.txtRequalificationExpires);
             this.TpRequalification.Controls.Add(this.txtRequalificationDateOfMaking);
             this.TpRequalification.Controls.Add(this.lbRequalificationExpire);
             this.TpRequalification.Controls.Add(this.txtRequalificationDescription);
             this.TpRequalification.Controls.Add(label20);
-            this.TpRequalification.Controls.Add(this.btnRenewRequalification);
             this.TpRequalification.Controls.Add(label17);
             this.TpRequalification.Controls.Add(this.dgvRequalificationHistorical);
             this.TpRequalification.Controls.Add(label16);
@@ -704,17 +686,18 @@
             this.TpRequalification.Controls.Add(label11);
             this.TpRequalification.Controls.Add(this.lbRequalificationCreationDate);
             this.TpRequalification.Controls.Add(label12);
+            this.TpRequalification.Controls.Add(this.btnRenewRequalification);
             this.TpRequalification.Location = new System.Drawing.Point(4, 22);
             this.TpRequalification.Name = "TpRequalification";
             this.TpRequalification.Padding = new System.Windows.Forms.Padding(3);
-            this.TpRequalification.Size = new System.Drawing.Size(722, 353);
+            this.TpRequalification.Size = new System.Drawing.Size(722, 369);
             this.TpRequalification.TabIndex = 2;
             this.TpRequalification.Text = "Recalificación";
             this.TpRequalification.UseVisualStyleBackColor = true;
             // 
             // txtRequalificationExpires
             // 
-            this.txtRequalificationExpires.Location = new System.Drawing.Point(117, 80);
+            this.txtRequalificationExpires.Location = new System.Drawing.Point(117, 91);
             this.txtRequalificationExpires.Name = "txtRequalificationExpires";
             this.txtRequalificationExpires.ReadOnly = true;
             this.txtRequalificationExpires.Size = new System.Drawing.Size(240, 22);
@@ -722,7 +705,7 @@
             // 
             // txtRequalificationDateOfMaking
             // 
-            this.txtRequalificationDateOfMaking.Location = new System.Drawing.Point(117, 52);
+            this.txtRequalificationDateOfMaking.Location = new System.Drawing.Point(117, 63);
             this.txtRequalificationDateOfMaking.Name = "txtRequalificationDateOfMaking";
             this.txtRequalificationDateOfMaking.ReadOnly = true;
             this.txtRequalificationDateOfMaking.Size = new System.Drawing.Size(240, 22);
@@ -732,7 +715,7 @@
             // 
             this.lbRequalificationExpire.AutoSize = true;
             this.lbRequalificationExpire.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRequalificationExpire.Location = new System.Drawing.Point(114, 105);
+            this.lbRequalificationExpire.Location = new System.Drawing.Point(114, 116);
             this.lbRequalificationExpire.Name = "lbRequalificationExpire";
             this.lbRequalificationExpire.Size = new System.Drawing.Size(206, 13);
             this.lbRequalificationExpire.TabIndex = 33;
@@ -740,27 +723,12 @@
             // 
             // txtRequalificationDescription
             // 
-            this.txtRequalificationDescription.Location = new System.Drawing.Point(117, 149);
+            this.txtRequalificationDescription.Location = new System.Drawing.Point(117, 160);
             this.txtRequalificationDescription.Multiline = true;
             this.txtRequalificationDescription.Name = "txtRequalificationDescription";
             this.txtRequalificationDescription.ReadOnly = true;
             this.txtRequalificationDescription.Size = new System.Drawing.Size(240, 45);
             this.txtRequalificationDescription.TabIndex = 29;
-            // 
-            // btnRenewRequalification
-            // 
-            this.btnRenewRequalification.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnRenewRequalification.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
-            this.btnRenewRequalification.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
-            this.btnRenewRequalification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRenewRequalification.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnRenewRequalification.Location = new System.Drawing.Point(212, 200);
-            this.btnRenewRequalification.Name = "btnRenewRequalification";
-            this.btnRenewRequalification.Size = new System.Drawing.Size(145, 23);
-            this.btnRenewRequalification.TabIndex = 27;
-            this.btnRenewRequalification.Text = "&Renovar recalificación...";
-            this.btnRenewRequalification.UseVisualStyleBackColor = true;
-            this.btnRenewRequalification.Click += new System.EventHandler(this.BtnRenewRequalification_Click);
             // 
             // dgvRequalificationHistorical
             // 
@@ -780,7 +748,7 @@
             this.clVolume,
             this.clPage,
             this.clReqDescription});
-            this.dgvRequalificationHistorical.Location = new System.Drawing.Point(11, 251);
+            this.dgvRequalificationHistorical.Location = new System.Drawing.Point(11, 262);
             this.dgvRequalificationHistorical.MultiSelect = false;
             this.dgvRequalificationHistorical.Name = "dgvRequalificationHistorical";
             this.dgvRequalificationHistorical.ReadOnly = true;
@@ -788,7 +756,7 @@
             this.dgvRequalificationHistorical.RowTemplate.ContextMenuStrip = this.cmsHistory;
             this.dgvRequalificationHistorical.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvRequalificationHistorical.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRequalificationHistorical.Size = new System.Drawing.Size(705, 94);
+            this.dgvRequalificationHistorical.Size = new System.Drawing.Size(705, 101);
             this.dgvRequalificationHistorical.TabIndex = 25;
             this.dgvRequalificationHistorical.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SelectOnRightClick);
             // 
@@ -836,7 +804,7 @@
             // 
             // txtRequalificationPage
             // 
-            this.txtRequalificationPage.Location = new System.Drawing.Point(264, 121);
+            this.txtRequalificationPage.Location = new System.Drawing.Point(264, 132);
             this.txtRequalificationPage.Name = "txtRequalificationPage";
             this.txtRequalificationPage.ReadOnly = true;
             this.txtRequalificationPage.Size = new System.Drawing.Size(62, 22);
@@ -844,7 +812,7 @@
             // 
             // txtRequalificationVolume
             // 
-            this.txtRequalificationVolume.Location = new System.Drawing.Point(155, 121);
+            this.txtRequalificationVolume.Location = new System.Drawing.Point(155, 132);
             this.txtRequalificationVolume.Name = "txtRequalificationVolume";
             this.txtRequalificationVolume.ReadOnly = true;
             this.txtRequalificationVolume.Size = new System.Drawing.Size(62, 22);
@@ -853,7 +821,7 @@
             // lbRequalificationCreationDate
             // 
             this.lbRequalificationCreationDate.AutoSize = true;
-            this.lbRequalificationCreationDate.Location = new System.Drawing.Point(197, 23);
+            this.lbRequalificationCreationDate.Location = new System.Drawing.Point(66, 31);
             this.lbRequalificationCreationDate.Name = "lbRequalificationCreationDate";
             this.lbRequalificationCreationDate.Size = new System.Drawing.Size(107, 13);
             this.lbRequalificationCreationDate.TabIndex = 15;
@@ -861,16 +829,17 @@
             // 
             // TpMedicalExams
             // 
+            this.TpMedicalExams.Controls.Add(this.pictureBox3);
             this.TpMedicalExams.Controls.Add(this.dgvMedicalExamHistorical);
             this.TpMedicalExams.Controls.Add(label19);
-            this.TpMedicalExams.Controls.Add(this.btnMedicalExamNew);
-            this.TpMedicalExams.Controls.Add(this.btnMedicalExamArchiveSelected);
             this.TpMedicalExams.Controls.Add(label18);
             this.TpMedicalExams.Controls.Add(this.dgvMedicalExamActive);
+            this.TpMedicalExams.Controls.Add(this.btnMedicalExamNew);
+            this.TpMedicalExams.Controls.Add(this.btnMedicalExamArchiveSelected);
             this.TpMedicalExams.Location = new System.Drawing.Point(4, 22);
             this.TpMedicalExams.Name = "TpMedicalExams";
             this.TpMedicalExams.Padding = new System.Windows.Forms.Padding(3);
-            this.TpMedicalExams.Size = new System.Drawing.Size(722, 353);
+            this.TpMedicalExams.Size = new System.Drawing.Size(722, 369);
             this.TpMedicalExams.TabIndex = 3;
             this.TpMedicalExams.Text = "Exámenes Médicos";
             this.TpMedicalExams.UseVisualStyleBackColor = true;
@@ -893,7 +862,7 @@
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10,
             this.clHMedExamDescription});
-            this.dgvMedicalExamHistorical.Location = new System.Drawing.Point(6, 214);
+            this.dgvMedicalExamHistorical.Location = new System.Drawing.Point(6, 216);
             this.dgvMedicalExamHistorical.MultiSelect = false;
             this.dgvMedicalExamHistorical.Name = "dgvMedicalExamHistorical";
             this.dgvMedicalExamHistorical.ReadOnly = true;
@@ -901,7 +870,7 @@
             this.dgvMedicalExamHistorical.RowTemplate.ContextMenuStrip = this.cmsHistory;
             this.dgvMedicalExamHistorical.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
             this.dgvMedicalExamHistorical.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMedicalExamHistorical.Size = new System.Drawing.Size(710, 133);
+            this.dgvMedicalExamHistorical.Size = new System.Drawing.Size(710, 147);
             this.dgvMedicalExamHistorical.TabIndex = 32;
             this.dgvMedicalExamHistorical.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SelectOnRightClick);
             // 
@@ -947,40 +916,6 @@
             this.clHMedExamDescription.Name = "clHMedExamDescription";
             this.clHMedExamDescription.ReadOnly = true;
             // 
-            // btnMedicalExamNew
-            // 
-            this.btnMedicalExamNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMedicalExamNew.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnMedicalExamNew.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
-            this.btnMedicalExamNew.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
-            this.btnMedicalExamNew.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
-            this.btnMedicalExamNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMedicalExamNew.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnMedicalExamNew.Location = new System.Drawing.Point(440, 160);
-            this.btnMedicalExamNew.Name = "btnMedicalExamNew";
-            this.btnMedicalExamNew.Size = new System.Drawing.Size(129, 23);
-            this.btnMedicalExamNew.TabIndex = 29;
-            this.btnMedicalExamNew.Text = "&Nuevo exámen...";
-            this.btnMedicalExamNew.UseVisualStyleBackColor = true;
-            this.btnMedicalExamNew.Click += new System.EventHandler(this.BtnMedicalExamNew_Click);
-            // 
-            // btnMedicalExamArchiveSelected
-            // 
-            this.btnMedicalExamArchiveSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMedicalExamArchiveSelected.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnMedicalExamArchiveSelected.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
-            this.btnMedicalExamArchiveSelected.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
-            this.btnMedicalExamArchiveSelected.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
-            this.btnMedicalExamArchiveSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMedicalExamArchiveSelected.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnMedicalExamArchiveSelected.Location = new System.Drawing.Point(575, 160);
-            this.btnMedicalExamArchiveSelected.Name = "btnMedicalExamArchiveSelected";
-            this.btnMedicalExamArchiveSelected.Size = new System.Drawing.Size(141, 23);
-            this.btnMedicalExamArchiveSelected.TabIndex = 28;
-            this.btnMedicalExamArchiveSelected.Text = "&Archivar seleccionado(s)...";
-            this.btnMedicalExamArchiveSelected.UseVisualStyleBackColor = true;
-            this.btnMedicalExamArchiveSelected.Click += new System.EventHandler(this.BtnMedicalExamArchiveSelected_Click);
-            // 
             // dgvMedicalExamActive
             // 
             this.dgvMedicalExamActive.AllowUserToAddRows = false;
@@ -998,7 +933,7 @@
             this.dataGridViewTextBoxColumn6,
             this.clMedExamResult,
             this.clMedExamDescription});
-            this.dgvMedicalExamActive.Location = new System.Drawing.Point(6, 49);
+            this.dgvMedicalExamActive.Location = new System.Drawing.Point(6, 50);
             this.dgvMedicalExamActive.Name = "dgvMedicalExamActive";
             this.dgvMedicalExamActive.ReadOnly = true;
             this.dgvMedicalExamActive.RowHeadersVisible = false;
@@ -1061,27 +996,21 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 24F);
             this.label1.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label1.Location = new System.Drawing.Point(8, 9);
+            this.label1.Location = new System.Drawing.Point(87, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(290, 45);
             this.label1.TabIndex = 4;
             this.label1.Text = "Detalles del chofer";
             // 
-            // btnRestoreGeneralInfo
+            // pictureBox5
             // 
-            this.btnRestoreGeneralInfo.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnRestoreGeneralInfo.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
-            this.btnRestoreGeneralInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
-            this.btnRestoreGeneralInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
-            this.btnRestoreGeneralInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRestoreGeneralInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRestoreGeneralInfo.Location = new System.Drawing.Point(111, 235);
-            this.btnRestoreGeneralInfo.Name = "btnRestoreGeneralInfo";
-            this.btnRestoreGeneralInfo.Size = new System.Drawing.Size(78, 23);
-            this.btnRestoreGeneralInfo.TabIndex = 7;
-            this.btnRestoreGeneralInfo.Text = "&Restaurar";
-            this.btnRestoreGeneralInfo.UseVisualStyleBackColor = true;
-            this.btnRestoreGeneralInfo.Click += new System.EventHandler(this.BtnRestoreGeneralInfo_Click);
+            this.pictureBox5.Image = global::INGECO.DriversControl.Properties.Resources.opendetails;
+            this.pictureBox5.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(69, 68);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 16;
+            this.pictureBox5.TabStop = false;
             // 
             // btnPrintDriverReport
             // 
@@ -1091,23 +1020,175 @@
             this.btnPrintDriverReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnPrintDriverReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrintDriverReport.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrintDriverReport.Location = new System.Drawing.Point(638, 29);
+            this.btnPrintDriverReport.Image = global::INGECO.DriversControl.Properties.Resources.print_blank_verysmall;
+            this.btnPrintDriverReport.Location = new System.Drawing.Point(623, 39);
             this.btnPrintDriverReport.Name = "btnPrintDriverReport";
-            this.btnPrintDriverReport.Size = new System.Drawing.Size(100, 23);
+            this.btnPrintDriverReport.Size = new System.Drawing.Size(115, 28);
             this.btnPrintDriverReport.TabIndex = 14;
             this.btnPrintDriverReport.Text = "&Imprimir ficha...";
+            this.btnPrintDriverReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrintDriverReport.UseVisualStyleBackColor = true;
             this.btnPrintDriverReport.Click += new System.EventHandler(this.BtnPrintDriverReport_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::INGECO.DriversControl.Properties.Resources.generalinfo;
+            this.pictureBox4.Location = new System.Drawing.Point(9, 6);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(47, 38);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 38;
+            this.pictureBox4.TabStop = false;
+            // 
+            // btnRestoreGeneralInfo
+            // 
+            this.btnRestoreGeneralInfo.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnRestoreGeneralInfo.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
+            this.btnRestoreGeneralInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnRestoreGeneralInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnRestoreGeneralInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRestoreGeneralInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestoreGeneralInfo.Image = global::INGECO.DriversControl.Properties.Resources.restore_verysmall;
+            this.btnRestoreGeneralInfo.Location = new System.Drawing.Point(111, 255);
+            this.btnRestoreGeneralInfo.Name = "btnRestoreGeneralInfo";
+            this.btnRestoreGeneralInfo.Size = new System.Drawing.Size(85, 28);
+            this.btnRestoreGeneralInfo.TabIndex = 7;
+            this.btnRestoreGeneralInfo.Text = "&Restaurar";
+            this.btnRestoreGeneralInfo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRestoreGeneralInfo.UseVisualStyleBackColor = true;
+            this.btnRestoreGeneralInfo.Click += new System.EventHandler(this.BtnRestoreGeneralInfo_Click);
+            // 
+            // btnSaveChanges
+            // 
+            this.btnSaveChanges.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnSaveChanges.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
+            this.btnSaveChanges.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnSaveChanges.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveChanges.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveChanges.Image = global::INGECO.DriversControl.Properties.Resources.save_verysmall;
+            this.btnSaveChanges.Location = new System.Drawing.Point(227, 255);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Size = new System.Drawing.Size(124, 28);
+            this.btnSaveChanges.TabIndex = 8;
+            this.btnSaveChanges.Text = "&Guardar cambios";
+            this.btnSaveChanges.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSaveChanges.UseVisualStyleBackColor = true;
+            this.btnSaveChanges.Click += new System.EventHandler(this.BtnSaveChanges_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::INGECO.DriversControl.Properties.Resources.driver_license;
+            this.pictureBox1.Location = new System.Drawing.Point(11, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(47, 38);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 34;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnLicenseRenewal
+            // 
+            this.btnLicenseRenewal.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnLicenseRenewal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnLicenseRenewal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnLicenseRenewal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLicenseRenewal.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnLicenseRenewal.Image = global::INGECO.DriversControl.Properties.Resources.driver_license_add_verysmall;
+            this.btnLicenseRenewal.Location = new System.Drawing.Point(227, 212);
+            this.btnLicenseRenewal.Name = "btnLicenseRenewal";
+            this.btnLicenseRenewal.Size = new System.Drawing.Size(130, 28);
+            this.btnLicenseRenewal.TabIndex = 9;
+            this.btnLicenseRenewal.Text = "&Renovar licencia...";
+            this.btnLicenseRenewal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLicenseRenewal.UseVisualStyleBackColor = true;
+            this.btnLicenseRenewal.Click += new System.EventHandler(this.BtnLicenseRenewal_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::INGECO.DriversControl.Properties.Resources.requalification;
+            this.pictureBox2.Location = new System.Drawing.Point(11, 6);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(47, 38);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 35;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnRenewRequalification
+            // 
+            this.btnRenewRequalification.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnRenewRequalification.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnRenewRequalification.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnRenewRequalification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRenewRequalification.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnRenewRequalification.Image = global::INGECO.DriversControl.Properties.Resources.requalification_add_verysmall;
+            this.btnRenewRequalification.Location = new System.Drawing.Point(202, 211);
+            this.btnRenewRequalification.Name = "btnRenewRequalification";
+            this.btnRenewRequalification.Size = new System.Drawing.Size(155, 27);
+            this.btnRenewRequalification.TabIndex = 27;
+            this.btnRenewRequalification.Text = "&Renovar recalificación...";
+            this.btnRenewRequalification.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRenewRequalification.UseVisualStyleBackColor = true;
+            this.btnRenewRequalification.Click += new System.EventHandler(this.BtnRenewRequalification_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::INGECO.DriversControl.Properties.Resources.medcheck;
+            this.pictureBox3.Location = new System.Drawing.Point(6, 6);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(47, 38);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 36;
+            this.pictureBox3.TabStop = false;
+            // 
+            // btnMedicalExamNew
+            // 
+            this.btnMedicalExamNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMedicalExamNew.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnMedicalExamNew.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
+            this.btnMedicalExamNew.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnMedicalExamNew.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnMedicalExamNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMedicalExamNew.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnMedicalExamNew.Image = global::INGECO.DriversControl.Properties.Resources.medcheck_add_verysmall;
+            this.btnMedicalExamNew.Location = new System.Drawing.Point(419, 161);
+            this.btnMedicalExamNew.Name = "btnMedicalExamNew";
+            this.btnMedicalExamNew.Size = new System.Drawing.Size(122, 28);
+            this.btnMedicalExamNew.TabIndex = 29;
+            this.btnMedicalExamNew.Text = "&Nuevo exámen...";
+            this.btnMedicalExamNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMedicalExamNew.UseVisualStyleBackColor = true;
+            this.btnMedicalExamNew.Click += new System.EventHandler(this.BtnMedicalExamNew_Click);
+            // 
+            // btnMedicalExamArchiveSelected
+            // 
+            this.btnMedicalExamArchiveSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMedicalExamArchiveSelected.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnMedicalExamArchiveSelected.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
+            this.btnMedicalExamArchiveSelected.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnMedicalExamArchiveSelected.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnMedicalExamArchiveSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMedicalExamArchiveSelected.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnMedicalExamArchiveSelected.Image = global::INGECO.DriversControl.Properties.Resources.archive_verysmall;
+            this.btnMedicalExamArchiveSelected.Location = new System.Drawing.Point(547, 161);
+            this.btnMedicalExamArchiveSelected.Name = "btnMedicalExamArchiveSelected";
+            this.btnMedicalExamArchiveSelected.Size = new System.Drawing.Size(169, 28);
+            this.btnMedicalExamArchiveSelected.TabIndex = 28;
+            this.btnMedicalExamArchiveSelected.Text = "&Archivar seleccionado(s)...";
+            this.btnMedicalExamArchiveSelected.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMedicalExamArchiveSelected.UseVisualStyleBackColor = true;
+            this.btnMedicalExamArchiveSelected.Click += new System.EventHandler(this.BtnMedicalExamArchiveSelected_Click);
             // 
             // FrmDriverDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 466);
+            this.ClientSize = new System.Drawing.Size(754, 493);
+            this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.btnPrintDriverReport);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmDriverDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Detalles del chofer";
@@ -1126,6 +1207,11 @@
             this.TpMedicalExams.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedicalExamHistorical)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedicalExamActive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1201,5 +1287,10 @@
         private System.Windows.Forms.Label lbRegistered;
         private System.Windows.Forms.Button btnRestoreGeneralInfo;
         private System.Windows.Forms.Button btnPrintDriverReport;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }

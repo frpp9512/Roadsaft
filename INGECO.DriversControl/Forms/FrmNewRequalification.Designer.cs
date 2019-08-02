@@ -35,6 +35,7 @@
             System.Windows.Forms.Label label11;
             System.Windows.Forms.Label label12;
             System.Windows.Forms.Label label20;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNewRequalification));
             this.txtRequalificationPage = new System.Windows.Forms.TextBox();
             this.txtRequalificationVolume = new System.Windows.Forms.TextBox();
             this.dtRequalificationExpires = new System.Windows.Forms.DateTimePicker();
@@ -42,6 +43,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRequalificaitonRenewal = new System.Windows.Forms.Button();
             this.txtRequalificationDescription = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             label16 = new System.Windows.Forms.Label();
             label15 = new System.Windows.Forms.Label();
             label14 = new System.Windows.Forms.Label();
@@ -49,12 +51,13 @@
             label11 = new System.Windows.Forms.Label();
             label12 = new System.Windows.Forms.Label();
             label20 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new System.Drawing.Point(14, 106);
+            label16.Location = new System.Drawing.Point(9, 73);
             label16.Name = "label16";
             label16.Size = new System.Drawing.Size(46, 13);
             label16.TabIndex = 38;
@@ -63,7 +66,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new System.Drawing.Point(231, 106);
+            label15.Location = new System.Drawing.Point(226, 129);
             label15.Name = "label15";
             label15.Size = new System.Drawing.Size(30, 13);
             label15.TabIndex = 36;
@@ -72,7 +75,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new System.Drawing.Point(122, 106);
+            label14.Location = new System.Drawing.Point(117, 129);
             label14.Name = "label14";
             label14.Size = new System.Drawing.Size(35, 13);
             label14.TabIndex = 34;
@@ -81,7 +84,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(14, 78);
+            label13.Location = new System.Drawing.Point(9, 101);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(103, 13);
             label13.TabIndex = 32;
@@ -90,7 +93,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(14, 50);
+            label11.Location = new System.Drawing.Point(9, 73);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(83, 13);
             label11.TabIndex = 30;
@@ -100,7 +103,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            label12.Location = new System.Drawing.Point(12, 9);
+            label12.Location = new System.Drawing.Point(65, 12);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(186, 25);
             label12.TabIndex = 28;
@@ -109,7 +112,7 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new System.Drawing.Point(14, 134);
+            label20.Location = new System.Drawing.Point(9, 157);
             label20.Name = "label20";
             label20.Size = new System.Drawing.Size(63, 13);
             label20.TabIndex = 41;
@@ -117,28 +120,28 @@
             // 
             // txtRequalificationPage
             // 
-            this.txtRequalificationPage.Location = new System.Drawing.Point(272, 103);
+            this.txtRequalificationPage.Location = new System.Drawing.Point(267, 126);
             this.txtRequalificationPage.Name = "txtRequalificationPage";
             this.txtRequalificationPage.Size = new System.Drawing.Size(62, 22);
             this.txtRequalificationPage.TabIndex = 3;
             // 
             // txtRequalificationVolume
             // 
-            this.txtRequalificationVolume.Location = new System.Drawing.Point(163, 103);
+            this.txtRequalificationVolume.Location = new System.Drawing.Point(158, 126);
             this.txtRequalificationVolume.Name = "txtRequalificationVolume";
             this.txtRequalificationVolume.Size = new System.Drawing.Size(62, 22);
             this.txtRequalificationVolume.TabIndex = 2;
             // 
             // dtRequalificationExpires
             // 
-            this.dtRequalificationExpires.Location = new System.Drawing.Point(123, 75);
+            this.dtRequalificationExpires.Location = new System.Drawing.Point(118, 98);
             this.dtRequalificationExpires.Name = "dtRequalificationExpires";
             this.dtRequalificationExpires.Size = new System.Drawing.Size(240, 22);
             this.dtRequalificationExpires.TabIndex = 1;
             // 
             // dtRequalificationDateOfMaking
             // 
-            this.dtRequalificationDateOfMaking.Location = new System.Drawing.Point(123, 47);
+            this.dtRequalificationDateOfMaking.Location = new System.Drawing.Point(118, 70);
             this.dtRequalificationDateOfMaking.Name = "dtRequalificationDateOfMaking";
             this.dtRequalificationDateOfMaking.Size = new System.Drawing.Size(240, 22);
             this.dtRequalificationDateOfMaking.TabIndex = 0;
@@ -152,7 +155,7 @@
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Location = new System.Drawing.Point(279, 182);
+            this.btnCancel.Location = new System.Drawing.Point(274, 205);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
             this.btnCancel.TabIndex = 6;
@@ -167,7 +170,7 @@
             this.btnRequalificaitonRenewal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnRequalificaitonRenewal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRequalificaitonRenewal.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnRequalificaitonRenewal.Location = new System.Drawing.Point(189, 182);
+            this.btnRequalificaitonRenewal.Location = new System.Drawing.Point(184, 205);
             this.btnRequalificaitonRenewal.Name = "btnRequalificaitonRenewal";
             this.btnRequalificaitonRenewal.Size = new System.Drawing.Size(84, 23);
             this.btnRequalificaitonRenewal.TabIndex = 5;
@@ -177,17 +180,28 @@
             // 
             // txtRequalificationDescription
             // 
-            this.txtRequalificationDescription.Location = new System.Drawing.Point(123, 131);
+            this.txtRequalificationDescription.Location = new System.Drawing.Point(118, 154);
             this.txtRequalificationDescription.Multiline = true;
             this.txtRequalificationDescription.Name = "txtRequalificationDescription";
             this.txtRequalificationDescription.Size = new System.Drawing.Size(240, 45);
             this.txtRequalificationDescription.TabIndex = 4;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::INGECO.DriversControl.Properties.Resources.requalification_add;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(47, 38);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 42;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmNewRequalification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 215);
+            this.ClientSize = new System.Drawing.Size(374, 242);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtRequalificationDescription);
             this.Controls.Add(label20);
             this.Controls.Add(this.btnCancel);
@@ -204,11 +218,14 @@
             this.Controls.Add(label12);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmNewRequalification";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nueva recalificación";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,5 +239,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnRequalificaitonRenewal;
         private System.Windows.Forms.TextBox txtRequalificationDescription;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

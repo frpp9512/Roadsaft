@@ -34,6 +34,7 @@
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label21;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNewLicense));
             this.btnLicenseRenewal = new System.Windows.Forms.Button();
             this.dtLicenseExpires = new System.Windows.Forms.DateTimePicker();
             this.txtLicenseCategory = new System.Windows.Forms.TextBox();
@@ -41,19 +42,21 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.dtDateOfMaking = new System.Windows.Forms.DateTimePicker();
             this.txtDriverLicenseDescription = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             label8 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label21 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            label8.Location = new System.Drawing.Point(12, 9);
+            label8.Location = new System.Drawing.Point(65, 12);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(266, 25);
             label8.TabIndex = 21;
@@ -62,7 +65,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(15, 129);
+            label7.Location = new System.Drawing.Point(9, 152);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(103, 13);
             label7.TabIndex = 18;
@@ -71,7 +74,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(15, 73);
+            label6.Location = new System.Drawing.Point(9, 96);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(65, 13);
             label6.TabIndex = 16;
@@ -80,7 +83,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(15, 45);
+            label5.Location = new System.Drawing.Point(9, 68);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(100, 13);
             label5.TabIndex = 14;
@@ -89,7 +92,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(15, 101);
+            label1.Location = new System.Drawing.Point(9, 124);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(105, 13);
             label1.TabIndex = 23;
@@ -98,7 +101,7 @@
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new System.Drawing.Point(15, 157);
+            label21.Location = new System.Drawing.Point(9, 180);
             label21.Name = "label21";
             label21.Size = new System.Drawing.Size(63, 13);
             label21.TabIndex = 32;
@@ -112,7 +115,7 @@
             this.btnLicenseRenewal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnLicenseRenewal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLicenseRenewal.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnLicenseRenewal.Location = new System.Drawing.Point(190, 205);
+            this.btnLicenseRenewal.Location = new System.Drawing.Point(184, 228);
             this.btnLicenseRenewal.Name = "btnLicenseRenewal";
             this.btnLicenseRenewal.Size = new System.Drawing.Size(84, 23);
             this.btnLicenseRenewal.TabIndex = 5;
@@ -122,21 +125,21 @@
             // 
             // dtLicenseExpires
             // 
-            this.dtLicenseExpires.Location = new System.Drawing.Point(124, 126);
+            this.dtLicenseExpires.Location = new System.Drawing.Point(118, 149);
             this.dtLicenseExpires.Name = "dtLicenseExpires";
             this.dtLicenseExpires.Size = new System.Drawing.Size(240, 22);
             this.dtLicenseExpires.TabIndex = 3;
             // 
             // txtLicenseCategory
             // 
-            this.txtLicenseCategory.Location = new System.Drawing.Point(124, 70);
+            this.txtLicenseCategory.Location = new System.Drawing.Point(118, 93);
             this.txtLicenseCategory.Name = "txtLicenseCategory";
             this.txtLicenseCategory.Size = new System.Drawing.Size(240, 22);
             this.txtLicenseCategory.TabIndex = 1;
             // 
             // txtLicenseNumber
             // 
-            this.txtLicenseNumber.Location = new System.Drawing.Point(124, 42);
+            this.txtLicenseNumber.Location = new System.Drawing.Point(118, 65);
             this.txtLicenseNumber.Name = "txtLicenseNumber";
             this.txtLicenseNumber.Size = new System.Drawing.Size(240, 22);
             this.txtLicenseNumber.TabIndex = 0;
@@ -150,7 +153,7 @@
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Location = new System.Drawing.Point(280, 205);
+            this.btnCancel.Location = new System.Drawing.Point(274, 228);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
             this.btnCancel.TabIndex = 6;
@@ -159,24 +162,35 @@
             // 
             // dtDateOfMaking
             // 
-            this.dtDateOfMaking.Location = new System.Drawing.Point(124, 98);
+            this.dtDateOfMaking.Location = new System.Drawing.Point(118, 121);
             this.dtDateOfMaking.Name = "dtDateOfMaking";
             this.dtDateOfMaking.Size = new System.Drawing.Size(240, 22);
             this.dtDateOfMaking.TabIndex = 2;
             // 
             // txtDriverLicenseDescription
             // 
-            this.txtDriverLicenseDescription.Location = new System.Drawing.Point(124, 154);
+            this.txtDriverLicenseDescription.Location = new System.Drawing.Point(118, 177);
             this.txtDriverLicenseDescription.Multiline = true;
             this.txtDriverLicenseDescription.Name = "txtDriverLicenseDescription";
             this.txtDriverLicenseDescription.Size = new System.Drawing.Size(240, 45);
             this.txtDriverLicenseDescription.TabIndex = 4;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::INGECO.DriversControl.Properties.Resources.driver_license_add;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(47, 38);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 35;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmNewLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 237);
+            this.ClientSize = new System.Drawing.Size(372, 262);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtDriverLicenseDescription);
             this.Controls.Add(label21);
             this.Controls.Add(this.dtDateOfMaking);
@@ -192,11 +206,14 @@
             this.Controls.Add(label5);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmNewLicense";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nueva licencia";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,5 +227,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DateTimePicker dtDateOfMaking;
         private System.Windows.Forms.TextBox txtDriverLicenseDescription;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

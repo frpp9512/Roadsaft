@@ -41,6 +41,7 @@
             System.Windows.Forms.Label label12;
             System.Windows.Forms.Label label13;
             System.Windows.Forms.Label label14;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConfiguration));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
             this.nudMedExamsTimePeriod = new System.Windows.Forms.NumericUpDown();
@@ -55,6 +56,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -75,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudLicenseTimePeriod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRefreshTime)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -201,10 +204,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tpGeneral);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 72);
+            this.tabControl1.Location = new System.Drawing.Point(12, 86);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(369, 229);
+            this.tabControl1.Size = new System.Drawing.Size(369, 216);
             this.tabControl1.TabIndex = 0;
             // 
             // tpGeneral
@@ -225,7 +228,7 @@
             this.tpGeneral.Location = new System.Drawing.Point(4, 22);
             this.tpGeneral.Name = "tpGeneral";
             this.tpGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tpGeneral.Size = new System.Drawing.Size(361, 203);
+            this.tpGeneral.Size = new System.Drawing.Size(361, 190);
             this.tpGeneral.TabIndex = 0;
             this.tpGeneral.Text = "General";
             this.tpGeneral.UseVisualStyleBackColor = true;
@@ -271,7 +274,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(361, 203);
+            this.tabPage2.Size = new System.Drawing.Size(361, 190);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Base de datos";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -310,7 +313,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 24F);
             this.label1.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(87, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(225, 45);
             this.label1.TabIndex = 2;
@@ -318,9 +321,14 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(306, 303);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LimeGreen;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(302, 308);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(75, 27);
             this.button1.TabIndex = 2;
             this.button1.Text = "&Cerrar";
             this.button1.UseVisualStyleBackColor = true;
@@ -328,30 +336,50 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(225, 303);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LimeGreen;
+            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Image = global::INGECO.DriversControl.Properties.Resources.save_verysmall;
+            this.btnSave.Location = new System.Drawing.Point(219, 308);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(77, 27);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "&Guardar";
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::INGECO.DriversControl.Properties.Resources.settings;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(69, 68);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmConfiguration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 336);
+            this.ClientSize = new System.Drawing.Size(393, 347);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmConfiguration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuración";
+            this.Load += new System.EventHandler(this.FrmConfiguration_Load);
             this.tabControl1.ResumeLayout(false);
             this.tpGeneral.ResumeLayout(false);
             this.tpGeneral.PerformLayout();
@@ -361,6 +389,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudRefreshTime)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -382,5 +411,6 @@
         private System.Windows.Forms.NumericUpDown nudRequalificationTimePeriod;
         private System.Windows.Forms.NumericUpDown nudLicenseTimePeriod;
         private System.Windows.Forms.NumericUpDown nudMedExamsTimePeriod;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

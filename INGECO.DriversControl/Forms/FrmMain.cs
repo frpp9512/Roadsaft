@@ -207,6 +207,9 @@ namespace INGECO.DriversControl
             }
         }
 
+        /// <summary>
+        /// Update the info showed in the status bar.
+        /// </summary>
         private void UpdateStatusBarInfo()
         {
             stlbShowStatics.Text = $"Mostrando {lvDriversList.Items.Count} chofer{(lvDriversList.Items.Count == 1 ? "" : "es")} de {LoadedDrivers.Count} cargado{(LoadedDrivers.Count == 1 ? "" : "s")}.";
@@ -499,7 +502,7 @@ namespace INGECO.DriversControl
         private void OpenAboutForm()
         {
             var frm = new FrmAbout();
-            frm.Show();
+            frm.ShowDialog();
         }
 
         /// <summary>
@@ -670,7 +673,8 @@ namespace INGECO.DriversControl
             {
                 toolStripSeparator3,
                 toolStripSeparator4,
-                toolStripSeparator5
+                toolStripSeparator5,
+                toolStripSeparator8
             };
             separators.ToList().ForEach(m => m.Visible = lvDriversList.SelectedItems.Count > 0);
             driverMenuOptions.ToList().ForEach(m => m.Visible = lvDriversList.SelectedItems.Count > 0);
@@ -797,6 +801,16 @@ namespace INGECO.DriversControl
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void NuevoChoferToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddNewDriver();
+        }
+
+        private void CerrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         #endregion

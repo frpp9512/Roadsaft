@@ -58,5 +58,10 @@ namespace INGECO.DriversControl
         {
             
         }
+
+        private void FrmConfiguration_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -39,7 +39,12 @@
             this.tvClAge = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.driverContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.detallesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.licenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recalificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.examenesMédicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darBajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.nuevoChoferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.imprimirfichaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -50,8 +55,6 @@
             this.actualizarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.imprimirlistadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnNewDriver = new System.Windows.Forms.Button();
-            this.btnRefreshDrivers = new System.Windows.Forms.Button();
             this.driversControlNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             this.appMainMenu = new System.Windows.Forms.MenuStrip();
@@ -90,16 +93,18 @@
             this.stlbDriversView = new System.Windows.Forms.ToolStripStatusLabel();
             this.stlbDriverCategoryFilter = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslbSelectedDriver = new System.Windows.Forms.ToolStripStatusLabel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.licenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.recalificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.examenesMédicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRefreshDrivers = new System.Windows.Forms.Button();
+            this.btnNewDriver = new System.Windows.Forms.Button();
             lvClFullname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClPosition = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.driverContextMenu.SuspendLayout();
             this.appMainMenu.SuspendLayout();
             this.appStatusBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,7 +139,7 @@
             this.lvDriversList.ContextMenuStrip = this.driverContextMenu;
             this.lvDriversList.FullRowSelect = true;
             this.lvDriversList.HideSelection = false;
-            this.lvDriversList.Location = new System.Drawing.Point(12, 135);
+            this.lvDriversList.Location = new System.Drawing.Point(12, 142);
             this.lvDriversList.Name = "lvDriversList";
             this.lvDriversList.ShowItemToolTips = true;
             this.lvDriversList.Size = new System.Drawing.Size(840, 369);
@@ -165,6 +170,8 @@
             this.driverContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.detallesToolStripMenuItem1,
             this.darBajaToolStripMenuItem,
+            this.toolStripSeparator8,
+            this.nuevoChoferToolStripMenuItem,
             this.toolStripSeparator3,
             this.imprimirfichaToolStripMenuItem,
             this.toolStripSeparator4,
@@ -176,7 +183,7 @@
             this.imprimirlistadoToolStripMenuItem});
             this.driverContextMenu.Name = "driverContextMenu";
             this.driverContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.driverContextMenu.Size = new System.Drawing.Size(256, 220);
+            this.driverContextMenu.Size = new System.Drawing.Size(256, 226);
             this.driverContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.DriverContextMenu_Opening);
             // 
             // detallesToolStripMenuItem1
@@ -185,41 +192,83 @@
             this.licenciaToolStripMenuItem,
             this.recalificaciónToolStripMenuItem,
             this.examenesMédicosToolStripMenuItem});
+            this.detallesToolStripMenuItem1.Image = global::INGECO.DriversControl.Properties.Resources.opendetails_small;
             this.detallesToolStripMenuItem1.Name = "detallesToolStripMenuItem1";
             this.detallesToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F3;
             this.detallesToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
             this.detallesToolStripMenuItem1.Text = "&Detalles...";
             this.detallesToolStripMenuItem1.Click += new System.EventHandler(this.DetallesToolStripMenuItem1_Click);
             // 
+            // licenciaToolStripMenuItem
+            // 
+            this.licenciaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.driver_license_small;
+            this.licenciaToolStripMenuItem.Name = "licenciaToolStripMenuItem";
+            this.licenciaToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.licenciaToolStripMenuItem.Text = "Li&cencia...";
+            this.licenciaToolStripMenuItem.Click += new System.EventHandler(this.LicenciaToolStripMenuItem_Click);
+            // 
+            // recalificaciónToolStripMenuItem
+            // 
+            this.recalificaciónToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.requalification_small;
+            this.recalificaciónToolStripMenuItem.Name = "recalificaciónToolStripMenuItem";
+            this.recalificaciónToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.recalificaciónToolStripMenuItem.Text = "Recali&ficación...";
+            this.recalificaciónToolStripMenuItem.Click += new System.EventHandler(this.RecalificaciónToolStripMenuItem_Click);
+            // 
+            // examenesMédicosToolStripMenuItem
+            // 
+            this.examenesMédicosToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.medcheck_small;
+            this.examenesMédicosToolStripMenuItem.Name = "examenesMédicosToolStripMenuItem";
+            this.examenesMédicosToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.examenesMédicosToolStripMenuItem.Text = "E&xamenes médicos...";
+            this.examenesMédicosToolStripMenuItem.Click += new System.EventHandler(this.ExamenesMédicosToolStripMenuItem_Click);
+            // 
             // darBajaToolStripMenuItem
             // 
+            this.darBajaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.downred_small;
             this.darBajaToolStripMenuItem.Name = "darBajaToolStripMenuItem";
             this.darBajaToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.darBajaToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.darBajaToolStripMenuItem.Text = "Dar &baja";
             this.darBajaToolStripMenuItem.Click += new System.EventHandler(this.DarBajaToolStripMenuItem_Click);
             // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(252, 6);
+            // 
+            // nuevoChoferToolStripMenuItem
+            // 
+            this.nuevoChoferToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.driver_add_small;
+            this.nuevoChoferToolStripMenuItem.Name = "nuevoChoferToolStripMenuItem";
+            this.nuevoChoferToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.nuevoChoferToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.nuevoChoferToolStripMenuItem.Text = "&Nuevo chofer...";
+            this.nuevoChoferToolStripMenuItem.Click += new System.EventHandler(this.NuevoChoferToolStripMenuItem_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(228, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(252, 6);
             // 
             // imprimirfichaToolStripMenuItem
             // 
+            this.imprimirfichaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.print_blank_small;
             this.imprimirfichaToolStripMenuItem.Name = "imprimirfichaToolStripMenuItem";
             this.imprimirfichaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.P)));
-            this.imprimirfichaToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.imprimirfichaToolStripMenuItem.Text = "Imprimir &ficha...";
+            this.imprimirfichaToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.imprimirfichaToolStripMenuItem.Text = "Imprimir &ficha(s)...";
             this.imprimirfichaToolStripMenuItem.Click += new System.EventHandler(this.ImprimirfichaToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(228, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(252, 6);
             // 
             // renovarLicenciaToolStripMenuItem
             // 
+            this.renovarLicenciaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.driver_license_add_small;
             this.renovarLicenciaToolStripMenuItem.Name = "renovarLicenciaToolStripMenuItem";
             this.renovarLicenciaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
             this.renovarLicenciaToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
@@ -228,6 +277,7 @@
             // 
             // renovarRecalificaciónToolStripMenuItem
             // 
+            this.renovarRecalificaciónToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.requalification_add_small;
             this.renovarRecalificaciónToolStripMenuItem.Name = "renovarRecalificaciónToolStripMenuItem";
             this.renovarRecalificaciónToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
             this.renovarRecalificaciónToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
@@ -236,6 +286,7 @@
             // 
             // nuevoChequeoMédicoToolStripMenuItem
             // 
+            this.nuevoChequeoMédicoToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.medcheck_add_small;
             this.nuevoChequeoMédicoToolStripMenuItem.Name = "nuevoChequeoMédicoToolStripMenuItem";
             this.nuevoChequeoMédicoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
             this.nuevoChequeoMédicoToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
@@ -245,20 +296,22 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(228, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(252, 6);
             // 
             // actualizarToolStripMenuItem1
             // 
+            this.actualizarToolStripMenuItem1.Image = global::INGECO.DriversControl.Properties.Resources.refresh_small;
             this.actualizarToolStripMenuItem1.Name = "actualizarToolStripMenuItem1";
             this.actualizarToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.actualizarToolStripMenuItem1.Size = new System.Drawing.Size(231, 22);
+            this.actualizarToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
             this.actualizarToolStripMenuItem1.Text = "&Actualizar";
             // 
             // imprimirlistadoToolStripMenuItem
             // 
+            this.imprimirlistadoToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.print_small;
             this.imprimirlistadoToolStripMenuItem.Name = "imprimirlistadoToolStripMenuItem";
             this.imprimirlistadoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.imprimirlistadoToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.imprimirlistadoToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.imprimirlistadoToolStripMenuItem.Text = "Imprimir &listado...";
             this.imprimirlistadoToolStripMenuItem.Click += new System.EventHandler(this.ImprimirlistadoToolStripMenuItem_Click);
             // 
@@ -267,43 +320,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 24F);
             this.label1.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label1.Location = new System.Drawing.Point(95, 27);
+            this.label1.Location = new System.Drawing.Point(87, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(306, 45);
+            this.label1.Size = new System.Drawing.Size(149, 45);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Control de choferes";
-            // 
-            // btnNewDriver
-            // 
-            this.btnNewDriver.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnNewDriver.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
-            this.btnNewDriver.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
-            this.btnNewDriver.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
-            this.btnNewDriver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewDriver.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewDriver.Location = new System.Drawing.Point(12, 106);
-            this.btnNewDriver.Name = "btnNewDriver";
-            this.btnNewDriver.Size = new System.Drawing.Size(69, 23);
-            this.btnNewDriver.TabIndex = 12;
-            this.btnNewDriver.Text = "&Nuevo...";
-            this.btnNewDriver.UseVisualStyleBackColor = true;
-            this.btnNewDriver.Click += new System.EventHandler(this.BtnNewDriver_Click);
-            // 
-            // btnRefreshDrivers
-            // 
-            this.btnRefreshDrivers.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnRefreshDrivers.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
-            this.btnRefreshDrivers.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
-            this.btnRefreshDrivers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
-            this.btnRefreshDrivers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefreshDrivers.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefreshDrivers.Location = new System.Drawing.Point(87, 106);
-            this.btnRefreshDrivers.Name = "btnRefreshDrivers";
-            this.btnRefreshDrivers.Size = new System.Drawing.Size(69, 23);
-            this.btnRefreshDrivers.TabIndex = 13;
-            this.btnRefreshDrivers.Text = "&Actualizar";
-            this.btnRefreshDrivers.UseVisualStyleBackColor = true;
-            this.btnRefreshDrivers.Click += new System.EventHandler(this.BtnRefreshDrivers_Click);
+            this.label1.Text = "Roadsaft";
             // 
             // driversControlNotifyIcon
             // 
@@ -343,6 +364,7 @@
             // 
             // actualizarToolStripMenuItem
             // 
+            this.actualizarToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.refresh_small;
             this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
             this.actualizarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
@@ -358,6 +380,7 @@
             // 
             // imprimirToolStripMenuItem
             // 
+            this.imprimirToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.print_small;
             this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
             this.imprimirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
@@ -371,10 +394,12 @@
             // 
             // cerrarToolStripMenuItem
             // 
+            this.cerrarToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.error;
             this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
             this.cerrarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cerrarToolStripMenuItem.Text = "&Cerrar";
+            this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.CerrarToolStripMenuItem_Click);
             // 
             // verToolStripMenuItem
             // 
@@ -401,6 +426,7 @@
             // 
             // seleccionarTodosToolStripMenuItem
             // 
+            this.seleccionarTodosToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.select_all_small;
             this.seleccionarTodosToolStripMenuItem.Name = "seleccionarTodosToolStripMenuItem";
             this.seleccionarTodosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.seleccionarTodosToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
@@ -414,6 +440,7 @@
             // 
             // detallesToolStripMenuItem
             // 
+            this.detallesToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.details_small;
             this.detallesToolStripMenuItem.Name = "detallesToolStripMenuItem";
             this.detallesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D1)));
             this.detallesToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
@@ -422,6 +449,7 @@
             // 
             // icónosGrandesToolStripMenuItem
             // 
+            this.icónosGrandesToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.big_icons_small;
             this.icónosGrandesToolStripMenuItem.Name = "icónosGrandesToolStripMenuItem";
             this.icónosGrandesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D2)));
             this.icónosGrandesToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
@@ -430,6 +458,7 @@
             // 
             // icónosPequeñosToolStripMenuItem
             // 
+            this.icónosPequeñosToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.small_icons_small;
             this.icónosPequeñosToolStripMenuItem.Name = "icónosPequeñosToolStripMenuItem";
             this.icónosPequeñosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D3)));
             this.icónosPequeñosToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
@@ -438,6 +467,7 @@
             // 
             // listaToolStripMenuItem
             // 
+            this.listaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.list_small;
             this.listaToolStripMenuItem.Name = "listaToolStripMenuItem";
             this.listaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D4)));
             this.listaToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
@@ -446,6 +476,7 @@
             // 
             // teselasToolStripMenuItem
             // 
+            this.teselasToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.tiles_small;
             this.teselasToolStripMenuItem.Name = "teselasToolStripMenuItem";
             this.teselasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D5)));
             this.teselasToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
@@ -460,6 +491,7 @@
             // todosLosChoferesToolStripMenuItem
             // 
             this.todosLosChoferesToolStripMenuItem.CheckOnClick = true;
+            this.todosLosChoferesToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.driver_small;
             this.todosLosChoferesToolStripMenuItem.Name = "todosLosChoferesToolStripMenuItem";
             this.todosLosChoferesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.T)));
@@ -470,6 +502,7 @@
             // choferessinProblemasToolStripMenuItem
             // 
             this.choferessinProblemasToolStripMenuItem.CheckOnClick = true;
+            this.choferessinProblemasToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.ok;
             this.choferessinProblemasToolStripMenuItem.Name = "choferessinProblemasToolStripMenuItem";
             this.choferessinProblemasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
@@ -480,6 +513,7 @@
             // choferesConAdvertenciasToolStripMenuItem
             // 
             this.choferesConAdvertenciasToolStripMenuItem.CheckOnClick = true;
+            this.choferesConAdvertenciasToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.warning;
             this.choferesConAdvertenciasToolStripMenuItem.Name = "choferesConAdvertenciasToolStripMenuItem";
             this.choferesConAdvertenciasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.A)));
@@ -490,6 +524,7 @@
             // choferesConProblemasToolStripMenuItem
             // 
             this.choferesConProblemasToolStripMenuItem.CheckOnClick = true;
+            this.choferesConProblemasToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.error;
             this.choferesConProblemasToolStripMenuItem.Name = "choferesConProblemasToolStripMenuItem";
             this.choferesConProblemasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.E)));
@@ -536,6 +571,7 @@
             // 
             // configuraciónToolStripMenuItem
             // 
+            this.configuraciónToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.settings_small;
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
@@ -552,6 +588,7 @@
             // 
             // acercaDeToolStripMenuItem
             // 
+            this.acercaDeToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.INGECO_DriversControl_small;
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.acercaDeToolStripMenuItem.Text = "&Acerca de...";
@@ -560,7 +597,7 @@
             // txtQuickSearch
             // 
             this.txtQuickSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQuickSearch.Location = new System.Drawing.Point(627, 108);
+            this.txtQuickSearch.Location = new System.Drawing.Point(627, 114);
             this.txtQuickSearch.Name = "txtQuickSearch";
             this.txtQuickSearch.Size = new System.Drawing.Size(225, 22);
             this.txtQuickSearch.TabIndex = 17;
@@ -570,7 +607,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(533, 111);
+            this.label2.Location = new System.Drawing.Point(533, 117);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 13);
             this.label2.TabIndex = 18;
@@ -623,36 +660,73 @@
             this.tslbSelectedDriver.Size = new System.Drawing.Size(80, 17);
             this.tslbSelectedDriver.Text = "Seleccionado:";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 16F);
+            this.label3.ForeColor = System.Drawing.Color.ForestGreen;
+            this.label3.Location = new System.Drawing.Point(90, 72);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(196, 30);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Gestión de choferes";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::INGECO.DriversControl.Properties.Resources.driver;
+            this.pictureBox2.Location = new System.Drawing.Point(286, 72);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(33, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 20;
+            this.pictureBox2.TabStop = false;
+            // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::INGECO.DriversControl.Properties.Resources.drivers_control;
-            this.pictureBox1.Location = new System.Drawing.Point(20, 27);
+            this.pictureBox1.Image = global::INGECO.DriversControl.Properties.Resources.INGECO_DriversControl;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 27);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(69, 68);
+            this.pictureBox1.Size = new System.Drawing.Size(69, 75);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
-            // licenciaToolStripMenuItem
+            // btnRefreshDrivers
             // 
-            this.licenciaToolStripMenuItem.Name = "licenciaToolStripMenuItem";
-            this.licenciaToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.licenciaToolStripMenuItem.Text = "Li&cencia...";
-            this.licenciaToolStripMenuItem.Click += new System.EventHandler(this.LicenciaToolStripMenuItem_Click);
+            this.btnRefreshDrivers.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnRefreshDrivers.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
+            this.btnRefreshDrivers.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnRefreshDrivers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnRefreshDrivers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefreshDrivers.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefreshDrivers.Image = ((System.Drawing.Image)(resources.GetObject("btnRefreshDrivers.Image")));
+            this.btnRefreshDrivers.Location = new System.Drawing.Point(95, 108);
+            this.btnRefreshDrivers.Name = "btnRefreshDrivers";
+            this.btnRefreshDrivers.Size = new System.Drawing.Size(81, 28);
+            this.btnRefreshDrivers.TabIndex = 13;
+            this.btnRefreshDrivers.Text = "&Actualizar";
+            this.btnRefreshDrivers.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRefreshDrivers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRefreshDrivers.UseVisualStyleBackColor = true;
+            this.btnRefreshDrivers.Click += new System.EventHandler(this.BtnRefreshDrivers_Click);
             // 
-            // recalificaciónToolStripMenuItem
+            // btnNewDriver
             // 
-            this.recalificaciónToolStripMenuItem.Name = "recalificaciónToolStripMenuItem";
-            this.recalificaciónToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.recalificaciónToolStripMenuItem.Text = "Recali&ficación...";
-            this.recalificaciónToolStripMenuItem.Click += new System.EventHandler(this.RecalificaciónToolStripMenuItem_Click);
-            // 
-            // examenesMédicosToolStripMenuItem
-            // 
-            this.examenesMédicosToolStripMenuItem.Name = "examenesMédicosToolStripMenuItem";
-            this.examenesMédicosToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.examenesMédicosToolStripMenuItem.Text = "E&xamenes médicos...";
-            this.examenesMédicosToolStripMenuItem.Click += new System.EventHandler(this.ExamenesMédicosToolStripMenuItem_Click);
+            this.btnNewDriver.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnNewDriver.FlatAppearance.CheckedBackColor = System.Drawing.Color.LightGreen;
+            this.btnNewDriver.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SeaGreen;
+            this.btnNewDriver.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
+            this.btnNewDriver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewDriver.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewDriver.Image = global::INGECO.DriversControl.Properties.Resources.driver_add_verysmall;
+            this.btnNewDriver.Location = new System.Drawing.Point(12, 108);
+            this.btnNewDriver.Name = "btnNewDriver";
+            this.btnNewDriver.Size = new System.Drawing.Size(77, 28);
+            this.btnNewDriver.TabIndex = 12;
+            this.btnNewDriver.Text = "&Nuevo...";
+            this.btnNewDriver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNewDriver.UseVisualStyleBackColor = true;
+            this.btnNewDriver.Click += new System.EventHandler(this.BtnNewDriver_Click);
             // 
             // FrmDriversMainForm
             // 
@@ -660,12 +734,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(864, 536);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.appStatusBar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtQuickSearch);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnRefreshDrivers);
             this.Controls.Add(this.btnNewDriver);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lvDriversList);
             this.Controls.Add(this.appMainMenu);
@@ -683,6 +759,7 @@
             this.appMainMenu.PerformLayout();
             this.appStatusBar.ResumeLayout(false);
             this.appStatusBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -752,5 +829,9 @@
         private System.Windows.Forms.ToolStripMenuItem licenciaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recalificaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem examenesMédicosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripMenuItem nuevoChoferToolStripMenuItem;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

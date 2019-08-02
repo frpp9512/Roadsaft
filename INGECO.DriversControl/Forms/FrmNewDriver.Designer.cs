@@ -34,6 +34,7 @@
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label22;
             System.Windows.Forms.Label label1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNewDriver));
             this.txtPersonalId = new System.Windows.Forms.TextBox();
             this.txtPosition = new System.Windows.Forms.TextBox();
             this.txtFullname = new System.Windows.Forms.TextBox();
@@ -41,19 +42,21 @@
             this.btnNewDriver = new System.Windows.Forms.Button();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.cbxDriverCategory = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             label10 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label22 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new System.Drawing.Font("Segoe UI Semibold", 14F);
-            label10.Location = new System.Drawing.Point(12, 9);
+            label10.Location = new System.Drawing.Point(71, 12);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(129, 25);
             label10.TabIndex = 19;
@@ -62,7 +65,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(15, 75);
+            label4.Location = new System.Drawing.Point(15, 93);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(38, 13);
             label4.TabIndex = 16;
@@ -71,7 +74,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(15, 103);
+            label3.Location = new System.Drawing.Point(15, 121);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(99, 13);
             label3.TabIndex = 14;
@@ -80,7 +83,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(15, 47);
+            label2.Location = new System.Drawing.Point(15, 65);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(94, 13);
             label2.TabIndex = 12;
@@ -89,29 +92,38 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new System.Drawing.Point(15, 158);
+            label22.Location = new System.Drawing.Point(15, 176);
             label22.Name = "label22";
             label22.Size = new System.Drawing.Size(63, 13);
             label22.TabIndex = 32;
             label22.Text = "Descripción:";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(15, 149);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(55, 13);
+            label1.TabIndex = 32;
+            label1.Text = "Categoría:";
+            // 
             // txtPersonalId
             // 
-            this.txtPersonalId.Location = new System.Drawing.Point(120, 100);
+            this.txtPersonalId.Location = new System.Drawing.Point(120, 118);
             this.txtPersonalId.Name = "txtPersonalId";
             this.txtPersonalId.Size = new System.Drawing.Size(240, 22);
             this.txtPersonalId.TabIndex = 2;
             // 
             // txtPosition
             // 
-            this.txtPosition.Location = new System.Drawing.Point(120, 72);
+            this.txtPosition.Location = new System.Drawing.Point(120, 90);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(240, 22);
             this.txtPosition.TabIndex = 1;
             // 
             // txtFullname
             // 
-            this.txtFullname.Location = new System.Drawing.Point(120, 44);
+            this.txtFullname.Location = new System.Drawing.Point(120, 62);
             this.txtFullname.Name = "txtFullname";
             this.txtFullname.Size = new System.Drawing.Size(240, 22);
             this.txtFullname.TabIndex = 0;
@@ -125,7 +137,7 @@
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Location = new System.Drawing.Point(276, 209);
+            this.btnCancel.Location = new System.Drawing.Point(276, 227);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
             this.btnCancel.TabIndex = 5;
@@ -141,7 +153,7 @@
             this.btnNewDriver.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnNewDriver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewDriver.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnNewDriver.Location = new System.Drawing.Point(186, 209);
+            this.btnNewDriver.Location = new System.Drawing.Point(186, 227);
             this.btnNewDriver.Name = "btnNewDriver";
             this.btnNewDriver.Size = new System.Drawing.Size(84, 23);
             this.btnNewDriver.TabIndex = 4;
@@ -151,7 +163,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(120, 155);
+            this.txtDescription.Location = new System.Drawing.Point(120, 173);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(240, 48);
@@ -161,25 +173,27 @@
             // 
             this.cbxDriverCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDriverCategory.FormattingEnabled = true;
-            this.cbxDriverCategory.Location = new System.Drawing.Point(120, 128);
+            this.cbxDriverCategory.Location = new System.Drawing.Point(120, 146);
             this.cbxDriverCategory.Name = "cbxDriverCategory";
             this.cbxDriverCategory.Size = new System.Drawing.Size(240, 21);
             this.cbxDriverCategory.TabIndex = 33;
             // 
-            // label1
+            // pictureBox1
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(15, 131);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(55, 13);
-            label1.TabIndex = 32;
-            label1.Text = "Categoría:";
+            this.pictureBox1.Image = global::INGECO.DriversControl.Properties.Resources.driver_add;
+            this.pictureBox1.Location = new System.Drawing.Point(18, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(47, 38);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 35;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmNewDriver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 244);
+            this.ClientSize = new System.Drawing.Size(379, 264);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cbxDriverCategory);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(label1);
@@ -195,11 +209,14 @@
             this.Controls.Add(label2);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmNewDriver";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo chofer";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,5 +230,6 @@
         private System.Windows.Forms.Button btnNewDriver;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.ComboBox cbxDriverCategory;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

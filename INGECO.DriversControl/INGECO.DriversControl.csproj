@@ -7,7 +7,7 @@
     <ProjectGuid>{CC12A1A1-4A1D-4A8F-9644-A5F1F2A9E748}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>INGECO.DriversControl</RootNamespace>
-    <AssemblyName>INGECO.DriversControl</AssemblyName>
+    <AssemblyName>Roadsaft</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\drivers_control.ico</ApplicationIcon>
+    <ApplicationIcon>INGECO.DriversControl.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
@@ -228,7 +228,53 @@
     <None Include="Resources\ok.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\INGECO.DriversControl.small.png" />
+    <None Include="Resources\INGECO.DriversControl.png" />
+    <None Include="Resources\restore.verysmall.png" />
+    <None Include="Resources\requalification.add.png" />
+    <None Include="Resources\medcheck.add.png" />
+    <None Include="Resources\opendetails.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\save.verysmall.png" />
+    <None Include="Resources\info.small.png" />
+    <None Include="Resources\generalinfo.png" />
+    <None Include="Resources\generalinfo.small.png" />
+    <None Include="Resources\opendetails.small.png" />
+    <None Include="Resources\medcheck.add.small.png" />
+    <None Include="Resources\medcheck.add.verysmall.png" />
+    <None Include="Resources\requalification.add.small.png" />
+    <None Include="Resources\medcheck.small.png" />
+    <None Include="Resources\requalification.small.png" />
+    <None Include="Resources\medcheck.png" />
+    <None Include="Resources\requalification.add.verysmall.png" />
+    <None Include="Resources\requalification.png" />
+    <None Include="Resources\settings.small.png" />
+    <None Include="Resources\small.icons.small.png" />
+    <None Include="Resources\details.small.png" />
+    <None Include="Resources\big.icons.small.png" />
+    <None Include="Resources\driver.license.add.small.png" />
+    <None Include="Resources\driver.license.png" />
+    <None Include="Resources\driver.license.add.verysmall.png" />
+    <None Include="Resources\driver.license.small.png" />
+    <None Include="Resources\archive.verysmall.png" />
+    <None Include="Resources\driver.license.add.png" />
+    <None Include="Resources\downred.small.png" />
+    <None Include="Resources\driver.add.verysmall.png" />
+    <None Include="Resources\driver.add.png" />
+    <None Include="Resources\driver.small.png" />
+    <None Include="Resources\driver.add.small.png" />
+    <None Include="Resources\driver.png" />
+    <Content Include="INGECO.DriversControl.ico" />
     <Content Include="Resources\drivers_control.ico" />
+    <None Include="Resources\list.small.png" />
+    <None Include="Resources\tiles.small.png" />
+    <None Include="Resources\select.all.small.png" />
+    <None Include="Resources\print.blank.verysmall.png" />
+    <None Include="Resources\print.blank.small.png" />
+    <None Include="Resources\print.small.png" />
+    <None Include="Resources\refresh.verysmall1.png" />
+    <None Include="Resources\refresh.verysmall.png" />
+    <None Include="Resources\refresh.small.png" />
     <None Include="Resources\drivers_control.png" />
     <Content Include="Helpers\To-Do.txt" />
   </ItemGroup>

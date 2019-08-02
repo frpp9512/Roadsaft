@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDriversHistory));
             this.dgvDriversHistory = new System.Windows.Forms.DataGridView();
-            this.driverBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.personalIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.registeredDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Archived = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.driverBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDriversHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.driverBindingSource)).BeginInit();
@@ -69,10 +70,6 @@
             this.dgvDriversHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDriversHistory.Size = new System.Drawing.Size(730, 353);
             this.dgvDriversHistory.TabIndex = 0;
-            // 
-            // driverBindingSource
-            // 
-            this.driverBindingSource.DataSource = typeof(INGECO.DriversControl.Data.Driver);
             // 
             // fullNameDataGridViewTextBoxColumn
             // 
@@ -117,6 +114,10 @@
             this.Archived.Name = "Archived";
             this.Archived.ReadOnly = true;
             // 
+            // driverBindingSource
+            // 
+            this.driverBindingSource.DataSource = typeof(INGECO.DriversControl.Data.Driver);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -136,6 +137,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvDriversHistory);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmDriversHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Historial de choferes";

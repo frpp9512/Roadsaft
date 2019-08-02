@@ -118,16 +118,148 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ok.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="requalification.add.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\requalification.add.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="small.icons.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\small.icons.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="select.all.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\select.all.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="driver.license.add.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\driver.license.add.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="medcheck.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medcheck.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="opendetails.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\opendetails.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="requalification.add.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\requalification.add.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="archive.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\archive.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refresh.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh.verysmall1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="info_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\info.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="driver.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\driver.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="opendetails" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\opendetails.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="medcheck.add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medcheck.add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="requalification" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\requalification.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ok.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="driver.license.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\driver.license.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="downred.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\downred.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="medcheck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medcheck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="requalification.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\requalification.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settings.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="driver.add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\driver.add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="drivers_control" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\drivers_control.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="print.blank.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\print.blank.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="restore.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\restore.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="generalinfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\generalinfo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="medcheck.add.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medcheck.add.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="print.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\print.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="generalinfo.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\generalinfo.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refresh.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tiles.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tiles.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="driver.license" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\driver.license.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="big.icons.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\big.icons.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="driver.add.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\driver.add.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="driver.license.add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\driver.license.add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="requalification.add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\requalification.add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="INGECO.DriversControl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\INGECO.DriversControl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="driver.license.add.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\driver.license.add.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="details.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\details.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="driver.add.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\driver.add.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="driver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\driver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="list.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\list.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="print.blank.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\print.blank.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="medcheck.add.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medcheck.add.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="INGECO.DriversControl.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\INGECO.DriversControl.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

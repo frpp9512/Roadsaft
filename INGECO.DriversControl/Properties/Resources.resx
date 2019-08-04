@@ -142,9 +142,6 @@
   <data name="requalification.add.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\requalification.add.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="archive.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\archive.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="refresh.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\refresh.verysmall1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -193,8 +190,11 @@
   <data name="print.blank.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\print.blank.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="archive.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\archive.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="details.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\details.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="restore.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\restore.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,8 +217,8 @@
   <data name="tiles.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tiles.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="driver.license" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\driver.license.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="big.icons.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\big.icons.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,11 +226,14 @@
   <data name="driver.add.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\driver.add.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="driver.license.add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\driver.license.add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="driver.license" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\driver.license.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="requalification.add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\requalification.add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="window.restore.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\window.restore.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="INGECO.DriversControl" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\INGECO.DriversControl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,8 +244,11 @@
   <data name="save.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="details.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\details.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="INGECO.DriversControl.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\INGECO.DriversControl.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="driver.license.add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\driver.license.add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="driver.add.verysmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\driver.add.verysmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -259,7 +265,7 @@
   <data name="medcheck.add.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\medcheck.add.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="INGECO.DriversControl.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\INGECO.DriversControl.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="window.minimize.small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\window.minimize.small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

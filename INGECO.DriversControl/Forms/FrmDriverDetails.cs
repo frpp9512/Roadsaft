@@ -426,7 +426,7 @@ namespace INGECO.DriversControl
             txtFullname.Text = driver.FullName;
             txtPosition.Text = driver.Position;
             txtPersonalId.Text = driver.PersonalId;
-            cbxDriverCategory.SelectedIndex = (int)driver.Category;
+            cbxDriverCategory.SelectedIndex = (int)driver.Category - 1;
             txtDescription.Text = driver.Description;
             txtBirthday.Text = $"{driver.Birthday.ToShortDateString()}";
             txtAge.Text = $"{driver.Age} años";
@@ -491,11 +491,12 @@ namespace INGECO.DriversControl
                 Driver.FullName = txtFullname.Text;
                 Driver.PersonalId = txtPersonalId.Text;
                 Driver.Position = txtPosition.Text;
-                Driver.Category = (DriverCategory)cbxDriverCategory.SelectedIndex;
+                Driver.Category = (DriverCategory)cbxDriverCategory.SelectedIndex + 1;
                 Driver.Description = txtDescription.Text;
                 if (DriverDataProviderContainer.Controller.UpdateDriverInfo(Driver))
                 {
                     _ = MessageBox.Show("Se ha actualizado la información del chofer satifactoriamente.", "Actualizar chofer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    UpdateRequested?.Invoke(this, new EventArgs());
                 }
                 else
                 {

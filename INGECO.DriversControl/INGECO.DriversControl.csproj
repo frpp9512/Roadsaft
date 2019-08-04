@@ -52,11 +52,21 @@
     <ApplicationIcon>INGECO.DriversControl.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-      <Private>True</Private>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\frpp9\source\repos\ReportViewerTesting\ReportViewerTesting\bin\Debug\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
-      <Private>True</Private>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\frpp9\source\repos\ReportViewerTesting\ReportViewerTesting\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\frpp9\source\repos\ReportViewerTesting\ReportViewerTesting\bin\Debug\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\frpp9\source\repos\ReportViewerTesting\ReportViewerTesting\bin\Debug\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
       <HintPath>..\..\..\..\..\Desktop\GIT_Desktop\SmarB1t.Database\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
@@ -228,6 +238,8 @@
     <None Include="Resources\ok.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\window.minimize.small.png" />
+    <None Include="Resources\window.restore.small.png" />
     <None Include="Resources\INGECO.DriversControl.small.png" />
     <None Include="Resources\INGECO.DriversControl.png" />
     <None Include="Resources\restore.verysmall.png" />

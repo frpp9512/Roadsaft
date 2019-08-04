@@ -8,10 +8,10 @@
         /// <summary>
         /// A Professional driver.
         /// </summary>
-        Professional = 0,
+        Professional = 1,
         /// <summary>
         /// A Non-Professional driver.
         /// </summary>
-        NonProfessional = 1
+        NonProfessional = 2
     }
 }

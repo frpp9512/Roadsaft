@@ -43,7 +43,7 @@ namespace INGECO.DriversControl
                     FullName = txtFullname.Text,
                     PersonalId = txtPersonalId.Text,
                     Position = txtPosition.Text,
-                    Category = (DriverCategory)cbxDriverCategory.SelectedIndex,
+                    Category = (DriverCategory)cbxDriverCategory.SelectedIndex + 1,
                     Description = txtDescription.Text
                 };
                 if (NewDriverAdded?.Invoke(driver) == true)

@@ -38,53 +38,26 @@
             this.tvClPersonalId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tvClAge = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.driverContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.detallesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.licenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.recalificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.examenesMédicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.darBajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.nuevoChoferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.imprimirfichaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.renovarLicenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renovarRecalificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nuevoChequeoMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.actualizarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.imprimirlistadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.driversControlNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             this.appMainMenu = new System.Windows.Forms.MenuStrip();
             this.programaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historialDeBajasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.seleccionarTodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.detallesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.icónosGrandesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.icónosPequeñosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.teselasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.todosLosChoferesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.choferessinProblemasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.choferesConAdvertenciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.choferesConProblemasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.todosLosChoferesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.profesionalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noProfesionalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtQuickSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.appStatusBar = new System.Windows.Forms.StatusStrip();
@@ -94,16 +67,52 @@
             this.stlbDriverCategoryFilter = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslbSelectedDriver = new System.Windows.Forms.ToolStripStatusLabel();
             this.label3 = new System.Windows.Forms.Label();
+            this.notifyContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnRefreshDrivers = new System.Windows.Forms.Button();
             this.btnNewDriver = new System.Windows.Forms.Button();
+            this.detallesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.licenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recalificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.examenesMédicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darBajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoChoferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imprimirfichaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renovarLicenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renovarRecalificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoChequeoMédicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actualizarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.imprimirlistadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.seleccionarTodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detallesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.icónosGrandesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.icónosPequeñosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.teselasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.todosLosChoferesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.choferessinProblemasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.choferesConAdvertenciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.choferesConProblemasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeWindowStateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actualizarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraciónToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerrarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             lvClFullname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClPosition = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.driverContextMenu.SuspendLayout();
             this.appMainMenu.SuspendLayout();
             this.appStatusBar.SuspendLayout();
+            this.notifyContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -186,134 +195,25 @@
             this.driverContextMenu.Size = new System.Drawing.Size(256, 226);
             this.driverContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.DriverContextMenu_Opening);
             // 
-            // detallesToolStripMenuItem1
-            // 
-            this.detallesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.licenciaToolStripMenuItem,
-            this.recalificaciónToolStripMenuItem,
-            this.examenesMédicosToolStripMenuItem});
-            this.detallesToolStripMenuItem1.Image = global::INGECO.DriversControl.Properties.Resources.opendetails_small;
-            this.detallesToolStripMenuItem1.Name = "detallesToolStripMenuItem1";
-            this.detallesToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.detallesToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
-            this.detallesToolStripMenuItem1.Text = "&Detalles...";
-            this.detallesToolStripMenuItem1.Click += new System.EventHandler(this.DetallesToolStripMenuItem1_Click);
-            // 
-            // licenciaToolStripMenuItem
-            // 
-            this.licenciaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.driver_license_small;
-            this.licenciaToolStripMenuItem.Name = "licenciaToolStripMenuItem";
-            this.licenciaToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.licenciaToolStripMenuItem.Text = "Li&cencia...";
-            this.licenciaToolStripMenuItem.Click += new System.EventHandler(this.LicenciaToolStripMenuItem_Click);
-            // 
-            // recalificaciónToolStripMenuItem
-            // 
-            this.recalificaciónToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.requalification_small;
-            this.recalificaciónToolStripMenuItem.Name = "recalificaciónToolStripMenuItem";
-            this.recalificaciónToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.recalificaciónToolStripMenuItem.Text = "Recali&ficación...";
-            this.recalificaciónToolStripMenuItem.Click += new System.EventHandler(this.RecalificaciónToolStripMenuItem_Click);
-            // 
-            // examenesMédicosToolStripMenuItem
-            // 
-            this.examenesMédicosToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.medcheck_small;
-            this.examenesMédicosToolStripMenuItem.Name = "examenesMédicosToolStripMenuItem";
-            this.examenesMédicosToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.examenesMédicosToolStripMenuItem.Text = "E&xamenes médicos...";
-            this.examenesMédicosToolStripMenuItem.Click += new System.EventHandler(this.ExamenesMédicosToolStripMenuItem_Click);
-            // 
-            // darBajaToolStripMenuItem
-            // 
-            this.darBajaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.downred_small;
-            this.darBajaToolStripMenuItem.Name = "darBajaToolStripMenuItem";
-            this.darBajaToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.darBajaToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
-            this.darBajaToolStripMenuItem.Text = "Dar &baja";
-            this.darBajaToolStripMenuItem.Click += new System.EventHandler(this.DarBajaToolStripMenuItem_Click);
-            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(252, 6);
-            // 
-            // nuevoChoferToolStripMenuItem
-            // 
-            this.nuevoChoferToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.driver_add_small;
-            this.nuevoChoferToolStripMenuItem.Name = "nuevoChoferToolStripMenuItem";
-            this.nuevoChoferToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.nuevoChoferToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
-            this.nuevoChoferToolStripMenuItem.Text = "&Nuevo chofer...";
-            this.nuevoChoferToolStripMenuItem.Click += new System.EventHandler(this.NuevoChoferToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(252, 6);
             // 
-            // imprimirfichaToolStripMenuItem
-            // 
-            this.imprimirfichaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.print_blank_small;
-            this.imprimirfichaToolStripMenuItem.Name = "imprimirfichaToolStripMenuItem";
-            this.imprimirfichaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.P)));
-            this.imprimirfichaToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
-            this.imprimirfichaToolStripMenuItem.Text = "Imprimir &ficha(s)...";
-            this.imprimirfichaToolStripMenuItem.Click += new System.EventHandler(this.ImprimirfichaToolStripMenuItem_Click);
-            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(252, 6);
             // 
-            // renovarLicenciaToolStripMenuItem
-            // 
-            this.renovarLicenciaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.driver_license_add_small;
-            this.renovarLicenciaToolStripMenuItem.Name = "renovarLicenciaToolStripMenuItem";
-            this.renovarLicenciaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.renovarLicenciaToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
-            this.renovarLicenciaToolStripMenuItem.Text = "&Renovar licencia...";
-            this.renovarLicenciaToolStripMenuItem.Click += new System.EventHandler(this.RenovarLicenciaToolStripMenuItem_Click);
-            // 
-            // renovarRecalificaciónToolStripMenuItem
-            // 
-            this.renovarRecalificaciónToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.requalification_add_small;
-            this.renovarRecalificaciónToolStripMenuItem.Name = "renovarRecalificaciónToolStripMenuItem";
-            this.renovarRecalificaciónToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.renovarRecalificaciónToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
-            this.renovarRecalificaciónToolStripMenuItem.Text = "Renovar &recalificación...";
-            this.renovarRecalificaciónToolStripMenuItem.Click += new System.EventHandler(this.RenovarRecalificaciónToolStripMenuItem_Click);
-            // 
-            // nuevoChequeoMédicoToolStripMenuItem
-            // 
-            this.nuevoChequeoMédicoToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.medcheck_add_small;
-            this.nuevoChequeoMédicoToolStripMenuItem.Name = "nuevoChequeoMédicoToolStripMenuItem";
-            this.nuevoChequeoMédicoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.nuevoChequeoMédicoToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
-            this.nuevoChequeoMédicoToolStripMenuItem.Text = "Nuevo chequeo &médico...";
-            this.nuevoChequeoMédicoToolStripMenuItem.Click += new System.EventHandler(this.NuevoChequeoMédicoToolStripMenuItem_Click);
-            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(252, 6);
-            // 
-            // actualizarToolStripMenuItem1
-            // 
-            this.actualizarToolStripMenuItem1.Image = global::INGECO.DriversControl.Properties.Resources.refresh_small;
-            this.actualizarToolStripMenuItem1.Name = "actualizarToolStripMenuItem1";
-            this.actualizarToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.actualizarToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
-            this.actualizarToolStripMenuItem1.Text = "&Actualizar";
-            // 
-            // imprimirlistadoToolStripMenuItem
-            // 
-            this.imprimirlistadoToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.print_small;
-            this.imprimirlistadoToolStripMenuItem.Name = "imprimirlistadoToolStripMenuItem";
-            this.imprimirlistadoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.imprimirlistadoToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
-            this.imprimirlistadoToolStripMenuItem.Text = "Imprimir &listado...";
-            this.imprimirlistadoToolStripMenuItem.Click += new System.EventHandler(this.ImprimirlistadoToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -328,6 +228,7 @@
             // 
             // driversControlNotifyIcon
             // 
+            this.driversControlNotifyIcon.ContextMenuStrip = this.notifyContextMenu;
             this.driversControlNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("driversControlNotifyIcon.Icon")));
             this.driversControlNotifyIcon.Text = "Control de choferes";
             this.driversControlNotifyIcon.Visible = true;
@@ -362,44 +263,17 @@
             this.programaToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.programaToolStripMenuItem.Text = "&Programa";
             // 
-            // actualizarToolStripMenuItem
-            // 
-            this.actualizarToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.refresh_small;
-            this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
-            this.actualizarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.actualizarToolStripMenuItem.Text = "&Actualizar";
-            this.actualizarToolStripMenuItem.Click += new System.EventHandler(this.ActualizarToolStripMenuItem_Click);
-            // 
             // historialDeBajasToolStripMenuItem
             // 
             this.historialDeBajasToolStripMenuItem.Name = "historialDeBajasToolStripMenuItem";
-            this.historialDeBajasToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.historialDeBajasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.historialDeBajasToolStripMenuItem.Text = "&Historial de bajas...";
             this.historialDeBajasToolStripMenuItem.Click += new System.EventHandler(this.HistorialDeBajasToolStripMenuItem_Click);
-            // 
-            // imprimirToolStripMenuItem
-            // 
-            this.imprimirToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.print_small;
-            this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
-            this.imprimirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.imprimirToolStripMenuItem.Text = "&Imprimir...";
-            this.imprimirToolStripMenuItem.Click += new System.EventHandler(this.ImprimirToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(170, 6);
-            // 
-            // cerrarToolStripMenuItem
-            // 
-            this.cerrarToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.error;
-            this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            this.cerrarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cerrarToolStripMenuItem.Text = "&Cerrar";
-            this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.CerrarToolStripMenuItem_Click);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // verToolStripMenuItem
             // 
@@ -424,113 +298,15 @@
             this.verToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.verToolStripMenuItem.Text = "&Ver";
             // 
-            // seleccionarTodosToolStripMenuItem
-            // 
-            this.seleccionarTodosToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.select_all_small;
-            this.seleccionarTodosToolStripMenuItem.Name = "seleccionarTodosToolStripMenuItem";
-            this.seleccionarTodosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.seleccionarTodosToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
-            this.seleccionarTodosToolStripMenuItem.Text = "Se&leccionar todos";
-            this.seleccionarTodosToolStripMenuItem.Click += new System.EventHandler(this.SeleccionarTodosToolStripMenuItem_Click);
-            // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(317, 6);
             // 
-            // detallesToolStripMenuItem
-            // 
-            this.detallesToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.details_small;
-            this.detallesToolStripMenuItem.Name = "detallesToolStripMenuItem";
-            this.detallesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D1)));
-            this.detallesToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
-            this.detallesToolStripMenuItem.Text = "&Detalles";
-            this.detallesToolStripMenuItem.Click += new System.EventHandler(this.DetallesToolStripMenuItem_Click);
-            // 
-            // icónosGrandesToolStripMenuItem
-            // 
-            this.icónosGrandesToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.big_icons_small;
-            this.icónosGrandesToolStripMenuItem.Name = "icónosGrandesToolStripMenuItem";
-            this.icónosGrandesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D2)));
-            this.icónosGrandesToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
-            this.icónosGrandesToolStripMenuItem.Text = "Icónos &grandes";
-            this.icónosGrandesToolStripMenuItem.Click += new System.EventHandler(this.IcónosGrandesToolStripMenuItem_Click);
-            // 
-            // icónosPequeñosToolStripMenuItem
-            // 
-            this.icónosPequeñosToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.small_icons_small;
-            this.icónosPequeñosToolStripMenuItem.Name = "icónosPequeñosToolStripMenuItem";
-            this.icónosPequeñosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D3)));
-            this.icónosPequeñosToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
-            this.icónosPequeñosToolStripMenuItem.Text = "Icónos &pequeños";
-            this.icónosPequeñosToolStripMenuItem.Click += new System.EventHandler(this.IcónosPequeñosToolStripMenuItem_Click);
-            // 
-            // listaToolStripMenuItem
-            // 
-            this.listaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.list_small;
-            this.listaToolStripMenuItem.Name = "listaToolStripMenuItem";
-            this.listaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D4)));
-            this.listaToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
-            this.listaToolStripMenuItem.Text = "&Lista";
-            this.listaToolStripMenuItem.Click += new System.EventHandler(this.ListaToolStripMenuItem_Click);
-            // 
-            // teselasToolStripMenuItem
-            // 
-            this.teselasToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.tiles_small;
-            this.teselasToolStripMenuItem.Name = "teselasToolStripMenuItem";
-            this.teselasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D5)));
-            this.teselasToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
-            this.teselasToolStripMenuItem.Text = "T&eselas";
-            this.teselasToolStripMenuItem.Click += new System.EventHandler(this.TeselasToolStripMenuItem_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(317, 6);
-            // 
-            // todosLosChoferesToolStripMenuItem
-            // 
-            this.todosLosChoferesToolStripMenuItem.CheckOnClick = true;
-            this.todosLosChoferesToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.driver_small;
-            this.todosLosChoferesToolStripMenuItem.Name = "todosLosChoferesToolStripMenuItem";
-            this.todosLosChoferesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.T)));
-            this.todosLosChoferesToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
-            this.todosLosChoferesToolStripMenuItem.Text = "Todos los &choferes";
-            this.todosLosChoferesToolStripMenuItem.Click += new System.EventHandler(this.SelectDriversView);
-            // 
-            // choferessinProblemasToolStripMenuItem
-            // 
-            this.choferessinProblemasToolStripMenuItem.CheckOnClick = true;
-            this.choferessinProblemasToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.ok;
-            this.choferessinProblemasToolStripMenuItem.Name = "choferessinProblemasToolStripMenuItem";
-            this.choferessinProblemasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.S)));
-            this.choferessinProblemasToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
-            this.choferessinProblemasToolStripMenuItem.Text = "Choferes &sin problemas";
-            this.choferessinProblemasToolStripMenuItem.Click += new System.EventHandler(this.SelectDriversView);
-            // 
-            // choferesConAdvertenciasToolStripMenuItem
-            // 
-            this.choferesConAdvertenciasToolStripMenuItem.CheckOnClick = true;
-            this.choferesConAdvertenciasToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.warning;
-            this.choferesConAdvertenciasToolStripMenuItem.Name = "choferesConAdvertenciasToolStripMenuItem";
-            this.choferesConAdvertenciasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.A)));
-            this.choferesConAdvertenciasToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
-            this.choferesConAdvertenciasToolStripMenuItem.Text = "Choferes con &advertencias";
-            this.choferesConAdvertenciasToolStripMenuItem.Click += new System.EventHandler(this.SelectDriversView);
-            // 
-            // choferesConProblemasToolStripMenuItem
-            // 
-            this.choferesConProblemasToolStripMenuItem.CheckOnClick = true;
-            this.choferesConProblemasToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.error;
-            this.choferesConProblemasToolStripMenuItem.Name = "choferesConProblemasToolStripMenuItem";
-            this.choferesConProblemasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.E)));
-            this.choferesConProblemasToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
-            this.choferesConProblemasToolStripMenuItem.Text = "Choferes con atributos &expirados";
-            this.choferesConProblemasToolStripMenuItem.Click += new System.EventHandler(this.SelectDriversView);
             // 
             // toolStripSeparator6
             // 
@@ -569,15 +345,6 @@
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.opcionesToolStripMenuItem.Text = "&Opciones";
             // 
-            // configuraciónToolStripMenuItem
-            // 
-            this.configuraciónToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.settings_small;
-            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.configuraciónToolStripMenuItem.Text = "Configuración...";
-            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.ConfiguraciónToolStripMenuItem_Click);
-            // 
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -585,14 +352,6 @@
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "&Ayuda";
-            // 
-            // acercaDeToolStripMenuItem
-            // 
-            this.acercaDeToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.INGECO_DriversControl_small;
-            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.acercaDeToolStripMenuItem.Text = "&Acerca de...";
-            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.AcercaDeToolStripMenuItem_Click);
             // 
             // txtQuickSearch
             // 
@@ -671,6 +430,30 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Gestión de choferes";
             // 
+            // notifyContextMenu
+            // 
+            this.notifyContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changeWindowStateMenuItem,
+            this.toolStripSeparator10,
+            this.actualizarToolStripMenuItem2,
+            this.configuraciónToolStripMenuItem1,
+            this.acercaDeToolStripMenuItem1,
+            this.toolStripSeparator9,
+            this.cerrarToolStripMenuItem1});
+            this.notifyContextMenu.Name = "notifyContextMenu";
+            this.notifyContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.notifyContextMenu.Size = new System.Drawing.Size(181, 148);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(177, 6);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(177, 6);
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::INGECO.DriversControl.Properties.Resources.driver;
@@ -728,6 +511,297 @@
             this.btnNewDriver.UseVisualStyleBackColor = true;
             this.btnNewDriver.Click += new System.EventHandler(this.BtnNewDriver_Click);
             // 
+            // detallesToolStripMenuItem1
+            // 
+            this.detallesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.licenciaToolStripMenuItem,
+            this.recalificaciónToolStripMenuItem,
+            this.examenesMédicosToolStripMenuItem});
+            this.detallesToolStripMenuItem1.Image = global::INGECO.DriversControl.Properties.Resources.opendetails_small;
+            this.detallesToolStripMenuItem1.Name = "detallesToolStripMenuItem1";
+            this.detallesToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.detallesToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
+            this.detallesToolStripMenuItem1.Text = "&Detalles...";
+            this.detallesToolStripMenuItem1.Click += new System.EventHandler(this.DetallesToolStripMenuItem1_Click);
+            // 
+            // licenciaToolStripMenuItem
+            // 
+            this.licenciaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.driver_license_small;
+            this.licenciaToolStripMenuItem.Name = "licenciaToolStripMenuItem";
+            this.licenciaToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.licenciaToolStripMenuItem.Text = "Li&cencia...";
+            this.licenciaToolStripMenuItem.Click += new System.EventHandler(this.LicenciaToolStripMenuItem_Click);
+            // 
+            // recalificaciónToolStripMenuItem
+            // 
+            this.recalificaciónToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.requalification_small;
+            this.recalificaciónToolStripMenuItem.Name = "recalificaciónToolStripMenuItem";
+            this.recalificaciónToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.recalificaciónToolStripMenuItem.Text = "Recali&ficación...";
+            this.recalificaciónToolStripMenuItem.Click += new System.EventHandler(this.RecalificaciónToolStripMenuItem_Click);
+            // 
+            // examenesMédicosToolStripMenuItem
+            // 
+            this.examenesMédicosToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.medcheck_small;
+            this.examenesMédicosToolStripMenuItem.Name = "examenesMédicosToolStripMenuItem";
+            this.examenesMédicosToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.examenesMédicosToolStripMenuItem.Text = "E&xamenes médicos...";
+            this.examenesMédicosToolStripMenuItem.Click += new System.EventHandler(this.ExamenesMédicosToolStripMenuItem_Click);
+            // 
+            // darBajaToolStripMenuItem
+            // 
+            this.darBajaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.downred_small;
+            this.darBajaToolStripMenuItem.Name = "darBajaToolStripMenuItem";
+            this.darBajaToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.darBajaToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.darBajaToolStripMenuItem.Text = "Dar &baja";
+            this.darBajaToolStripMenuItem.Click += new System.EventHandler(this.DarBajaToolStripMenuItem_Click);
+            // 
+            // nuevoChoferToolStripMenuItem
+            // 
+            this.nuevoChoferToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.driver_add_small;
+            this.nuevoChoferToolStripMenuItem.Name = "nuevoChoferToolStripMenuItem";
+            this.nuevoChoferToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.nuevoChoferToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.nuevoChoferToolStripMenuItem.Text = "&Nuevo chofer...";
+            this.nuevoChoferToolStripMenuItem.Click += new System.EventHandler(this.NuevoChoferToolStripMenuItem_Click);
+            // 
+            // imprimirfichaToolStripMenuItem
+            // 
+            this.imprimirfichaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.print_blank_small;
+            this.imprimirfichaToolStripMenuItem.Name = "imprimirfichaToolStripMenuItem";
+            this.imprimirfichaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.P)));
+            this.imprimirfichaToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.imprimirfichaToolStripMenuItem.Text = "Imprimir &ficha(s)...";
+            this.imprimirfichaToolStripMenuItem.Click += new System.EventHandler(this.ImprimirfichaToolStripMenuItem_Click);
+            // 
+            // renovarLicenciaToolStripMenuItem
+            // 
+            this.renovarLicenciaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.driver_license_add_small;
+            this.renovarLicenciaToolStripMenuItem.Name = "renovarLicenciaToolStripMenuItem";
+            this.renovarLicenciaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.renovarLicenciaToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.renovarLicenciaToolStripMenuItem.Text = "&Renovar licencia...";
+            this.renovarLicenciaToolStripMenuItem.Click += new System.EventHandler(this.RenovarLicenciaToolStripMenuItem_Click);
+            // 
+            // renovarRecalificaciónToolStripMenuItem
+            // 
+            this.renovarRecalificaciónToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.requalification_add_small;
+            this.renovarRecalificaciónToolStripMenuItem.Name = "renovarRecalificaciónToolStripMenuItem";
+            this.renovarRecalificaciónToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.renovarRecalificaciónToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.renovarRecalificaciónToolStripMenuItem.Text = "Renovar &recalificación...";
+            this.renovarRecalificaciónToolStripMenuItem.Click += new System.EventHandler(this.RenovarRecalificaciónToolStripMenuItem_Click);
+            // 
+            // nuevoChequeoMédicoToolStripMenuItem
+            // 
+            this.nuevoChequeoMédicoToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.medcheck_add_small;
+            this.nuevoChequeoMédicoToolStripMenuItem.Name = "nuevoChequeoMédicoToolStripMenuItem";
+            this.nuevoChequeoMédicoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
+            this.nuevoChequeoMédicoToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.nuevoChequeoMédicoToolStripMenuItem.Text = "Nuevo chequeo &médico...";
+            this.nuevoChequeoMédicoToolStripMenuItem.Click += new System.EventHandler(this.NuevoChequeoMédicoToolStripMenuItem_Click);
+            // 
+            // actualizarToolStripMenuItem1
+            // 
+            this.actualizarToolStripMenuItem1.Image = global::INGECO.DriversControl.Properties.Resources.refresh_small;
+            this.actualizarToolStripMenuItem1.Name = "actualizarToolStripMenuItem1";
+            this.actualizarToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.actualizarToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
+            this.actualizarToolStripMenuItem1.Text = "&Actualizar";
+            // 
+            // imprimirlistadoToolStripMenuItem
+            // 
+            this.imprimirlistadoToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.print_small;
+            this.imprimirlistadoToolStripMenuItem.Name = "imprimirlistadoToolStripMenuItem";
+            this.imprimirlistadoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.imprimirlistadoToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.imprimirlistadoToolStripMenuItem.Text = "Imprimir &listado...";
+            this.imprimirlistadoToolStripMenuItem.Click += new System.EventHandler(this.ImprimirlistadoToolStripMenuItem_Click);
+            // 
+            // actualizarToolStripMenuItem
+            // 
+            this.actualizarToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.refresh_small;
+            this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
+            this.actualizarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.actualizarToolStripMenuItem.Text = "&Actualizar";
+            this.actualizarToolStripMenuItem.Click += new System.EventHandler(this.ActualizarToolStripMenuItem_Click);
+            // 
+            // imprimirToolStripMenuItem
+            // 
+            this.imprimirToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.print_small;
+            this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
+            this.imprimirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.imprimirToolStripMenuItem.Text = "&Imprimir...";
+            this.imprimirToolStripMenuItem.Click += new System.EventHandler(this.ImprimirToolStripMenuItem_Click);
+            // 
+            // cerrarToolStripMenuItem
+            // 
+            this.cerrarToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.error;
+            this.cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
+            this.cerrarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cerrarToolStripMenuItem.Text = "&Cerrar";
+            this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.CerrarToolStripMenuItem_Click);
+            // 
+            // seleccionarTodosToolStripMenuItem
+            // 
+            this.seleccionarTodosToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.select_all_small;
+            this.seleccionarTodosToolStripMenuItem.Name = "seleccionarTodosToolStripMenuItem";
+            this.seleccionarTodosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.seleccionarTodosToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.seleccionarTodosToolStripMenuItem.Text = "Se&leccionar todos";
+            this.seleccionarTodosToolStripMenuItem.Click += new System.EventHandler(this.SeleccionarTodosToolStripMenuItem_Click);
+            // 
+            // detallesToolStripMenuItem
+            // 
+            this.detallesToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.details_small;
+            this.detallesToolStripMenuItem.Name = "detallesToolStripMenuItem";
+            this.detallesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D1)));
+            this.detallesToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.detallesToolStripMenuItem.Text = "&Detalles";
+            this.detallesToolStripMenuItem.Click += new System.EventHandler(this.DetallesToolStripMenuItem_Click);
+            // 
+            // icónosGrandesToolStripMenuItem
+            // 
+            this.icónosGrandesToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.big_icons_small;
+            this.icónosGrandesToolStripMenuItem.Name = "icónosGrandesToolStripMenuItem";
+            this.icónosGrandesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D2)));
+            this.icónosGrandesToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.icónosGrandesToolStripMenuItem.Text = "Icónos &grandes";
+            this.icónosGrandesToolStripMenuItem.Click += new System.EventHandler(this.IcónosGrandesToolStripMenuItem_Click);
+            // 
+            // icónosPequeñosToolStripMenuItem
+            // 
+            this.icónosPequeñosToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.small_icons_small;
+            this.icónosPequeñosToolStripMenuItem.Name = "icónosPequeñosToolStripMenuItem";
+            this.icónosPequeñosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D3)));
+            this.icónosPequeñosToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.icónosPequeñosToolStripMenuItem.Text = "Icónos &pequeños";
+            this.icónosPequeñosToolStripMenuItem.Click += new System.EventHandler(this.IcónosPequeñosToolStripMenuItem_Click);
+            // 
+            // listaToolStripMenuItem
+            // 
+            this.listaToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.list_small;
+            this.listaToolStripMenuItem.Name = "listaToolStripMenuItem";
+            this.listaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D4)));
+            this.listaToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.listaToolStripMenuItem.Text = "&Lista";
+            this.listaToolStripMenuItem.Click += new System.EventHandler(this.ListaToolStripMenuItem_Click);
+            // 
+            // teselasToolStripMenuItem
+            // 
+            this.teselasToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.tiles_small;
+            this.teselasToolStripMenuItem.Name = "teselasToolStripMenuItem";
+            this.teselasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D5)));
+            this.teselasToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.teselasToolStripMenuItem.Text = "T&eselas";
+            this.teselasToolStripMenuItem.Click += new System.EventHandler(this.TeselasToolStripMenuItem_Click);
+            // 
+            // todosLosChoferesToolStripMenuItem
+            // 
+            this.todosLosChoferesToolStripMenuItem.CheckOnClick = true;
+            this.todosLosChoferesToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.driver_small;
+            this.todosLosChoferesToolStripMenuItem.Name = "todosLosChoferesToolStripMenuItem";
+            this.todosLosChoferesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.T)));
+            this.todosLosChoferesToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.todosLosChoferesToolStripMenuItem.Text = "Todos los &choferes";
+            this.todosLosChoferesToolStripMenuItem.Click += new System.EventHandler(this.SelectDriversView);
+            // 
+            // choferessinProblemasToolStripMenuItem
+            // 
+            this.choferessinProblemasToolStripMenuItem.CheckOnClick = true;
+            this.choferessinProblemasToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.ok;
+            this.choferessinProblemasToolStripMenuItem.Name = "choferessinProblemasToolStripMenuItem";
+            this.choferessinProblemasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.choferessinProblemasToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.choferessinProblemasToolStripMenuItem.Text = "Choferes &sin problemas";
+            this.choferessinProblemasToolStripMenuItem.Click += new System.EventHandler(this.SelectDriversView);
+            // 
+            // choferesConAdvertenciasToolStripMenuItem
+            // 
+            this.choferesConAdvertenciasToolStripMenuItem.CheckOnClick = true;
+            this.choferesConAdvertenciasToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.warning;
+            this.choferesConAdvertenciasToolStripMenuItem.Name = "choferesConAdvertenciasToolStripMenuItem";
+            this.choferesConAdvertenciasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.A)));
+            this.choferesConAdvertenciasToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.choferesConAdvertenciasToolStripMenuItem.Text = "Choferes con &advertencias";
+            this.choferesConAdvertenciasToolStripMenuItem.Click += new System.EventHandler(this.SelectDriversView);
+            // 
+            // choferesConProblemasToolStripMenuItem
+            // 
+            this.choferesConProblemasToolStripMenuItem.CheckOnClick = true;
+            this.choferesConProblemasToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.error;
+            this.choferesConProblemasToolStripMenuItem.Name = "choferesConProblemasToolStripMenuItem";
+            this.choferesConProblemasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.E)));
+            this.choferesConProblemasToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.choferesConProblemasToolStripMenuItem.Text = "Choferes con atributos &expirados";
+            this.choferesConProblemasToolStripMenuItem.Click += new System.EventHandler(this.SelectDriversView);
+            // 
+            // configuraciónToolStripMenuItem
+            // 
+            this.configuraciónToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.settings_small;
+            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
+            this.configuraciónToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.configuraciónToolStripMenuItem.Text = "Configuración...";
+            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.ConfiguraciónToolStripMenuItem_Click);
+            // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.INGECO_DriversControl_small;
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.acercaDeToolStripMenuItem.Text = "&Acerca de...";
+            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.AcercaDeToolStripMenuItem_Click);
+            // 
+            // changeWindowStateMenuItem
+            // 
+            this.changeWindowStateMenuItem.Image = global::INGECO.DriversControl.Properties.Resources.window_minimize_small;
+            this.changeWindowStateMenuItem.Name = "changeWindowStateMenuItem";
+            this.changeWindowStateMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeWindowStateMenuItem.Text = "&Minimizar";
+            this.changeWindowStateMenuItem.Click += new System.EventHandler(this.ChangeWindowStateMenuItem_Click);
+            // 
+            // actualizarToolStripMenuItem2
+            // 
+            this.actualizarToolStripMenuItem2.Image = global::INGECO.DriversControl.Properties.Resources.refresh_small;
+            this.actualizarToolStripMenuItem2.Name = "actualizarToolStripMenuItem2";
+            this.actualizarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.actualizarToolStripMenuItem2.Text = "&Actualizar ahora";
+            this.actualizarToolStripMenuItem2.Click += new System.EventHandler(this.ActualizarToolStripMenuItem2_Click);
+            // 
+            // configuraciónToolStripMenuItem1
+            // 
+            this.configuraciónToolStripMenuItem1.Image = global::INGECO.DriversControl.Properties.Resources.settings_small;
+            this.configuraciónToolStripMenuItem1.Name = "configuraciónToolStripMenuItem1";
+            this.configuraciónToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.configuraciónToolStripMenuItem1.Text = "Con&figuración...";
+            this.configuraciónToolStripMenuItem1.Click += new System.EventHandler(this.ConfiguraciónToolStripMenuItem1_Click);
+            // 
+            // acercaDeToolStripMenuItem1
+            // 
+            this.acercaDeToolStripMenuItem1.Image = global::INGECO.DriversControl.Properties.Resources.INGECO_DriversControl;
+            this.acercaDeToolStripMenuItem1.Name = "acercaDeToolStripMenuItem1";
+            this.acercaDeToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.acercaDeToolStripMenuItem1.Text = "&Acerca de...";
+            this.acercaDeToolStripMenuItem1.Click += new System.EventHandler(this.AcercaDeToolStripMenuItem1_Click);
+            // 
+            // cerrarToolStripMenuItem1
+            // 
+            this.cerrarToolStripMenuItem1.Image = global::INGECO.DriversControl.Properties.Resources.error;
+            this.cerrarToolStripMenuItem1.Name = "cerrarToolStripMenuItem1";
+            this.cerrarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.cerrarToolStripMenuItem1.Text = "&Cerrar";
+            this.cerrarToolStripMenuItem1.Click += new System.EventHandler(this.CerrarToolStripMenuItem1_Click);
+            // 
             // FrmDriversMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -759,6 +833,7 @@
             this.appMainMenu.PerformLayout();
             this.appStatusBar.ResumeLayout(false);
             this.appStatusBar.PerformLayout();
+            this.notifyContextMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -833,5 +908,13 @@
         private System.Windows.Forms.ToolStripMenuItem nuevoChoferToolStripMenuItem;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ContextMenuStrip notifyContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem changeWindowStateMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripMenuItem actualizarToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem1;
     }
 }

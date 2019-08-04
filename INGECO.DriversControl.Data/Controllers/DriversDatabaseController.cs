@@ -81,6 +81,7 @@ namespace INGECO.DriversControl.Data
         {
             try
             {
+                driver.Registered = DateTime.Now;
                 driver.InsertMe();
                 return true;
             }
@@ -317,7 +318,7 @@ namespace INGECO.DriversControl.Data
             }
             catch (Exception)
             {
-                
+                throw;
             }
             return drivers;
         }

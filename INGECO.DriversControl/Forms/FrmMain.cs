@@ -513,7 +513,7 @@ namespace INGECO.DriversControl
         /// </summary>
         private void OpenDriversReport()
         {
-            var frm = new FrmDriversReports(LoadedDrivers, DriversView);
+            var frm = new FrmDriversReports(LoadedDrivers, DriversView, DriverCategoryFilter);
             frm.Show();
         }
 
@@ -604,12 +604,16 @@ namespace INGECO.DriversControl
             if (WindowState == FormWindowState.Minimized)
             {
                 ShowInTaskbar = false;
+                changeWindowStateMenuItem.Image = Properties.Resources.window_restore_small;
+                changeWindowStateMenuItem.Text = "&Restaurar";
             }
             else
             {
                 if (WindowState == FormWindowState.Normal || WindowState == FormWindowState.Maximized)
                 {
                     ShowInTaskbar = true;
+                    changeWindowStateMenuItem.Image = Properties.Resources.window_minimize_small;
+                    changeWindowStateMenuItem.Text = "&Minimizar";
                 }
             }
         }
@@ -830,6 +834,38 @@ namespace INGECO.DriversControl
         }
 
         private void CerrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void ChangeWindowStateMenuItem_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                WindowState = FormWindowState.Minimized;
+            }
+        }
+
+        private void ActualizarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            LoadDrivers();
+        }
+
+        private void ConfiguraciónToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenConfigurationForm();
+        }
+
+        private void AcercaDeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenAboutForm();
+        }
+
+        private void CerrarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Close();
         }

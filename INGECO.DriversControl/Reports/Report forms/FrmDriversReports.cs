@@ -27,11 +27,17 @@ namespace INGECO.DriversControl
         /// </summary>
         internal DriversView DriversView { get; private set; }
 
-        public FrmDriversReports(List<Driver> drivers, DriversView driversView)
+        /// <summary>
+        /// The <see cref="DriverCategoryFilter"/> used for generate the list of drivers.
+        /// </summary>
+        public DriverCategoryFilter CategoryFilter { get; private set; }
+
+        public FrmDriversReports(List<Driver> drivers, DriversView driversView, DriverCategoryFilter filter)
         {
             InitializeComponent();
             ReportingDrivers = drivers.GetReportingDrivers();
             DriversView = driversView;
+            CategoryFilter = filter;
         }
 
         private void FrmDriversReports_Load(object sender, EventArgs e)
@@ -39,8 +45,13 @@ namespace INGECO.DriversControl
             reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
             reportViewer1.ZoomMode = ZoomMode.PageWidth;
             reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.SetParameters(new List<ReportParameter>
+            {
+                new ReportParameter("DriversFilter", DriversView.GetDisplayText()),
+                new ReportParameter("DriversCategoryFilter", CategoryFilter.GetDisplayText())
+            });
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("Drivers", ReportingDrivers));
-            reportViewer1.RefreshReport();            
+            reportViewer1.RefreshReport();
         }
     }
 }

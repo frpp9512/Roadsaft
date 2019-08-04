@@ -110,6 +110,7 @@
             // txtPersonalId
             // 
             this.txtPersonalId.Location = new System.Drawing.Point(120, 118);
+            this.txtPersonalId.MaxLength = 11;
             this.txtPersonalId.Name = "txtPersonalId";
             this.txtPersonalId.Size = new System.Drawing.Size(240, 22);
             this.txtPersonalId.TabIndex = 2;
@@ -140,7 +141,7 @@
             this.btnCancel.Location = new System.Drawing.Point(276, 227);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "&Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
@@ -156,7 +157,7 @@
             this.btnNewDriver.Location = new System.Drawing.Point(186, 227);
             this.btnNewDriver.Name = "btnNewDriver";
             this.btnNewDriver.Size = new System.Drawing.Size(84, 23);
-            this.btnNewDriver.TabIndex = 4;
+            this.btnNewDriver.TabIndex = 5;
             this.btnNewDriver.Text = "&Crear";
             this.btnNewDriver.UseVisualStyleBackColor = true;
             this.btnNewDriver.Click += new System.EventHandler(this.BtnNewDriver_Click);
@@ -167,7 +168,7 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(240, 48);
-            this.txtDescription.TabIndex = 3;
+            this.txtDescription.TabIndex = 4;
             // 
             // cbxDriverCategory
             // 
@@ -176,7 +177,7 @@
             this.cbxDriverCategory.Location = new System.Drawing.Point(120, 146);
             this.cbxDriverCategory.Name = "cbxDriverCategory";
             this.cbxDriverCategory.Size = new System.Drawing.Size(240, 21);
-            this.cbxDriverCategory.TabIndex = 33;
+            this.cbxDriverCategory.TabIndex = 3;
             // 
             // pictureBox1
             // 

@@ -15,7 +15,7 @@ namespace INGECO.DriversControl
         /// <summary>
         /// The license number.
         /// </summary>
-        public string LicenseNumber => DriverLicense == null ? "No tiene liencia activa." : DriverLicense.Number;
+        public string LicenseNumber => DriverLicense == null ? "No tiene licencia activa." : DriverLicense.Number;
 
         /// <summary>
         /// The date when the license expires.
@@ -35,7 +35,7 @@ namespace INGECO.DriversControl
         /// <summary>
         /// The summary of requalification data to be dislpayed in UI or report.
         /// </summary>
-        public string RequalificationSummary => $"Tomo: {RequalificationVolume}\r\nFolio: {RequalificationPage}";
+        public string RequalificationSummary => Requalificaiton == null ? "No tiene recalificación activa." : $"Tomo: {RequalificationVolume}\r\nFolio: {RequalificationPage}";
         /// <summary>
         /// The date when the requalification expires.
         /// </summary>
@@ -44,7 +44,7 @@ namespace INGECO.DriversControl
         /// <summary>
         /// The medical exam's state resume.
         /// </summary>
-        public string MedicalExamsResume => String.Join("\r\n", MedicalExams.Select(me => $"Exámen: {me.Type.GetDisplayText()}\r\nRealizado: {me.DateOfMaking.ToShortDateString()} Vence: {me.Expires.ToShortDateString()} Resultado: {me.Result.GetDisplayText()}"));
+        public string MedicalExamsResume => MedicalExams.Count == 0 ? "No tiene chequeos médicos activos." : string.Join("\r\n", MedicalExams.Select(me => $"Exámen: {me.Type.GetDisplayText()}\r\nRealizado: {me.DateOfMaking.ToShortDateString()} Vence: {me.Expires.ToShortDateString()} Resultado: {me.Result.GetDisplayText()}"));
 
         /// <summary>
         /// The display text for the Driver's category.
@@ -54,12 +54,12 @@ namespace INGECO.DriversControl
         /// <summary>
         /// <see langword="true"/> if the license has a expiration warning.
         /// </summary>
-        public bool LicenseWarning => DriverLicense.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense);
+        public bool LicenseWarning => DriverLicense?.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense) == true;
 
         /// <summary>
         /// <see langword="true"/> if the requalification has a expiration warning.
         /// </summary>
-        public bool RequalificationWarning => Requalificaiton.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification);
+        public bool RequalificationWarning => Requalificaiton?.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification) == true;
 
         /// <summary>
         /// <see langword="true"/> if any medical exam has a warning.

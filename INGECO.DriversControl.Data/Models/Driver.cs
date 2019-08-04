@@ -99,7 +99,7 @@ namespace INGECO.DriversControl.Data
         /// <summary>
         /// <see langword="true"/> if driver is active in the system.
         /// </summary>
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
 
         /// <summary>
         /// The current active requalification of the driver

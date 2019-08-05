@@ -98,7 +98,7 @@ namespace INGECO.DriversControl.Data
                 if (driver.DriverLicense != null)
                 {
                     driver.DriverLicense.IsActive = false;
-                    driver.Requalificaiton.Archived = DateTime.Now;
+                    driver.DriverLicense.Archived = DateTime.Now;
                     driver.DriverLicense.UpdateMe();
                 }
                 newLicense.IsActive = true;

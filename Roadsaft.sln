@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roadsaft.DriversManagement", "Roadsaft.DriversManagement\Roadsaft.DriversManagement.csproj", "{CC12A1A1-4A1D-4A8F-9644-A5F1F2A9E748}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roadsaft.DriversManagement.Data", "Roadsaft.DriversManagement.Data\Roadsaft.DriversManagement.Data.csproj", "{23A6024C-81A4-4E5C-B9A2-8DD171408547}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC12A1A1-4A1D-4A8F-9644-A5F1F2A9E748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC12A1A1-4A1D-4A8F-9644-A5F1F2A9E748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC12A1A1-4A1D-4A8F-9644-A5F1F2A9E748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC12A1A1-4A1D-4A8F-9644-A5F1F2A9E748}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23A6024C-81A4-4E5C-B9A2-8DD171408547}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23A6024C-81A4-4E5C-B9A2-8DD171408547}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23A6024C-81A4-4E5C-B9A2-8DD171408547}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23A6024C-81A4-4E5C-B9A2-8DD171408547}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA3DC895-4DED-4EC6-829D-30945F86B134}
+	EndGlobalSection
+EndGlobal

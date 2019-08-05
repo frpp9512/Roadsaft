@@ -326,11 +326,13 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LimeGreen;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::INGECO.DriversControl.Properties.Resources.error_verysmall;
             this.button1.Location = new System.Drawing.Point(302, 308);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 27);
             this.button1.TabIndex = 2;
             this.button1.Text = "&Cerrar";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 

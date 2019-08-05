@@ -143,11 +143,17 @@
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.okButton.Location = new System.Drawing.Point(643, 410);
+            this.okButton.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.okButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LimeGreen;
+            this.okButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGreen;
+            this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.okButton.Image = global::INGECO.DriversControl.Properties.Resources.ok_verysmall;
+            this.okButton.Location = new System.Drawing.Point(644, 406);
             this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(75, 23);
+            this.okButton.Size = new System.Drawing.Size(74, 27);
             this.okButton.TabIndex = 24;
             this.okButton.Text = "&OK";
+            this.okButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             // 
             // FrmAbout
             // 

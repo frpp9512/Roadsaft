@@ -24,16 +24,7 @@ namespace INGECO.DriversControl
         public FrmDriversMainForm()
         {
             InitializeComponent();
-            Configuration.LoadFromFile();
-            DriverDataProviderContainer.InitializeWithDatabaseProvider(
-                Configuration.DatabaseHostName,
-                Configuration.DatabaseUserName,
-                Configuration.DatabasePassword,
-                Configuration.DatabaseName
-                );
-            SetShowingView(Configuration.LastUsedView);
-            SetDriverCategoryFilter(Configuration.LastDriverCategoryFilter);
-            SetDriversView(Configuration.LastDriversView);
+            LoadSettingsFromConfiguration();
             SetUpTimer();
         }
 
@@ -59,6 +50,33 @@ namespace INGECO.DriversControl
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Loads and set up from the configuration.
+        /// </summary>
+        private void LoadSettingsFromConfiguration()
+        {
+            Configuration.LoadFromFile();
+            DriverDataProviderContainer.InitializeWithDatabaseProvider(
+                Configuration.DatabaseHostName,
+                Configuration.DatabaseUserName,
+                Configuration.DatabasePassword,
+                Configuration.DatabaseName
+                );
+            Size = Configuration.WindowSize;
+            WindowState = Configuration.LastWindowState;
+            if ((Configuration.LastLocation.X == Configuration.LastLocation.Y) && (Configuration.LastLocation.Y == 0))
+            {
+                StartPosition = FormStartPosition.CenterScreen;
+            }
+            else
+            {
+                Location = Configuration.LastLocation;
+            }
+            SetShowingView(Configuration.LastUsedView);
+            SetDriverCategoryFilter(Configuration.LastDriverCategoryFilter);
+            SetDriversView(Configuration.LastDriversView);
+        }
 
         /// <summary>
         /// Set the configured interval to the timer and set the action to do on Tick.
@@ -192,7 +210,16 @@ namespace INGECO.DriversControl
                         driver.PersonalId.Contains(value) ||
                         driver.DriverLicense?.Number.Contains(value) == true)
                     {
-                        var item = new ListViewItem(new string[] { driver.FullName, driver.Position, driver.Category.GetDisplayText(), driver.PersonalId, driver.Age.ToString(), driver.Description })
+                        var item = new ListViewItem(
+                            new string[] 
+                            {
+                                driver.FullName,
+                                driver.Position,
+                                driver.Category.GetDisplayText(),
+                                driver.PersonalId,
+                                driver.Age.ToString(),
+                                driver.Description,
+                            })
                         {
                             ImageIndex = driver.HasExpiredParameters ? 2 : driver.GetIfAnyParameterExpireDateIsInPeriod(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam) ? 1 : 0,
                             Group = driver.Category == DriverCategory.Professional ? professionalGroup : nonProfessionalGroup,
@@ -287,7 +314,11 @@ namespace INGECO.DriversControl
                     (expiredLicenseCount + expiredRequalificationsCount + driversWithExpiredMedChecksCount + noLicenseCount + noRequalificationCount + noMedChecksCount) > 0 ? ToolTipIcon.Error
                     : (warningLicenseCount + warningRequalificationCount + warningMedicalChecksCount) > 0 ? ToolTipIcon.Warning
                     : ToolTipIcon.Info
-                    ); 
+                    );
+                driversControlNotifyIcon.Icon = (expiredLicenseCount + expiredRequalificationsCount + driversWithExpiredMedChecksCount + noLicenseCount + noRequalificationCount + noMedChecksCount) > 0 ? Properties.Resources.Roadsaft_Error
+                    : (warningLicenseCount + warningRequalificationCount + warningMedicalChecksCount) > 0 ? Properties.Resources.Roadsaft_Warning
+                    : Properties.Resources.Roadsaft;
+                driversControlNotifyIcon.Text = $"Roadsaft V1.0 BETA\r\n{((expiredLicenseCount + expiredRequalificationsCount + driversWithExpiredMedChecksCount + noLicenseCount + noRequalificationCount + noMedChecksCount) > 0 ? "Existen errores que deben ser atendidos.": (warningLicenseCount + warningRequalificationCount + warningMedicalChecksCount) > 0 ? "Existen choferes con advertencias.": "Todo esta en orden.")}";
             }
             else
             {
@@ -298,6 +329,8 @@ namespace INGECO.DriversControl
                     "No se ha cargado ningún chofer.",
                     ToolTipIcon.Warning
                     );
+                driversControlNotifyIcon.Icon = Properties.Resources.Roadsaft_Error;
+                driversControlNotifyIcon.Text = "Roadsaft V1.0 BETA\r\nNo se ha cargado ningún chofer.";
             }
         }
 
@@ -307,9 +340,9 @@ namespace INGECO.DriversControl
         private void SetListViewImageLists()
         {
             var imageList = new ImageList();
-            imageList.Images.Add(Properties.Resources.ok);
+            imageList.Images.Add(Properties.Resources.rounded_ok_small);
             imageList.Images.Add(Properties.Resources.warning);
-            imageList.Images.Add(Properties.Resources.error);
+            imageList.Images.Add(Properties.Resources.rounded_error_small);
             lvDriversList.LargeImageList = imageList;
             lvDriversList.SmallImageList = imageList;
         }
@@ -585,6 +618,23 @@ namespace INGECO.DriversControl
             }
         }
 
+        /// <summary>
+        /// Save the window's state settings to the configuration file.
+        /// </summary>
+        private void SaveConfiguration()
+        {
+            Configuration.LastUsedView = lvDriversList.View;
+            Configuration.LastDriversView = DriversView;
+            Configuration.LastDriverCategoryFilter = DriverCategoryFilter;
+            Configuration.LastWindowState = WindowState == FormWindowState.Minimized ? FormWindowState.Normal : WindowState;
+            if (WindowState != FormWindowState.Maximized)
+            {
+                Configuration.WindowSize = Size;
+                Configuration.LastLocation = Location;
+            }
+            Configuration.SaveToFile();
+        }
+
         #endregion
 
         #region Events subscribers
@@ -763,10 +813,7 @@ namespace INGECO.DriversControl
 
         private void FrmDriversMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Configuration.LastUsedView = lvDriversList.View;
-            Configuration.LastDriversView = DriversView;
-            Configuration.LastDriverCategoryFilter = DriverCategoryFilter;
-            Configuration.SaveToFile();
+            SaveConfiguration();
         }
 
         private void SeleccionarTodosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -809,25 +856,6 @@ namespace INGECO.DriversControl
             OpenSelectedDriverDetails(DriverDetailsInitialAction.MedicalExamTabOpen);
         }
 
-        #endregion
-
-        #region Method overriding
-
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            if(keyData == Keys.Escape)
-            {
-                DeselectAll();
-                return true;
-            }
-            if(keyData == Keys.Enter)
-            {
-                OpenSelectedDriverDetails(DriverDetailsInitialAction.None);
-                return true;
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-
         private void NuevoChoferToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddNewDriver();
@@ -868,6 +896,25 @@ namespace INGECO.DriversControl
         private void CerrarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        #endregion
+
+        #region Method overriding
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if(keyData == Keys.Escape)
+            {
+                DeselectAll();
+                return true;
+            }
+            if(keyData == Keys.Enter)
+            {
+                OpenSelectedDriverDetails(DriverDetailsInitialAction.None);
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         #endregion

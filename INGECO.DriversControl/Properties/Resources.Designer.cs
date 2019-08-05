@@ -223,6 +223,16 @@ namespace INGECO.DriversControl.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap error_verysmall {
+            get {
+                object obj = ResourceManager.GetObject("error_verysmall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap generalinfo {
             get {
                 object obj = ResourceManager.GetObject("generalinfo", resourceCulture);
@@ -336,6 +346,16 @@ namespace INGECO.DriversControl.Properties {
         internal static System.Drawing.Bitmap ok {
             get {
                 object obj = ResourceManager.GetObject("ok", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ok_verysmall {
+            get {
+                object obj = ResourceManager.GetObject("ok_verysmall", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -466,6 +486,76 @@ namespace INGECO.DriversControl.Properties {
         internal static System.Drawing.Bitmap restore_verysmall {
             get {
                 object obj = ResourceManager.GetObject("restore.verysmall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Roadsaft {
+            get {
+                object obj = ResourceManager.GetObject("Roadsaft", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Roadsaft_Error {
+            get {
+                object obj = ResourceManager.GetObject("Roadsaft_Error", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Roadsaft_Warning {
+            get {
+                object obj = ResourceManager.GetObject("Roadsaft_Warning", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rounded_error_small {
+            get {
+                object obj = ResourceManager.GetObject("rounded_error_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rounded_error_verysmall {
+            get {
+                object obj = ResourceManager.GetObject("rounded_error_verysmall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rounded_ok_small {
+            get {
+                object obj = ResourceManager.GetObject("rounded_ok_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rounded_ok_verysmall {
+            get {
+                object obj = ResourceManager.GetObject("rounded_ok_verysmall", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

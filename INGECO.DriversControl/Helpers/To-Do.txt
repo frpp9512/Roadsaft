@@ -1,3 +1,2 @@
 ﻿ To-Do List
- - Show error when database server is down, manage exception thrown
- - Create notify icon context menu
+ - Save in the configuration the state, size and position of the window when it closes to set them again when opens.

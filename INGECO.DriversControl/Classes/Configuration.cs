@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace INGECO.DriversControl
 {
@@ -69,6 +70,49 @@ namespace INGECO.DriversControl
         public static DriverCategoryFilter LastDriverCategoryFilter { get; set; } = DriverCategoryFilter.All;
 
         /// <summary>
+        /// The last Window's State that the form was when closed.
+        /// </summary>
+        public static FormWindowState LastWindowState { get; set; } = FormWindowState.Normal;
+
+        /// <summary>
+        /// The last Window's height that the form had when closed.
+        /// </summary>
+        public static int WindowHeight { get; set; } = 575;
+
+        /// <summary>
+        /// The last Window's width that form had when closed.
+        /// </summary>
+        public static int WindowWidth { get; set; } = 880;
+
+        /// <summary>
+        /// The last Window's size that the form had when closed.
+        /// </summary>
+        public static Size WindowSize
+        {
+            get { return new Size(WindowWidth, WindowHeight); }
+            set { WindowHeight = value.Height; WindowWidth = value.Width; }
+        }
+
+        /// <summary>
+        /// The X coordinates of last location of the window.
+        /// </summary>
+        public static int PositionX { get; set; } = 0;
+
+        /// <summary>
+        /// The Y coordinates of last location of the window.
+        /// </summary>
+        public static int PositionY { get; set; } = 0;
+
+        /// <summary>
+        /// The last position of the window when closed.
+        /// </summary>
+        public static Point LastLocation
+        {
+            get => new Point(PositionX, PositionY);
+            set { PositionX = value.X; PositionY = value.Y; }
+        }
+
+        /// <summary>
         /// Save the configuration to file.
         /// </summary>
         public static void SaveToFile()
@@ -124,6 +168,21 @@ namespace INGECO.DriversControl
                                 continue;
                             case nameof(LastDriverCategoryFilter):
                                 LastDriverCategoryFilter = (DriverCategoryFilter)Enum.Parse(typeof(DriverCategoryFilter), values[1]);
+                                continue;
+                            case nameof(LastWindowState):
+                                LastWindowState = (FormWindowState)Enum.Parse(typeof(FormWindowState), values[1]);
+                                continue;
+                            case nameof(WindowWidth):
+                                WindowWidth = int.Parse(values[1]);
+                                continue;
+                            case nameof(WindowHeight):
+                                WindowHeight = int.Parse(values[1]);
+                                continue;
+                            case nameof(PositionX):
+                                PositionX = int.Parse(values[1]);
+                                continue;
+                            case nameof(PositionY):
+                                PositionY = int.Parse(values[1]);
                                 continue;
                             default:
                                 break;

@@ -238,6 +238,15 @@
     <None Include="Resources\ok.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Roadsaft.ico" />
+    <None Include="Resources\Roadsaft.Warning.ico" />
+    <None Include="Resources\Roadsaft.Error.ico" />
+    <None Include="Resources\rounded.ok.verysmall.png" />
+    <None Include="Resources\rounded.ok.small.png" />
+    <None Include="Resources\rounded.error.verysmall.png" />
+    <None Include="Resources\rounded.error.small.png" />
+    <None Include="Resources\ok.verysmall.png" />
+    <None Include="Resources\error.verysmall.png" />
     <None Include="Resources\window.minimize.small.png" />
     <None Include="Resources\window.restore.small.png" />
     <None Include="Resources\INGECO.DriversControl.small.png" />

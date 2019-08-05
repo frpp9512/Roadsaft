@@ -138,11 +138,14 @@
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.Image = global::INGECO.DriversControl.Properties.Resources.error_verysmall;
             this.btnCancel.Location = new System.Drawing.Point(276, 227);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(84, 23);
+            this.btnCancel.Size = new System.Drawing.Size(84, 28);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "&Cancelar";
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
@@ -154,11 +157,14 @@
             this.btnNewDriver.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnNewDriver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewDriver.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnNewDriver.Image = global::INGECO.DriversControl.Properties.Resources.ok_verysmall;
             this.btnNewDriver.Location = new System.Drawing.Point(186, 227);
             this.btnNewDriver.Name = "btnNewDriver";
-            this.btnNewDriver.Size = new System.Drawing.Size(84, 23);
+            this.btnNewDriver.Size = new System.Drawing.Size(84, 28);
             this.btnNewDriver.TabIndex = 5;
             this.btnNewDriver.Text = "&Crear";
+            this.btnNewDriver.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNewDriver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNewDriver.UseVisualStyleBackColor = true;
             this.btnNewDriver.Click += new System.EventHandler(this.BtnNewDriver_Click);
             // 

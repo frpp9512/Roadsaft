@@ -84,9 +84,9 @@ namespace INGECO.DriversControl
         private void SetTabControlImageList()
         {
             var imageList = new ImageList();
-            imageList.Images.Add(Properties.Resources.ok);
+            imageList.Images.Add(Properties.Resources.rounded_ok_small);
             imageList.Images.Add(Properties.Resources.warning);
-            imageList.Images.Add(Properties.Resources.error);
+            imageList.Images.Add(Properties.Resources.rounded_error_small);
             imageList.Images.Add(Properties.Resources.info_small);
             tabControl1.ImageList = imageList;
         }
@@ -271,10 +271,10 @@ namespace INGECO.DriversControl
                     var added = dgvMedicalExamActive.Rows.Add
                         (
                             me.IsExpired ?
-                                Properties.Resources.error
+                                Properties.Resources.rounded_error_small
                                 : me.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForMedicalExam)
                                 ? Properties.Resources.warning
-                                : Properties.Resources.ok,
+                                : Properties.Resources.rounded_ok_small,
                             me.Created.ToShortDateString(),
                             me.Type.GetDisplayText(),
                             me.DateOfMaking.ToShortDateString(),

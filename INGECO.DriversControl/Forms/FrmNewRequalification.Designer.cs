@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Label label16;
             System.Windows.Forms.Label label15;
             System.Windows.Forms.Label label14;
             System.Windows.Forms.Label label13;
@@ -44,7 +43,6 @@
             this.btnRequalificaitonRenewal = new System.Windows.Forms.Button();
             this.txtRequalificationDescription = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            label16 = new System.Windows.Forms.Label();
             label15 = new System.Windows.Forms.Label();
             label14 = new System.Windows.Forms.Label();
             label13 = new System.Windows.Forms.Label();
@@ -53,15 +51,6 @@
             label20 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Location = new System.Drawing.Point(9, 73);
-            label16.Name = "label16";
-            label16.Size = new System.Drawing.Size(46, 13);
-            label16.TabIndex = 38;
-            label16.Text = "Registro:";
             // 
             // label15
             // 
@@ -155,11 +144,14 @@
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.Image = global::INGECO.DriversControl.Properties.Resources.error_verysmall;
             this.btnCancel.Location = new System.Drawing.Point(274, 205);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(84, 23);
+            this.btnCancel.Size = new System.Drawing.Size(84, 28);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "&Cancelar";
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnRequalificaitonRenewal
@@ -170,11 +162,14 @@
             this.btnRequalificaitonRenewal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.PaleGreen;
             this.btnRequalificaitonRenewal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRequalificaitonRenewal.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnRequalificaitonRenewal.Image = global::INGECO.DriversControl.Properties.Resources.ok_verysmall;
             this.btnRequalificaitonRenewal.Location = new System.Drawing.Point(184, 205);
             this.btnRequalificaitonRenewal.Name = "btnRequalificaitonRenewal";
-            this.btnRequalificaitonRenewal.Size = new System.Drawing.Size(84, 23);
+            this.btnRequalificaitonRenewal.Size = new System.Drawing.Size(84, 28);
             this.btnRequalificaitonRenewal.TabIndex = 5;
             this.btnRequalificaitonRenewal.Text = "&Crear";
+            this.btnRequalificaitonRenewal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRequalificaitonRenewal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRequalificaitonRenewal.UseVisualStyleBackColor = true;
             this.btnRequalificaitonRenewal.Click += new System.EventHandler(this.BtnRequalificaitonRenewal_Click);
             // 
@@ -206,7 +201,6 @@
             this.Controls.Add(label20);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnRequalificaitonRenewal);
-            this.Controls.Add(label16);
             this.Controls.Add(this.txtRequalificationPage);
             this.Controls.Add(label15);
             this.Controls.Add(this.txtRequalificationVolume);

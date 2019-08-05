@@ -15,6 +15,11 @@ namespace Roadsaft.DriversManagement
     static class Configuration
     {
         /// <summary>
+        /// The path of the application configuration file.
+        /// </summary>
+        private static string ConfigurationFilePath => AppDomain.CurrentDomain.BaseDirectory + "config.cfg";
+
+        /// <summary>
         /// The address of the database server where is stored the system data.
         /// </summary>
         public static string DatabaseHostName { get; set; }
@@ -113,23 +118,32 @@ namespace Roadsaft.DriversManagement
         }
 
         /// <summary>
+        /// Check if exists the configuration file.
+        /// </summary>
+        /// <returns><see langword="true"/> if configuration file exists.</returns>
+        public static bool ExistConfigurationFile()
+        {
+            return File.Exists(ConfigurationFilePath);
+        }
+
+        /// <summary>
         /// Save the configuration to file.
         /// </summary>
         public static void SaveToFile()
         {
             var fields = typeof(Configuration).GetProperties().ToList();
-            using (var sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "config.cfg"))
+            using (var sw = new StreamWriter(ConfigurationFilePath))
             {
                 fields.ForEach(f => sw.WriteLine($"{f.Name}={f.GetValue(null)}"));
             }
-        }        
+        }
 
         /// <summary>
         /// Loads the configuration from file.
         /// </summary>
         public static void LoadFromFile()
         {
-            using (var sr = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "config.cfg"))
+            using (var sr = new StreamReader(ConfigurationFilePath))
             {
                 while (!sr.EndOfStream)
                 {

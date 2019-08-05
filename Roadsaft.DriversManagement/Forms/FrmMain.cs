@@ -56,26 +56,48 @@ namespace Roadsaft.DriversManagement
         /// </summary>
         private void LoadSettingsFromConfiguration()
         {
-            Configuration.LoadFromFile();
-            DriverDataProviderContainer.InitializeWithDatabaseProvider(
-                Configuration.DatabaseHostName,
-                Configuration.DatabaseUserName,
-                Configuration.DatabasePassword,
-                Configuration.DatabaseName
-                );
-            Size = Configuration.WindowSize;
-            WindowState = Configuration.LastWindowState;
-            if ((Configuration.LastLocation.X == Configuration.LastLocation.Y) && (Configuration.LastLocation.Y == 0))
+            if (Configuration.ExistConfigurationFile())
             {
-                StartPosition = FormStartPosition.CenterScreen;
+                Configuration.LoadFromFile();
+                DriverDataProviderContainer.InitializeWithDatabaseProvider(
+                    Configuration.DatabaseHostName,
+                    Configuration.DatabaseUserName,
+                    Configuration.DatabasePassword,
+                    Configuration.DatabaseName
+                    );
+                Size = Configuration.WindowSize;
+                WindowState = Configuration.LastWindowState;
+                if ((Configuration.LastLocation.X == Configuration.LastLocation.Y) && (Configuration.LastLocation.Y == 0))
+                {
+                    StartPosition = FormStartPosition.CenterScreen;
+                }
+                else
+                {
+                    Location = Configuration.LastLocation;
+                }
+                SetShowingView(Configuration.LastUsedView);
+                SetDriverCategoryFilter(Configuration.LastDriverCategoryFilter);
+                SetDriversView(Configuration.LastDriversView);
             }
             else
             {
-                Location = Configuration.LastLocation;
+                Visible = false;
+                var frmwelcome = new FrmWelcomeScreen();
+                if (frmwelcome.ShowDialog() == DialogResult.Cancel)
+                {
+                    Close();
+                }
+                else
+                {
+                    while (!Configuration.ExistConfigurationFile())
+                    {
+                        var frm = new FrmConfiguration();
+                        _ = frm.ShowDialog();
+                    }
+                    Visible = true;
+                    LoadSettingsFromConfiguration();
+                }
             }
-            SetShowingView(Configuration.LastUsedView);
-            SetDriverCategoryFilter(Configuration.LastDriverCategoryFilter);
-            SetDriversView(Configuration.LastDriversView);
         }
 
         /// <summary>
@@ -182,7 +204,7 @@ namespace Roadsaft.DriversManagement
             });            
             ShowLoadedDriversStatistic(LoadedDrivers);
             stlbLoading.Visible = false;
-            DriversQuickSearch(txtQuickSearch.Text);
+            _ = Invoke(new Action(() => DriversQuickSearch(txtQuickSearch.Text)));
         }
 
         /// <summary>
@@ -451,7 +473,6 @@ namespace Roadsaft.DriversManagement
                     icónosGrandesToolStripMenuItem.Checked = false;
                     listaToolStripMenuItem.Checked = false;
                     teselasToolStripMenuItem.Checked = true;
-                    DriversQuickSearch(txtQuickSearch.Text);
                     return;
                 default:
                     break;

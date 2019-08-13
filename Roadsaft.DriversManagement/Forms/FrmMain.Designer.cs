@@ -192,7 +192,7 @@
             this.imprimirlistadoToolStripMenuItem});
             this.driverContextMenu.Name = "driverContextMenu";
             this.driverContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.driverContextMenu.Size = new System.Drawing.Size(256, 226);
+            this.driverContextMenu.Size = new System.Drawing.Size(268, 226);
             this.driverContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.DriverContextMenu_Opening);
             // 
             // detallesToolStripMenuItem1
@@ -320,8 +320,8 @@
             this.imprimirlistadoToolStripMenuItem.Image = global::Roadsaft.DriversManagement.Properties.Resources.print_small;
             this.imprimirlistadoToolStripMenuItem.Name = "imprimirlistadoToolStripMenuItem";
             this.imprimirlistadoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.imprimirlistadoToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
-            this.imprimirlistadoToolStripMenuItem.Text = "Imprimir &listado...";
+            this.imprimirlistadoToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.imprimirlistadoToolStripMenuItem.Text = "Imprimir &listado mostrados...";
             this.imprimirlistadoToolStripMenuItem.Click += new System.EventHandler(this.ImprimirlistadoToolStripMenuItem_Click);
             // 
             // label1
@@ -671,6 +671,11 @@
             // txtQuickSearch
             // 
             this.txtQuickSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtQuickSearch.AutoCompleteCustomSource.AddRange(new string[] {
+            "#edad",
+            "#cargo"});
+            this.txtQuickSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtQuickSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtQuickSearch.Location = new System.Drawing.Point(627, 114);
             this.txtQuickSearch.Name = "txtQuickSearch";
             this.txtQuickSearch.Size = new System.Drawing.Size(225, 22);

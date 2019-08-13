@@ -36,7 +36,7 @@ namespace Roadsaft.DriversManagement
         /// The loaded drivers to be managed in the form.
         /// </summary>
         public List<Driver> LoadedDrivers { get; set; }
-        
+
         /// <summary>
         /// The current selected DriversView option.
         /// </summary>
@@ -105,7 +105,7 @@ namespace Roadsaft.DriversManagement
         /// </summary>
         private void SetUpTimer()
         {
-            if(refreshTimer.Enabled == true)
+            if (refreshTimer.Enabled == true)
             {
                 refreshTimer.Stop();
             }
@@ -201,7 +201,7 @@ namespace Roadsaft.DriversManagement
                     _ = MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return new List<Driver>();
                 }
-            });            
+            });
             ShowLoadedDriversStatistic(LoadedDrivers);
             stlbLoading.Visible = false;
             _ = Invoke(new Action(() => DriversQuickSearch(txtQuickSearch.Text)));
@@ -226,30 +226,26 @@ namespace Roadsaft.DriversManagement
                 lvDriversList.SuspendLayout();
                 var professionalGroup = new ListViewGroup("Profesionales");
                 var nonProfessionalGroup = new ListViewGroup("No Profesionales");
-                foreach (var driver in LoadedDrivers)
+                var showDrivers = value.StartsWith("#") ? GetHashtagFiltered(value) : GetGeneralFiltered(value);
+                foreach (var driver in showDrivers)
                 {
-                    if (driver.FullName.ToLower().Contains(value.ToLower()) ||
-                        driver.PersonalId.Contains(value) ||
-                        driver.DriverLicense?.Number.Contains(value) == true)
-                    {
-                        var item = new ListViewItem(
-                            new string[] 
-                            {
+                    var item = new ListViewItem(
+                        new string[]
+                        {
                                 driver.FullName,
                                 driver.Position,
                                 driver.Category.GetDisplayText(),
                                 driver.PersonalId,
                                 driver.Age.ToString(),
                                 driver.Description,
-                            })
-                        {
-                            ImageIndex = driver.HasExpiredParameters ? 2 : driver.GetIfAnyParameterExpireDateIsInPeriod(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam) ? 1 : 0,
-                            Group = driver.Category == DriverCategory.Professional ? professionalGroup : nonProfessionalGroup,
-                            Tag = driver,
-                            ToolTipText = driver.GetStatusToolTip()
-                        };
-                        _ = lvDriversList.Items.Add(item);
-                    }
+                        })
+                    {
+                        ImageIndex = driver.HasExpiredParameters ? 2 : driver.GetIfAnyParameterExpireDateIsInPeriod(Configuration.ExpireWarningForLicense, Configuration.ExpireWarningForRequalification, Configuration.ExpireWarningForMedicalExam) ? 1 : 0,
+                        Group = driver.Category == DriverCategory.Professional ? professionalGroup : nonProfessionalGroup,
+                        Tag = driver,
+                        ToolTipText = driver.GetStatusToolTip()
+                    };
+                    _ = lvDriversList.Items.Add(item);
                 }
                 if (lvDriversList.Items.Count > 0 && selectedIndex >= 0 && selectedIndex < lvDriversList.Items.Count)
                 {
@@ -262,6 +258,72 @@ namespace Roadsaft.DriversManagement
                 lvDriversList.ResumeLayout();
                 btnRefreshDrivers.Enabled = true;
             }
+        }
+
+        /// <summary>
+        /// Apply the specified general filter.
+        /// </summary>
+        /// <param name="value">The #hashtag filter text value.</param>
+        /// <returns>The Drivers filtered.</returns>
+        private List<Driver> GetGeneralFiltered(string value)
+        {
+            var result = from d in LoadedDrivers
+                         where d.FullName.ToLower().Contains(value.ToLower()) ||
+                              d.PersonalId.Contains(value) ||
+                              d.Position.ToLower().Contains(value.ToLower()) ||
+                              d.DriverLicense?.Number.Contains(value) == true
+                         select d;
+            return result.ToList();
+        }
+
+        /// <summary>
+        /// Apply the specified #hastag filter.
+        /// </summary>
+        /// <param name="value">The #hashtag filter text value.</param>
+        /// <returns>The Drivers filtered.</returns>
+        private List<Driver> GetHashtagFiltered(string value)
+        {
+            var result = new List<Driver>();
+            if (value.Length > 1)
+            {
+                var hashtagvalues = value.Split(' ');
+                switch (hashtagvalues[0])
+                {
+                    case "#edad":
+                        if (hashtagvalues.Length == 2)
+                        {
+                            var filter = from d in LoadedDrivers
+                                         where d.Age == (int.TryParse(hashtagvalues[1], out var d_age) ? d_age : 0)
+                                         select d;
+                            result = filter.ToList();
+                        }
+                        else
+                        {
+                            if (hashtagvalues.Length == 3)
+                            {
+                                var filter = from d in LoadedDrivers
+                                             where d.Age >= (int.TryParse(hashtagvalues[1], out var d_lowerage) ? d_lowerage : 0)
+                                             && d.Age <= (int.TryParse(hashtagvalues[2], out var d_age) ? d_age : 0)
+                                             select d;
+                                result = filter.ToList();
+                            }
+                        }
+                        break;
+                    case "#cargo":
+                        if (hashtagvalues.Length > 2)
+                        {
+                            var position = string.Join(" ", hashtagvalues.Where(val => !val.StartsWith("#")));
+                            var filter = from d in LoadedDrivers
+                                         where d.Position == position
+                                         select d;
+                            result = filter.ToList();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return result;
         }
 
         /// <summary>
@@ -565,10 +627,24 @@ namespace Roadsaft.DriversManagement
         /// <summary>
         /// Open the <see cref="FrmDriversReports"/> form.
         /// </summary>
-        private void OpenDriversReport()
+        private void OpenDriversReport(bool general)
         {
-            var frm = new FrmDriversReports(LoadedDrivers, DriversView, DriverCategoryFilter);
+            var frm = new FrmDriversReports(general ? LoadedDrivers : GetShowedDrivers(), DriversView, DriverCategoryFilter);
             frm.Show();
+        }
+
+        /// <summary>
+        /// Gets all the drivers showed in the List View.
+        /// </summary>
+        /// <returns>The drivers showed in the List View.</returns>
+        private List<Driver> GetShowedDrivers()
+        {
+            var drivers = new List<Driver>();
+            for (int i = 0; i < lvDriversList.Items.Count; i++)
+            {
+                drivers.Add(lvDriversList.Items[i].Tag as Driver);
+            }
+            return drivers;
         }
 
         /// <summary>
@@ -788,12 +864,12 @@ namespace Roadsaft.DriversManagement
 
         private void ImprimirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenDriversReport();
+            OpenDriversReport(true);
         }
 
         private void ImprimirlistadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenDriversReport();
+            OpenDriversReport(false);
         }
 
         private void HistorialDeBajasToolStripMenuItem_Click(object sender, EventArgs e)

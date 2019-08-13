@@ -45,13 +45,14 @@ namespace Roadsaft.DriversManagement
             reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
             reportViewer1.ZoomMode = ZoomMode.PageWidth;
             reportViewer1.LocalReport.DataSources.Clear();
-            reportViewer1.LocalReport.SetParameters(new List<ReportParameter>
+            /*reportViewer1.LocalReport.SetParameters(new List<ReportParameter>
             {
                 new ReportParameter("DriversFilter", DriversView.GetDisplayText()),
                 new ReportParameter("DriversCategoryFilter", CategoryFilter.GetDisplayText())
-            });
+            });*/
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("Drivers", ReportingDrivers));
             reportViewer1.RefreshReport();
+            this.reportViewer1.RefreshReport();
         }
     }
 }

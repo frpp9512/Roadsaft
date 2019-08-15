@@ -422,7 +422,7 @@ namespace Roadsaft.DriversManagement
         private void UpdateInfoTab(Driver driver)
         {
             TpDriverInfo.ImageIndex = 3;
-            lbRegistered.Text = $"Registrado: {driver.Registered.ToShortDateString()} (Hace {(driver.RegisteredTime.Days > 365 ? $"{driver.RegisteredTime.Days / 365} año(s)." : driver.RegisteredTime.Days > 30 ? $"{driver.RegisteredTime.Days / 30} mes(es)." : $"{driver.RegisteredTime.Days} día(s).")})";
+            lbRegistered.Text = $"Registrado: {driver.Registered.ToShortDateString()} (Hace {(driver.RegisteredTime.Days > 365 ? $"{driver.RegisteredTime.Days / 365} año(s)" : driver.RegisteredTime.Days > 30 ? $"{driver.RegisteredTime.Days / 30} mes(es)" : $"{driver.RegisteredTime.Days} día(s)")})";
             txtFullname.Text = driver.FullName;
             txtPosition.Text = driver.Position;
             txtPersonalId.Text = driver.PersonalId;

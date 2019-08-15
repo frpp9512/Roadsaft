@@ -226,7 +226,10 @@ namespace Roadsaft.DriversManagement
                 lvDriversList.SuspendLayout();
                 var professionalGroup = new ListViewGroup("Profesionales");
                 var nonProfessionalGroup = new ListViewGroup("No Profesionales");
-                var showDrivers = value.StartsWith("#") ? GetHashtagFiltered(value) : GetGeneralFiltered(value);
+                var showDrivers = LoadedDrivers;
+                var hashtags = value.Split(';');
+                hashtags.ToList()
+                    .ForEach(h => showDrivers = h.StartsWith("#") ? GetHashtagFiltered(showDrivers, h) : GetGeneralFiltered(showDrivers, h));
                 foreach (var driver in showDrivers)
                 {
                     var item = new ListViewItem(
@@ -265,12 +268,13 @@ namespace Roadsaft.DriversManagement
         /// </summary>
         /// <param name="value">The #hashtag filter text value.</param>
         /// <returns>The Drivers filtered.</returns>
-        private List<Driver> GetGeneralFiltered(string value)
+        private List<Driver> GetGeneralFiltered(List<Driver> drivers, string value)
         {
-            var result = from d in LoadedDrivers
-                         where d.FullName.ToLower().Contains(value.ToLower()) ||
+            value = value.RemoveAccents();
+            var result = from d in drivers
+                         where d.FullName.ToLower().RemoveAccents().Contains(value.ToLower()) ||
                               d.PersonalId.Contains(value) ||
-                              d.Position.ToLower().Contains(value.ToLower()) ||
+                              d.Position.ToLower().RemoveAccents().Contains(value.ToLower()) ||
                               d.DriverLicense?.Number.Contains(value) == true
                          select d;
             return result.ToList();
@@ -281,7 +285,7 @@ namespace Roadsaft.DriversManagement
         /// </summary>
         /// <param name="value">The #hashtag filter text value.</param>
         /// <returns>The Drivers filtered.</returns>
-        private List<Driver> GetHashtagFiltered(string value)
+        private List<Driver> GetHashtagFiltered(List<Driver> drivers, string value)
         {
             var result = new List<Driver>();
             if (value.Length > 1)
@@ -292,7 +296,7 @@ namespace Roadsaft.DriversManagement
                     case "#edad":
                         if (hashtagvalues.Length == 2)
                         {
-                            var filter = from d in LoadedDrivers
+                            var filter = from d in drivers
                                          where d.Age == (int.TryParse(hashtagvalues[1], out var d_age) ? d_age : 0)
                                          select d;
                             result = filter.ToList();
@@ -301,7 +305,7 @@ namespace Roadsaft.DriversManagement
                         {
                             if (hashtagvalues.Length == 3)
                             {
-                                var filter = from d in LoadedDrivers
+                                var filter = from d in drivers
                                              where d.Age >= (int.TryParse(hashtagvalues[1], out var d_lowerage) ? d_lowerage : 0)
                                              && d.Age <= (int.TryParse(hashtagvalues[2], out var d_age) ? d_age : 0)
                                              select d;
@@ -310,11 +314,22 @@ namespace Roadsaft.DriversManagement
                         }
                         break;
                     case "#cargo":
-                        if (hashtagvalues.Length > 2)
+                        if (hashtagvalues.Length > 1)
                         {
                             var position = string.Join(" ", hashtagvalues.Where(val => !val.StartsWith("#")));
-                            var filter = from d in LoadedDrivers
-                                         where d.Position == position
+                            var filter = from d in drivers
+                                         where d.Position.ToLower().RemoveAccents() == position.ToLower().RemoveAccents()
+                                         select d;
+                            result = filter.ToList();
+                        }
+                        break;
+                    case "#categoria":
+                    case "#categoría":
+                        if (hashtagvalues.Length > 1)
+                        {
+                            var category = string.Join(" ", hashtagvalues.Where(val => !val.StartsWith("#")));
+                            var filter = from d in drivers
+                                         where d.Category.GetDisplayText().ToLower() == category
                                          select d;
                             result = filter.ToList();
                         }

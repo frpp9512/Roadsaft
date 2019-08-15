@@ -93,5 +93,20 @@ namespace Roadsaft.DriversManagement
                 Archived = d.Archived
             }).ToList();
         }
+
+        /// <summary>
+        /// Replaces all the spanish's accented vowels with normal ones.
+        /// </summary>
+        /// <param name="value">The value to remove accents.</param>
+        /// <returns>The value without spanish's accent vowels.</returns>
+        public static string RemoveAccents(this string value)
+        {
+            return value
+                .Replace('á', 'a')
+                .Replace('é', 'e')
+                .Replace('í', 'i')
+                .Replace('ó', 'o')
+                .Replace('ú', 'u');
+        }
     }
 }

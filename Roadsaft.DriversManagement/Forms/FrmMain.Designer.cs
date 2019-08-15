@@ -93,7 +93,6 @@
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtQuickSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.appStatusBar = new System.Windows.Forms.StatusStrip();
             this.stlbLoading = new System.Windows.Forms.ToolStripStatusLabel();
@@ -106,6 +105,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnRefreshDrivers = new System.Windows.Forms.Button();
             this.btnNewDriver = new System.Windows.Forms.Button();
+            this.txtRichQuickSearch = new System.Windows.Forms.RichTextBox();
             lvClFullname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClPosition = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             tvClDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -204,7 +204,7 @@
             this.detallesToolStripMenuItem1.Image = global::Roadsaft.DriversManagement.Properties.Resources.opendetails_small;
             this.detallesToolStripMenuItem1.Name = "detallesToolStripMenuItem1";
             this.detallesToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.detallesToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
+            this.detallesToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
             this.detallesToolStripMenuItem1.Text = "&Detalles...";
             this.detallesToolStripMenuItem1.Click += new System.EventHandler(this.DetallesToolStripMenuItem1_Click);
             // 
@@ -237,28 +237,28 @@
             this.darBajaToolStripMenuItem.Image = global::Roadsaft.DriversManagement.Properties.Resources.downred_small;
             this.darBajaToolStripMenuItem.Name = "darBajaToolStripMenuItem";
             this.darBajaToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.darBajaToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.darBajaToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.darBajaToolStripMenuItem.Text = "Dar &baja";
             this.darBajaToolStripMenuItem.Click += new System.EventHandler(this.DarBajaToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(252, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(264, 6);
             // 
             // nuevoChoferToolStripMenuItem
             // 
             this.nuevoChoferToolStripMenuItem.Image = global::Roadsaft.DriversManagement.Properties.Resources.driver_add_small;
             this.nuevoChoferToolStripMenuItem.Name = "nuevoChoferToolStripMenuItem";
             this.nuevoChoferToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.nuevoChoferToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.nuevoChoferToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.nuevoChoferToolStripMenuItem.Text = "&Nuevo chofer...";
             this.nuevoChoferToolStripMenuItem.Click += new System.EventHandler(this.NuevoChoferToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(252, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(264, 6);
             // 
             // imprimirfichaToolStripMenuItem
             // 
@@ -266,21 +266,21 @@
             this.imprimirfichaToolStripMenuItem.Name = "imprimirfichaToolStripMenuItem";
             this.imprimirfichaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.P)));
-            this.imprimirfichaToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.imprimirfichaToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.imprimirfichaToolStripMenuItem.Text = "Imprimir &ficha(s)...";
             this.imprimirfichaToolStripMenuItem.Click += new System.EventHandler(this.ImprimirfichaToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(252, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(264, 6);
             // 
             // renovarLicenciaToolStripMenuItem
             // 
             this.renovarLicenciaToolStripMenuItem.Image = global::Roadsaft.DriversManagement.Properties.Resources.driver_license_add_small;
             this.renovarLicenciaToolStripMenuItem.Name = "renovarLicenciaToolStripMenuItem";
             this.renovarLicenciaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.renovarLicenciaToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.renovarLicenciaToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.renovarLicenciaToolStripMenuItem.Text = "&Renovar licencia...";
             this.renovarLicenciaToolStripMenuItem.Click += new System.EventHandler(this.RenovarLicenciaToolStripMenuItem_Click);
             // 
@@ -289,7 +289,7 @@
             this.renovarRecalificaciónToolStripMenuItem.Image = global::Roadsaft.DriversManagement.Properties.Resources.requalification_add_small;
             this.renovarRecalificaciónToolStripMenuItem.Name = "renovarRecalificaciónToolStripMenuItem";
             this.renovarRecalificaciónToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.renovarRecalificaciónToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.renovarRecalificaciónToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.renovarRecalificaciónToolStripMenuItem.Text = "Renovar &recalificación...";
             this.renovarRecalificaciónToolStripMenuItem.Click += new System.EventHandler(this.RenovarRecalificaciónToolStripMenuItem_Click);
             // 
@@ -298,21 +298,21 @@
             this.nuevoChequeoMédicoToolStripMenuItem.Image = global::Roadsaft.DriversManagement.Properties.Resources.medcheck_add_small;
             this.nuevoChequeoMédicoToolStripMenuItem.Name = "nuevoChequeoMédicoToolStripMenuItem";
             this.nuevoChequeoMédicoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.nuevoChequeoMédicoToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.nuevoChequeoMédicoToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.nuevoChequeoMédicoToolStripMenuItem.Text = "Nuevo chequeo &médico...";
             this.nuevoChequeoMédicoToolStripMenuItem.Click += new System.EventHandler(this.NuevoChequeoMédicoToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(252, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(264, 6);
             // 
             // actualizarToolStripMenuItem1
             // 
             this.actualizarToolStripMenuItem1.Image = global::Roadsaft.DriversManagement.Properties.Resources.refresh_small;
             this.actualizarToolStripMenuItem1.Name = "actualizarToolStripMenuItem1";
             this.actualizarToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.actualizarToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
+            this.actualizarToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
             this.actualizarToolStripMenuItem1.Text = "&Actualizar";
             // 
             // imprimirlistadoToolStripMenuItem
@@ -668,20 +668,6 @@
             this.acercaDeToolStripMenuItem.Text = "&Acerca de...";
             this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.AcercaDeToolStripMenuItem_Click);
             // 
-            // txtQuickSearch
-            // 
-            this.txtQuickSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQuickSearch.AutoCompleteCustomSource.AddRange(new string[] {
-            "#edad",
-            "#cargo"});
-            this.txtQuickSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtQuickSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtQuickSearch.Location = new System.Drawing.Point(627, 114);
-            this.txtQuickSearch.Name = "txtQuickSearch";
-            this.txtQuickSearch.Size = new System.Drawing.Size(225, 22);
-            this.txtQuickSearch.TabIndex = 17;
-            this.txtQuickSearch.TextChanged += new System.EventHandler(this.TxtQuickSearch_TextChanged);
-            // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -807,16 +793,29 @@
             this.btnNewDriver.UseVisualStyleBackColor = true;
             this.btnNewDriver.Click += new System.EventHandler(this.BtnNewDriver_Click);
             // 
+            // txtRichQuickSearch
+            // 
+            this.txtRichQuickSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRichQuickSearch.DetectUrls = false;
+            this.txtRichQuickSearch.Location = new System.Drawing.Point(627, 114);
+            this.txtRichQuickSearch.Multiline = false;
+            this.txtRichQuickSearch.Name = "txtRichQuickSearch";
+            this.txtRichQuickSearch.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtRichQuickSearch.Size = new System.Drawing.Size(225, 22);
+            this.txtRichQuickSearch.TabIndex = 21;
+            this.txtRichQuickSearch.Text = "";
+            this.txtRichQuickSearch.TextChanged += new System.EventHandler(this.TxtRichQuickSearch_TextChanged);
+            // 
             // FrmDriversMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(864, 536);
+            this.Controls.Add(this.txtRichQuickSearch);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.appStatusBar);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtQuickSearch);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnRefreshDrivers);
             this.Controls.Add(this.btnNewDriver);
@@ -863,7 +862,6 @@
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader tvClAge;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
-        private System.Windows.Forms.TextBox txtQuickSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem detallesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem icónosGrandesToolStripMenuItem;
@@ -921,5 +919,6 @@
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem1;
+        private System.Windows.Forms.RichTextBox txtRichQuickSearch;
     }
 }

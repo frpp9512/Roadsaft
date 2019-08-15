@@ -154,7 +154,6 @@
 
         private System.Windows.Forms.DataGridView dgvDriversHistory;
         private System.Windows.Forms.BindingSource driverBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn positionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn personalIdDataGridViewTextBoxColumn;

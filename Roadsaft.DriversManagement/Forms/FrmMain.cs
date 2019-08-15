@@ -204,7 +204,7 @@ namespace Roadsaft.DriversManagement
             });
             ShowLoadedDriversStatistic(LoadedDrivers);
             stlbLoading.Visible = false;
-            _ = Invoke(new Action(() => DriversQuickSearch(txtQuickSearch.Text)));
+            _ = Invoke(new Action(() => DriversQuickSearch(txtRichQuickSearch.Text)));
         }
 
         /// <summary>
@@ -747,6 +747,40 @@ namespace Roadsaft.DriversManagement
             Configuration.SaveToFile();
         }
 
+        /// <summary>
+        /// Apply the styles to the hashtags typed in the quick search box.
+        /// </summary>
+        private void ApplyHastagsStyles()
+        {
+            SetDefaultStyle();
+            var hashtags = new string[] { "#edad", "#cargo", "#categoría", "#categoria" };
+            foreach (var hashtag in hashtags)
+            {
+                if (txtRichQuickSearch.Text.Contains(hashtag))
+                {
+                    var selection = txtRichQuickSearch.SelectionStart;
+                    txtRichQuickSearch.Select(txtRichQuickSearch.Text.IndexOf(hashtag), hashtag.Length);
+                    txtRichQuickSearch.SelectionFont = new Font("Segoe UI", 10, FontStyle.Bold);
+                    txtRichQuickSearch.SelectionColor = Color.SeaGreen;
+                    txtRichQuickSearch.DeselectAll();
+                    txtRichQuickSearch.SelectionStart = selection;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets the default style to the quick search box.
+        /// </summary>
+        private void SetDefaultStyle()
+        {
+            var selection = txtRichQuickSearch.SelectionStart;
+            txtRichQuickSearch.SelectAll();
+            txtRichQuickSearch.SelectionFont = txtRichQuickSearch.SelectionFont = new Font("Segoe UI Semilight", 10);
+            txtRichQuickSearch.SelectionColor = Color.Black;
+            txtRichQuickSearch.DeselectAll();
+            txtRichQuickSearch.SelectionStart = selection;
+        }
+
         #endregion
 
         #region Events subscribers
@@ -837,7 +871,7 @@ namespace Roadsaft.DriversManagement
 
         private void TxtQuickSearch_TextChanged(object sender, EventArgs e)
         {
-            DriversQuickSearch(txtQuickSearch.Text);
+            DriversQuickSearch(txtRichQuickSearch.Text);
         }
 
         private void ConfiguraciónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1010,6 +1044,12 @@ namespace Roadsaft.DriversManagement
             Close();
         }
 
+        private void TxtRichQuickSearch_TextChanged(object sender, EventArgs e)
+        {
+            ApplyHastagsStyles();
+            DriversQuickSearch(txtRichQuickSearch.Text);
+        }
+
         #endregion
 
         #region Method overriding
@@ -1030,5 +1070,7 @@ namespace Roadsaft.DriversManagement
         }
 
         #endregion
+        
+        
     }
 }

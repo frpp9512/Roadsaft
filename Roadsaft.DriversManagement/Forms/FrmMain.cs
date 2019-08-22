@@ -58,13 +58,6 @@ namespace Roadsaft.DriversManagement
         {
             if (Configuration.ExistConfigurationFile())
             {
-                Configuration.LoadFromFile();
-                DriverDataProviderContainer.InitializeWithDatabaseProvider(
-                    Configuration.DatabaseHostName,
-                    Configuration.DatabaseUserName,
-                    Configuration.DatabasePassword,
-                    Configuration.DatabaseName
-                    );
                 Size = Configuration.WindowSize;
                 WindowState = Configuration.LastWindowState;
                 if ((Configuration.LastLocation.X == Configuration.LastLocation.Y) && (Configuration.LastLocation.Y == 0))
@@ -78,25 +71,6 @@ namespace Roadsaft.DriversManagement
                 SetShowingView(Configuration.LastUsedView);
                 SetDriverCategoryFilter(Configuration.LastDriverCategoryFilter);
                 SetDriversView(Configuration.LastDriversView);
-            }
-            else
-            {
-                Visible = false;
-                var frmwelcome = new FrmWelcomeScreen();
-                if (frmwelcome.ShowDialog() == DialogResult.Cancel)
-                {
-                    Close();
-                }
-                else
-                {
-                    while (!Configuration.ExistConfigurationFile())
-                    {
-                        var frm = new FrmConfiguration();
-                        _ = frm.ShowDialog();
-                    }
-                    Visible = true;
-                    LoadSettingsFromConfiguration();
-                }
             }
         }
 
@@ -127,8 +101,7 @@ namespace Roadsaft.DriversManagement
                     switch (DriversView)
                     {
                         case DriversView.AllDrivers:
-                            return DriverDataProviderContainer
-                            .Controller
+                            return IoCContainer.Container.Get<IDriversDataProvider>()
                             .GetDrivers()
                             .Where
                             (
@@ -139,8 +112,7 @@ namespace Roadsaft.DriversManagement
                                 : true)
                                 .ToList();
                         case DriversView.DriversWithoutIssues:
-                            return DriverDataProviderContainer
-                            .Controller
+                            return IoCContainer.Container.Get<IDriversDataProvider>()
                             .GetDriversWithoutIssues
                             (
                                 Configuration.ExpireWarningForLicense,
@@ -157,8 +129,7 @@ namespace Roadsaft.DriversManagement
                             )
                             .ToList();
                         case DriversView.DriversWithWarnings:
-                            return DriverDataProviderContainer
-                            .Controller
+                            return IoCContainer.Container.Get<IDriversDataProvider>()
                             .GetDriversWithWarnings
                             (
                                 Configuration.ExpireWarningForLicense,
@@ -175,8 +146,7 @@ namespace Roadsaft.DriversManagement
                             )
                             .ToList();
                         case DriversView.DriversWithIssues:
-                            return DriverDataProviderContainer
-                            .Controller
+                            return IoCContainer.Container.Get<IDriversDataProvider>()
                             .GetDriverWithExpiredAttributes
                             (
                                 Configuration.ExpireWarningForLicense,
@@ -477,7 +447,7 @@ namespace Roadsaft.DriversManagement
             var frm = new FrmNewDriver();
             frm.NewDriverAdded += d =>
             {
-                if (DriverDataProviderContainer.Controller.AddNewDriver(d))
+                if (IoCContainer.Container.Get<IDriversDataProvider>().AddNewDriver(d))
                 {
                     LoadDrivers();
                     return true;
@@ -628,7 +598,7 @@ namespace Roadsaft.DriversManagement
             {
                 foreach (var driver in selected)
                 {
-                    if (!DriverDataProviderContainer.Controller.DeactivateDriver(driver))
+                    if (!IoCContainer.Container.Get<IDriversDataProvider>().DeactivateDriver(driver))
                     {
                         _ = MessageBox.Show("Ha ocurrido un error en la desactivación de un chofer. Vuelva a intentarlo, si el error persiste comunicarse con el desarrollador.", "Error dando baja a chofer", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;

@@ -36,8 +36,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\MyOwnBussiness_v2\MyOwnBussiness_v2\bin\Debug\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="SmartB1t.Database">
-      <HintPath>..\..\..\..\..\MyOwnBussiness_v2\MyOwnBussiness_v2\bin\Debug\SmartB1t.Database.dll</HintPath>
+    <Reference Include="SmartB1t.Database, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\MyOwnBussiness_v2\SmartB1t.Database\SmartB1t.Database\bin\Debug\SmartB1t.Database.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,7 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\DriversDatabaseController.cs" />
-    <Compile Include="Controllers\DriverDataProviderContainer.cs" />
     <Compile Include="Interfaces\IDriversDataProvider.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\DriverCategory.cs" />

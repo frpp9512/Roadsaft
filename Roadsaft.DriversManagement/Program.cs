@@ -16,7 +16,37 @@ namespace Roadsaft.DriversManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmDriversMainForm());
+            if(LoadSettingsFromConfiguration())
+            {
+                IoCContainer.Configure();
+                Application.Run(new FrmDriversMainForm());
+            }
+        }
+
+        private static bool LoadSettingsFromConfiguration()
+        {
+            if (Configuration.ExistConfigurationFile())
+            {
+                Configuration.LoadFromFile();
+                return true;
+            }
+            else
+            {
+                var frmwelcome = new FrmWelcomeScreen();
+                if (frmwelcome.ShowDialog() == DialogResult.Cancel)
+                {
+                    return false;
+                }
+                else
+                {
+                    while (!Configuration.ExistConfigurationFile())
+                    {
+                        var frm = new FrmConfiguration();
+                        _ = frm.ShowDialog();
+                    }
+                    return LoadSettingsFromConfiguration();
+                }
+            }
         }
     }
 }

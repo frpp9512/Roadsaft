@@ -12,16 +12,26 @@ namespace Roadsaft.DriversManagement.Data
     /// </summary>
     public class DriversDatabaseController : IDriversDataProvider
     {
+        /// <summary>
+        /// The actual database connector.
+        /// </summary>
+        private IDatabaseConnector DatabaseConnector { get; set; }
+
+        public DriversDatabaseController(IDatabaseConnector databaseConnector)
+        {
+            DatabaseConnector = databaseConnector;
+        }
+        
         public List<DriverLicense> GetDriverLicenseHistory(Driver driver)
         {
-            var lics = MySQLConnector.CurrentConnection.ExecuteStoredProcedure("GetLicensesHistoryForDriver", new Parameter("driver_id", driver.PrimaryKeyValue)).GetList<DriverLicense>();
+            var lics = DatabaseConnector.ExecuteStoredProcedure("GetLicensesHistoryForDriver", new Parameter("driver_id", driver.PrimaryKeyValue)).GetList<DriverLicense>();
             lics.ForEach(l => l.Driver = driver);
             return lics;
         }
 
         public List<Driver> GetDrivers()
         {
-            var drivers = MySQLConnector.CurrentConnection.ExecuteStoredProcedure("GetDrivers").GetList<Driver>();
+            var drivers = DatabaseConnector.ExecuteStoredProcedure("GetDrivers").GetList<Driver>();
             drivers.ForEach(d => SetDriverDependencies(d));
             return drivers;
         }
@@ -35,19 +45,19 @@ namespace Roadsaft.DriversManagement.Data
             DriverLicense license = null;
             Requalificaiton requalification = null;
             var driver_id = new Parameter("driver_id", driver.PrimaryKeyValue);
-            var licenseId = MySQLConnector.CurrentConnection.ExecuteFunction<int>("GetActiveLicenseIdForDriver", driver_id);
+            var licenseId = DatabaseConnector.ExecuteFunction<int>("GetActiveLicenseIdForDriver", driver_id);
             if(licenseId > 0)
             {
                 license = new DriverLicense { PrimaryKeyValue = licenseId };
-                license.LoadMe();
+                license = DatabaseConnector.SelectDBObject(license).GetDBObject<DriverLicense>();
             }
-            var requalificationId = MySQLConnector.CurrentConnection.ExecuteFunction<int>("GetActiveRequalificationIdForDriver", driver_id);
+            var requalificationId = DatabaseConnector.ExecuteFunction<int>("GetActiveRequalificationIdForDriver", driver_id);
             if(requalificationId> 0)
             {
                 requalification = new Requalificaiton { PrimaryKeyValue = requalificationId };
-                requalification.LoadMe();
+                requalification = DatabaseConnector.SelectDBObject(requalification).GetDBObject<Requalificaiton>();
             }
-            var medexams = MySQLConnector.CurrentConnection.ExecuteStoredProcedure("GetActiveMedExamsForDriver", driver_id).GetList<MedicalExam>();
+            var medexams = DatabaseConnector.ExecuteStoredProcedure("GetActiveMedExamsForDriver", driver_id).GetList<MedicalExam>();
             driver.DriverLicense = license;
             driver.Requalificaiton = requalification;
             driver.MedicalExams = medexams;
@@ -55,7 +65,7 @@ namespace Roadsaft.DriversManagement.Data
 
         public void InitializeDataConnection(params object[] parameters)
         {
-            MySQLConnector.CurrentConnection.SetConnection(
+            DatabaseConnector.SetConnection(
                 (string)parameters[0],
                 (string)parameters[1],
                 (string)parameters[2],
@@ -65,14 +75,14 @@ namespace Roadsaft.DriversManagement.Data
 
         public List<Requalificaiton> GetDriverRequalificationHistory(Driver driver)
         {
-            var reqs = MySQLConnector.CurrentConnection.ExecuteStoredProcedure("GetRequalificationsHistoryForDriver", new Parameter("driver_id", driver.PrimaryKeyValue)).GetList<Requalificaiton>();
+            var reqs = DatabaseConnector.ExecuteStoredProcedure("GetRequalificationsHistoryForDriver", new Parameter("driver_id", driver.PrimaryKeyValue)).GetList<Requalificaiton>();
             reqs.ForEach(r => r.Driver = driver);
             return reqs;
         }
 
         public List<MedicalExam> GetDriverMedicalExamsHistory(Driver driver)
         {
-            var medexams = MySQLConnector.CurrentConnection.ExecuteStoredProcedure("GetMedicalExamsHistoryForDriver", new Parameter("driver_id", driver.PrimaryKeyValue)).GetList<MedicalExam>();
+            var medexams = DatabaseConnector.ExecuteStoredProcedure("GetMedicalExamsHistoryForDriver", new Parameter("driver_id", driver.PrimaryKeyValue)).GetList<MedicalExam>();
             medexams.ForEach(m => m.Driver = driver);
             return medexams;
         }
@@ -82,7 +92,7 @@ namespace Roadsaft.DriversManagement.Data
             try
             {
                 driver.Registered = DateTime.Now;
-                driver.InsertMe();
+                DatabaseConnector.InsertDBObject(driver);
                 return true;
             }
             catch
@@ -99,7 +109,7 @@ namespace Roadsaft.DriversManagement.Data
                 {
                     driver.DriverLicense.IsActive = false;
                     driver.DriverLicense.Archived = DateTime.Now;
-                    driver.DriverLicense.UpdateMe();
+                    DatabaseConnector.UpdateDBObject(driver.DriverLicense);
                 }
                 newLicense.IsActive = true;
                 if(!AddNewDriverLicense(driver, newLicense))
@@ -123,7 +133,7 @@ namespace Roadsaft.DriversManagement.Data
                 {
                     driver.Requalificaiton.IsActive = false;
                     driver.Requalificaiton.Archived = DateTime.Now;
-                    driver.Requalificaiton.UpdateMe();
+                    DatabaseConnector.UpdateDBObject(driver.Requalificaiton);
                 }
                 requalificaiton.IsActive = true;
                 if (!AddNewRequalification(driver, requalificaiton))
@@ -144,7 +154,7 @@ namespace Roadsaft.DriversManagement.Data
             try
             {
                 license.Driver = driver;
-                license.InsertMe();
+                DatabaseConnector.InsertDBObject(license);
                 return true;
             }
             catch (Exception)
@@ -153,12 +163,12 @@ namespace Roadsaft.DriversManagement.Data
             }
         }
 
-        public bool AddNewRequalification(Driver driver, Requalificaiton requalificaiton)
+        public bool AddNewRequalification(Driver driver, Requalificaiton requalification)
         {
             try
             {
-                requalificaiton.Driver = driver;
-                requalificaiton.InsertMe();
+                requalification.Driver = driver;
+                DatabaseConnector.InsertDBObject(requalification);
                 return true;
             }
             catch (Exception)
@@ -172,7 +182,7 @@ namespace Roadsaft.DriversManagement.Data
             try
             {
                 medicalExam.Driver = driver;
-                medicalExam.InsertMe();
+                DatabaseConnector.InsertDBObject(medicalExam);
                 driver.MedicalExams.Add(medicalExam);
                 return true;
             }
@@ -189,7 +199,7 @@ namespace Roadsaft.DriversManagement.Data
                 medicalExam.IsActive = false;
                 medicalExam.Archived = DateTime.Now;
                 _ = driver.MedicalExams.Remove(medicalExam);
-                medicalExam.UpdateMe();
+                DatabaseConnector.UpdateDBObject(medicalExam);
                 return true;
             }
             catch (Exception)
@@ -200,7 +210,7 @@ namespace Roadsaft.DriversManagement.Data
 
         public List<Driver> GetDriversWithoutIssues(TimeSpan licenseExpireWarning, TimeSpan requalificationExpireWarning, TimeSpan medicalExamExpireWarning)
         {
-            var drivers = MySQLConnector.CurrentConnection
+            var drivers = DatabaseConnector
                 .ExecuteStoredProcedure
                 (
                 "GetDriversWithoutIssues",
@@ -214,7 +224,7 @@ namespace Roadsaft.DriversManagement.Data
 
         public List<Driver> GetDriversWithWarnings(TimeSpan licenseExpireWarning, TimeSpan requalificationExpireWarning, TimeSpan medicalExamExpireWarning)
         {
-            var drivers = MySQLConnector.CurrentConnection
+            var drivers = DatabaseConnector
                 .ExecuteStoredProcedure
                 (
                 "GetDriversWithWarnings",
@@ -228,7 +238,7 @@ namespace Roadsaft.DriversManagement.Data
 
         public List<Driver> GetDriverWithExpiredAttributes(TimeSpan licenseExpireWarning, TimeSpan requalificationExpireWarning, TimeSpan medicalExamExpireWarning)
         {
-            var drivers = MySQLConnector.CurrentConnection
+            var drivers = DatabaseConnector
                 .ExecuteStoredProcedure
                 (
                 "GetDriversWithExpiredAttributes",
@@ -246,7 +256,7 @@ namespace Roadsaft.DriversManagement.Data
             {
                 driver.IsActive = false;
                 driver.Archived = DateTime.Now;
-                driver.UpdateMe();
+                DatabaseConnector.UpdateDBObject(driver);
                 return true;
             }
             catch (Exception)
@@ -260,7 +270,7 @@ namespace Roadsaft.DriversManagement.Data
         {
             try
             {
-                driver.UpdateMe();
+                DatabaseConnector.UpdateDBObject(driver);
                 return true;
             }
             catch (Exception)
@@ -273,7 +283,7 @@ namespace Roadsaft.DriversManagement.Data
         {
             try
             {
-                driverLicense.DeleteMe();
+                DatabaseConnector.DeleteDBObject(driverLicense);
                 return true;
             }
             catch (Exception)
@@ -286,7 +296,7 @@ namespace Roadsaft.DriversManagement.Data
         {
             try
             {
-                requalificaiton.DeleteMe();
+                DatabaseConnector.DeleteDBObject(requalificaiton);
                 return true;
             }
             catch (Exception)
@@ -300,7 +310,7 @@ namespace Roadsaft.DriversManagement.Data
 
             try
             {
-                medicalExam.DeleteMe();
+                DatabaseConnector.DeleteDBObject(medicalExam);
                 return true;
             }
             catch (Exception)
@@ -314,7 +324,7 @@ namespace Roadsaft.DriversManagement.Data
             List<Driver> drivers;
             try
             {
-                drivers = MySQLConnector.CurrentConnection.ExecuteStoredProcedure("GetInactiveDrivers").GetList<Driver>();
+                drivers = DatabaseConnector.ExecuteStoredProcedure("GetInactiveDrivers").GetList<Driver>();
             }
             catch (Exception)
             {

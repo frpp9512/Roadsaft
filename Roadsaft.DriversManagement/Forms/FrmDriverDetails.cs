@@ -135,7 +135,7 @@ namespace Roadsaft.DriversManagement
             var frm = Driver.DriverLicense != null ? new FrmNewLicense(Driver.DriverLicense) : new FrmNewLicense();
             frm.NewLicenseForRenewal += l =>
             {
-                if (DriverDataProviderContainer.Controller.RenewalLicense(Driver, l))
+                if (IoCContainer.Container.Get<IDriversDataProvider>().RenewalLicense(Driver, l))
                 {
                     UpdateLicenseTab(Driver);
                     UpdateRequested?.Invoke(this, new EventArgs());
@@ -157,7 +157,7 @@ namespace Roadsaft.DriversManagement
             var frm = new FrmNewRequalification();
             frm.NewRequalificaitonAdded += r =>
             {
-                if (DriverDataProviderContainer.Controller.RenewalRequalification(Driver, r))
+                if (IoCContainer.Container.Get<IDriversDataProvider>().RenewalRequalification(Driver, r))
                 {
                     UpdateRequalificationTab(Driver);
                     UpdateRequested?.Invoke(this, new EventArgs());
@@ -179,7 +179,7 @@ namespace Roadsaft.DriversManagement
             var frm = new FrmNewMedicalExam();
             frm.NewMedicalExamAdded += me =>
             {
-                if (DriverDataProviderContainer.Controller.AddNewMedicalExam(Driver, me))
+                if (IoCContainer.Container.Get<IDriversDataProvider>().AddNewMedicalExam(Driver, me))
                 {
                     UpdateMedicalExamsTab(Driver);
                     UpdateRequested?.Invoke(this, new EventArgs());
@@ -209,7 +209,7 @@ namespace Roadsaft.DriversManagement
                     int total = GetSelectedRowsCount(), errors = 0;
                     for (var i = 0; i < GetSelectedRowsCount(); i++)
                     {
-                        if (!DriverDataProviderContainer.Controller.ArchiveMedicalExam(Driver, (dgvMedicalExamActive.Rows[i].Tag as MedicalExam)))
+                        if (!IoCContainer.Container.Get<IDriversDataProvider>().ArchiveMedicalExam(Driver, (dgvMedicalExamActive.Rows[i].Tag as MedicalExam)))
                         {
                             errors++;
                         }
@@ -303,7 +303,7 @@ namespace Roadsaft.DriversManagement
         {
             dgvMedicalExamHistorical.SuspendLayout();
             dgvMedicalExamHistorical.Rows.Clear();
-            var medicalExamsHistory = DriverDataProviderContainer.Controller.GetDriverMedicalExamsHistory(driver);
+            var medicalExamsHistory = IoCContainer.Container.Get<IDriversDataProvider>().GetDriverMedicalExamsHistory(driver);
             foreach (var mh in medicalExamsHistory)
             {
                 var added = dgvMedicalExamHistorical.Rows.Add(mh.Archived.ToShortDateString(), mh.Created.ToShortDateString(), mh.Type.GetDisplayText(), mh.DateOfMaking.ToShortDateString(), mh.Expires.ToShortDateString(), mh.Result.GetDisplayText(), mh.Description);
@@ -349,7 +349,7 @@ namespace Roadsaft.DriversManagement
                 }
                 dgvRequalificationHistorical.SuspendLayout();
                 dgvRequalificationHistorical.Rows.Clear();
-                var requalificationsHistory = DriverDataProviderContainer.Controller.GetDriverRequalificationHistory(driver);
+                var requalificationsHistory = IoCContainer.Container.Get<IDriversDataProvider>().GetDriverRequalificationHistory(driver);
                 foreach (var req in requalificationsHistory)
                 {
                     var added = dgvRequalificationHistorical.Rows.Add(req.Archived.ToShortDateString(), req.Created.ToShortDateString(), req.DateOfMaking, req.Expires, req.Volume, req.Page, req.Description);
@@ -400,7 +400,7 @@ namespace Roadsaft.DriversManagement
                 }
                 dgvHistoricLicenses.SuspendLayout();
                 dgvHistoricLicenses.Rows.Clear();
-                var licensesHistory = DriverDataProviderContainer.Controller.GetDriverLicenseHistory(driver);
+                var licensesHistory = IoCContainer.Container.Get<IDriversDataProvider>().GetDriverLicenseHistory(driver);
                 foreach (var lh in licensesHistory)
                 {
                     var added = dgvHistoricLicenses.Rows.Add(lh.Archived.ToShortDateString(), lh.Created.ToShortDateString(), lh.Number, lh.Category, lh.DateOfMaking, lh.Expires, lh.Description);
@@ -483,7 +483,7 @@ namespace Roadsaft.DriversManagement
                 Driver.Position = txtPosition.Text;
                 Driver.Category = (DriverCategory)cbxDriverCategory.SelectedIndex + 1;
                 Driver.Description = txtDescription.Text;
-                if (DriverDataProviderContainer.Controller.UpdateDriverInfo(Driver))
+                if (IoCContainer.Container.Get<IDriversDataProvider>().UpdateDriverInfo(Driver))
                 {
                     _ = MessageBox.Show("Se ha actualizado la información del chofer satifactoriamente.", "Actualizar chofer", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateRequested?.Invoke(this, new EventArgs());
@@ -546,7 +546,7 @@ namespace Roadsaft.DriversManagement
                     if (MessageBox.Show("¿Está seguro que desea eliminar el registro seleccionado?", "Eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
                         var license = dgvHistoricLicenses.SelectedRows[0].Tag as DriverLicense;                        
-                        _ = DriverDataProviderContainer.Controller.RemoveDriverLicense(license)
+                        _ = IoCContainer.Container.Get<IDriversDataProvider>().RemoveDriverLicense(license)
                             ? MessageBox.Show("El registro de licencia de conducción fue eliminado satisfactoriamente.", "Eliminar registro", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             : MessageBox.Show("Ha ocurrido un error eliminadno el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         UpdateLicenseTab(Driver);
@@ -562,7 +562,7 @@ namespace Roadsaft.DriversManagement
                         if (MessageBox.Show("¿Está seguro que desea eliminar el registro seleccionado?", "Eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             var requalification = dgvRequalificationHistorical.SelectedRows[0].Tag as Requalificaiton;
-                            _ = DriverDataProviderContainer.Controller.RemoveRequalification(requalification)
+                            _ = IoCContainer.Container.Get<IDriversDataProvider>().RemoveRequalification(requalification)
                                 ? MessageBox.Show("El registro de recalificación fue eliminado satisfactoriamente.", "Eliminar registro", MessageBoxButtons.OK, MessageBoxIcon.Information)
                                 : MessageBox.Show("Ha ocurrido un error eliminadno el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             UpdateRequalificationTab(Driver);
@@ -576,7 +576,7 @@ namespace Roadsaft.DriversManagement
                         if (MessageBox.Show("¿Está seguro que desea eliminar el registro seleccionado?", "Eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             var medicalExam = dgvMedicalExamHistorical.SelectedRows[0].Tag as MedicalExam;
-                            _ = DriverDataProviderContainer.Controller.RemoveMedicalExam(medicalExam)
+                            _ = IoCContainer.Container.Get<IDriversDataProvider>().RemoveMedicalExam(medicalExam)
                                 ? MessageBox.Show("El registro de examen médico fue eliminado satisfactoriamente.", "Eliminar registro", MessageBoxButtons.OK, MessageBoxIcon.Information)
                                 : MessageBox.Show("Ha ocurrido un error eliminadno el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             UpdateMedicalExamsTab(Driver);

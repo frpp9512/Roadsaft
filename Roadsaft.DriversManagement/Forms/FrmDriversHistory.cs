@@ -20,7 +20,7 @@ namespace Roadsaft.DriversManagement
 
         private void FrmDriversHistory_Load(object sender, EventArgs e)
         {
-            dgvDriversHistory.DataSource = DriverDataProviderContainer.Controller.GetDriversHistory();
+            dgvDriversHistory.DataSource = IoCContainer.Container.Get<IDriversDataProvider>().GetDriversHistory();
         }
     }
 }

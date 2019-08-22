@@ -77,7 +77,13 @@
     <Reference Include="MySql.Data">
       <HintPath>..\..\..\..\..\Desktop\GIT_Desktop\SmarB1t.Database\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="SmartB1t.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="SmartB1t.Database, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\MyOwnBussiness_v2\SmartB1t.Database\SmartB1t.Database\bin\Debug\SmartB1t.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="SmartB1t.DI">
+      <HintPath>..\..\New line\Roadsaft\SmartB1t.DI\bin\Debug\SmartB1t.DI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Services" />
@@ -132,6 +138,7 @@
     <Compile Include="Forms\FrmWelcomeScreen.Designer.cs">
       <DependentUpon>FrmWelcomeScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="IoC\IoCContainer.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -326,5 +333,6 @@
       <Name>Roadsaft.DriversManagement.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

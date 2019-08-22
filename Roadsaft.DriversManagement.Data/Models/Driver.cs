@@ -64,13 +64,12 @@ namespace Roadsaft.DriversManagement.Data
         {
             get
             {
-                _ = int.TryParse(PersonalId.Substring(4, 2), out int day);
-                _ = int.TryParse(PersonalId.Substring(2, 2), out int month);
-                _ = int.TryParse(PersonalId.Substring(0, 2), out int partYear);
-                _ = int.TryParse(DateTime.Now.Year.ToString().Substring(2, 2), out int currentPartYear);
-                int year;
+                _ = int.TryParse(PersonalId.Substring(4, 2), out var day);
+                _ = int.TryParse(PersonalId.Substring(2, 2), out var month);
+                _ = int.TryParse(PersonalId.Substring(0, 2), out var partYear);
+                _ = int.TryParse(DateTime.Now.Year.ToString().Substring(2, 2), out var currentPartYear);
                 _ = partYear > currentPartYear
-                    ? int.TryParse($"19{(partYear < 10 ? $"0{partYear}" : partYear.ToString())}", out year)
+                    ? int.TryParse($"19{(partYear < 10 ? $"0{partYear}" : partYear.ToString())}", out var year)
                     : int.TryParse($"20{(partYear < 10 ? $"0{partYear}" : partYear.ToString())}", out year);
                 return new DateTime(year, (month == 0 || month > 12) ? 1 : month, (day == 0 || day > 31) ? 1 : day);
             }
@@ -119,15 +118,13 @@ namespace Roadsaft.DriversManagement.Data
         /// <summary>
         /// False if DriverLicense, Requalification or any MedicalExam has expired.
         /// </summary>
-        public bool HasExpiredParameters
-        {
-            get
-            {
-                return DriverLicense == null || Requalificaiton == null || MedicalExams == null || MedicalExams.Count == 0
+        public bool HasExpiredParameters =>
+            DriverLicense == null
+            || Requalificaiton == null
+            || MedicalExams == null
+            || MedicalExams.Count == 0
                     ? true
                     : DriverLicense.IsExpired || Requalificaiton.IsExpired || MedicalExams.Count(me => me.IsExpired) > 0;
-            }
-        }
 
         /// <summary>
         /// Returns <see langword="true"/> if the driver has a setted Driver's License.

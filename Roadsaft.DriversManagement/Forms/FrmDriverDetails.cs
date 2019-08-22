@@ -73,8 +73,8 @@ namespace Roadsaft.DriversManagement
         /// </summary>
         private void FillDriverCategoryCombobox()
         {
-            cbxDriverCategory.Items.Add(DriverCategory.Professional.GetDisplayText());
-            cbxDriverCategory.Items.Add(DriverCategory.NonProfessional.GetDisplayText());
+            _ = cbxDriverCategory.Items.Add(DriverCategory.Professional.GetDisplayText());
+            _ = cbxDriverCategory.Items.Add(DriverCategory.NonProfessional.GetDisplayText());
             cbxDriverCategory.SelectedIndex = 0;
         }
 
@@ -190,7 +190,7 @@ namespace Roadsaft.DriversManagement
                     return false;
                 }
             };
-            frm.ShowDialog();            
+            _ = frm.ShowDialog();            
         }
 
         /// <summary>
@@ -430,16 +430,6 @@ namespace Roadsaft.DriversManagement
             txtDescription.Text = driver.Description;
             txtBirthday.Text = $"{driver.Birthday.ToShortDateString()}";
             txtAge.Text = $"{driver.Age} años";
-        }
-
-        /// <summary>
-        /// Clears the displayed data in all the tabs.
-        /// </summary>
-        private void ClearTabs()
-        {
-            ClearLicenseTab();
-            ClearRequalificationTab();
-            ClearMedicalExamTab();
         }
 
         /// <summary>

@@ -1,5 +1,4 @@
-﻿using Roadsaft.DriversManagement.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Roadsaft.DriversManagement.Data;
 
 namespace Roadsaft.DriversManagement
 {
@@ -403,7 +403,7 @@ namespace Roadsaft.DriversManagement
                 }
                 if (statisticMessage.Length == 0)
                 {
-                    statisticMessage.AppendLine("Todo se encuentra en orden.");
+                    _ = statisticMessage.AppendLine("Todo se encuentra en orden.");
                 }
                 driversControlNotifyIcon.ShowBalloonTip
                     (
@@ -417,7 +417,7 @@ namespace Roadsaft.DriversManagement
                 driversControlNotifyIcon.Icon = (expiredLicenseCount + expiredRequalificationsCount + driversWithExpiredMedChecksCount + noLicenseCount + noRequalificationCount + noMedChecksCount) > 0 ? Properties.Resources.Roadsaft_Error
                     : (warningLicenseCount + warningRequalificationCount + warningMedicalChecksCount) > 0 ? Properties.Resources.Roadsaft_Warning
                     : Properties.Resources.Roadsaft;
-                driversControlNotifyIcon.Text = $"Roadsaft V1.0 BETA\r\n{((expiredLicenseCount + expiredRequalificationsCount + driversWithExpiredMedChecksCount + noLicenseCount + noRequalificationCount + noMedChecksCount) > 0 ? "Existen errores que deben ser atendidos.": (warningLicenseCount + warningRequalificationCount + warningMedicalChecksCount) > 0 ? "Existen choferes con advertencias.": "Todo esta en orden.")}";
+                driversControlNotifyIcon.Text = $"Roadsaft V1.0 BETA\r\n{((expiredLicenseCount + expiredRequalificationsCount + driversWithExpiredMedChecksCount + noLicenseCount + noRequalificationCount + noMedChecksCount) > 0 ? "Existen errores que deben ser atendidos." : (warningLicenseCount + warningRequalificationCount + warningMedicalChecksCount) > 0 ? "Existen choferes con advertencias." : "Todo esta en orden.")}";
             }
             else
             {
@@ -499,7 +499,7 @@ namespace Roadsaft.DriversManagement
             {
                 var frm = new FrmDriverDetails(GetFirstSelectedDriver(), initAction);
                 frm.UpdateRequested += (s, ea) => LoadDrivers();
-                frm.ShowDialog();
+                _ = frm.ShowDialog();
             }
         }
 
@@ -655,7 +655,7 @@ namespace Roadsaft.DriversManagement
         private List<Driver> GetShowedDrivers()
         {
             var drivers = new List<Driver>();
-            for (int i = 0; i < lvDriversList.Items.Count; i++)
+            for (var i = 0; i < lvDriversList.Items.Count; i++)
             {
                 drivers.Add(lvDriversList.Items[i].Tag as Driver);
             }
@@ -668,7 +668,7 @@ namespace Roadsaft.DriversManagement
         private void OpenAboutForm()
         {
             var frm = new FrmAbout();
-            frm.ShowDialog();
+            _ = frm.ShowDialog();
         }
 
         /// <summary>
@@ -719,14 +719,7 @@ namespace Roadsaft.DriversManagement
             var selected = GetSelectedDrivers();
             if (selected.Count > 0)
             {
-                if (selected.Count == 1)
-                {
-                    tslbSelectedDriver.Text = $"Seleccionado: {selected[0].FullName}";
-                }
-                else
-                {
-                    tslbSelectedDriver.Text = $"Seleccionados {selected.Count} choferes.";
-                }
+                tslbSelectedDriver.Text = selected.Count == 1 ? $"Seleccionado: {selected[0].FullName}" : $"Seleccionados {selected.Count} choferes.";
             }
         }
 
@@ -854,16 +847,16 @@ namespace Roadsaft.DriversManagement
 
         private void SelectDriversView(object sender, EventArgs e)
         {
-            var menuOptions = new ToolStripMenuItem[] { todosLosChoferesToolStripMenuItem, choferessinProblemasToolStripMenuItem, choferesConAdvertenciasToolStripMenuItem, choferesConProblemasToolStripMenuItem };            
-            menuOptions.ToList().ForEach(m => m.Checked = m == sender);            
+            var menuOptions = new ToolStripMenuItem[] { todosLosChoferesToolStripMenuItem, choferessinProblemasToolStripMenuItem, choferesConAdvertenciasToolStripMenuItem, choferesConProblemasToolStripMenuItem };
+            menuOptions.ToList().ForEach(m => m.Checked = m == sender);
             DriversView = (DriversView)menuOptions.ToList().IndexOf(sender as ToolStripMenuItem);
-            
+
             menuOptions = null;
             try
             {
                 LoadDrivers();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _ = MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -1014,14 +1007,7 @@ namespace Roadsaft.DriversManagement
 
         private void ChangeWindowStateMenuItem_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Minimized)
-            {
-                WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                WindowState = FormWindowState.Minimized;
-            }
+            WindowState = WindowState == FormWindowState.Minimized ? FormWindowState.Normal : FormWindowState.Minimized;
         }
 
         private void ActualizarToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -1050,18 +1036,34 @@ namespace Roadsaft.DriversManagement
             DriversQuickSearch(txtRichQuickSearch.Text);
         }
 
+        private void TxtRichQuickSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                txtRichQuickSearch.Clear();
+            }
+        }
+
+        private void TxtRichQuickSearch_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                txtRichQuickSearch.Clear();
+            }
+        }
+
         #endregion
 
         #region Method overriding
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if(keyData == Keys.Escape)
+            if (keyData == Keys.Escape)
             {
                 DeselectAll();
                 return true;
             }
-            if(keyData == Keys.Enter)
+            if (keyData == Keys.Enter)
             {
                 OpenSelectedDriverDetails(DriverDetailsInitialAction.None);
                 return true;
@@ -1070,7 +1072,5 @@ namespace Roadsaft.DriversManagement
         }
 
         #endregion
-        
-        
     }
 }

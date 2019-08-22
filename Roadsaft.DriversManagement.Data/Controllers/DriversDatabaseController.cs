@@ -311,7 +311,7 @@ namespace Roadsaft.DriversManagement.Data
 
         public List<Driver> GetDriversHistory()
         {
-            var drivers = new List<Driver>();
+            List<Driver> drivers;
             try
             {
                 drivers = MySQLConnector.CurrentConnection.ExecuteStoredProcedure("GetInactiveDrivers").GetList<Driver>();

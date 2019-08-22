@@ -94,7 +94,7 @@ namespace Roadsaft.DriversManagement
         /// </summary>
         public static Size WindowSize
         {
-            get { return new Size(WindowWidth, WindowHeight); }
+            get => new Size(WindowWidth, WindowHeight);
             set { WindowHeight = value.Height; WindowWidth = value.Width; }
         }
 

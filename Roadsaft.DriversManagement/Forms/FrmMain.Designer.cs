@@ -795,6 +795,7 @@
             // 
             // txtRichQuickSearch
             // 
+            this.txtRichQuickSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRichQuickSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRichQuickSearch.DetectUrls = false;
             this.txtRichQuickSearch.Location = new System.Drawing.Point(627, 114);
@@ -805,6 +806,8 @@
             this.txtRichQuickSearch.TabIndex = 21;
             this.txtRichQuickSearch.Text = "";
             this.txtRichQuickSearch.TextChanged += new System.EventHandler(this.TxtRichQuickSearch_TextChanged);
+            this.txtRichQuickSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtRichQuickSearch_KeyDown);
+            this.txtRichQuickSearch.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.TxtRichQuickSearch_PreviewKeyDown);
             // 
             // FrmDriversMainForm
             // 

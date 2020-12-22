@@ -16,7 +16,7 @@ namespace Roadsaft.DriversManagement
         public static void Configure()
         {
             Container = new DIContainer();
-            Container.RegisterSingenton<IDatabaseConnector>(
+            Container.RegisterSinglenton(typeof(IDatabaseConnector),
                 new MySQLConnector(
                     Configuration.DatabaseHostName,
                     Configuration.DatabaseUserName,

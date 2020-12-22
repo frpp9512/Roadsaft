@@ -28,7 +28,7 @@
     <ProductName>Roadsaft</ProductName>
     <PublisherName>Frank Raúl Pérez Pérez</PublisherName>
     <SuiteName>Roadsaft</SuiteName>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -67,7 +67,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
@@ -81,7 +81,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\MyOwnBussiness_v2\SmartB1t.Database\SmartB1t.Database\bin\Debug\SmartB1t.Database.dll</HintPath>
     </Reference>
-    <Reference Include="SmartB1t.DI">
+    <Reference Include="SmartB1t.DI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\New line\Roadsaft\SmartB1t.DI\bin\Debug\SmartB1t.DI.dll</HintPath>
     </Reference>
     <Reference Include="System" />

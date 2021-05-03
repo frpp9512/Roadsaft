@@ -906,7 +906,7 @@ namespace Roadsaft.DriversManagement
 
         private void ImprimirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenDriversReport(true);
+            OpenDriversReport(false);
         }
 
         private void ImprimirlistadoToolStripMenuItem_Click(object sender, EventArgs e)

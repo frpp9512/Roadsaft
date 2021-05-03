@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -10,14 +11,14 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SmartB1t.INGECO")]
 [assembly: AssemblyProduct("Roadsaft")]
-[assembly: AssemblyCopyright("Copyright © SmartB1t.INGECO  2019")]
+[assembly: AssemblyCopyright("Copyright © SmartB1t.INGECO  2021")]
 [assembly: AssemblyTrademark("Roadsaft")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
 // COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
+[assembly: ComVisible(true)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("cc12a1a1-4a1d-4a8f-9644-a5f1f2a9e748")]
@@ -34,3 +35,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.2")]
 [assembly: AssemblyFileVersion("1.0.0.2")]
+[assembly: NeutralResourcesLanguage("es-CU")]

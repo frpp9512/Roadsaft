@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Roadsaft.DriversManagement.Data;
@@ -266,8 +267,37 @@ namespace Roadsaft.DriversManagement
                     case "#edad":
                         if (hashtagvalues.Length == 2)
                         {
+                            var criteria = hashtagvalues[1];
+                            if (criteria.Contains("<") || criteria.Contains(">"))
+                            {
+                                var rangePattern = new Regex(@"(?<rng_from>\d+)<e<(?<rng_to>\d+)");
+                                var match = rangePattern.Match(criteria);
+                                if (match.Success)
+                                {
+                                    var rangeFrom = int.Parse(match.Groups["rng_from"].Value);
+                                    var rangeTo = int.Parse(match.Groups["rng_to"].Value);
+
+                                    var rangeFilter = from d in drivers
+                                                 where d.Age > rangeFrom && d.Age < rangeTo
+                                                 select d;
+
+                                    return rangeFilter.ToList();
+                                }
+                                var simpleRangePattern = new Regex(@"(?<operator>[<|>])(?<value>\d+)");
+                                match = simpleRangePattern.Match(criteria);
+                                if (match.Success)
+                                {
+                                    var op = match.Groups["operator"].Value;
+                                    var val = int.Parse(match.Groups["value"].Value);
+                                    var rangeFilter = from d in drivers
+                                                      where op == "<" ? d.Age < val : d.Age > val
+                                                      select d;
+
+                                    return rangeFilter.ToList();
+                                }
+                            }
                             var filter = from d in drivers
-                                         where d.Age == (int.TryParse(hashtagvalues[1], out var d_age) ? d_age : 0)
+                                         where d.Age == (int.TryParse(criteria, out var d_age) ? d_age : 0)
                                          select d;
                             result = filter.ToList();
                         }

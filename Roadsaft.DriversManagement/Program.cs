@@ -39,10 +39,11 @@ namespace Roadsaft.DriversManagement
                 }
                 else
                 {
-                    while (!Configuration.ExistConfigurationFile())
+                    var frm = new FrmConfiguration();
+                    _ = frm.ShowDialog();
+                    if (!Configuration.ExistConfigurationFile())
                     {
-                        var frm = new FrmConfiguration();
-                        _ = frm.ShowDialog();
+                        Application.Exit();
                     }
                     return LoadSettingsFromConfiguration();
                 }

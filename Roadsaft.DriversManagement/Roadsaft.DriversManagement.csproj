@@ -72,18 +72,14 @@
   <ItemGroup>
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\MyOwnBussiness_v2\MyOwnBussiness_v2\bin\Debug\Microsoft.ReportViewer.WinForms.dll</HintPath>
+      <HintPath>D:\Develop\Desktop\MyShop\MyShopV2\bin\Debug\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\..\Desktop\GIT_Desktop\SmarB1t.Database\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="SmartB1t.Database, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\MyOwnBussiness_v2\SmartB1t.Database\SmartB1t.Database\bin\Debug\SmartB1t.Database.dll</HintPath>
+      <HintPath>D:\Develop\Desktop\MyShop\MyShopV2\bin\Debug\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="SmartB1t.DI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\New line\Roadsaft\SmartB1t.DI\bin\Debug\SmartB1t.DI.dll</HintPath>
+      <HintPath>..\SmartB1t.DI\bin\Debug\SmartB1t.DI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -242,7 +238,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Roadsaft.DriversManagement_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -332,6 +327,10 @@
     <ProjectReference Include="..\Roadsaft.DriversManagement.Data\Roadsaft.DriversManagement.Data.csproj">
       <Project>{23a6024c-81a4-4e5c-b9a2-8dd171408547}</Project>
       <Name>Roadsaft.DriversManagement.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartB1t.Database\SmartB1t.Database\SmartB1t.Database.csproj">
+      <Project>{d445ff03-79c0-4496-a896-b0640aee8024}</Project>
+      <Name>SmartB1t.Database</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

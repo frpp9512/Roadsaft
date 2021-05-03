@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roadsaft.DriversManagement"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roadsaft.DriversManagement.Data", "Roadsaft.DriversManagement.Data\Roadsaft.DriversManagement.Data.csproj", "{23A6024C-81A4-4E5C-B9A2-8DD171408547}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartB1t.Database", "SmartB1t.Database\SmartB1t.Database\SmartB1t.Database.csproj", "{D445FF03-79C0-4496-A896-B0640AEE8024}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartB1t.DI", "SmartB1t.DI\SmartB1t.DI.csproj", "{8439A6CE-9B03-436F-948F-D7FF04AE1870}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{23A6024C-81A4-4E5C-B9A2-8DD171408547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23A6024C-81A4-4E5C-B9A2-8DD171408547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23A6024C-81A4-4E5C-B9A2-8DD171408547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D445FF03-79C0-4496-A896-B0640AEE8024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D445FF03-79C0-4496-A896-B0640AEE8024}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D445FF03-79C0-4496-A896-B0640AEE8024}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D445FF03-79C0-4496-A896-B0640AEE8024}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8439A6CE-9B03-436F-948F-D7FF04AE1870}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8439A6CE-9B03-436F-948F-D7FF04AE1870}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8439A6CE-9B03-436F-948F-D7FF04AE1870}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8439A6CE-9B03-436F-948F-D7FF04AE1870}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

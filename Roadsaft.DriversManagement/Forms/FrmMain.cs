@@ -94,15 +94,15 @@ namespace Roadsaft.DriversManagement
         private async void LoadDrivers()
         {
             stlbLoading.Visible = true;
-            LoadedDrivers = await Task.Run(() =>
+            LoadedDrivers = await Task.Run(async () =>
             {
                 try
                 {
                     switch (DriversView)
                     {
                         case DriversView.AllDrivers:
-                            return IoCContainer.Container.Get<IDriversDataProvider>()
-                            .GetDrivers()
+                            return (await IoCContainer.Container.Get<IDriversDataProvider>()
+                            .GetDriversAsync())
                             .Where
                             (
                                 d => DriverCategoryFilter == DriverCategoryFilter.ProfessionalsOnly
@@ -112,13 +112,13 @@ namespace Roadsaft.DriversManagement
                                 : true)
                                 .ToList();
                         case DriversView.DriversWithoutIssues:
-                            return IoCContainer.Container.Get<IDriversDataProvider>()
-                            .GetDriversWithoutIssues
+                            return (await IoCContainer.Container.Get<IDriversDataProvider>()
+                            .GetDriversWithoutIssuesAsync
                             (
                                 Configuration.ExpireWarningForLicense,
                                 Configuration.ExpireWarningForRequalification,
                                 Configuration.ExpireWarningForMedicalExam
-                            )
+                            ))
                             .Where
                             (
                                 d => DriverCategoryFilter == DriverCategoryFilter.ProfessionalsOnly
@@ -129,13 +129,13 @@ namespace Roadsaft.DriversManagement
                             )
                             .ToList();
                         case DriversView.DriversWithWarnings:
-                            return IoCContainer.Container.Get<IDriversDataProvider>()
-                            .GetDriversWithWarnings
+                            return (await IoCContainer.Container.Get<IDriversDataProvider>()
+                            .GetDriversWithWarningsAsync
                             (
                                 Configuration.ExpireWarningForLicense,
                                 Configuration.ExpireWarningForRequalification,
                                 Configuration.ExpireWarningForMedicalExam
-                            )
+                            ))
                             .Where
                             (
                                 d => DriverCategoryFilter == DriverCategoryFilter.ProfessionalsOnly
@@ -146,13 +146,13 @@ namespace Roadsaft.DriversManagement
                             )
                             .ToList();
                         case DriversView.DriversWithIssues:
-                            return IoCContainer.Container.Get<IDriversDataProvider>()
-                            .GetDriverWithExpiredAttributes
+                            return (await IoCContainer.Container.Get<IDriversDataProvider>()
+                            .GetDriverWithExpiredAttributesAsync
                             (
                                 Configuration.ExpireWarningForLicense,
                                 Configuration.ExpireWarningForRequalification,
                                 Configuration.ExpireWarningForMedicalExam
-                            )
+                            ))
                             .Where
                             (
                                 d => DriverCategoryFilter == DriverCategoryFilter.ProfessionalsOnly
@@ -245,7 +245,7 @@ namespace Roadsaft.DriversManagement
                          where d.FullName.ToLower().RemoveAccents().Contains(value.ToLower()) ||
                               d.PersonalId.Contains(value) ||
                               d.Position.ToLower().RemoveAccents().Contains(value.ToLower()) ||
-                              d.DriverLicense?.Number.Contains(value) == true
+                              d.ActiveDriverLicense?.Number.Contains(value) == true
                          select d;
             return result.ToList();
         }
@@ -325,15 +325,15 @@ namespace Roadsaft.DriversManagement
         {
             if (LoadedDrivers.Count > 0)
             {
-                var noLicenseCount = drivers.Count(d => d.DriverLicense == null);
-                var noRequalificationCount = drivers.Count(d => d.Requalificaiton == null);
-                var noMedChecksCount = drivers.Count(d => d.MedicalExams.Count == 0);
-                var expiredLicenseCount = drivers.Count(d => d.DriverLicense?.IsExpired == true);
-                var expiredRequalificationsCount = drivers.Count(d => d.Requalificaiton?.IsExpired == true);
-                var driversWithExpiredMedChecksCount = drivers.Count(d => d.MedicalExams.Count(me => me.IsExpired) > 0);
-                var warningLicenseCount = drivers.Count(d => d.DriverLicense?.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense) == true);
-                var warningRequalificationCount = drivers.Count(d => d.Requalificaiton?.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification) == true);
-                var warningMedicalChecksCount = drivers.Count(d => d.MedicalExams.Count(me => me.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForMedicalExam)) > 0);
+                var noLicenseCount = drivers.Count(d => d.ActiveDriverLicense == null);
+                var noRequalificationCount = drivers.Count(d => d.ActiveRequalificaiton == null);
+                var noMedChecksCount = drivers.Count(d => d.MedicalExams?.Count == 0);
+                var expiredLicenseCount = drivers.Count(d => d.ActiveDriverLicense?.IsExpired == true);
+                var expiredRequalificationsCount = drivers.Count(d => d.ActiveRequalificaiton?.IsExpired == true);
+                var driversWithExpiredMedChecksCount = drivers.Count(d => d.MedicalExams?.Count(me => me.IsExpired) > 0);
+                var warningLicenseCount = drivers.Count(d => d.ActiveDriverLicense?.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense) == true);
+                var warningRequalificationCount = drivers.Count(d => d.ActiveRequalificaiton?.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification) == true);
+                var warningMedicalChecksCount = drivers.Count(d => d.MedicalExams?.Count(me => me.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForMedicalExam)) > 0);
                 var statisticMessage = new StringBuilder();
                 if (expiredLicenseCount > 0)
                 {
@@ -447,7 +447,7 @@ namespace Roadsaft.DriversManagement
             var frm = new FrmNewDriver();
             frm.NewDriverAdded += d =>
             {
-                if (IoCContainer.Container.Get<IDriversDataProvider>().AddNewDriver(d))
+                if (IoCContainer.Container.Get<IDriversDataProvider>().AddNewDriverAsync(d).GetAwaiter().GetResult())
                 {
                     LoadDrivers();
                     return true;
@@ -598,7 +598,7 @@ namespace Roadsaft.DriversManagement
             {
                 foreach (var driver in selected)
                 {
-                    if (!IoCContainer.Container.Get<IDriversDataProvider>().DeactivateDriver(driver))
+                    if (!IoCContainer.Container.Get<IDriversDataProvider>().DeactivateDriverAsync(driver).Result)
                     {
                         _ = MessageBox.Show("Ha ocurrido un error en la desactivación de un chofer. Vuelva a intentarlo, si el error persiste comunicarse con el desarrollador.", "Error dando baja a chofer", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;

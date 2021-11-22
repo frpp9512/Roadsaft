@@ -15,31 +15,31 @@ namespace Roadsaft.DriversManagement
         /// <summary>
         /// The license number.
         /// </summary>
-        public string LicenseNumber => DriverLicense == null ? "No tiene licencia activa." : DriverLicense.Number;
+        public string LicenseNumber => ActiveDriverLicense == null ? "No tiene licencia activa." : ActiveDriverLicense.Number;
 
         /// <summary>
         /// The date when the license expires.
         /// </summary>
-        public DateTime LicenseExpires => DriverLicense == null ? DateTime.MinValue : DriverLicense.Expires;
+        public DateTime LicenseExpires => ActiveDriverLicense == null ? DateTime.MinValue : ActiveDriverLicense.Expires;
 
         /// <summary>
         /// The volume where driver's requalification is registered.
         /// </summary>
-        public string RequalificationVolume => Requalificaiton?.Volume;
+        public string RequalificationVolume => ActiveRequalificaiton?.Volume;
 
         /// <summary>
         /// The volume's page where driver's requalification is registered.
         /// </summary>
-        public string RequalificationPage => Requalificaiton?.Page;
+        public string RequalificationPage => ActiveRequalificaiton?.Page;
 
         /// <summary>
         /// The summary of requalification data to be dislpayed in UI or report.
         /// </summary>
-        public string RequalificationSummary => Requalificaiton == null ? "No tiene recalificación activa." : $"Tomo: {RequalificationVolume}\r\nFolio: {RequalificationPage}";
+        public string RequalificationSummary => ActiveRequalificaiton == null ? "No tiene recalificación activa." : $"Tomo: {RequalificationVolume}\r\nFolio: {RequalificationPage}";
         /// <summary>
         /// The date when the requalification expires.
         /// </summary>
-        public DateTime RequalificationExpires => Requalificaiton == null ? DateTime.MinValue : Requalificaiton.Expires;
+        public DateTime RequalificationExpires => ActiveRequalificaiton == null ? DateTime.MinValue : ActiveRequalificaiton.Expires;
 
         /// <summary>
         /// The medical exam's state resume.
@@ -54,12 +54,12 @@ namespace Roadsaft.DriversManagement
         /// <summary>
         /// <see langword="true"/> if the license has a expiration warning.
         /// </summary>
-        public bool LicenseWarning => DriverLicense?.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense) == true;
+        public bool LicenseWarning => ActiveDriverLicense?.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense) == true;
 
         /// <summary>
         /// <see langword="true"/> if the requalification has a expiration warning.
         /// </summary>
-        public bool RequalificationWarning => Requalificaiton?.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification) == true;
+        public bool RequalificationWarning => ActiveRequalificaiton?.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification) == true;
 
         /// <summary>
         /// <see langword="true"/> if any medical exam has a warning.

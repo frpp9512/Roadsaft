@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Roadsaft.DriversManagement.Data;
-using SmartB1t.Database;
+using Roadsaft.DriversManagement.Data.DataContext;
+using Roadsaft.DriversManagement.Data.Posgresql;
+using Roadsaft.DriversManagement.Data.Posgresql.Helpers;
 using SmartB1t.DI;
 
 namespace Roadsaft.DriversManagement
@@ -16,13 +18,13 @@ namespace Roadsaft.DriversManagement
         public static void Configure()
         {
             Container = new DIContainer();
-            Container.RegisterSinglenton(typeof(IDatabaseConnector),
-                new MySQLConnector(
-                    Configuration.DatabaseHostName,
-                    Configuration.DatabaseUserName,
-                    Configuration.DatabasePassword,
-                    Configuration.DatabaseName));
-            Container.Register<IDriversDataProvider, DriversDatabaseController>();
+            Container.RegisterSinglenton(typeof(RoadsaftDbContext),
+                                         new RoadsaftPostgresqlDbContext(
+                                             ConnectionHelper.BuildConnectionString(Configuration.DatabaseHostName,
+                                                                                    Configuration.DatabaseUserName,
+                                                                                    Configuration.DatabasePassword,
+                                                                                    Configuration.DatabaseName)));
+            Container.RegisterSingleton<IDriversDataProvider, DriversDatabaseController>();
         }
     }
 }

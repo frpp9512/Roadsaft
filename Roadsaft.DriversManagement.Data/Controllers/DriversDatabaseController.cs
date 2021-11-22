@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SmartB1t.Database;
+using SmartB1t.Next.Database;
 
 namespace Roadsaft.DriversManagement.Data
 {
@@ -24,7 +24,7 @@ namespace Roadsaft.DriversManagement.Data
         
         public List<DriverLicense> GetDriverLicenseHistory(Driver driver)
         {
-            var lics = DatabaseConnector.ExecuteStoredProcedure("GetLicensesHistoryForDriver", new Parameter("driver_id", driver.PrimaryKeyValue)).GetList<DriverLicense>();
+            var lics = DatabaseConnector.ExecuteStoredProcedure("GetLicensesHistoryForDriver", new Parameter("driver_id", driver.Id)).GetList<DriverLicense>();
             lics.ForEach(l => l.Driver = driver);
             return lics;
         }
@@ -44,17 +44,17 @@ namespace Roadsaft.DriversManagement.Data
         {
             DriverLicense license = null;
             Requalificaiton requalification = null;
-            var driver_id = new Parameter("driver_id", driver.PrimaryKeyValue);
+            var driver_id = new Parameter("driver_id", driver.Id);
             var licenseId = DatabaseConnector.ExecuteFunction<int>("GetActiveLicenseIdForDriver", driver_id);
             if(licenseId > 0)
             {
-                license = new DriverLicense { PrimaryKeyValue = licenseId };
+                license = new DriverLicense { Id = licenseId };
                 license = DatabaseConnector.SelectDBObject(license).GetDBObject<DriverLicense>();
             }
             var requalificationId = DatabaseConnector.ExecuteFunction<int>("GetActiveRequalificationIdForDriver", driver_id);
             if(requalificationId> 0)
             {
-                requalification = new Requalificaiton { PrimaryKeyValue = requalificationId };
+                requalification = new Requalificaiton { Id = requalificationId };
                 requalification = DatabaseConnector.SelectDBObject(requalification).GetDBObject<Requalificaiton>();
             }
             var medexams = DatabaseConnector.ExecuteStoredProcedure("GetActiveMedExamsForDriver", driver_id).GetList<MedicalExam>();
@@ -75,14 +75,14 @@ namespace Roadsaft.DriversManagement.Data
 
         public List<Requalificaiton> GetDriverRequalificationHistory(Driver driver)
         {
-            var reqs = DatabaseConnector.ExecuteStoredProcedure("GetRequalificationsHistoryForDriver", new Parameter("driver_id", driver.PrimaryKeyValue)).GetList<Requalificaiton>();
+            var reqs = DatabaseConnector.ExecuteStoredProcedure("GetRequalificationsHistoryForDriver", new Parameter("driver_id", driver.Id)).GetList<Requalificaiton>();
             reqs.ForEach(r => r.Driver = driver);
             return reqs;
         }
 
         public List<MedicalExam> GetDriverMedicalExamsHistory(Driver driver)
         {
-            var medexams = DatabaseConnector.ExecuteStoredProcedure("GetMedicalExamsHistoryForDriver", new Parameter("driver_id", driver.PrimaryKeyValue)).GetList<MedicalExam>();
+            var medexams = DatabaseConnector.ExecuteStoredProcedure("GetMedicalExamsHistoryForDriver", new Parameter("driver_id", driver.Id)).GetList<MedicalExam>();
             medexams.ForEach(m => m.Driver = driver);
             return medexams;
         }

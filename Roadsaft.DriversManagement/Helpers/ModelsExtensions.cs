@@ -19,9 +19,9 @@ namespace Roadsaft.DriversManagement
                 }
                 else
                 {
-                    if (driver.DriverLicense.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense))
+                    if (driver.ActiveDriverLicense.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense))
                     {
-                        sb.AppendLine($"La licencia esta próxima a vencerse. Faltan: {(driver.DriverLicense.Expires - DateTime.Now).Days} día(s).");
+                        sb.AppendLine($"La licencia esta próxima a vencerse. Faltan: {(driver.ActiveDriverLicense.Expires - DateTime.Now).Days} día(s).");
                     }
                 }
             }
@@ -37,9 +37,9 @@ namespace Roadsaft.DriversManagement
                 }
                 else
                 {
-                    if (driver.Requalificaiton.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification))
+                    if (driver.ActiveRequalificaiton.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification))
                     {
-                        sb.AppendLine($"La recalificación esta próxima a vencerse. Faltan: {(driver.Requalificaiton.Expires - DateTime.Now).Days} día(s).");
+                        sb.AppendLine($"La recalificación esta próxima a vencerse. Faltan: {(driver.ActiveRequalificaiton.Expires - DateTime.Now).Days} día(s).");
                     }
                 }
             }
@@ -84,11 +84,11 @@ namespace Roadsaft.DriversManagement
                 FullName = d.FullName,
                 PersonalId = d.PersonalId,
                 Category = d.Category,
-                DriverLicense = d.DriverLicense,
+                DriverLicenses = new List<DriverLicense> { d.ActiveDriverLicense },
                 Description = d.Description,
                 MedicalExams = d.MedicalExams,
                 Position = d.Position,
-                Requalificaiton = d.Requalificaiton,
+                Requalificaitons = new List<Requalificaiton> { d.ActiveRequalificaiton },
                 Registered = d.Registered,
                 Archived = d.Archived
             }).ToList();

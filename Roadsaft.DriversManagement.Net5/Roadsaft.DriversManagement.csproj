@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net5.0-windows</TargetFrameworks>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyName>Roadsaft.DriversManagement</AssemblyName>
+    <RootNamespace>Roadsaft.DriversManagement</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Roadsaft.DriversManagement\**\*.cs" />
+    <EmbeddedResource Include="..\Roadsaft.DriversManagement\**\*.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.WebForms" Version="150.1427.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Roadsaft.DriversManagement.Data.2\Roadsaft.DriversManagement.Data.csproj" />
+    <ProjectReference Include="..\Roadsaft.DriversManagement.Data.Context\Roadsaft.DriversManagement.Data.Posgresql.csproj" />
+    <ProjectReference Include="..\SmartB1t.DI\SmartB1t.DI.csproj" />
+  </ItemGroup>
+</Project>

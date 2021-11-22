@@ -132,10 +132,10 @@ namespace Roadsaft.DriversManagement
         /// </summary>
         private void DriverLicenseRenewal()
         {
-            var frm = Driver.DriverLicense != null ? new FrmNewLicense(Driver.DriverLicense) : new FrmNewLicense();
+            var frm = Driver.ActiveDriverLicense != null ? new FrmNewLicense(Driver.ActiveDriverLicense) : new FrmNewLicense();
             frm.NewLicenseForRenewal += l =>
             {
-                if (IoCContainer.Container.Get<IDriversDataProvider>().RenewalLicense(Driver, l))
+                if (IoCContainer.Container.Get<IDriversDataProvider>().RenewalLicenseAsync(Driver, l).Result)
                 {
                     UpdateLicenseTab(Driver);
                     UpdateRequested?.Invoke(this, new EventArgs());
@@ -157,7 +157,7 @@ namespace Roadsaft.DriversManagement
             var frm = new FrmNewRequalification();
             frm.NewRequalificaitonAdded += r =>
             {
-                if (IoCContainer.Container.Get<IDriversDataProvider>().RenewalRequalification(Driver, r))
+                if (IoCContainer.Container.Get<IDriversDataProvider>().RenewalRequalificationAsync(Driver, r).Result)
                 {
                     UpdateRequalificationTab(Driver);
                     UpdateRequested?.Invoke(this, new EventArgs());
@@ -179,7 +179,7 @@ namespace Roadsaft.DriversManagement
             var frm = new FrmNewMedicalExam();
             frm.NewMedicalExamAdded += me =>
             {
-                if (IoCContainer.Container.Get<IDriversDataProvider>().AddNewMedicalExam(Driver, me))
+                if (IoCContainer.Container.Get<IDriversDataProvider>().AddNewMedicalExamAsync(Driver, me).GetAwaiter().GetResult())
                 {
                     UpdateMedicalExamsTab(Driver);
                     UpdateRequested?.Invoke(this, new EventArgs());
@@ -209,7 +209,7 @@ namespace Roadsaft.DriversManagement
                     int total = GetSelectedRowsCount(), errors = 0;
                     for (var i = 0; i < GetSelectedRowsCount(); i++)
                     {
-                        if (!IoCContainer.Container.Get<IDriversDataProvider>().ArchiveMedicalExam(Driver, (dgvMedicalExamActive.Rows[i].Tag as MedicalExam)))
+                        if (!IoCContainer.Container.Get<IDriversDataProvider>().ArchiveMedicalExamAsync(Driver, (dgvMedicalExamActive.Rows[i].Tag as MedicalExam)).Result)
                         {
                             errors++;
                         }
@@ -299,11 +299,11 @@ namespace Roadsaft.DriversManagement
         /// Load the Medical Exam history for the specified driver.
         /// </summary>
         /// <param name="driver">The driver to load the medical exam history.</param>
-        private void LoadMedicalExamsHistory(Driver driver)
+        private async void LoadMedicalExamsHistory(Driver driver)
         {
             dgvMedicalExamHistorical.SuspendLayout();
             dgvMedicalExamHistorical.Rows.Clear();
-            var medicalExamsHistory = IoCContainer.Container.Get<IDriversDataProvider>().GetDriverMedicalExamsHistory(driver);
+            var medicalExamsHistory = await IoCContainer.Container.Get<IDriversDataProvider>().GetDriverMedicalExamsHistoryAsync(driver);
             foreach (var mh in medicalExamsHistory)
             {
                 var added = dgvMedicalExamHistorical.Rows.Add(mh.Archived.ToShortDateString(), mh.Created.ToShortDateString(), mh.Type.GetDisplayText(), mh.DateOfMaking.ToShortDateString(), mh.Expires.ToShortDateString(), mh.Result.GetDisplayText(), mh.Description);
@@ -318,15 +318,15 @@ namespace Roadsaft.DriversManagement
         /// <param name="driver">The driver to show information.</param>
         private void UpdateRequalificationTab(Driver driver)
         {
-            if (driver.Requalificaiton != null)
+            if (driver.ActiveRequalificaiton != null)
             {
-                lbRequalificationCreationDate.Text = $"Registrada: {driver.Requalificaiton.Created.ToShortDateString()}";
-                txtRequalificationPage.Text = driver.Requalificaiton.Page;
-                txtRequalificationVolume.Text = driver.Requalificaiton.Volume;
-                txtRequalificationDateOfMaking.Text = driver.Requalificaiton.DateOfMaking.ToLongDateString();
-                txtRequalificationExpires.Text = driver.Requalificaiton.Expires.ToLongDateString();
-                txtRequalificationDescription.Text = driver.Requalificaiton.Description;
-                if (driver.Requalificaiton.IsExpired)
+                lbRequalificationCreationDate.Text = $"Registrada: {driver.ActiveRequalificaiton.Created.ToShortDateString()}";
+                txtRequalificationPage.Text = driver.ActiveRequalificaiton.Page;
+                txtRequalificationVolume.Text = driver.ActiveRequalificaiton.Volume;
+                txtRequalificationDateOfMaking.Text = driver.ActiveRequalificaiton.DateOfMaking.ToLongDateString();
+                txtRequalificationExpires.Text = driver.ActiveRequalificaiton.Expires.ToLongDateString();
+                txtRequalificationDescription.Text = driver.ActiveRequalificaiton.Description;
+                if (driver.ActiveRequalificaiton.IsExpired)
                 {
                     TpRequalification.ImageIndex = 2;
                     lbRequalificationExpire.Text = "La recalificación ha expirado.";
@@ -334,9 +334,9 @@ namespace Roadsaft.DriversManagement
                 }
                 else
                 {
-                    var remainingTime = driver.Requalificaiton.Expires - DateTime.Now;
+                    var remainingTime = driver.ActiveRequalificaiton.Expires - DateTime.Now;
                     lbRequalificationExpire.Text = $"Falta{(remainingTime.Days > 1 ? "n" : "")} {remainingTime.Days} día{(remainingTime.Days > 1 ? "s" : "")} para que expire la la recalificación.";
-                    if (driver.Requalificaiton.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification))
+                    if (driver.ActiveRequalificaiton.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForRequalification))
                     {
                         TpRequalification.ImageIndex = 1;
                         lbRequalificationExpire.ForeColor = Color.Orange;
@@ -349,7 +349,7 @@ namespace Roadsaft.DriversManagement
                 }
                 dgvRequalificationHistorical.SuspendLayout();
                 dgvRequalificationHistorical.Rows.Clear();
-                var requalificationsHistory = IoCContainer.Container.Get<IDriversDataProvider>().GetDriverRequalificationHistory(driver);
+                var requalificationsHistory = IoCContainer.Container.Get<IDriversDataProvider>().GetDriverRequalificationHistoryAsync(driver).Result;
                 foreach (var req in requalificationsHistory)
                 {
                     var added = dgvRequalificationHistorical.Rows.Add(req.Archived.ToShortDateString(), req.Created.ToShortDateString(), req.DateOfMaking, req.Expires, req.Volume, req.Page, req.Description);
@@ -370,14 +370,14 @@ namespace Roadsaft.DriversManagement
         /// <param name="driver"></param>
         private void UpdateLicenseTab(Driver driver)
         {
-            if (driver.DriverLicense != null)
+            if (driver.ActiveDriverLicense != null)
             {
-                lbLicenseCreationDate.Text = $"Registrada: {driver.DriverLicense.Created.ToShortDateString()}";
-                txtLicenseNumber.Text = driver.DriverLicense.Number;
-                txtLicenseCategory.Text = driver.DriverLicense.Category;
-                txtLicenseExpireDate.Text = driver.DriverLicense.Expires.ToLongDateString();
-                txtDriverLicenseDescription.Text = driver.DriverLicense.Description;
-                if (driver.DriverLicense.IsExpired)
+                lbLicenseCreationDate.Text = $"Registrada: {driver.ActiveDriverLicense.Created.ToShortDateString()}";
+                txtLicenseNumber.Text = driver.ActiveDriverLicense.Number;
+                txtLicenseCategory.Text = driver.ActiveDriverLicense.Category;
+                txtLicenseExpireDate.Text = driver.ActiveDriverLicense.Expires.ToLongDateString();
+                txtDriverLicenseDescription.Text = driver.ActiveDriverLicense.Description;
+                if (driver.ActiveDriverLicense.IsExpired)
                 {
                     TpDriverLicense.ImageIndex = 2;
                     lbLicenseExpiration.Text = "La licensia de conducción ha expirado.";
@@ -385,9 +385,9 @@ namespace Roadsaft.DriversManagement
                 }
                 else
                 {
-                    var remainingTime = driver.DriverLicense.Expires - DateTime.Now;
+                    var remainingTime = driver.ActiveDriverLicense.Expires - DateTime.Now;
                     lbLicenseExpiration.Text = $"Falta{(remainingTime.Days > 1 ? "n" : "")} {remainingTime.Days} día{(remainingTime.Days > 1 ? "s" : "")} para que expire la licencia.";
-                    if (driver.DriverLicense.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense))
+                    if (driver.ActiveDriverLicense.GetIfExpirationDateIsInPeriod(Configuration.ExpireWarningForLicense))
                     {
                         TpDriverLicense.ImageIndex = 1;
                         lbLicenseExpiration.ForeColor = Color.Orange;
@@ -400,7 +400,7 @@ namespace Roadsaft.DriversManagement
                 }
                 dgvHistoricLicenses.SuspendLayout();
                 dgvHistoricLicenses.Rows.Clear();
-                var licensesHistory = IoCContainer.Container.Get<IDriversDataProvider>().GetDriverLicenseHistory(driver);
+                var licensesHistory = IoCContainer.Container.Get<IDriversDataProvider>().GetDriverLicenseHistoryAsync(driver).Result;
                 foreach (var lh in licensesHistory)
                 {
                     var added = dgvHistoricLicenses.Rows.Add(lh.Archived.ToShortDateString(), lh.Created.ToShortDateString(), lh.Number, lh.Category, lh.DateOfMaking, lh.Expires, lh.Description);
@@ -483,7 +483,7 @@ namespace Roadsaft.DriversManagement
                 Driver.Position = txtPosition.Text;
                 Driver.Category = (DriverCategory)cbxDriverCategory.SelectedIndex + 1;
                 Driver.Description = txtDescription.Text;
-                if (IoCContainer.Container.Get<IDriversDataProvider>().UpdateDriverInfo(Driver))
+                if (IoCContainer.Container.Get<IDriversDataProvider>().UpdateDriverInfoAsync(Driver).Result)
                 {
                     _ = MessageBox.Show("Se ha actualizado la información del chofer satifactoriamente.", "Actualizar chofer", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateRequested?.Invoke(this, new EventArgs());
@@ -546,7 +546,7 @@ namespace Roadsaft.DriversManagement
                     if (MessageBox.Show("¿Está seguro que desea eliminar el registro seleccionado?", "Eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
                         var license = dgvHistoricLicenses.SelectedRows[0].Tag as DriverLicense;                        
-                        _ = IoCContainer.Container.Get<IDriversDataProvider>().RemoveDriverLicense(license)
+                        _ = IoCContainer.Container.Get<IDriversDataProvider>().RemoveDriverLicenseAsync(license).Result
                             ? MessageBox.Show("El registro de licencia de conducción fue eliminado satisfactoriamente.", "Eliminar registro", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             : MessageBox.Show("Ha ocurrido un error eliminadno el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         UpdateLicenseTab(Driver);
@@ -562,7 +562,7 @@ namespace Roadsaft.DriversManagement
                         if (MessageBox.Show("¿Está seguro que desea eliminar el registro seleccionado?", "Eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             var requalification = dgvRequalificationHistorical.SelectedRows[0].Tag as Requalificaiton;
-                            _ = IoCContainer.Container.Get<IDriversDataProvider>().RemoveRequalification(requalification)
+                            _ = IoCContainer.Container.Get<IDriversDataProvider>().RemoveRequalificationAsync(requalification).Result
                                 ? MessageBox.Show("El registro de recalificación fue eliminado satisfactoriamente.", "Eliminar registro", MessageBoxButtons.OK, MessageBoxIcon.Information)
                                 : MessageBox.Show("Ha ocurrido un error eliminadno el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             UpdateRequalificationTab(Driver);
@@ -576,7 +576,7 @@ namespace Roadsaft.DriversManagement
                         if (MessageBox.Show("¿Está seguro que desea eliminar el registro seleccionado?", "Eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             var medicalExam = dgvMedicalExamHistorical.SelectedRows[0].Tag as MedicalExam;
-                            _ = IoCContainer.Container.Get<IDriversDataProvider>().RemoveMedicalExam(medicalExam)
+                            _ = IoCContainer.Container.Get<IDriversDataProvider>().RemoveMedicalExamAsync(medicalExam).Result
                                 ? MessageBox.Show("El registro de examen médico fue eliminado satisfactoriamente.", "Eliminar registro", MessageBoxButtons.OK, MessageBoxIcon.Information)
                                 : MessageBox.Show("Ha ocurrido un error eliminadno el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             UpdateMedicalExamsTab(Driver);
